@@ -1,6 +1,8 @@
 package exnihilo.items;
 
 import exnihilo.Blocks;
+import exnihilo.blocks.tileentities.TileEntityLeavesInfested;
+import exnihilo.compatibility.Forestry;
 import exnihilo.data.ItemData;
 import exnihilo.data.ModData;
 import net.minecraft.block.Block;
@@ -24,9 +26,15 @@ public class ItemSilkworm extends Item{
     */
    public boolean onItemUse(ItemStack item, EntityPlayer player, World world, int x, int y, int z, int par7, float par8, float par9, float par10)
    {
-	   if (world.getBlockId(x, y, z) == Block.leaves.blockID)
+	   Block block = Block.blocksList[world.getBlockId(x, y, z)];
+	   if (block.isLeaves(null, 0, 0, 0) && !Forestry.addsThisLeaf(block))
 	   {
-		   world.setBlock(x, y, z, Blocks.LeavesInfested.blockID, world.getBlockMetadata(x, y, z) & 3, 3);
+		   int oldID = world.getBlockId(x, y, z);
+		   int oldMeta = world.getBlockMetadata(x, y, z);
+		   
+		   world.setBlock(x, y, z, Blocks.LeavesInfested.blockID, oldMeta, 3);
+		   TileEntityLeavesInfested te = (TileEntityLeavesInfested)world.getBlockTileEntity(x, y, z); 
+		   te.setMimicBlock(oldID, oldMeta);
 		   
 		   item.stackSize -= 1;
 		   
@@ -37,7 +45,11 @@ public class ItemSilkworm extends Item{
 		   
 		   return true;
 	   }
-       return false;
+	   else
+	   {
+		   return false;
+	   }
+		   
    }
 
 	@Override

@@ -27,14 +27,17 @@ public class RenderLeaves extends TileEntitySpecialRenderer{
 	public void renderTileEntityAt(TileEntity tileentity, double x, double y, double z, float f) 
 	{
 		TileEntityLeavesInfested leaves = (TileEntityLeavesInfested) tileentity;
+		Block mimic = Block.blocksList[leaves.blockID];
 		
 		GL11.glPushMatrix();
 		GL11.glTranslated(x,y,z);
 		
 		bindTexture(TextureMap.locationBlocksTexture);
-		int brightness = Block.leaves.getMixedBrightnessForBlock(tileentity.worldObj, tileentity.xCoord, tileentity.yCoord, tileentity.zCoord);
+		//int brightness = Block.leaves.getMixedBrightnessForBlock(tileentity.worldObj, tileentity.xCoord, tileentity.yCoord, tileentity.zCoord);
+		int brightness = leaves.getBrightness();
+		Color color = leaves.getRenderColor();
 		
-		model.render(leaves.getRenderColor(), Block.leaves.getIcon(0, leaves.getBlockMetadata()), Block.leaves, brightness, true);
+		model.render(color, mimic.getIcon(0, leaves.meta), brightness, true);
 
 		GL11.glPopMatrix();
 	}

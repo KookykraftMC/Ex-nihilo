@@ -56,8 +56,10 @@ public class BlockLeavesInfested extends Block implements ITileEntityProvider
 	public int colorMultiplier(IBlockAccess world, int x, int y, int z)
 	{
 		TileEntityLeavesInfested leaves = (TileEntityLeavesInfested) world.getBlockTileEntity(x, y, z);
-
-		return leaves.getRenderColor().toInt();
+		Block mimic = Block.blocksList[leaves.blockID];
+		Color color = new Color(mimic.colorMultiplier(world, x, y, z));
+		
+		return color.toInt();
 	}
 
 	public int getLeafColor(IBlockAccess world, int par2, int par3, int par4)

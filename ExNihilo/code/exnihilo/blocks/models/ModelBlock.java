@@ -13,12 +13,10 @@ import net.minecraft.world.IBlockAccess;
 
 public class ModelBlock extends ModelBase{
 
-	public void render(Color color, Icon icon, Block block, int brightness, boolean blend)
+	public void render(Color color, Icon icon, int brightness, boolean blend)
 	{
 		Tessellator tessellator = Tessellator.instance;
-		
-		
-		
+
 		GL11.glDisable(GL11.GL_LIGHTING);
 		
 		if (blend == true)

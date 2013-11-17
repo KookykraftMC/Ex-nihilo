@@ -125,7 +125,6 @@ public class ItemRenderLeaves implements IItemRenderer{
 		
 		model.render(new Color(Block.leaves.getRenderColor(item.getItemDamage())),
 				Block.leaves.getIcon(0, item.getItemDamage()),
-				Block.leaves,
 				Integer.MAX_VALUE,
 				blend);
 		

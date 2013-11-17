@@ -1,10 +1,12 @@
 package exnihilo.compatibility;
 
+import java.lang.reflect.Method;
 import java.util.ArrayList;
 
 import net.minecraft.block.Block;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import net.minecraft.world.World;
 import net.minecraftforge.oredict.OreDictionary;
 import cpw.mods.fml.common.Loader;
 import cpw.mods.fml.common.registry.GameRegistry;
@@ -26,5 +28,25 @@ public class Forestry {
     	{
     		SieveRegistry.register(Block.gravel.blockID, 0, apatite.itemID, apatite.getItemDamage(), 16);
     	}
+	}
+	
+	public static boolean addsThisLeaf(Block block)
+	{
+		if (Forestry.isLoaded())
+		{
+			Class forestryLeafBlock = null;
+			try {
+				forestryLeafBlock = Class.forName("forestry.arboriculture.gadgets.BlockLeaves");
+
+				Method dropStuff = null;
+				if (forestryLeafBlock != null)
+				{	
+					if (forestryLeafBlock.cast(block) != null);
+					return true;
+				}
+			}
+			catch (Exception ex){}
+		}
+		return false;
 	}
 }
