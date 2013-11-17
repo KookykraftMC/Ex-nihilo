@@ -87,7 +87,7 @@ public class ItemCrook extends ItemTool{
 
 						if (dropStuff != null)
 						{
-							//This gets called once here, and then it drops stuff again when it breaks. It's not supposed to, but it does.
+							//This gets called once here, and then it drops stuff again when it breaks.
 							dropStuff.invoke(forestryLeafBlock.cast(block), world, X, Y, Z, meta, 1.0F, true);
 							extraDropped = true;
 						}
