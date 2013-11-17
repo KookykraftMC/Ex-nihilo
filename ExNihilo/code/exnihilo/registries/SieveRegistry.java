@@ -107,8 +107,8 @@ public class SieveRegistry {
 		register(Blocks.Dust.blockID, 0, Items.IronDust.itemID, 0, 5);
 		register(Blocks.Dust.blockID, 0, Items.GoldDust.itemID, 0, 11);
 		register(Blocks.Dust.blockID, 0, Item.dyePowder.itemID, 15, 5); //Bone Meal
+		register(Blocks.Dust.blockID, 0, Item.redstone.itemID, 0, 12);		
 		register(Blocks.Dust.blockID, 0, Item.gunpowder.itemID, 0, 15);
-		register(Blocks.Dust.blockID, 0, Item.redstone.itemID, 0, 16);
 		register(Blocks.Dust.blockID, 0, Item.glowstone.itemID, 0, 16);
 		register(Blocks.Dust.blockID, 0, Item.blazePowder.itemID, 0, 20);
 	}
