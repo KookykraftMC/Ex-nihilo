@@ -3,6 +3,7 @@ package exnihilo.compatibility;
 import java.util.ArrayList;
 import java.util.Iterator;
 
+import exnihilo.Blocks;
 import exnihilo.Items;
 import exnihilo.registries.HammerRegistry;
 import exnihilo.registries.SieveRegistry;
@@ -15,7 +16,10 @@ import net.minecraftforge.oredict.OreDictionary;
 public class CommonOre {
 	public static void registerOres()
 	{
-		//TODO: There is a bunch of code in the SieveRegistry that needs to be moved here.
+		registerCopperOres();
+		registerTinOres();
+		registerSilverOres();
+		registerLeadOres();
 	}
 	
 	public static void registerRecipes()
@@ -80,19 +84,8 @@ public class CommonOre {
 		{
 			ItemStack ore = it.next();
 
-			registerHammerRecipe(ore.itemID, ore.getItemDamage(), rewardID, rewardMeta);
+			HammerRegistry.registerOre(ore.itemID, ore.getItemDamage(), rewardID, rewardMeta);
 		}
-	}
-	
-	private static void registerHammerRecipe(int oreID, int oreMeta, int rewardID, int rewardMeta)
-	{
-		HammerRegistry.register(oreID, oreMeta, rewardID, rewardMeta, 1.0f, 0.0f);
-		HammerRegistry.register(oreID, oreMeta, rewardID, rewardMeta, 1.0f, 0.0f);
-		HammerRegistry.register(oreID, oreMeta, rewardID, rewardMeta, 1.0f, 0.0f);
-		HammerRegistry.register(oreID, oreMeta, rewardID, rewardMeta, 1.0f, 0.0f);
-		HammerRegistry.register(oreID, oreMeta, rewardID, rewardMeta, 0.5f, 0.1f);
-		HammerRegistry.register(oreID, oreMeta, rewardID, rewardMeta, 0.05f, 0.1f);
-		HammerRegistry.register(oreID, oreMeta, rewardID, rewardMeta, 0.0f, 0.05f);
 	}
 	
 	public static void registerIngots()
@@ -101,6 +94,30 @@ public class CommonOre {
 		OreDictionary.registerOre("ingotTin", Items.TinIngot);
 		OreDictionary.registerOre("ingotSilver", Items.SilverIngot);
 		OreDictionary.registerOre("ingotLead", Items.LeadIngot);
+	}
+	
+	private static void registerCopperOres()
+	{
+		HammerRegistry.registerOre(Blocks.CopperOre.blockID, 0, Items.CopperSand.itemID, 0);
+		HammerRegistry.registerOre(Blocks.CopperOre.blockID, 1, Items.CopperDust.itemID, 0);
+	}
+	
+	private static void registerTinOres()
+	{
+		HammerRegistry.registerOre(Blocks.TinOre.blockID, 0, Items.TinSand.itemID, 0);
+		HammerRegistry.registerOre(Blocks.TinOre.blockID, 1, Items.TinDust.itemID, 0);
+	}
+	
+	private static void registerSilverOres()
+	{
+		HammerRegistry.registerOre(Blocks.SilverOre.blockID, 0, Items.SilverSand.itemID, 0);
+		HammerRegistry.registerOre(Blocks.SilverOre.blockID, 1, Items.SilverDust.itemID, 0);
+	}
+	
+	private static void registerLeadOres()
+	{
+		HammerRegistry.registerOre(Blocks.LeadOre.blockID, 0, Items.LeadSand.itemID, 0);
+		HammerRegistry.registerOre(Blocks.LeadOre.blockID, 1, Items.LeadDust.itemID, 0);
 	}
 	
 	public static void dumpUnlocalizedNames()

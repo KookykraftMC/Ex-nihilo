@@ -82,151 +82,32 @@ public static ArrayList<Smashable> rewards = new ArrayList<Smashable>();
 		
 		registerIronOres();
 		registerGoldOres();
-		registerCopperOres();
-		registerTinOres();
-		registerSilverOres();
-		registerLeadOres();
+		
 	}
 	
 	
 	public static void registerOre(int oreID, int oreMeta, int rewardID, int rewardMeta)
 	{
-		HammerRegistry.register(oreID, oreMeta, rewardID, rewardMeta, 1.0f, 0.0f);
-		HammerRegistry.register(oreID, oreMeta, rewardID, rewardMeta, 1.0f, 0.0f);
-		HammerRegistry.register(oreID, oreMeta, rewardID, rewardMeta, 1.0f, 0.0f);
-		HammerRegistry.register(oreID, oreMeta, rewardID, rewardMeta, 1.0f, 0.0f);
-		HammerRegistry.register(oreID, oreMeta, rewardID, rewardMeta, 0.5f, 0.1f);
-		HammerRegistry.register(oreID, oreMeta, rewardID, rewardMeta, 0.05f, 0.1f);
-		HammerRegistry.register(oreID, oreMeta, rewardID, rewardMeta, 0.0f, 0.05f);
+		register(oreID, oreMeta, rewardID, rewardMeta, 1.0f, 0.0f);
+		register(oreID, oreMeta, rewardID, rewardMeta, 1.0f, 0.0f);
+		register(oreID, oreMeta, rewardID, rewardMeta, 1.0f, 0.0f);
+		register(oreID, oreMeta, rewardID, rewardMeta, 1.0f, 0.0f);
+		register(oreID, oreMeta, rewardID, rewardMeta, 0.5f, 0.1f);
+		register(oreID, oreMeta, rewardID, rewardMeta, 0.05f, 0.1f);
+		register(oreID, oreMeta, rewardID, rewardMeta, 0.0f, 0.05f);
 	}
 	
 	private static void registerIronOres()
 	{
-		register(Block.oreIron.blockID, 0, Items.IronGravel.itemID, 0, 1.0f, 0.0f);
-		register(Block.oreIron.blockID, 0, Items.IronGravel.itemID, 0, 1.0f, 0.0f);
-		register(Block.oreIron.blockID, 0, Items.IronGravel.itemID, 0, 1.0f, 0.0f);
-		register(Block.oreIron.blockID, 0, Items.IronGravel.itemID, 0, 1.0f, 0.0f);
-		register(Block.oreIron.blockID, 0, Items.IronGravel.itemID, 0, 0.5f, 0.1f);
-		register(Block.oreIron.blockID, 0, Items.IronGravel.itemID, 0, 0.05f, 0.1f);
-		register(Block.oreIron.blockID, 0, Items.IronGravel.itemID, 0, 0.0f, 0.05f);
-		
-		register(Blocks.IronOre.blockID, 0, Items.IronSand.itemID, 0, 1.0f, 0.0f);
-		register(Blocks.IronOre.blockID, 0, Items.IronSand.itemID, 0, 1.0f, 0.0f);
-		register(Blocks.IronOre.blockID, 0, Items.IronSand.itemID, 0, 1.0f, 0.0f);
-		register(Blocks.IronOre.blockID, 0, Items.IronSand.itemID, 0, 1.0f, 0.0f);
-		register(Blocks.IronOre.blockID, 0, Items.IronSand.itemID, 0, 0.5f, 0.1f);
-		register(Blocks.IronOre.blockID, 0, Items.IronSand.itemID, 0, 0.05f, 0.1f);
-		register(Blocks.IronOre.blockID, 0, Items.IronSand.itemID, 0, 0.0f, 0.05f);
-		
-		register(Blocks.IronOre.blockID, 1, Items.IronDust.itemID, 0, 1.0f, 0.0f);
-		register(Blocks.IronOre.blockID, 1, Items.IronDust.itemID, 0, 1.0f, 0.0f);
-		register(Blocks.IronOre.blockID, 1, Items.IronDust.itemID, 0, 1.0f, 0.0f);
-		register(Blocks.IronOre.blockID, 1, Items.IronDust.itemID, 0, 1.0f, 0.0f);
-		register(Blocks.IronOre.blockID, 1, Items.IronDust.itemID, 0, 0.5f, 0.1f);
-		register(Blocks.IronOre.blockID, 1, Items.IronDust.itemID, 0, 0.05f, 0.1f);
-		register(Blocks.IronOre.blockID, 1, Items.IronDust.itemID, 0, 0.0f, 0.05f);
+		registerOre(Block.oreIron.blockID, 0, Items.IronGravel.itemID, 0);
+		registerOre(Blocks.IronOre.blockID, 0, Items.IronSand.itemID, 0);
+		registerOre(Blocks.IronOre.blockID, 1, Items.IronDust.itemID, 0);
 	}
 	
 	private static void registerGoldOres()
 	{
-		register(Block.oreGold.blockID, 0, Items.GoldGravel.itemID, 0, 1.0f, 0.0f);
-		register(Block.oreGold.blockID, 0, Items.GoldGravel.itemID, 0, 1.0f, 0.0f);
-		register(Block.oreGold.blockID, 0, Items.GoldGravel.itemID, 0, 1.0f, 0.0f);
-		register(Block.oreGold.blockID, 0, Items.GoldGravel.itemID, 0, 1.0f, 0.0f);
-		register(Block.oreGold.blockID, 0, Items.GoldGravel.itemID, 0, 0.5f, 0.1f);
-		register(Block.oreGold.blockID, 0, Items.GoldGravel.itemID, 0, 0.05f, 0.1f);
-		register(Block.oreGold.blockID, 0, Items.GoldGravel.itemID, 0, 0.0f, 0.05f);
-		
-		register(Blocks.GoldOre.blockID, 0, Items.GoldSand.itemID, 0, 1.0f, 0.0f);
-		register(Blocks.GoldOre.blockID, 0, Items.GoldSand.itemID, 0, 1.0f, 0.0f);
-		register(Blocks.GoldOre.blockID, 0, Items.GoldSand.itemID, 0, 1.0f, 0.0f);
-		register(Blocks.GoldOre.blockID, 0, Items.GoldSand.itemID, 0, 1.0f, 0.0f);
-		register(Blocks.GoldOre.blockID, 0, Items.GoldSand.itemID, 0, 0.5f, 0.1f);
-		register(Blocks.GoldOre.blockID, 0, Items.GoldSand.itemID, 0, 0.05f, 0.1f);
-		register(Blocks.GoldOre.blockID, 0, Items.GoldSand.itemID, 0, 0.0f, 0.05f);
-		
-		register(Blocks.GoldOre.blockID, 1, Items.GoldDust.itemID, 0, 1.0f, 0.0f);
-		register(Blocks.GoldOre.blockID, 1, Items.GoldDust.itemID, 0, 1.0f, 0.0f);
-		register(Blocks.GoldOre.blockID, 1, Items.GoldDust.itemID, 0, 1.0f, 0.0f);
-		register(Blocks.GoldOre.blockID, 1, Items.GoldDust.itemID, 0, 1.0f, 0.0f);
-		register(Blocks.GoldOre.blockID, 1, Items.GoldDust.itemID, 0, 0.5f, 0.1f);
-		register(Blocks.GoldOre.blockID, 1, Items.GoldDust.itemID, 0, 0.05f, 0.1f);
-		register(Blocks.GoldOre.blockID, 1, Items.GoldDust.itemID, 0, 0.0f, 0.05f);
-	}
-	
-	private static void registerCopperOres()
-	{
-		register(Blocks.CopperOre.blockID, 0, Items.CopperSand.itemID, 0, 1.0f, 0.0f);
-		register(Blocks.CopperOre.blockID, 0, Items.CopperSand.itemID, 0, 1.0f, 0.0f);
-		register(Blocks.CopperOre.blockID, 0, Items.CopperSand.itemID, 0, 1.0f, 0.0f);
-		register(Blocks.CopperOre.blockID, 0, Items.CopperSand.itemID, 0, 1.0f, 0.0f);
-		register(Blocks.CopperOre.blockID, 0, Items.CopperSand.itemID, 0, 0.5f, 0.1f);
-		register(Blocks.CopperOre.blockID, 0, Items.CopperSand.itemID, 0, 0.05f, 0.1f);
-		register(Blocks.CopperOre.blockID, 0, Items.CopperSand.itemID, 0, 0.0f, 0.05f);
-		
-		register(Blocks.CopperOre.blockID, 1, Items.CopperDust.itemID, 0, 1.0f, 0.0f);
-		register(Blocks.CopperOre.blockID, 1, Items.CopperDust.itemID, 0, 1.0f, 0.0f);
-		register(Blocks.CopperOre.blockID, 1, Items.CopperDust.itemID, 0, 1.0f, 0.0f);
-		register(Blocks.CopperOre.blockID, 1, Items.CopperDust.itemID, 0, 1.0f, 0.0f);
-		register(Blocks.CopperOre.blockID, 1, Items.CopperDust.itemID, 0, 0.5f, 0.1f);
-		register(Blocks.CopperOre.blockID, 1, Items.CopperDust.itemID, 0, 0.05f, 0.1f);
-		register(Blocks.CopperOre.blockID, 1, Items.CopperDust.itemID, 0, 0.0f, 0.05f);
-	}
-	
-	private static void registerTinOres()
-	{
-		register(Blocks.TinOre.blockID, 0, Items.TinSand.itemID, 0, 1.0f, 0.0f);
-		register(Blocks.TinOre.blockID, 0, Items.TinSand.itemID, 0, 1.0f, 0.0f);
-		register(Blocks.TinOre.blockID, 0, Items.TinSand.itemID, 0, 1.0f, 0.0f);
-		register(Blocks.TinOre.blockID, 0, Items.TinSand.itemID, 0, 1.0f, 0.0f);
-		register(Blocks.TinOre.blockID, 0, Items.TinSand.itemID, 0, 0.5f, 0.1f);
-		register(Blocks.TinOre.blockID, 0, Items.TinSand.itemID, 0, 0.05f, 0.1f);
-		register(Blocks.TinOre.blockID, 0, Items.TinSand.itemID, 0, 0.0f, 0.05f);
-		
-		register(Blocks.TinOre.blockID, 1, Items.TinDust.itemID, 0, 1.0f, 0.0f);
-		register(Blocks.TinOre.blockID, 1, Items.TinDust.itemID, 0, 1.0f, 0.0f);
-		register(Blocks.TinOre.blockID, 1, Items.TinDust.itemID, 0, 1.0f, 0.0f);
-		register(Blocks.TinOre.blockID, 1, Items.TinDust.itemID, 0, 1.0f, 0.0f);
-		register(Blocks.TinOre.blockID, 1, Items.TinDust.itemID, 0, 0.5f, 0.1f);
-		register(Blocks.TinOre.blockID, 1, Items.TinDust.itemID, 0, 0.05f, 0.1f);
-		register(Blocks.TinOre.blockID, 1, Items.TinDust.itemID, 0, 0.0f, 0.05f);
-	}
-	
-	private static void registerSilverOres()
-	{
-		register(Blocks.SilverOre.blockID, 0, Items.SilverSand.itemID, 0, 1.0f, 0.0f);
-		register(Blocks.SilverOre.blockID, 0, Items.SilverSand.itemID, 0, 1.0f, 0.0f);
-		register(Blocks.SilverOre.blockID, 0, Items.SilverSand.itemID, 0, 1.0f, 0.0f);
-		register(Blocks.SilverOre.blockID, 0, Items.SilverSand.itemID, 0, 1.0f, 0.0f);
-		register(Blocks.SilverOre.blockID, 0, Items.SilverSand.itemID, 0, 0.5f, 0.1f);
-		register(Blocks.SilverOre.blockID, 0, Items.SilverSand.itemID, 0, 0.05f, 0.1f);
-		register(Blocks.SilverOre.blockID, 0, Items.SilverSand.itemID, 0, 0.0f, 0.05f);
-		
-		register(Blocks.SilverOre.blockID, 1, Items.SilverDust.itemID, 0, 1.0f, 0.0f);
-		register(Blocks.SilverOre.blockID, 1, Items.SilverDust.itemID, 0, 1.0f, 0.0f);
-		register(Blocks.SilverOre.blockID, 1, Items.SilverDust.itemID, 0, 1.0f, 0.0f);
-		register(Blocks.SilverOre.blockID, 1, Items.SilverDust.itemID, 0, 1.0f, 0.0f);
-		register(Blocks.SilverOre.blockID, 1, Items.SilverDust.itemID, 0, 0.5f, 0.1f);
-		register(Blocks.SilverOre.blockID, 1, Items.SilverDust.itemID, 0, 0.05f, 0.1f);
-		register(Blocks.SilverOre.blockID, 1, Items.SilverDust.itemID, 0, 0.0f, 0.05f);
-	}
-	
-	private static void registerLeadOres()
-	{
-		register(Blocks.LeadOre.blockID, 0, Items.LeadSand.itemID, 0, 1.0f, 0.0f);
-		register(Blocks.LeadOre.blockID, 0, Items.LeadSand.itemID, 0, 1.0f, 0.0f);
-		register(Blocks.LeadOre.blockID, 0, Items.LeadSand.itemID, 0, 1.0f, 0.0f);
-		register(Blocks.LeadOre.blockID, 0, Items.LeadSand.itemID, 0, 1.0f, 0.0f);
-		register(Blocks.LeadOre.blockID, 0, Items.LeadSand.itemID, 0, 0.5f, 0.1f);
-		register(Blocks.LeadOre.blockID, 0, Items.LeadSand.itemID, 0, 0.05f, 0.1f);
-		register(Blocks.LeadOre.blockID, 0, Items.LeadSand.itemID, 0, 0.0f, 0.05f);
-		
-		register(Blocks.LeadOre.blockID, 1, Items.LeadDust.itemID, 0, 1.0f, 0.0f);
-		register(Blocks.LeadOre.blockID, 1, Items.LeadDust.itemID, 0, 1.0f, 0.0f);
-		register(Blocks.LeadOre.blockID, 1, Items.LeadDust.itemID, 0, 1.0f, 0.0f);
-		register(Blocks.LeadOre.blockID, 1, Items.LeadDust.itemID, 0, 1.0f, 0.0f);
-		register(Blocks.LeadOre.blockID, 1, Items.LeadDust.itemID, 0, 0.5f, 0.1f);
-		register(Blocks.LeadOre.blockID, 1, Items.LeadDust.itemID, 0, 0.05f, 0.1f);
-		register(Blocks.LeadOre.blockID, 1, Items.LeadDust.itemID, 0, 0.0f, 0.05f);
+		registerOre(Block.oreGold.blockID, 0, Items.GoldGravel.itemID, 0);
+		registerOre(Blocks.GoldOre.blockID, 0, Items.GoldSand.itemID, 0);
+		registerOre(Blocks.GoldOre.blockID, 1, Items.GoldDust.itemID, 0);
 	}
 }
