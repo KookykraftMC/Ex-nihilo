@@ -22,9 +22,9 @@ public class AppliedEnergistics {
 	public static void loadCompatibility()
 	{	
 		//Quartz Crystal, metadata 6
-    	SieveRegistry.register(Block.sand.blockID, 0, Materials.matQuartz.itemID, Materials.matQuartz.getItemDamage(), 4);
+    	SieveRegistry.register(Block.sand.blockID, 0, Materials.matQuartz.itemID, Materials.matQuartz.getItemDamage(), 6);
 
     	//Quartz Dust, metadata 7
-    	SieveRegistry.register(Blocks.Dust.blockID, 0, Materials.matQuartzDust.itemID, Materials.matQuartzDust.getItemDamage(), 2);
+    	SieveRegistry.register(Blocks.Dust.blockID, 0, Materials.matQuartzDust.itemID, Materials.matQuartzDust.getItemDamage(), 6);
 	}
 }
