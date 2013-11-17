@@ -31,6 +31,7 @@ public class ItemHammerBase extends ItemTool{
 	public ItemHammerBase(int id, EnumToolMaterial material) 
 	{
 		super(id, 0.0F, material, blocksEffectiveAgainst);
+		this.damageVsEntity += 3;
 	}
 
 	@Override
