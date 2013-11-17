@@ -17,6 +17,7 @@ import net.minecraft.block.ITileEntityProvider;
 import net.minecraft.block.material.Material;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.texture.IconRegister;
+import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
@@ -31,44 +32,44 @@ public class BlockLeavesInfested extends Block implements ITileEntityProvider
 		//super(par1);
 		super(par1, Material.leaves);
 		this.isBlockContainer = true;
-		
+
 		setHardness(0.4f);
 		setLightOpacity(1);
 		setStepSound(soundGrassFootstep);
 		setBurnProperties(this.blockID, 5,150);
-		
+
 		setUnlocalizedName(ModData.ID + "." + BlockData.LEAVES_INFESTED_KEY);
 		GameRegistry.registerTileEntity(TileEntityLeavesInfested.class, this.getUnlocalizedName());
 	}
-	
+
 	@Override
 	public void registerIcons(IconRegister register)
 	{
 		blockIcon = Block.leaves.getIcon(0, 0);
 	}
-	
+
 	public void dropBlockAsItemWithChance(World world, int x, int y, int z, int par5, float par6, int par7)
 	{
 		//Don't drop anything. This is to override the base chance to drop saplings. 
 	}
-	
+
 	public int colorMultiplier(IBlockAccess world, int x, int y, int z)
 	{
 		TileEntityLeavesInfested leaves = (TileEntityLeavesInfested) world.getBlockTileEntity(x, y, z);
-		
+
 		return leaves.getRenderColor().toInt();
 	}
-	
+
 	public int getLeafColor(IBlockAccess world, int par2, int par3, int par4)
 	{
 		return super.colorMultiplier(world, par2, par3, par4);
 	}
-    
-    public int damageDropped(int par1)
-    {
-        return 0;
-    }
-	
+
+	public int damageDropped(int par1)
+	{
+		return 0;
+	}
+
 	@Override
 	public int getRenderType()
 	{
@@ -86,29 +87,29 @@ public class BlockLeavesInfested extends Block implements ITileEntityProvider
 	{
 		return false;
 	}
-	
+
 	@Override
 	public boolean hasTileEntity()
 	{
 		return true;
 	}
-	
+
 	@Override
 	public boolean canSustainLeaves(World world, int x, int y, int z)
-    {
-        return true;
-    }
-	
-	@Override
-    public void onBlockAdded(World par1World, int par2, int par3, int par4)
-    {
-        super.onBlockAdded(par1World, par2, par3, par4);
-    }
+	{
+		return true;
+	}
 
-    @Override
-    public void breakBlock(World world, int x, int y, int z, int par5, int par6)
-    {
-        if (!world.isRemote )
+	@Override
+	public void onBlockAdded(World par1World, int par2, int par3, int par4)
+	{
+		super.onBlockAdded(par1World, par2, par3, par4);
+	}
+
+	@Override
+	public boolean removeBlockByPlayer(World world, EntityPlayer player, int x, int y, int z)
+	{
+		if (!world.isRemote)
 		{
 			TileEntityLeavesInfested leaves = (TileEntityLeavesInfested) world.getBlockTileEntity(x, y, z);
 
@@ -118,27 +119,33 @@ public class BlockLeavesInfested extends Block implements ITileEntityProvider
 				{
 					this.dropBlockAsItem_do(world, x, y, z, new ItemStack(Item.silk.itemID, 1, 0));
 				}
-				
+
 				if (world.rand.nextFloat() < leaves.getProgress() * .1f)
 				{
 					this.dropBlockAsItem_do(world, x, y, z, new ItemStack(Item.silk.itemID, 1, 0));
 				}
 			}
 		}
-        
-        super.breakBlock(world, x, y, z, par5, par6);
-        world.removeBlockTileEntity(x, y, z);
-    }
 
-    @Override
-    public boolean onBlockEventReceived(World par1World, int par2, int par3, int par4, int par5, int par6)
-    {
-        super.onBlockEventReceived(par1World, par2, par3, par4, par5, par6);
-        TileEntity tileentity = par1World.getBlockTileEntity(par2, par3, par4);
-        return tileentity != null ? tileentity.receiveClientEvent(par5, par6) : false;
-    }
+		return world.setBlockToAir(x, y, z);
+	}
 
-    @Override
+	@Override
+	public void breakBlock(World world, int x, int y, int z, int par5, int par6)
+	{
+		super.breakBlock(world, x, y, z, par5, par6);
+		world.removeBlockTileEntity(x, y, z);
+	}
+
+	@Override
+	public boolean onBlockEventReceived(World par1World, int par2, int par3, int par4, int par5, int par6)
+	{
+		super.onBlockEventReceived(par1World, par2, par3, par4, par5, par6);
+		TileEntity tileentity = par1World.getBlockTileEntity(par2, par3, par4);
+		return tileentity != null ? tileentity.receiveClientEvent(par5, par6) : false;
+	}
+
+	@Override
 	public TileEntity createNewTileEntity(World world) {
 		return new TileEntityLeavesInfested();
 	}
