@@ -8,6 +8,7 @@ import cpw.mods.fml.relauncher.SideOnly;
 import exnihilo.ExNihilo;
 import exnihilo.blocks.tileentities.TileEntityBarrel;
 import exnihilo.blocks.tileentities.TileEntityBarrel.BarrelMode;
+import exnihilo.blocks.tileentities.TileEntityBarrel.ExtractMode;
 import exnihilo.data.BlockData;
 import exnihilo.data.ModData;
 import exnihilo.registries.CompostRegistry;
@@ -85,7 +86,7 @@ public class BlockBarrel extends BlockContainer
 
 		TileEntityBarrel barrel = (TileEntityBarrel) world.getBlockTileEntity(x, y, z);
 
-		if (barrel.mode.canExtract)
+		if (barrel.mode.canExtract == ExtractMode.Always || (world.difficultySetting == 0 && barrel.mode.canExtract == ExtractMode.PeacefulOnly))
 		{
 			barrel.giveAppropriateItem();
 		}

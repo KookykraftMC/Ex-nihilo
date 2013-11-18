@@ -41,26 +41,33 @@ public class TileEntityBarrel extends TileEntity implements IFluidHandler, ISide
 
 	public enum BarrelMode
 	{
-		EMPTY(0,false), 
-		FLUID(1,false), 
-		COMPOST(2,false), 
-		DIRT(3,true), 
-		CLAY(4,true), 
-		SPORED(5,false), 
-		SLIME(6,true), 
-		NETHERRACK(7,true), 
-		ENDSTONE(8,true), 
-		MILKED(9,false), 
-		SOULSAND(10,true),
-		WITCHY(11, false),
-		OBSIDIAN(12, true),
-		COBBLESTONE(13, true);
+		EMPTY(0, ExtractMode.None), 
+		FLUID(1, ExtractMode.None), 
+		COMPOST(2, ExtractMode.None), 
+		DIRT(3, ExtractMode.Always), 
+		CLAY(4, ExtractMode.Always), 
+		SPORED(5, ExtractMode.None), 
+		SLIME(6, ExtractMode.Always), 
+		NETHERRACK(7, ExtractMode.Always), 
+		ENDSTONE(8, ExtractMode.Always), 
+		MILKED(9, ExtractMode.None), 
+		SOULSAND(10, ExtractMode.Always),
+		WITCHY(11, ExtractMode.None),
+		OBSIDIAN(12, ExtractMode.Always),
+		COBBLESTONE(13, ExtractMode.Always);
 
-		private BarrelMode(int v, boolean extract){this.value = v; this.canExtract = extract;}
+		private BarrelMode(int v, ExtractMode extract){this.value = v; this.canExtract = extract;}
 		public int value;
-		public boolean canExtract;
+		public ExtractMode canExtract;
 	}
 
+	public enum ExtractMode
+	{
+		None,
+		Always,
+		PeacefulOnly;
+	}
+	
 	public FluidStack fluid;
 	private float volume;
 	private int timer;
@@ -898,7 +905,15 @@ public class TileEntityBarrel extends TileEntity implements IFluidHandler, ISide
 		// TODO Auto-generated method stub
 		if (side == 0 && slot == 0)
 		{
-			return mode.canExtract;
+			if (mode.canExtract == ExtractMode.Always)
+			{
+				return true;
+			}
+			
+			if (worldObj.difficultySetting == 0 && mode.canExtract == ExtractMode.PeacefulOnly)
+			{
+				return true;
+			}
 		}
 
 		return false;
