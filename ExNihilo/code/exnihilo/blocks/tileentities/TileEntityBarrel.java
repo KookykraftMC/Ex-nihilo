@@ -826,7 +826,6 @@ public class TileEntityBarrel extends TileEntity implements IFluidHandler, ISide
 			{
 				if (ModData.ALLOW_BARREL_RECIPE_SOULSAND && item.itemID == Block.sand.blockID)
 				{
-					System.out.println("Inserting sand!");
 					resetColor();
 					this.mode = BarrelMode.SOULSAND;
 				}
