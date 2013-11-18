@@ -788,6 +788,14 @@ public class TileEntityBarrel extends TileEntity implements IFluidHandler, ISide
 
 	@Override
 	public void setInventorySlotContents(int slot, ItemStack item) {
+		if (slot == 0)
+		{
+			if (item == null)
+			{
+				resetBarrel();
+			}
+		}
+		
 		if (slot == 1)
 		{
 			if (mode == BarrelMode.COMPOST || mode == BarrelMode.EMPTY)
