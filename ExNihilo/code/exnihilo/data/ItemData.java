@@ -124,6 +124,20 @@ public class ItemData {
 	public static final String OSMIUM_ORE_KEY = "item_osmium_gravel";
 	public static final String OSMIUM_ORE_NAMES[] = {"Broken Osmium Ore", "Crushed Osmium Ore", "Pulverized Osmium Ore"};
 	public static final String OSMIUM_ORE_UNLOCALIZED_NAMES[] = {"osmium_broken", "osmium_crushed", "osmium_pulverized"};
+
+	//PLATINUM!
+	public static int PLATINUM_ORE_IDS[] = new int[3];
+	public static int PLATINUM_INGOT_ID = ITEM_ID_BASE + 16;
+	public static final String PLATINUM_ORE_KEY = "item_platinum_gravel";
+	public static final String PLATINUM_ORE_NAMES[] = {"Broken Platinum Ore", "Crushed Platinum Ore", "Pulverized Platinum Ore", "Platinum Ingot"};
+	public static final String PLATINUM_ORE_UNLOCALIZED_NAMES[] = {"platinum_broken", "platinum_crushed", "platinum_pulverized", "platinum_ingot"};
+
+	//LEAD!
+	public static int NICKLE_ORE_IDS[] = new int[3];
+	public static int NICKLE_INGOT_ID = ITEM_ID_BASE + 17;
+	public static final String NICKLE_ORE_KEY = "item_nickle_gravel";
+	public static final String NICKLE_ORE_NAMES[] = {"Broken Nickle Ore", "Crushed Nickle Ore", "Pulverized Nickle Ore", "Nickle Ingot"};
+	public static final String NICKLE_ORE_UNLOCALIZED_NAMES[] = {"nickle_broken", "nickle_crushed", "nickle_pulverized", "nickle_ingot"};
 	// ***
 	// SEED CATEGORY
 	// ***
@@ -178,11 +192,11 @@ public class ItemData {
 	public static final String SEED_POTATO_UNLOCALIZED_NAME = "seed_potato";
 
 	//RUBBER TREE SEEDS!
-		public static int SEED_RUBBER_ID = ITEM_ID_BASE + 58;
-		public static final String SEED_RUBBER_KEY = "seed_rubber";
-		public static final String SEED_RUBBER_NAME = "Rubber Tree Seeds";
-		public static final String SEED_RUBBER_UNLOCALIZED_NAME = "seed_rubber";
-	
+	public static int SEED_RUBBER_ID = ITEM_ID_BASE + 58;
+	public static final String SEED_RUBBER_KEY = "seed_rubber";
+	public static final String SEED_RUBBER_NAME = "Rubber Tree Seeds";
+	public static final String SEED_RUBBER_UNLOCALIZED_NAME = "seed_rubber";
+
 	//LOAD ALL THE THINGS!
 	public static void load(Configuration config)
 	{
@@ -267,6 +281,20 @@ public class ItemData {
 		{
 			OSMIUM_ORE_IDS[i] = config.getItem(ORE_CATEGORY, OSMIUM_ORE_UNLOCALIZED_NAMES[i], ITEM_ID_BASE + i + 38).getInt() - 256;
 		}
+
+		//PLATINUM ORE!
+		for(int i = 0; i < 3; i++)
+		{
+			PLATINUM_ORE_IDS[i] = config.getItem(ORE_CATEGORY, PLATINUM_ORE_UNLOCALIZED_NAMES[i], ITEM_ID_BASE + i + 41).getInt() - 256;
+		}
+		PLATINUM_INGOT_ID = config.getItem(ORE_CATEGORY, PLATINUM_ORE_UNLOCALIZED_NAMES[3], PLATINUM_INGOT_ID).getInt() - 256;
+
+		//NICKLE ORE!
+		for(int i = 0; i < 3; i++)
+		{
+			NICKLE_ORE_IDS[i] = config.getItem(ORE_CATEGORY, NICKLE_ORE_UNLOCALIZED_NAMES[i], ITEM_ID_BASE + i + 44).getInt() - 256;
+		}
+		NICKLE_INGOT_ID = config.getItem(ORE_CATEGORY, NICKLE_ORE_UNLOCALIZED_NAMES[3], NICKLE_INGOT_ID).getInt() - 256;
 	}
 }
 

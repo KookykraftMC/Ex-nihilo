@@ -193,22 +193,54 @@ public class BlockData {
 		"lead_sand",
 		"lead_dust"
 		};
-	
+
 	//OSMIUM
-		public static int OSMIUM_ORE_ID = 3013;
-		public static final String OSMIUM_ORE_KEY = "osmium_ore";
-		public static final String[] OSMIUM_ORE_NAMES = 
-			{
-			"Osmium Ore Gravel",
-			"Osmium Ore Sand",
-			"Osmium Ore Dust"
-			}; 
-		public static final String[] OSMIUM_ORE_UNLOCALIZED_NAMES = 
-			{
-			"osmium_gravel",
-			"osmium_sand",
-			"osmium_dust"
-			};
+	public static int OSMIUM_ORE_ID = 3013;
+	public static final String OSMIUM_ORE_KEY = "osmium_ore";
+	public static final String[] OSMIUM_ORE_NAMES = 
+		{
+		"Osmium Ore Gravel",
+		"Osmium Ore Sand",
+		"Osmium Ore Dust"
+		}; 
+	public static final String[] OSMIUM_ORE_UNLOCALIZED_NAMES = 
+		{
+		"osmium_gravel",
+		"osmium_sand",
+		"osmium_dust"
+		};
+
+	//PLATINUM
+	public static int PLATINUM_ORE_ID = 3014;
+	public static final String PLATINUM_ORE_KEY = "platinum_ore";
+	public static final String[] PLATINUM_ORE_NAMES = 
+		{
+		"Platinum Ore Gravel",
+		"Platinum Ore Sand",
+		"Platinum Ore Dust"
+		}; 
+	public static final String[] PLATINUM_ORE_UNLOCALIZED_NAMES = 
+		{
+		"platinum_gravel",
+		"platinum_sand",
+		"platinum_dust"
+		};
+
+	//NICKLE
+	public static int NICKLE_ORE_ID = 3015;
+	public static final String NICKLE_ORE_KEY = "nickle_ore";
+	public static final String[] NICKLE_ORE_NAMES = 
+		{
+		"Nickle Ore Gravel",
+		"Nickle Ore Sand",
+		"Nickle Ore Dust"
+		}; 
+	public static final String[] NICKLE_ORE_UNLOCALIZED_NAMES = 
+		{
+		"nickle_gravel",
+		"nickle_sand",
+		"nickle_dust"
+		};
 
 	//Load it all!
 	public static void load(Configuration config)
@@ -227,6 +259,8 @@ public class BlockData {
 		SILVER_ORE_ID = config.getBlock(ORE_CATEGORY, SILVER_ORE_KEY, SILVER_ORE_ID).getInt();
 		LEAD_ORE_ID = config.getBlock(ORE_CATEGORY, LEAD_ORE_KEY, LEAD_ORE_ID).getInt();
 		OSMIUM_ORE_ID = config.getBlock(ORE_CATEGORY, OSMIUM_ORE_KEY, OSMIUM_ORE_ID).getInt();
+		PLATINUM_ORE_ID = config.getBlock(ORE_CATEGORY, PLATINUM_ORE_KEY, PLATINUM_ORE_ID).getInt();
+		NICKLE_ORE_ID = config.getBlock(ORE_CATEGORY, NICKLE_ORE_KEY, NICKLE_ORE_ID).getInt();
 	}
 
 
