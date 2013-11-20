@@ -133,11 +133,11 @@ public class ItemData {
 	public static final String PLATINUM_ORE_UNLOCALIZED_NAMES[] = {"platinum_broken", "platinum_crushed", "platinum_pulverized", "platinum_ingot"};
 
 	//LEAD!
-	public static int NICKLE_ORE_IDS[] = new int[3];
-	public static int NICKLE_INGOT_ID = ITEM_ID_BASE + 17;
-	public static final String NICKLE_ORE_KEY = "item_nickle_gravel";
-	public static final String NICKLE_ORE_NAMES[] = {"Broken Nickle Ore", "Crushed Nickle Ore", "Pulverized Nickle Ore", "Nickle Ingot"};
-	public static final String NICKLE_ORE_UNLOCALIZED_NAMES[] = {"nickle_broken", "nickle_crushed", "nickle_pulverized", "nickle_ingot"};
+	public static int NICKEL_ORE_IDS[] = new int[3];
+	public static int NICKEL_INGOT_ID = ITEM_ID_BASE + 17;
+	public static final String NICKEL_ORE_KEY = "item_nickel_gravel";
+	public static final String NICKEL_ORE_NAMES[] = {"Broken Nickel Ore", "Crushed Nickel Ore", "Pulverized Nickel Ore", "Nickel Ingot"};
+	public static final String NICKEL_ORE_UNLOCALIZED_NAMES[] = {"nickel_broken", "nickel_crushed", "nickel_pulverized", "nickel_ingot"};
 	// ***
 	// SEED CATEGORY
 	// ***
@@ -292,9 +292,9 @@ public class ItemData {
 		//NICKLE ORE!
 		for(int i = 0; i < 3; i++)
 		{
-			NICKLE_ORE_IDS[i] = config.getItem(ORE_CATEGORY, NICKLE_ORE_UNLOCALIZED_NAMES[i], ITEM_ID_BASE + i + 44).getInt() - 256;
+			NICKEL_ORE_IDS[i] = config.getItem(ORE_CATEGORY, NICKEL_ORE_UNLOCALIZED_NAMES[i], ITEM_ID_BASE + i + 44).getInt() - 256;
 		}
-		NICKLE_INGOT_ID = config.getItem(ORE_CATEGORY, NICKLE_ORE_UNLOCALIZED_NAMES[3], NICKLE_INGOT_ID).getInt() - 256;
+		NICKEL_INGOT_ID = config.getItem(ORE_CATEGORY, NICKEL_ORE_UNLOCALIZED_NAMES[3], NICKEL_INGOT_ID).getInt() - 256;
 	}
 }
 

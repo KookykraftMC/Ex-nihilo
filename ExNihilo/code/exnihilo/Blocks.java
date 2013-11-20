@@ -27,14 +27,18 @@ import exnihilo.blocks.ores.BlockCopperOre;
 import exnihilo.blocks.ores.BlockGoldOre;
 import exnihilo.blocks.ores.BlockIronOre;
 import exnihilo.blocks.ores.BlockLeadOre;
+import exnihilo.blocks.ores.BlockNickelOre;
 import exnihilo.blocks.ores.BlockOsmiumOre;
+import exnihilo.blocks.ores.BlockPlatinumOre;
 import exnihilo.blocks.ores.BlockSilverOre;
 import exnihilo.blocks.ores.BlockTinOre;
 import exnihilo.blocks.ores.itemBlocks.ItemBlockCopperOre;
 import exnihilo.blocks.ores.itemBlocks.ItemBlockGoldOre;
 import exnihilo.blocks.ores.itemBlocks.ItemBlockIronOre;
 import exnihilo.blocks.ores.itemBlocks.ItemBlockLeadOre;
+import exnihilo.blocks.ores.itemBlocks.ItemBlockNickelOre;
 import exnihilo.blocks.ores.itemBlocks.ItemBlockOsmiumOre;
+import exnihilo.blocks.ores.itemBlocks.ItemBlockPlatinumOre;
 import exnihilo.blocks.ores.itemBlocks.ItemBlockSilverOre;
 import exnihilo.blocks.ores.itemBlocks.ItemBlockTinOre;
 import exnihilo.blocks.tileentities.TileEntityBarrel;
@@ -56,6 +60,9 @@ public class Blocks {
 	public static Block SilverOre;
 	public static Block LeadOre;
 	public static Block OsmiumOre;
+	public static Block NickelOre;
+	public static Block PlatinumOre;
+
 
 	public static void registerBlocks()
 	{
@@ -97,9 +104,17 @@ public class Blocks {
 
 		LeadOre = new BlockLeadOre(BlockData.LEAD_ORE_ID);
 		GameRegistry.registerBlock(LeadOre, ItemBlockLeadOre.class, BlockData.LEAD_ORE_KEY);
-		
+
 		OsmiumOre = new BlockOsmiumOre(BlockData.OSMIUM_ORE_ID);
 		GameRegistry.registerBlock(OsmiumOre, ItemBlockOsmiumOre.class, BlockData.OSMIUM_ORE_KEY);
+
+		NickelOre = new BlockNickelOre(BlockData.NICKEL_ORE_ID);
+		GameRegistry.registerBlock(NickelOre, ItemBlockNickelOre.class, BlockData.NICKEL_ORE_KEY);
+
+		PlatinumOre = new BlockPlatinumOre(BlockData.PLATINUM_ORE_ID);
+		GameRegistry.registerBlock(PlatinumOre, ItemBlockPlatinumOre.class, BlockData.PLATINUM_ORE_KEY);
+
+
 	}
 
 	public static void registerNames()
@@ -183,12 +198,26 @@ public class Blocks {
 			ItemStack item = new ItemStack(LeadOre, 1, i);
 			LanguageRegistry.addName(item, BlockData.LEAD_ORE_NAMES[i]);
 		}
-		
+
 		//Lead
 		for(int i = 0; i < 3; i++)
 		{
 			ItemStack item = new ItemStack(OsmiumOre, 1, i);
 			LanguageRegistry.addName(item, BlockData.OSMIUM_ORE_NAMES[i]);
+		}
+
+		//Nickle
+		for(int i = 0; i < 3; i++)
+		{
+			ItemStack item = new ItemStack(NickelOre, 1, i);
+			LanguageRegistry.addName(item, BlockData.NICKEL_ORE_NAMES[i]);
+		}
+
+		//Platinum
+		for(int i = 0; i < 3; i++)
+		{
+			ItemStack item = new ItemStack(PlatinumOre, 1, i);
+			LanguageRegistry.addName(item, BlockData.PLATINUM_ORE_NAMES[i]);
 		}
 	}
 

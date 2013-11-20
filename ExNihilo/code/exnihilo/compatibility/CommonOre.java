@@ -20,6 +20,8 @@ public class CommonOre {
 		registerTinOres();
 		registerSilverOres();
 		registerLeadOres();
+		registerNickleOres();
+		registerPlatinumOres();
 	}
 	
 	public static void registerRecipes()
@@ -74,6 +76,30 @@ public class CommonOre {
 			registerHammerRecipes(ores, Items.LeadGravel.itemID, 0);
 		}
 		
+		ores = OreDictionary.getOres("ingotNickel");
+		if (ores.size() > 1)
+		{
+			SieveRegistry.dropNickel = true;
+		}
+		
+		ores = OreDictionary.getOres("oreNickel");
+		if (ores.size() > 0)
+		{
+			registerHammerRecipes(ores, Items.NickelGravel.itemID, 0);
+		}
+		
+		ores = OreDictionary.getOres("ingotPlatinum");
+		if (ores.size() > 1)
+		{
+			SieveRegistry.dropPlatinum = true;
+		}
+		
+		ores = OreDictionary.getOres("orePlatinum");
+		if (ores.size() > 0)
+		{
+			registerHammerRecipes(ores, Items.PlatinumGravel.itemID, 0);
+		}
+		
 		SieveRegistry.RegisterOptionalOres();
 	}
 	
@@ -94,6 +120,8 @@ public class CommonOre {
 		OreDictionary.registerOre("ingotTin", Items.TinIngot);
 		OreDictionary.registerOre("ingotSilver", Items.SilverIngot);
 		OreDictionary.registerOre("ingotLead", Items.LeadIngot);
+		OreDictionary.registerOre("ingotNickel", Items.NickelIngot);
+		OreDictionary.registerOre("ingotPlatinum", Items.PlatinumIngot);
 	}
 	
 	private static void registerCopperOres()
@@ -118,6 +146,18 @@ public class CommonOre {
 	{
 		HammerRegistry.registerOre(Blocks.LeadOre.blockID, 0, Items.LeadSand.itemID, 0);
 		HammerRegistry.registerOre(Blocks.LeadOre.blockID, 1, Items.LeadDust.itemID, 0);
+	}
+	
+	private static void registerNickleOres()
+	{
+		HammerRegistry.registerOre(Blocks.NickelOre.blockID, 0, Items.NickelSand.itemID, 0);
+		HammerRegistry.registerOre(Blocks.NickelOre.blockID, 1, Items.NickelDust.itemID, 0);
+	}
+	
+	private static void registerPlatinumOres()
+	{
+		HammerRegistry.registerOre(Blocks.PlatinumOre.blockID, 0, Items.PlatinumSand.itemID, 0);
+		HammerRegistry.registerOre(Blocks.PlatinumOre.blockID, 1, Items.PlatinumDust.itemID, 0);
 	}
 	
 	public static void dumpUnlocalizedNames()

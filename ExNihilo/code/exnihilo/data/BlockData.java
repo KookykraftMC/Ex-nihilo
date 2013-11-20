@@ -227,19 +227,19 @@ public class BlockData {
 		};
 
 	//NICKLE
-	public static int NICKLE_ORE_ID = 3015;
-	public static final String NICKLE_ORE_KEY = "nickle_ore";
-	public static final String[] NICKLE_ORE_NAMES = 
+	public static int NICKEL_ORE_ID = 3015;
+	public static final String NICKEL_ORE_KEY = "nickel_ore";
+	public static final String[] NICKEL_ORE_NAMES = 
 		{
-		"Nickle Ore Gravel",
-		"Nickle Ore Sand",
-		"Nickle Ore Dust"
+		"Nickel Ore Gravel",
+		"Nickel Ore Sand",
+		"Nickel Ore Dust"
 		}; 
-	public static final String[] NICKLE_ORE_UNLOCALIZED_NAMES = 
+	public static final String[] NICKEL_ORE_UNLOCALIZED_NAMES = 
 		{
-		"nickle_gravel",
-		"nickle_sand",
-		"nickle_dust"
+		"nickel_gravel",
+		"nickel_sand",
+		"nickel_dust"
 		};
 
 	//Load it all!
@@ -260,7 +260,7 @@ public class BlockData {
 		LEAD_ORE_ID = config.getBlock(ORE_CATEGORY, LEAD_ORE_KEY, LEAD_ORE_ID).getInt();
 		OSMIUM_ORE_ID = config.getBlock(ORE_CATEGORY, OSMIUM_ORE_KEY, OSMIUM_ORE_ID).getInt();
 		PLATINUM_ORE_ID = config.getBlock(ORE_CATEGORY, PLATINUM_ORE_KEY, PLATINUM_ORE_ID).getInt();
-		NICKLE_ORE_ID = config.getBlock(ORE_CATEGORY, NICKLE_ORE_KEY, NICKLE_ORE_ID).getInt();
+		NICKEL_ORE_ID = config.getBlock(ORE_CATEGORY, NICKEL_ORE_KEY, NICKEL_ORE_ID).getInt();
 	}
 
 
