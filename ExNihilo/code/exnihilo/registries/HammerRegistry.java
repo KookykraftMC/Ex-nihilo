@@ -67,6 +67,7 @@ public static ArrayList<Smashable> rewards = new ArrayList<Smashable>();
 	{		
 		register(Block.stone.blockID, 0, Items.Stones.itemID, 0, 1.00f, 0.0f);
 		register(Block.stone.blockID, 0, Items.Stones.itemID, 0, 0.75f, 0.1f);
+		register(Block.stone.blockID, 0, Items.Stones.itemID, 0, 0.75f, 0.1f);
 		register(Block.stone.blockID, 0, Items.Stones.itemID, 0, 0.50f, 0.1f);
 		register(Block.stone.blockID, 0, Items.Stones.itemID, 0, 0.25f, 0.1f);
 		register(Block.stone.blockID, 0, Items.Stones.itemID, 0, 0.05f, 0.1f);
@@ -79,6 +80,14 @@ public static ArrayList<Smashable> rewards = new ArrayList<Smashable>();
 		register(Block.sandStone.blockID, 1, Block.sand.blockID, 0, 1.0f, 0.0f);
 		register(Block.sandStone.blockID, 2, Block.sand.blockID, 0, 1.0f, 0.0f);
 		
+		register(Block.stoneBrick.blockID, 0, Block.stoneBrick.blockID, 2, 1.0f, 0.0f);
+		
+		register(Block.stoneBrick.blockID, 2, Items.Stones.itemID, 0, 1.00f, 0.0f);
+		register(Block.stoneBrick.blockID, 2, Items.Stones.itemID, 0, 0.75f, 0.1f);
+		register(Block.stoneBrick.blockID, 2, Items.Stones.itemID, 0, 0.75f, 0.1f);
+		register(Block.stoneBrick.blockID, 2, Items.Stones.itemID, 0, 0.50f, 0.1f);
+		register(Block.stoneBrick.blockID, 2, Items.Stones.itemID, 0, 0.25f, 0.1f);
+		register(Block.stoneBrick.blockID, 2, Items.Stones.itemID, 0, 0.05f, 0.1f);
 		
 		registerIronOres();
 		registerGoldOres();
