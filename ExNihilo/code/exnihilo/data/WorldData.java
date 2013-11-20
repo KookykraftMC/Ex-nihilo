@@ -18,7 +18,7 @@ public class WorldData {
 		hijackNether = config.get(CATEGORY_WORLDGEN_OPTIONS, "nether", false).getBoolean(false);
 		hijackEnd = config.get(CATEGORY_WORLDGEN_OPTIONS, "end", false).getBoolean(false);
 		
-		allowNetherFortresses = config.get(CATEGORY_WORLDGEN_OPTIONS, "nether_fortresses", false).getBoolean(false);
+		allowNetherFortresses = config.get(CATEGORY_WORLDGEN_OPTIONS, "nether_fortresses_allowed", false).getBoolean(false);
 	}
 	
 }
