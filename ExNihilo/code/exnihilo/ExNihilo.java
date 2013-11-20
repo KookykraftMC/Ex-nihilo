@@ -23,6 +23,7 @@ import exnihilo.compatibility.Mekanism;
 import exnihilo.data.BlockData;
 import exnihilo.data.ItemData;
 import exnihilo.data.ModData;
+import exnihilo.data.WorldData;
 import exnihilo.network.PacketHandler;
 import exnihilo.proxies.Proxy;
 import exnihilo.registries.ColorRegistry;
@@ -55,6 +56,7 @@ public class ExNihilo
 		config.load();
 		
 		ModData.load(config);
+		WorldData.load(config);
 		
 		BlockData.load(config);
 		Blocks.registerBlocks();
@@ -69,8 +71,6 @@ public class ExNihilo
 		SieveRegistry.load(config);
 		CrucibleRegistry.load(config);
 		HammerRegistry.load(config);
-		
-		World.load(config);
 		
 		config.save();
 		
