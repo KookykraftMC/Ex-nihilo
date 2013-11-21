@@ -1,6 +1,8 @@
 package exnihilo.entities;
 
 import net.minecraft.entity.EntityLivingBase;
+import net.minecraft.entity.monster.EntitySilverfish;
+import net.minecraft.entity.passive.EntityMooshroom;
 import net.minecraft.entity.projectile.EntityThrowable;
 import net.minecraft.util.DamageSource;
 import net.minecraft.util.MovingObjectPosition;
@@ -42,6 +44,13 @@ public class EntityStone extends EntityThrowable
         
         if (!this.worldObj.isRemote)
         {
+        	if (worldObj.rand.nextInt(64) == 0)
+        	{
+        		EntitySilverfish sf = new EntitySilverfish(this.worldObj);
+        		sf.setLocationAndAngles(position.blockX, position.blockY, position.blockZ, 0, 0);
+        		this.worldObj.spawnEntityInWorld(sf);
+        	}
+        	
             this.setDead();
         }
     }
