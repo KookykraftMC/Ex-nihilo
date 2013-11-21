@@ -122,12 +122,15 @@ public class BlockLeavesInfested extends Block implements ITileEntityProvider
 
 			if (leaves != null)
 			{
-				if (world.rand.nextFloat() < leaves.getProgress() * .4f)
+				if (world.rand.nextFloat() < leaves.getProgress() * (float)ModData.SILKWORM_STRING_PROBABILITY)
 				{
 					this.dropBlockAsItem_do(world, x, y, z, new ItemStack(Item.silk.itemID, 1, 0));
+				}else
+				{
+					System.out.println("Probability value:" + (float)ModData.SILKWORM_STRING_PROBABILITY);
 				}
 
-				if (world.rand.nextFloat() < leaves.getProgress() * .1f)
+				if (world.rand.nextFloat() < leaves.getProgress() * (float)(ModData.SILKWORM_STRING_PROBABILITY / 4.0d))
 				{
 					this.dropBlockAsItem_do(world, x, y, z, new ItemStack(Item.silk.itemID, 1, 0));
 				}
