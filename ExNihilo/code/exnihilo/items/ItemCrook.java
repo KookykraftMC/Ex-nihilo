@@ -108,8 +108,6 @@ public class ItemCrook extends ItemTool{
 				{
 					world.spawnEntityInWorld(new EntityItem(world, X + 0.5D, Y + 0.5D, Z + 0.5D, new ItemStack(Items.Silkworm, 1, 0)));
 				}
-				
-				world.destroyBlock(X, Y, Z, true);
 			}
 
 			validTarget = true;
@@ -130,22 +128,15 @@ public class ItemCrook extends ItemTool{
 
 		if (validTarget)
 		{
-			if (!world.isRemote)
-			{
-				world.destroyBlock(X, Y, Z, false);
-			}
-
 			item.damageItem(1, player);
 
 			if (item.stackSize == 0)
 			{
 				player.destroyCurrentEquippedItem();
 			}
-			return true;
-		}else
-		{
-			return false;
 		}
+		
+		return false;
 	}
 
 	//Left click entity
