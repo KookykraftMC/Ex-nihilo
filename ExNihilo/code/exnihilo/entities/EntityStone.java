@@ -42,7 +42,7 @@ public class EntityStone extends EntityThrowable
         
         worldObj.playSoundAtEntity(this, "dig.stone", 0.5F, 1.0F);
         
-        if (!this.worldObj.isRemote)
+        if (!this.worldObj.isRemote && worldObj.difficultySetting > 0)
         {
         	if (worldObj.rand.nextInt(64) == 0)
         	{
