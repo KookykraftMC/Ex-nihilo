@@ -57,14 +57,16 @@ public class ItemHammerBase extends ItemTool{
 		{
 			if (blocks[i] == block)
 			{
-				if (block.blockID == block.cobblestone.blockID)
-				{
-					return (1.0f + efficiencyOnProperMaterial) / 2;
-				}
-				else
-				{
-					return (1.0f + efficiencyOnProperMaterial) / 6;
-				}
+				return efficiencyOnProperMaterial * 0.75f;
+				
+//				if (block.blockID == block.cobblestone.blockID)
+//				{
+//					return (1.0f + efficiencyOnProperMaterial) / 2;
+//				}
+//				else
+//				{
+//					return (float) (1.0d + Math.pow((double)efficiencyOnProperMaterial, 2.0d) / 6);
+//				}
 			}
 		}
 
