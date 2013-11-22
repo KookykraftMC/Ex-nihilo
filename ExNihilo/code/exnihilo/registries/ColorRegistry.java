@@ -87,6 +87,9 @@ public class ColorRegistry {
 		register("sugar_cane", new Color(config.get(CATEGORY_COLORS, "sugar_cane", "9BFF8A").getString()));
 		
 		register("water_slime_offset", new Color("33ff22"));
-		register("water_witchy_offset", new Color("dd2255"));
+		register("witchwater", new Color("990066"));
+		register("water_witchy_offset", new Color("851E3A"));
+		//register("water_witchy_offset", new Color("912140"));
+		//register("water_witchy_offset", new Color("dd2255"));
 	}
 }
