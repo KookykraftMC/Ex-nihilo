@@ -6,6 +6,8 @@ import cpw.mods.fml.common.registry.GameRegistry;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import exnihilo.ExNihilo;
+import exnihilo.Fluids;
+import exnihilo.Items;
 import exnihilo.blocks.tileentities.TileEntityBarrel;
 import exnihilo.blocks.tileentities.TileEntityBarrel.BarrelMode;
 import exnihilo.blocks.tileentities.TileEntityBarrel.ExtractMode;
@@ -35,6 +37,7 @@ public class BlockBarrel extends BlockContainer
 {
 	@SideOnly(Side.CLIENT)
 	public static Icon iconCompost;
+	public static Icon iconClouds;
 
 	public BlockBarrel(int id) {
 		super(id, Material.wood);
@@ -104,7 +107,7 @@ public class BlockBarrel extends BlockContainer
 						if (CompostRegistry.containsItem(item.itemID, item.getItemDamage()))
 						{
 							barrel.addCompostItem(CompostRegistry.getItem(item.itemID, item.getItemDamage()));
-							
+
 							if (!player.capabilities.isCreativeMode)
 							{
 								item.stackSize -= 1;
@@ -114,10 +117,10 @@ public class BlockBarrel extends BlockContainer
 								}
 							}
 						}
-//						else
-//						{
-//							System.out.println("Item not registered for compost: " + item.itemID + ":" + item.getItemDamage());
-//						}	
+						//						else
+						//						{
+						//							System.out.println("Item not registered for compost: " + item.itemID + ":" + item.getItemDamage());
+						//						}	
 					}
 				}
 
@@ -197,13 +200,12 @@ public class BlockBarrel extends BlockContainer
 								useItem(player);
 							}
 
-							//Mushroom stew + Water = Witchy Water!
-							if(ModData.ALLOW_BARREL_RECIPE_SOULSAND && item.itemID == Item.bowlSoup.itemID)
+							//Mushroom stew + Water = Witch Water!
+							if(ModData.ALLOW_BARREL_RECIPE_SOULSAND && (item.itemID == Item.bowlSoup.itemID || item.itemID == Items.Spores.itemID))
 							{
 								barrel.mode = BarrelMode.SPORED;
 								useItem(player);
 							}
-
 
 						} else if (barrel.fluid.fluidID == FluidRegistry.LAVA.getID())
 						{
@@ -220,20 +222,17 @@ public class BlockBarrel extends BlockContainer
 								barrel.mode = BarrelMode.ENDSTONE;
 								useItem(player);
 							}
-						}
-					}else if(barrel.mode == BarrelMode.WITCHY)
-					{
-						//Witchy water + Sand = Soul Sand
-						if(ModData.ALLOW_BARREL_RECIPE_SOULSAND && item.itemID == Block.sand.blockID)
+						}else if (barrel.fluid.fluidID == Fluids.fluidWitchWater.getID())
 						{
-							barrel.mode = BarrelMode.SOULSAND;
-							barrel.resetColor();
-							useItem(player);
+							//Witch water + Sand = Soul Sand
+							if(ModData.ALLOW_BARREL_RECIPE_SOULSAND && item.itemID == Block.sand.blockID)
+							{
+								barrel.mode = BarrelMode.SOULSAND;
+								barrel.resetColor();
+								useItem(player);
+							}
 						}
 					}
-
-
-
 				}
 			}
 		}
@@ -274,6 +273,7 @@ public class BlockBarrel extends BlockContainer
 	{
 		blockIcon = Block.wood.getIcon(0, 0);
 		iconCompost = register.registerIcon(ModData.TEXTURE_LOCATION + ":" + "IconBarrelCompost");
+		iconClouds = register.registerIcon(ModData.TEXTURE_LOCATION + ":" + "IconBarrelInternalClouds");
 	}
 
 	@Override

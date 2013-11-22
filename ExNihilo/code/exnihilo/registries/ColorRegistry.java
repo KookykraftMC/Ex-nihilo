@@ -88,8 +88,11 @@ public class ColorRegistry {
 		
 		register("water_slime_offset", new Color("33ff22"));
 		register("witchwater", new Color("990066"));
-		register("water_witchy_offset", new Color("851E3A"));
+		//register("water_witchy_offset", new Color("5C0019"));
+		//register("water_witchy_offset", new Color("851E3A"));
 		//register("water_witchy_offset", new Color("912140"));
+		//register("water_witchy_offset", new Color("a72040"));
+		register("water_witchy_offset", new Color("bb1535"));
 		//register("water_witchy_offset", new Color("dd2255"));
 	}
 }

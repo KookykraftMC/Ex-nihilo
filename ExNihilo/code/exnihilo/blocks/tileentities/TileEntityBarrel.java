@@ -4,6 +4,7 @@ import cpw.mods.fml.common.registry.GameRegistry;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import exnihilo.Blocks;
+import exnihilo.Fluids;
 import exnihilo.data.BlockData;
 import exnihilo.data.ModData;
 import exnihilo.registries.ColorRegistry;
@@ -52,6 +53,7 @@ public class TileEntityBarrel extends TileEntity implements IFluidHandler, ISide
 		ENDSTONE(8, ExtractMode.Always), 
 		MILKED(9, ExtractMode.None), 
 		SOULSAND(10, ExtractMode.Always),
+		//TODO: Recycle Witchy. No longer in use.
 		WITCHY(11, ExtractMode.None),
 		OBSIDIAN(12, ExtractMode.Always),
 		COBBLESTONE(13, ExtractMode.Always);
@@ -251,12 +253,14 @@ public class TileEntityBarrel extends TileEntity implements IFluidHandler, ISide
 			break;
 
 		case SPORED:
-			timer += 1 + (getNearbyBlocks(Block.mycelium.blockID, 0) / 2);
-
+			int nearbyMycelium = getNearbyBlocks(Block.mycelium.blockID, 0);
+			
+			timer += 1 + (nearbyMycelium / 2);
+			
 			Color colorWitchy = ColorRegistry.color("water_witchy_offset");
 			color = color.average(colorBase, colorWitchy, (float)timer / (float)MAX_COMPOSTING_TIME);
 
-			if(!worldObj.isRemote && getNearbyBlocks(Block.mycelium.blockID, 0) > 0)
+			if(!worldObj.isRemote && nearbyMycelium > 0)
 			{
 				//Spawn Mushrooms
 				if (timer % 100 == 0)
@@ -290,7 +294,10 @@ public class TileEntityBarrel extends TileEntity implements IFluidHandler, ISide
 			if (isDone())
 			{
 				timer = 0;
-				mode = BarrelMode.WITCHY;
+				fluid = FluidRegistry.getFluidStack("witchwater", fluid.amount);
+				mode = BarrelMode.FLUID;
+				//mode = BarrelMode.WITCHY;
+				
 				worldObj.markBlockForUpdate(xCoord, yCoord, zCoord);
 			}
 			break;
@@ -502,6 +509,7 @@ public class TileEntityBarrel extends TileEntity implements IFluidHandler, ISide
 			break;	
 
 		case 11:
+			//TODO: Recycle this mode. No longer in use.
 			mode = BarrelMode.WITCHY;
 			break;
 			
@@ -828,17 +836,19 @@ public class TileEntityBarrel extends TileEntity implements IFluidHandler, ISide
 						this.mode = BarrelMode.ENDSTONE;
 					}
 				}
-			}
-
-			if (mode == BarrelMode.WITCHY)
-			{
-				if (ModData.ALLOW_BARREL_RECIPE_SOULSAND && item.itemID == Block.sand.blockID)
+				
+				if (fluid.fluidID == Fluids.fluidWitchWater.getID())
 				{
-					resetColor();
-					this.mode = BarrelMode.SOULSAND;
+					if(ModData.ALLOW_BARREL_RECIPE_SOULSAND && item.itemID == Block.sand.blockID)
+					{
+						resetColor();
+						mode = BarrelMode.SOULSAND;
+					}
 				}
 			}
 		}
+		
+		worldObj.markBlockForUpdate(xCoord, yCoord, zCoord);
 	}
 
 	@Override
@@ -959,13 +969,13 @@ public class TileEntityBarrel extends TileEntity implements IFluidHandler, ISide
 					return true;
 				}
 			}
-		}
-
-		if (mode == BarrelMode.WITCHY)
-		{
-			if (ModData.ALLOW_BARREL_RECIPE_SOULSAND && item.itemID == Block.sand.blockID)
+			
+			if (fluid.fluidID == Fluids.fluidWitchWater.getID())
 			{
-				return true;
+				if(ModData.ALLOW_BARREL_RECIPE_SOULSAND && item.itemID == Block.sand.blockID)
+				{
+					return true;
+				}
 			}
 		}
 

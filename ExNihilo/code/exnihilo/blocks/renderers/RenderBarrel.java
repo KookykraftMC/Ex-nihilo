@@ -7,6 +7,7 @@ import exnihilo.blocks.models.ModelBarrel;
 import exnihilo.blocks.models.ModelBarrelInternal;
 import exnihilo.blocks.tileentities.TileEntityBarrel;
 import exnihilo.blocks.tileentities.TileEntityBarrel.BarrelMode;
+import exnihilo.registries.ColorRegistry;
 import exnihilo.registries.helpers.Color;
 
 import net.minecraft.block.Block;
@@ -70,6 +71,7 @@ public class RenderBarrel extends TileEntitySpecialRenderer{
 			Icon icon = content.getIcon();
 			Color color = barrel.color;
 			boolean transparency = false;
+			boolean clouds = false;
 
 			switch (barrel.mode)
 			{
@@ -91,10 +93,13 @@ public class RenderBarrel extends TileEntitySpecialRenderer{
 				break;
 
 			case SPORED:
+				clouds = true;
 				transparency = true;
 				break;	
 
 			case SLIME:
+				clouds = true;
+				transparency = true;
 				break;
 
 			case NETHERRACK:
@@ -106,10 +111,13 @@ public class RenderBarrel extends TileEntitySpecialRenderer{
 				break;
 
 			case MILKED:
+				transparency = true;
+				clouds = true;
 				break;
 
 			case WITCHY:
 				transparency = true;
+				clouds = true;
 				break;
 
 			case SOULSAND:
@@ -128,6 +136,13 @@ public class RenderBarrel extends TileEntitySpecialRenderer{
 				break;
 			}
 
+			if (clouds)
+			{
+				internal.render(ColorRegistry.color("black"), BlockBarrel.iconClouds, transparency);
+			}
+			
+			GL11.glTranslatef(0,0.0001f,0);
+			
 			internal.render(color, icon, transparency);
 			GL11.glPopMatrix();
 		}
