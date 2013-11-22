@@ -149,16 +149,16 @@ public class SieveRegistry {
 		
 		if (dropNickel)
 		{
-			register(Block.gravel.blockID, 0, Items.NickelGravel.itemID, 0, 10);
-			register(Block.sand.blockID, 0, Items.NickelSand.itemID, 0, 10);
-			register(Blocks.Dust.blockID, 0, Items.NickelDust.itemID, 0, 10);
+			register(Block.gravel.blockID, 0, Items.NickelGravel.itemID, 0, 11);
+			register(Block.sand.blockID, 0, Items.NickelSand.itemID, 0, 11);
+			register(Blocks.Dust.blockID, 0, Items.NickelDust.itemID, 0, 11);
 		}
 		
 		if (dropPlatinum)
 		{
-			register(Block.gravel.blockID, 0, Items.PlatinumGravel.itemID, 0, 16);
-			register(Block.sand.blockID, 0, Items.PlatinumSand.itemID, 0, 16);
-			register(Blocks.Dust.blockID, 0, Items.PlatinumDust.itemID, 0, 16);
+			register(Block.gravel.blockID, 0, Items.PlatinumGravel.itemID, 0, 24);
+			register(Block.sand.blockID, 0, Items.PlatinumSand.itemID, 0, 24);
+			register(Blocks.Dust.blockID, 0, Items.PlatinumDust.itemID, 0, 24);
 		}
 	}
 }
