@@ -21,6 +21,7 @@ import exnihilo.compatibility.Forestry;
 import exnihilo.compatibility.IC2;
 import exnihilo.compatibility.Mekanism;
 import exnihilo.data.BlockData;
+import exnihilo.data.FluidData;
 import exnihilo.data.ItemData;
 import exnihilo.data.ModData;
 import exnihilo.data.WorldData;
@@ -61,9 +62,13 @@ public class ExNihilo
 		BlockData.load(config);
 		Blocks.registerBlocks();
 		
+		FluidData.load(config);
+		Fluids.registerBlocks();
+		Fluids.registerFluids();
+		
 		ItemData.load(config);
 		Items.registerItems();
-		
+
 		Entities.registerEntities();
 		
 		ColorRegistry.load(config);
@@ -82,6 +87,7 @@ public class ExNihilo
 	public void Initialize(FMLInitializationEvent event)
 	{
 		Blocks.registerNames();
+		Fluids.registerNames();
 		Items.registerNames();
 		
 		SieveRegistry.registerRewards();
