@@ -69,6 +69,7 @@ public class ExNihilo
 
 		FluidData.load(config);
 		Fluids.registerFluids();
+		Fluids.registerBuckets();
 
 		ItemData.load(config);
 		Items.registerItems();

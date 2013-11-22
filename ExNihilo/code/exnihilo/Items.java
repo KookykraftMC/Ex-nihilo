@@ -5,6 +5,7 @@ import cpw.mods.fml.common.registry.LanguageRegistry;
 import exnihilo.blocks.BlockBarrel;
 import exnihilo.blocks.itemBlocks.ItemBlockBarrel;
 import exnihilo.data.ItemData;
+import exnihilo.fluids.buckets.ItemBucketWitchWater;
 import exnihilo.items.ItemCrook;
 import exnihilo.items.ItemGrassSeeds;
 import exnihilo.items.ItemMesh;
@@ -143,6 +144,8 @@ public class Items {
 	public static Item PlatinumSand;
 	public static Item PlatinumDust;
 	public static Item PlatinumIngot;
+
+	
 
 
 	public static void registerItems()
@@ -289,6 +292,10 @@ public class Items {
 		GameRegistry.registerItem(PlatinumDust, ItemData.PLATINUM_ORE_UNLOCALIZED_NAMES[2]);
 		PlatinumIngot = new ItemPlatinumIngot(ItemData.PLATINUM_INGOT_ID);
 		GameRegistry.registerItem(PlatinumIngot, ItemData.PLATINUM_ORE_UNLOCALIZED_NAMES[3]);
+		
+		
+		
+		
 	}
 
 	public static void registerNames()

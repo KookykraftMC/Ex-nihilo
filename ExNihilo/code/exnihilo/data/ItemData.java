@@ -196,6 +196,9 @@ public class ItemData {
 	public static final String SEED_RUBBER_KEY = "seed_rubber";
 	public static final String SEED_RUBBER_NAME = "Rubber Tree Seeds";
 	public static final String SEED_RUBBER_UNLOCALIZED_NAME = "seed_rubber";
+	
+	
+	
 
 	//LOAD ALL THE THINGS!
 	public static void load(Configuration config)
@@ -295,6 +298,9 @@ public class ItemData {
 			NICKEL_ORE_IDS[i] = config.getItem(ORE_CATEGORY, NICKEL_ORE_UNLOCALIZED_NAMES[i], ITEM_ID_BASE + i + 44).getInt() - 256;
 		}
 		NICKEL_INGOT_ID = config.getItem(ORE_CATEGORY, NICKEL_ORE_UNLOCALIZED_NAMES[3], NICKEL_INGOT_ID).getInt() - 256;
+		
+		
+		
 	}
 }
 
