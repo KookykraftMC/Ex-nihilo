@@ -42,8 +42,6 @@ public class BlockWitchWater extends BlockFluidClassic{
 
 	public BlockWitchWater(int id, Fluid fluid, Material material) {
 		super(id, fluid, material);
-
-		this.setCreativeTab(CreativeTabs.tabMisc);
 	}
 
 	@Override
