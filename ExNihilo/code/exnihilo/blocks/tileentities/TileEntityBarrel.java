@@ -5,6 +5,7 @@ import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import exnihilo.Blocks;
 import exnihilo.Fluids;
+import exnihilo.Items;
 import exnihilo.data.BlockData;
 import exnihilo.data.ModData;
 import exnihilo.registries.ColorRegistry;
@@ -304,19 +305,23 @@ public class TileEntityBarrel extends TileEntity implements IFluidHandler, ISide
 
 			if (this.getBlockType().isFlammable(worldObj, xCoord, yCoord, zCoord, this.getBlockMetadata(), ForgeDirection.UP))
 			{
-				//EXPLODE!
+				this.worldObj.createExplosion(null, xCoord, yCoord, zCoord, 4.0f, true);
 			}
 
-			if (worldObj.rand.nextInt(100) == 0)
+			if (worldObj.rand.nextInt(20) == 0)
 			{
 				//spawn lava particles
+				this.worldObj.spawnParticle("lava", xCoord + (double)(worldObj.rand.nextFloat() * 0.6) + 0.2d, yCoord + 1, zCoord + (double)(worldObj.rand.nextFloat() * 0.6) + 0.2d, 0.0d, 0.0d, 0.0d);
 			}
 
-			//Spawn fire!
+			if (timer >= (int)(0.7 * MAX_COMPOSTING_TIME) && worldObj.isAirBlock(xCoord, yCoord + 1, zCoord))
+			{
+				//Spawn fire!
+				worldObj.setBlock(xCoord, yCoord+1, zCoord, Block.fire.blockID);
+			}
 
 			if(isDone())
 			{
-				System.out.println("BLAZE MODE: ACTIVATE!");
 				this.mode = BarrelMode.BLAZE;
 				timer = 0;
 			}
@@ -330,13 +335,14 @@ public class TileEntityBarrel extends TileEntity implements IFluidHandler, ISide
 				{
 					timer = 0;
 					resetBarrel();
-					System.out.println("BLAZE MODE: COMPLETE!");
 					break;
 				}
 				
-				if (worldObj.rand.nextInt(100) == 0)
+				if (worldObj.rand.nextInt(5) == 0)
 				{
 					//spawn lava particles
+					this.worldObj.spawnParticle("lava", xCoord + (double)(worldObj.rand.nextFloat() * 0.6) + 0.2d, yCoord + 1, zCoord + (double)(worldObj.rand.nextFloat() * 0.6) + 0.2d, 0.0d, 0.0d, 0.0d);
+
 				}
 
 				//Try to spawn blaze, if you can't keep trying.
@@ -985,6 +991,11 @@ public class TileEntityBarrel extends TileEntity implements IFluidHandler, ISide
 					{
 						this.mode = BarrelMode.ENDSTONE;
 					}
+					
+					if(ModData.ALLOW_BARREL_RECIPE_BLAZE_RODS && item.itemID == Items.DollAngry.itemID)
+					{
+						mode = BarrelMode.BLAZE_COOKING;
+					}
 				}
 
 				if (fluid.fluidID == Fluids.fluidWitchWater.getID())
@@ -993,6 +1004,11 @@ public class TileEntityBarrel extends TileEntity implements IFluidHandler, ISide
 					{
 						resetColor();
 						mode = BarrelMode.SOULSAND;
+					}
+					
+					if(ModData.ALLOW_BARREL_RECIPE_ENDER_PEARLS && item.itemID == Items.DollCreepy.itemID)
+					{
+						mode = BarrelMode.ENDER_COOKING;
 					}
 				}
 			}
@@ -1118,11 +1134,22 @@ public class TileEntityBarrel extends TileEntity implements IFluidHandler, ISide
 				{
 					return true;
 				}
+				
+				if(ModData.ALLOW_BARREL_RECIPE_BLAZE_RODS && item.itemID == Items.DollAngry.itemID)
+				{
+					return true;
+				}
 			}
 
+			
 			if (fluid.fluidID == Fluids.fluidWitchWater.getID())
 			{
 				if(ModData.ALLOW_BARREL_RECIPE_SOULSAND && item.itemID == Block.sand.blockID)
+				{
+					return true;
+				}
+				
+				if(ModData.ALLOW_BARREL_RECIPE_ENDER_PEARLS && item.itemID == Items.DollCreepy.itemID)
 				{
 					return true;
 				}

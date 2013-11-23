@@ -224,7 +224,7 @@ public class BlockBarrel extends BlockContainer
 							}
 							
 							//Angry doll + Lava = Blaze!
-							if(ModData.ALLOW_BARREL_RECIPE_BLAZE_RODS && (item.itemID == Items.DollAngry.itemID))
+							if(ModData.ALLOW_BARREL_RECIPE_BLAZE_RODS && item.itemID == Items.DollAngry.itemID)
 							{
 								barrel.mode = BarrelMode.BLAZE_COOKING;
 								useItem(player);
