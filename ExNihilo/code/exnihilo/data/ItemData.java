@@ -196,9 +196,25 @@ public class ItemData {
 	public static final String SEED_RUBBER_KEY = "seed_rubber";
 	public static final String SEED_RUBBER_NAME = "Rubber Tree Seeds";
 	public static final String SEED_RUBBER_UNLOCALIZED_NAME = "seed_rubber";
-	
-	
-	
+
+	//PORCELAIN DOLL!
+	public static int DOLL_ID = ITEM_ID_BASE + 59;
+	public static final String DOLL_KEY = "doll";
+	public static final String DOLL_NAME = "Precious Doll";
+	public static final String DOLL_UNLOCALIZED_NAME = "doll";
+
+	//ANGRY DOLL!
+	public static int ANGRY_DOLL_ID = ITEM_ID_BASE + 60;
+	public static final String ANGRY_DOLL_KEY = "doll_angry";
+	public static final String ANGRY_DOLL_NAME = "Angry Doll";
+	public static final String ANGRY_DOLL_UNLOCALIZED_NAME = "doll_angry";
+
+	//CREEPY DOLL!
+	public static int CREEPY_DOLL_ID = ITEM_ID_BASE + 61;
+	public static final String CREEPY_DOLL_KEY = "doll_creepy";
+	public static final String CREEPY_DOLL_NAME = "Creepy Doll";
+	public static final String CREEPY_DOLL_UNLOCALIZED_NAME = "doll_creepy";
+
 
 	//LOAD ALL THE THINGS!
 	public static void load(Configuration config)
@@ -298,9 +314,12 @@ public class ItemData {
 			NICKEL_ORE_IDS[i] = config.getItem(ORE_CATEGORY, NICKEL_ORE_UNLOCALIZED_NAMES[i], ITEM_ID_BASE + i + 44).getInt() - 256;
 		}
 		NICKEL_INGOT_ID = config.getItem(ORE_CATEGORY, NICKEL_ORE_UNLOCALIZED_NAMES[3], NICKEL_INGOT_ID).getInt() - 256;
-		
-		
-		
+
+
+
+		DOLL_ID = config.getItem(CATEGORY, DOLL_UNLOCALIZED_NAME, DOLL_ID).getInt() - 256;
+		CREEPY_DOLL_ID = config.getItem(CATEGORY, CREEPY_DOLL_UNLOCALIZED_NAME, CREEPY_DOLL_ID).getInt() - 256;
+		ANGRY_DOLL_ID = config.getItem(CATEGORY, ANGRY_DOLL_UNLOCALIZED_NAME, ANGRY_DOLL_ID).getInt() - 256;
 	}
 }
 
