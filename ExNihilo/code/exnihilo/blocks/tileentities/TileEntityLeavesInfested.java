@@ -30,6 +30,8 @@ public class TileEntityLeavesInfested extends TileEntity
 	public int blockID = Block.leaves.blockID;
 	public int meta = 0;
 	public Color color = ColorRegistry.color("white");
+	
+	@SideOnly(Side.CLIENT)
 	Icon icon = Block.leaves.getIcon(0, 0);
 	
 	private static final int SPREAD_INTERVAL = 300;
