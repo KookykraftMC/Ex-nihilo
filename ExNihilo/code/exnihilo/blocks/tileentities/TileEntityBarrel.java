@@ -53,10 +53,13 @@ public class TileEntityBarrel extends TileEntity implements IFluidHandler, ISide
 		ENDSTONE(8, ExtractMode.Always), 
 		MILKED(9, ExtractMode.None), 
 		SOULSAND(10, ExtractMode.Always),
-		//TODO: Recycle Witchy. No longer in use.
-		WITCHY(11, ExtractMode.None),
+		WITCHY(11, ExtractMode.None), //TODO: Recycle Witchy. No longer in use.
 		OBSIDIAN(12, ExtractMode.Always),
-		COBBLESTONE(13, ExtractMode.Always);
+		COBBLESTONE(13, ExtractMode.Always),
+		BLAZE_COOKING(14, ExtractMode.None),
+		BLAZE(15, ExtractMode.PeacefulOnly),
+		ENDER_COOKING(16, ExtractMode.None),
+		ENDER(17, ExtractMode.PeacefulOnly);
 
 		private BarrelMode(int v, ExtractMode extract){this.value = v; this.canExtract = extract;}
 		public int value;
@@ -69,7 +72,7 @@ public class TileEntityBarrel extends TileEntity implements IFluidHandler, ISide
 		Always,
 		PeacefulOnly;
 	}
-	
+
 	public FluidStack fluid;
 	private float volume;
 	private int timer;
@@ -145,7 +148,7 @@ public class TileEntityBarrel extends TileEntity implements IFluidHandler, ISide
 					mode = BarrelMode.SPORED;
 					worldObj.markBlockForUpdate(xCoord, yCoord, zCoord);
 				}
-				
+
 				//Turn into cobblestone?
 				if (isFull() && worldObj.getBlockId(xCoord, yCoord + 1, zCoord) == FluidRegistry.LAVA.getBlockID())
 				{
@@ -187,7 +190,7 @@ public class TileEntityBarrel extends TileEntity implements IFluidHandler, ISide
 						}	
 					}
 				}
-				
+
 				//Turn into obsidian
 				if (isFull() && worldObj.getBlockId(xCoord, yCoord + 1, zCoord) == FluidRegistry.WATER.getBlockID())
 				{
@@ -254,40 +257,32 @@ public class TileEntityBarrel extends TileEntity implements IFluidHandler, ISide
 
 		case SPORED:
 			int nearbyMycelium = getNearbyBlocks(Block.mycelium.blockID, 0);
-			
+
 			timer += 1 + (nearbyMycelium / 2);
-			
+
 			Color colorWitchy = ColorRegistry.color("water_witchy_offset");
 			color = color.average(colorBase, colorWitchy, (float)timer / (float)MAX_COMPOSTING_TIME);
 
 			if(!worldObj.isRemote && nearbyMycelium > 0)
 			{
 				//Spawn Mushrooms
-				if (timer % 100 == 0)
+				for (int x = -2; x <= 2; x++)
 				{
-					for (int x = -2; x <= 2; x++)
+					for (int y = -1; y <= 1; y++)
 					{
-						for (int y = -1; y <= 1; y++)
+						for (int z = -2; z <= 2; z++)
 						{
-							for (int z = -2; z <= 2; z++)
+							if(worldObj.getBlockId(xCoord + x, yCoord + y, zCoord + z) == Block.mycelium.blockID && worldObj.isAirBlock(xCoord + x, yCoord + y + 1, zCoord + z) && worldObj.rand.nextInt(1500) == 0)
 							{
-								if(worldObj.getBlockId(xCoord + x, yCoord + y, zCoord + z) == Block.mycelium.blockID && worldObj.isAirBlock(xCoord + x, yCoord + y + 1, zCoord + z) && worldObj.rand.nextInt(300) == 0)
-								{
-									int choice = worldObj.rand.nextInt(2);
+								int choice = worldObj.rand.nextInt(2);
 
-									if (choice == 0)
-										worldObj.setBlock(xCoord + x, yCoord + y + 1, zCoord + z, Block.mushroomBrown.blockID, 0, 3);
-									if (choice == 1)
-										worldObj.setBlock(xCoord + x, yCoord + y + 1, zCoord + z, Block.mushroomRed.blockID, 0, 3);
-								}
+								if (choice == 0)
+									worldObj.setBlock(xCoord + x, yCoord + y + 1, zCoord + z, Block.mushroomBrown.blockID, 0, 3);
+								if (choice == 1)
+									worldObj.setBlock(xCoord + x, yCoord + y + 1, zCoord + z, Block.mushroomRed.blockID, 0, 3);
 							}
 						}
 					}
-				}
-
-				if (timer % 200 == 0)
-				{
-					//Try to crack bricks
 				}
 			}
 
@@ -296,8 +291,7 @@ public class TileEntityBarrel extends TileEntity implements IFluidHandler, ISide
 				timer = 0;
 				fluid = FluidRegistry.getFluidStack("witchwater", fluid.amount);
 				mode = BarrelMode.FLUID;
-				//mode = BarrelMode.WITCHY;
-				
+
 				worldObj.markBlockForUpdate(xCoord, yCoord, zCoord);
 			}
 			break;
@@ -427,13 +421,19 @@ public class TileEntityBarrel extends TileEntity implements IFluidHandler, ISide
 
 		case SOULSAND:
 			return new ItemStack(Block.slowSand, 1, 0);
-			
+
 		case OBSIDIAN:
 			return new ItemStack(Block.obsidian, 1, 0);
-			
+
 		case COBBLESTONE:
 			return new ItemStack(Block.cobblestone, 1, 0);
+			
+		case BLAZE:
+			return new ItemStack(Item.blazeRod, 1, 0);
 
+		case ENDER:
+			return new ItemStack(Item.enderPearl, 1, 0);
+			
 		default:
 			return null;
 		}
@@ -512,13 +512,29 @@ public class TileEntityBarrel extends TileEntity implements IFluidHandler, ISide
 			//TODO: Recycle this mode. No longer in use.
 			mode = BarrelMode.WITCHY;
 			break;
-			
+
 		case 12:
 			mode = BarrelMode.OBSIDIAN;
 			break;
-			
+
 		case 13:
 			mode = BarrelMode.COBBLESTONE;
+			break;
+
+		case 14:
+			mode = BarrelMode.BLAZE_COOKING;
+			break;
+
+		case 15:
+			mode = BarrelMode.BLAZE;
+			break;
+
+		case 16:
+			mode = BarrelMode.ENDER_COOKING;
+			break;
+
+		case 17:
+			mode = BarrelMode.ENDER;
 			break;
 		}
 
@@ -803,7 +819,7 @@ public class TileEntityBarrel extends TileEntity implements IFluidHandler, ISide
 				resetBarrel();
 			}
 		}
-		
+
 		if (slot == 1)
 		{
 			if (mode == BarrelMode.COMPOST || mode == BarrelMode.EMPTY)
@@ -836,7 +852,7 @@ public class TileEntityBarrel extends TileEntity implements IFluidHandler, ISide
 						this.mode = BarrelMode.ENDSTONE;
 					}
 				}
-				
+
 				if (fluid.fluidID == Fluids.fluidWitchWater.getID())
 				{
 					if(ModData.ALLOW_BARREL_RECIPE_SOULSAND && item.itemID == Block.sand.blockID)
@@ -847,7 +863,7 @@ public class TileEntityBarrel extends TileEntity implements IFluidHandler, ISide
 				}
 			}
 		}
-		
+
 		worldObj.markBlockForUpdate(xCoord, yCoord, zCoord);
 	}
 
@@ -926,7 +942,7 @@ public class TileEntityBarrel extends TileEntity implements IFluidHandler, ISide
 			{
 				return true;
 			}
-			
+
 			if (worldObj.difficultySetting == 0 && mode.canExtract == ExtractMode.PeacefulOnly)
 			{
 				return true;
@@ -969,7 +985,7 @@ public class TileEntityBarrel extends TileEntity implements IFluidHandler, ISide
 					return true;
 				}
 			}
-			
+
 			if (fluid.fluidID == Fluids.fluidWitchWater.getID())
 			{
 				if(ModData.ALLOW_BARREL_RECIPE_SOULSAND && item.itemID == Block.sand.blockID)

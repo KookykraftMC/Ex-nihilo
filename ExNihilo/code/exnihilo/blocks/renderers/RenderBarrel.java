@@ -115,7 +115,7 @@ public class RenderBarrel extends TileEntitySpecialRenderer{
 				clouds = true;
 				break;
 
-			case WITCHY:
+			case WITCHY: //TODO: REMOVE THIS LATER! Let a few updates pass so that people get their barrels out of the Witchy state.
 				transparency = true;
 				clouds = true;
 				break;
@@ -131,7 +131,27 @@ public class RenderBarrel extends TileEntitySpecialRenderer{
 			case COBBLESTONE:
 				icon = Block.cobblestone.getIcon(0, 0);
 				break;
-
+				
+			case BLAZE_COOKING:
+				color = new Color(content.getColor());
+				transparency = true;
+				break;
+				
+			case BLAZE:
+				color = new Color(content.getColor());
+				transparency = true;
+				break;
+				
+			case ENDER_COOKING:
+				color = new Color(content.getColor());
+				transparency = true;
+				break;
+				
+			case ENDER:
+				color = new Color(content.getColor());
+				transparency = true;
+				break;
+				
 			default:
 				break;
 			}
