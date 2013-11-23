@@ -195,6 +195,94 @@ public class Recipes {
 							"xxx",
 							'x', Items.Stones
 								}));
+		
+		
+		//Precious Doll!
+				GameRegistry.addRecipe(
+						new ShapedOreRecipe(
+								new ItemStack(Items.Doll, 1, 0),
+								new Object[]
+										{
+									"xyx",
+									" x ",
+									"x x",
+									'x', Items.Porcelain,
+									'y', Item.diamond
+										}));
+				
+				GameRegistry.addRecipe(
+						new ShapedOreRecipe(
+								new ItemStack(Items.Doll, 1, 0),
+								new Object[]
+										{
+									"xyx",
+									" x ",
+									"x x",
+									'x', Items.Porcelain,
+									'y', Item.emerald
+										}));
+				
+				//Angry Doll!
+				GameRegistry.addRecipe(
+						new ShapedOreRecipe(
+								new ItemStack(Items.DollAngry, 1, 0),
+								new Object[]
+										{
+									"xyx",
+									"zwz",
+									"xvx",
+									'v', Item.redstone,
+									'w', Items.Doll,
+									'x', Item.blazePowder,
+									'y', Item.netherStalkSeeds,
+									'z', Item.glowstone
+										}));
+				
+				GameRegistry.addRecipe(
+						new ShapedOreRecipe(
+								new ItemStack(Items.DollAngry, 1, 0),
+								new Object[]
+										{
+									"xyx",
+									"zwz",
+									"xvx",
+									'v', Item.netherStalkSeeds,
+									'w', Items.Doll,
+									'x', Item.blazePowder,
+									'y', Item.redstone,
+									'z', Item.glowstone
+										}));
+				
+				//Creepy Doll
+				GameRegistry.addRecipe(
+						new ShapedOreRecipe(
+								new ItemStack(Items.DollCreepy, 1, 0),
+								new Object[]
+										{
+									"xyx",
+									"zwz",
+									"xvx",
+									'v', Item.redstone,
+									'w', Items.Doll,
+									'x', new ItemStack(Item.dyePowder, 1, 0),
+									'y', Item.netherStalkSeeds,
+									'z', new ItemStack(Item.dyePowder, 1, 4)
+										}));
+				
+				GameRegistry.addRecipe(
+						new ShapedOreRecipe(
+								new ItemStack(Items.DollCreepy, 1, 0),
+								new Object[]
+										{
+									"xyx",
+									"zwz",
+									"xvx",
+									'v', Item.netherStalkSeeds,
+									'w', Items.Doll,
+									'x', new ItemStack(Item.dyePowder, 1, 0),
+									'y', Item.redstone,
+									'z', new ItemStack(Item.dyePowder, 1, 4)
+										}));
 
 		registerOreRecipes();
 	}
