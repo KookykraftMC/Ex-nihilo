@@ -305,6 +305,8 @@ public class TileEntityBarrel extends TileEntity implements IFluidHandler, ISide
 
 			if (this.getBlockType().isFlammable(worldObj, xCoord, yCoord, zCoord, this.getBlockMetadata(), ForgeDirection.UP))
 			{
+				//an earth-shattering kaboom...
+				worldObj.destroyBlock(xCoord, yCoord, zCoord, false);
 				this.worldObj.createExplosion(null, xCoord, yCoord, zCoord, 4.0f, true);
 			}
 
@@ -330,7 +332,6 @@ public class TileEntityBarrel extends TileEntity implements IFluidHandler, ISide
 		case BLAZE:
 			if (!worldObj.isRemote && worldObj.difficultySetting > 0)
 			{
-				//TODO: Get this shit working!
 				if(isDone())
 				{
 					timer = 0;
