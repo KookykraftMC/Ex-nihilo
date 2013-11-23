@@ -222,6 +222,13 @@ public class BlockBarrel extends BlockContainer
 								barrel.mode = BarrelMode.ENDSTONE;
 								useItem(player);
 							}
+							
+							//Angry doll + Lava = Blaze!
+							if(ModData.ALLOW_BARREL_RECIPE_BLAZE_RODS && (item.itemID == Items.DollAngry.itemID))
+							{
+								barrel.mode = BarrelMode.BLAZE_COOKING;
+								useItem(player);
+							}
 						}else if (barrel.fluid.fluidID == Fluids.fluidWitchWater.getID())
 						{
 							//Witch water + Sand = Soul Sand
@@ -229,6 +236,12 @@ public class BlockBarrel extends BlockContainer
 							{
 								barrel.mode = BarrelMode.SOULSAND;
 								barrel.resetColor();
+								useItem(player);
+							}
+							
+							if(ModData.ALLOW_BARREL_RECIPE_ENDER_PEARLS && item.itemID == Items.DollCreepy.itemID)
+							{
+								barrel.mode = BarrelMode.ENDER_COOKING;
 								useItem(player);
 							}
 						}

@@ -15,6 +15,8 @@ import net.minecraft.block.Block;
 import net.minecraft.client.Minecraft;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.item.EntityItem;
+import net.minecraft.entity.monster.EntityBlaze;
+import net.minecraft.entity.monster.EntityEnderman;
 import net.minecraft.entity.monster.EntitySlime;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.ISidedInventory;
@@ -296,6 +298,140 @@ public class TileEntityBarrel extends TileEntity implements IFluidHandler, ISide
 			}
 			break;
 
+			//BLAZE
+		case BLAZE_COOKING:
+			timer++;
+
+			if (this.getBlockType().isFlammable(worldObj, xCoord, yCoord, zCoord, this.getBlockMetadata(), ForgeDirection.UP))
+			{
+				//EXPLODE!
+			}
+
+			if (worldObj.rand.nextInt(100) == 0)
+			{
+				//spawn lava particles
+			}
+
+			//Spawn fire!
+
+			if(isDone())
+			{
+				System.out.println("BLAZE MODE: ACTIVATE!");
+				this.mode = BarrelMode.BLAZE;
+				timer = 0;
+			}
+			break;
+
+		case BLAZE:
+			if (!worldObj.isRemote && worldObj.difficultySetting > 0)
+			{
+				//TODO: Get this shit working!
+				if(isDone())
+				{
+					timer = 0;
+					resetBarrel();
+					System.out.println("BLAZE MODE: COMPLETE!");
+					break;
+				}
+				
+				if (worldObj.rand.nextInt(100) == 0)
+				{
+					//spawn lava particles
+				}
+
+				//Try to spawn blaze, if you can't keep trying.
+				for (int x = -1; x <= 1; x++)
+				{
+					for (int y = -1; y <= 1; y++)
+					{
+						for (int z = -1; z <= 1; z++)
+						{
+							if (
+									(worldObj.isAirBlock(xCoord + x, yCoord + y, zCoord + z) || worldObj.getBlockId(xCoord + x, yCoord + y, zCoord + z) == Block.fire.blockID) && 
+									(worldObj.isAirBlock(xCoord + x, yCoord + y + 1, zCoord + z) || worldObj.getBlockId(xCoord + x, yCoord + y, zCoord + z) == Block.fire.blockID) && 
+									worldObj.rand.nextInt(10) == 0 && !isDone())
+							{
+								timer = MAX_COMPOSTING_TIME;
+
+								EntityBlaze blaze = new EntityBlaze(worldObj);
+								blaze.setPosition(xCoord + x + 0.5d, yCoord + y, zCoord + z + 0.5d);
+
+								worldObj.spawnEntityInWorld(blaze);
+							}
+						}
+					}
+				}
+			}
+
+			break;
+
+			//ENDER
+		case ENDER_COOKING:
+			timer++;
+
+			if (worldObj.isRemote && worldObj.rand.nextInt(5) == 0)
+			{
+				//spawn ender particles
+                float f = (worldObj.rand.nextFloat() - 0.5F) * 0.2F;
+                float f1 = (worldObj.rand.nextFloat() - 0.5F) * 0.2F;
+                float f2 = (worldObj.rand.nextFloat() - 0.5F) * 0.2F;
+                this.worldObj.spawnParticle("portal", xCoord + (double)(worldObj.rand.nextFloat() * 0.6) + 0.2d, yCoord + 1, zCoord + (double)(worldObj.rand.nextFloat() * 0.6) + 0.2d, (double)f, (double)f1, (double)f2);
+			}
+
+			if(isDone())
+			{
+				this.mode = BarrelMode.ENDER;
+				timer = 0;
+			}
+			break;
+
+		case ENDER:
+			if (worldObj.isRemote && worldObj.rand.nextInt(5) == 0)
+			{
+				//spawn ender particles
+                float f = (worldObj.rand.nextFloat() - 0.5F) * 0.2F;
+                float f1 = (worldObj.rand.nextFloat() - 0.5F) * 0.2F;
+                float f2 = (worldObj.rand.nextFloat() - 0.5F) * 0.2F;
+                this.worldObj.spawnParticle("portal", xCoord + (double)(worldObj.rand.nextFloat() * 0.6) + 0.2d, yCoord + 1, zCoord + (double)(worldObj.rand.nextFloat() * 0.6) + 0.2d, (double)f, (double)f1, (double)f2);
+			}
+			
+			if (!worldObj.isRemote && worldObj.difficultySetting > 0)
+			{
+				//TODO: Get this shit working!
+				if(isDone())
+				{
+					timer = 0;
+					resetBarrel();
+					break;
+				}
+
+				//Try to spawn enderman, if you can't keep trying.
+				for (int x = -1; x <= 1; x++)
+				{
+					for (int y = -1; y <= 1; y++)
+					{
+						for (int z = -1; z <= 1; z++)
+						{
+							if (
+									worldObj.isAirBlock(xCoord + x, yCoord + y, zCoord + z) && 
+									worldObj.isAirBlock(xCoord + x, yCoord + y + 1, zCoord + z) && 
+									worldObj.isAirBlock(xCoord + x, yCoord + y + 2, zCoord + z) &&
+									worldObj.rand.nextInt(10) == 0 && !isDone())
+							{
+								timer = MAX_COMPOSTING_TIME;
+
+								EntityEnderman enderman = new EntityEnderman(worldObj);
+								enderman.setPosition(xCoord + x + 0.5d, yCoord + y, zCoord + z + 0.5d);
+
+								worldObj.spawnEntityInWorld(enderman);
+							}
+						}
+					}
+				}
+			}
+
+			break;
+
 		default:
 			break;
 		}
@@ -358,15 +494,7 @@ public class TileEntityBarrel extends TileEntity implements IFluidHandler, ISide
 
 	public boolean isDone()
 	{
-		float percentage = (float)timer / (float)MAX_COMPOSTING_TIME;
-
-		if (percentage >= 1.0f)
-		{
-			return true;
-		}else
-		{
-			return false;
-		}
+		return timer >= MAX_COMPOSTING_TIME;
 	}
 
 	public void resetColor()
@@ -427,13 +555,13 @@ public class TileEntityBarrel extends TileEntity implements IFluidHandler, ISide
 
 		case COBBLESTONE:
 			return new ItemStack(Block.cobblestone, 1, 0);
-			
+
 		case BLAZE:
 			return new ItemStack(Item.blazeRod, 1, 0);
 
 		case ENDER:
 			return new ItemStack(Item.enderPearl, 1, 0);
-			
+
 		default:
 			return null;
 		}
@@ -449,7 +577,7 @@ public class TileEntityBarrel extends TileEntity implements IFluidHandler, ISide
 
 	private void resetBarrel()
 	{
-		fluid.amount = 0;
+		fluid = new FluidStack(FluidRegistry.WATER, 0);
 		volume = 0;
 		color = ColorRegistry.color("white");
 		colorBase = ColorRegistry.color("white");
@@ -771,6 +899,12 @@ public class TileEntityBarrel extends TileEntity implements IFluidHandler, ISide
 		{
 			return fluid.getFluid().getLuminosity();
 		}
+
+		if(mode == BarrelMode.BLAZE || mode == BarrelMode.BLAZE_COOKING)
+		{
+			return 15;
+		}
+
 		return 0;
 	}
 
