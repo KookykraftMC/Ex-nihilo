@@ -1,5 +1,7 @@
 package exnihilo.blocks.tileentities;
 
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
 import exnihilo.Blocks;
 import exnihilo.blocks.tileentities.TileEntityBarrel.BarrelMode;
 import exnihilo.compatibility.Forestry;
@@ -25,7 +27,6 @@ import net.minecraftforge.fluids.FluidStack;
 
 public class TileEntityLeavesInfested extends TileEntity
 {
-	public static ResourceLocation icons = TextureMap.locationBlocksTexture;
 	public int blockID = Block.leaves.blockID;
 	public int meta = 0;
 	public Color color = ColorRegistry.color("white");
