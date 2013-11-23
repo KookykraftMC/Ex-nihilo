@@ -14,6 +14,9 @@ import exnihilo.items.ItemSilkworm;
 import exnihilo.items.ItemSilkwormCooked;
 import exnihilo.items.ItemSpores;
 import exnihilo.items.ItemStone;
+import exnihilo.items.dolls.ItemDoll;
+import exnihilo.items.dolls.ItemDollAngry;
+import exnihilo.items.dolls.ItemDollCreepy;
 import exnihilo.items.hammers.ItemHammerBase;
 import exnihilo.items.hammers.ItemHammerDiamond;
 import exnihilo.items.hammers.ItemHammerGold;
@@ -80,6 +83,10 @@ public class Items {
 	public static Item Stones;
 	public static Item Porcelain;
 
+	public static Item Doll;
+	public static Item DollAngry;
+	public static Item DollCreepy;
+	
 	//Seeds
 	public static Item Spores;
 	public static Item GrassSeeds;
@@ -185,6 +192,13 @@ public class Items {
 
 		Porcelain = new ItemPorcelainBall(ItemData.PORCELAIN_ID);
 		GameRegistry.registerItem(Porcelain, ItemData.PORCELAIN_UNLOCALIZED_NAME);
+		
+		Doll = new ItemDoll(ItemData.DOLL_ID);
+		GameRegistry.registerItem(Doll, ItemData.DOLL_UNLOCALIZED_NAME);
+		DollAngry = new ItemDollAngry(ItemData.ANGRY_DOLL_ID);
+		GameRegistry.registerItem(DollAngry, ItemData.ANGRY_DOLL_UNLOCALIZED_NAME);
+		DollCreepy = new ItemDollCreepy(ItemData.CREEPY_DOLL_ID);
+		GameRegistry.registerItem(DollCreepy, ItemData.CREEPY_DOLL_UNLOCALIZED_NAME);
 
 		SilkwormCooked = new ItemSilkwormCooked(ItemData.SILKWORM_COOKED_ID);
 		GameRegistry.registerItem(SilkwormCooked, ItemData.SILKWORM_COOKED_UNLOCALIZED_NAME);
@@ -315,6 +329,10 @@ public class Items {
 		LanguageRegistry.addName(GrassSeeds, ItemData.SEED_GRASS_NAME);
 		LanguageRegistry.addName(Stones, ItemData.STONES_NAME);
 		LanguageRegistry.addName(Porcelain, ItemData.PORCELAIN_NAME);
+		
+		LanguageRegistry.addName(Doll, ItemData.DOLL_NAME);
+		LanguageRegistry.addName(DollAngry, ItemData.ANGRY_DOLL_NAME);
+		LanguageRegistry.addName(DollCreepy, ItemData.CREEPY_DOLL_NAME);
 
 		LanguageRegistry.addName(SeedsOak, ItemData.SEED_OAK_NAME);
 		LanguageRegistry.addName(SeedsSpruce, ItemData.SEED_SPRUCE_NAME);
