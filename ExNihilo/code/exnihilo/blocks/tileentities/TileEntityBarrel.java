@@ -330,6 +330,16 @@ public class TileEntityBarrel extends TileEntity implements IFluidHandler, ISide
 			break;
 
 		case BLAZE:
+			if (worldObj.isRemote)
+			{
+				if (worldObj.rand.nextInt(5) == 0)
+				{
+					//spawn lava particles
+					this.worldObj.spawnParticle("lava", xCoord + (double)(worldObj.rand.nextFloat() * 0.6) + 0.2d, yCoord + 1, zCoord + (double)(worldObj.rand.nextFloat() * 0.6) + 0.2d, 0.0d, 0.0d, 0.0d);
+
+				}
+			}
+			
 			if (!worldObj.isRemote && worldObj.difficultySetting > 0)
 			{
 				if(isDone())
@@ -337,13 +347,6 @@ public class TileEntityBarrel extends TileEntity implements IFluidHandler, ISide
 					timer = 0;
 					resetBarrel();
 					break;
-				}
-				
-				if (worldObj.rand.nextInt(5) == 0)
-				{
-					//spawn lava particles
-					this.worldObj.spawnParticle("lava", xCoord + (double)(worldObj.rand.nextFloat() * 0.6) + 0.2d, yCoord + 1, zCoord + (double)(worldObj.rand.nextFloat() * 0.6) + 0.2d, 0.0d, 0.0d, 0.0d);
-
 				}
 
 				//Try to spawn blaze, if you can't keep trying.
@@ -376,7 +379,7 @@ public class TileEntityBarrel extends TileEntity implements IFluidHandler, ISide
 		case ENDER_COOKING:
 			timer++;
 
-			if (worldObj.isRemote && worldObj.rand.nextInt(5) == 0)
+			if (worldObj.isRemote && worldObj.rand.nextInt(20) == 0)
 			{
 				//spawn ender particles
                 float f = (worldObj.rand.nextFloat() - 0.5F) * 0.2F;
