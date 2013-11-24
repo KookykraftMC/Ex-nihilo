@@ -12,7 +12,9 @@ import cpw.mods.fml.common.Loader;
 import cpw.mods.fml.common.registry.GameRegistry;
 import exnihilo.Blocks;
 import exnihilo.Items;
+import exnihilo.compatibility.foresty.Hive;
 import exnihilo.registries.SieveRegistry;
+import forestry.api.core.BlockInterface;
 
 public class Forestry {
 	public static boolean isLoaded()
@@ -28,6 +30,17 @@ public class Forestry {
     	{
     		SieveRegistry.register(Block.gravel.blockID, 0, apatite.itemID, apatite.getItemDamage(), 16);
     	}
+	}
+	
+	public static void registerBeeHives()
+	{
+		ItemStack beehives = forestry.api.core.ItemInterface.getItem("beehives");
+		
+		Hive meadows = new Hive(beehives.itemID, 1);
+		meadows.minRainfall = 0.29f;
+		meadows.maxRainfall = 0.9f;
+		meadows.minTemperature = 0.19f;
+		meadows.maxTemperature = 1.2f;
 	}
 	
 	public static boolean addsThisLeaf(Block block)
