@@ -240,22 +240,24 @@ public class TileEntityBarrel extends TileEntity implements IFluidHandler, ISide
 			if(worldObj.difficultySetting > 0)
 			{
 				timer++;
-			}
 
-			if(isDone())
-			{
-				timer = 0;
 
-				if(!worldObj.isRemote)
+				if(isDone())
 				{
-					EntitySlime slime = new EntitySlime(worldObj);
-					slime.setPosition(xCoord, yCoord + 1, zCoord);
+					timer = 0;
 
-					worldObj.spawnEntityInWorld(slime);
+					if(!worldObj.isRemote)
+					{
+						EntitySlime slime = new EntitySlime(worldObj);
+						slime.setPosition(xCoord, yCoord + 1, zCoord);
+
+						worldObj.spawnEntityInWorld(slime);
+					}
+
+					resetBarrel();
 				}
-
-				resetBarrel();
 			}
+
 			break;
 
 		case SPORED:
@@ -339,7 +341,7 @@ public class TileEntityBarrel extends TileEntity implements IFluidHandler, ISide
 
 				}
 			}
-			
+
 			if (!worldObj.isRemote && worldObj.difficultySetting > 0)
 			{
 				if(isDone())
@@ -382,10 +384,10 @@ public class TileEntityBarrel extends TileEntity implements IFluidHandler, ISide
 			if (worldObj.isRemote && worldObj.rand.nextInt(20) == 0)
 			{
 				//spawn ender particles
-                float f = (worldObj.rand.nextFloat() - 0.5F) * 0.2F;
-                float f1 = (worldObj.rand.nextFloat() - 0.5F) * 0.2F;
-                float f2 = (worldObj.rand.nextFloat() - 0.5F) * 0.2F;
-                this.worldObj.spawnParticle("portal", xCoord + (double)(worldObj.rand.nextFloat() * 0.6) + 0.2d, yCoord + 1, zCoord + (double)(worldObj.rand.nextFloat() * 0.6) + 0.2d, (double)f, (double)f1, (double)f2);
+				float f = (worldObj.rand.nextFloat() - 0.5F) * 0.2F;
+				float f1 = (worldObj.rand.nextFloat() - 0.5F) * 0.2F;
+				float f2 = (worldObj.rand.nextFloat() - 0.5F) * 0.2F;
+				this.worldObj.spawnParticle("portal", xCoord + (double)(worldObj.rand.nextFloat() * 0.6) + 0.2d, yCoord + 1, zCoord + (double)(worldObj.rand.nextFloat() * 0.6) + 0.2d, (double)f, (double)f1, (double)f2);
 			}
 
 			if(isDone())
@@ -399,12 +401,12 @@ public class TileEntityBarrel extends TileEntity implements IFluidHandler, ISide
 			if (worldObj.isRemote && worldObj.rand.nextInt(5) == 0)
 			{
 				//spawn ender particles
-                float f = (worldObj.rand.nextFloat() - 0.5F) * 0.2F;
-                float f1 = (worldObj.rand.nextFloat() - 0.5F) * 0.2F;
-                float f2 = (worldObj.rand.nextFloat() - 0.5F) * 0.2F;
-                this.worldObj.spawnParticle("portal", xCoord + (double)(worldObj.rand.nextFloat() * 0.6) + 0.2d, yCoord + 1, zCoord + (double)(worldObj.rand.nextFloat() * 0.6) + 0.2d, (double)f, (double)f1, (double)f2);
+				float f = (worldObj.rand.nextFloat() - 0.5F) * 0.2F;
+				float f1 = (worldObj.rand.nextFloat() - 0.5F) * 0.2F;
+				float f2 = (worldObj.rand.nextFloat() - 0.5F) * 0.2F;
+				this.worldObj.spawnParticle("portal", xCoord + (double)(worldObj.rand.nextFloat() * 0.6) + 0.2d, yCoord + 1, zCoord + (double)(worldObj.rand.nextFloat() * 0.6) + 0.2d, (double)f, (double)f1, (double)f2);
 			}
-			
+
 			if (!worldObj.isRemote && worldObj.difficultySetting > 0)
 			{
 				//TODO: Get this shit working!
@@ -995,7 +997,7 @@ public class TileEntityBarrel extends TileEntity implements IFluidHandler, ISide
 					{
 						this.mode = BarrelMode.ENDSTONE;
 					}
-					
+
 					if(ModData.ALLOW_BARREL_RECIPE_BLAZE_RODS && item.itemID == Items.DollAngry.itemID)
 					{
 						mode = BarrelMode.BLAZE_COOKING;
@@ -1009,7 +1011,7 @@ public class TileEntityBarrel extends TileEntity implements IFluidHandler, ISide
 						resetColor();
 						mode = BarrelMode.SOULSAND;
 					}
-					
+
 					if(ModData.ALLOW_BARREL_RECIPE_ENDER_PEARLS && item.itemID == Items.DollCreepy.itemID)
 					{
 						mode = BarrelMode.ENDER_COOKING;
@@ -1138,21 +1140,21 @@ public class TileEntityBarrel extends TileEntity implements IFluidHandler, ISide
 				{
 					return true;
 				}
-				
+
 				if(ModData.ALLOW_BARREL_RECIPE_BLAZE_RODS && item.itemID == Items.DollAngry.itemID)
 				{
 					return true;
 				}
 			}
 
-			
+
 			if (fluid.fluidID == Fluids.fluidWitchWater.getID())
 			{
 				if(ModData.ALLOW_BARREL_RECIPE_SOULSAND && item.itemID == Block.sand.blockID)
 				{
 					return true;
 				}
-				
+
 				if(ModData.ALLOW_BARREL_RECIPE_ENDER_PEARLS && item.itemID == Items.DollCreepy.itemID)
 				{
 					return true;
