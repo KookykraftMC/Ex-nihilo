@@ -43,6 +43,13 @@ public class TileEntityBarrel extends TileEntity implements IFluidHandler, ISide
 	private static final int MAX_FLUID = 1000;
 	private static final int UPDATE_INTERVAL = 10;
 
+	private static final int MOSS_SPREAD_X_POS = 2;
+	private static final int MOSS_SPREAD_X_NEG = -2;
+	private static final int MOSS_SPREAD_Y_POS = 2;
+	private static final int MOSS_SPREAD_Y_NEG = -1;
+	private static final int MOSS_SPREAD_Z_POS = 2;
+	private static final int MOSS_SPREAD_Z_NEG = -2;
+
 	public enum BarrelMode
 	{
 		EMPTY(0, ExtractMode.None), 
@@ -156,6 +163,31 @@ public class TileEntityBarrel extends TileEntity implements IFluidHandler, ISide
 				if (isFull() && worldObj.getBlockId(xCoord, yCoord + 1, zCoord) == FluidRegistry.LAVA.getBlockID())
 				{
 					mode = BarrelMode.COBBLESTONE;
+				}
+
+				//Spread moss.
+				if(!worldObj.isRemote && isFull() && worldObj.getBlockMaterial(xCoord, yCoord, zCoord).getCanBurn() && worldObj.rand.nextInt(500) == 0)
+				{
+					int x = xCoord + (worldObj.rand.nextInt(MOSS_SPREAD_X_POS - MOSS_SPREAD_X_NEG + 1) + MOSS_SPREAD_X_NEG);
+					int y = yCoord + (worldObj.rand.nextInt(MOSS_SPREAD_Y_POS - MOSS_SPREAD_Y_NEG + 1) + MOSS_SPREAD_Y_NEG);
+					int z = zCoord + (worldObj.rand.nextInt(MOSS_SPREAD_Z_POS - MOSS_SPREAD_Z_NEG + 1) + MOSS_SPREAD_Z_NEG);
+					int lightLevel = worldObj.getBlockLightValue(x,y+1,z);
+
+					if(!worldObj.isAirBlock(x, y, z) && worldObj.getTopSolidOrLiquidBlock(x, z) > y && lightLevel >= 9 && lightLevel <= 11)
+					{
+						int selected = worldObj.getBlockId(x, y, z);
+						int meta = worldObj.getBlockMetadata(x, y, z);
+
+						if (selected == Block.stoneBrick.blockID && meta == 0)
+						{
+							worldObj.setBlock(x, y, z, Block.stoneBrick.blockID, 1, 3);
+						}
+
+						if (selected == Block.cobblestone.blockID)
+						{
+							worldObj.setBlock(x, y, z, Block.cobblestoneMossy.blockID, 0, 3);
+						}
+					}
 				}
 			}
 
@@ -305,7 +337,7 @@ public class TileEntityBarrel extends TileEntity implements IFluidHandler, ISide
 		case BLAZE_COOKING:
 			timer++;
 
-			if (!worldObj.isRemote && this.getBlockType().isFlammable(worldObj, xCoord, yCoord, zCoord, this.getBlockMetadata(), ForgeDirection.UP))
+			if (!worldObj.isRemote && worldObj.getBlockMaterial(xCoord, yCoord, zCoord).getCanBurn())
 			{
 				//an earth-shattering kaboom...
 				worldObj.destroyBlock(xCoord, yCoord, zCoord, false);
