@@ -166,7 +166,7 @@ public class TileEntityBarrel extends TileEntity implements IFluidHandler, ISide
 				}
 
 				//Spread moss.
-				if(!worldObj.isRemote && isFull() && worldObj.getBlockMaterial(xCoord, yCoord, zCoord).getCanBurn() && worldObj.rand.nextInt(500) == 0)
+				if(!worldObj.isRemote && fluid.amount > 0 && worldObj.getBlockMaterial(xCoord, yCoord, zCoord).getCanBurn() && worldObj.rand.nextInt(500) == 0)
 				{
 					int x = xCoord + (worldObj.rand.nextInt(MOSS_SPREAD_X_POS - MOSS_SPREAD_X_NEG + 1) + MOSS_SPREAD_X_NEG);
 					int y = yCoord + (worldObj.rand.nextInt(MOSS_SPREAD_Y_POS - MOSS_SPREAD_Y_NEG + 1) + MOSS_SPREAD_Y_NEG);
@@ -181,11 +181,13 @@ public class TileEntityBarrel extends TileEntity implements IFluidHandler, ISide
 						if (selected == Block.stoneBrick.blockID && meta == 0)
 						{
 							worldObj.setBlock(x, y, z, Block.stoneBrick.blockID, 1, 3);
+							drain(ForgeDirection.DOWN, 100, true);
 						}
 
 						if (selected == Block.cobblestone.blockID)
 						{
 							worldObj.setBlock(x, y, z, Block.cobblestoneMossy.blockID, 0, 3);
+							drain(ForgeDirection.DOWN, 100, true);
 						}
 					}
 				}
