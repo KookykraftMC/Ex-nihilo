@@ -30,6 +30,8 @@ public class Forestry {
     	{
     		SieveRegistry.register(Block.gravel.blockID, 0, apatite.itemID, apatite.getItemDamage(), 16);
     	}
+    	
+    	registerBeeHives();
 	}
 	
 	public static void registerBeeHives()
