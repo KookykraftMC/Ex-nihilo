@@ -80,29 +80,35 @@ public class BlockWitchWater extends BlockFluidClassic{
 			{
 				EntityVillager villager = (EntityVillager)entity;
 				
-				if (villager.getProfession() == 2 && !villager.isChild())
+				if (world.difficultySetting > 0)
 				{
-					villager.setDead();
-					
-					EntityWitch witch = new EntityWitch(world);
-					witch.setLocationAndAngles(villager.posX, villager.posY, villager.posZ, villager.rotationYaw, villager.rotationPitch);
-					witch.renderYawOffset = villager.renderYawOffset;
-					witch.setHealth(villager.getHealth());
-					
-					world.spawnEntityInWorld(witch);
-				}
-				else
+					if (villager.getProfession() == 2 && !villager.isChild())
+					{
+						villager.setDead();
+						
+						EntityWitch witch = new EntityWitch(world);
+						witch.setLocationAndAngles(villager.posX, villager.posY, villager.posZ, villager.rotationYaw, villager.rotationPitch);
+						witch.renderYawOffset = villager.renderYawOffset;
+						witch.setHealth(villager.getHealth());
+						
+						world.spawnEntityInWorld(witch);
+					}
+					else
+					{
+						villager.setDead();
+						
+						EntityZombie zombie = new EntityZombie(world);
+						zombie.setLocationAndAngles(villager.posX, villager.posY, villager.posZ, villager.rotationYaw, villager.rotationPitch);
+						zombie.renderYawOffset = villager.renderYawOffset;
+						zombie.setHealth(villager.getHealth());
+						zombie.setVillager(true);
+						zombie.setChild(villager.isChild());
+						
+						world.spawnEntityInWorld(zombie);
+					}
+				}else
 				{
-					villager.setDead();
-					
-					EntityZombie zombie = new EntityZombie(world);
-					zombie.setLocationAndAngles(villager.posX, villager.posY, villager.posZ, villager.rotationYaw, villager.rotationPitch);
-					zombie.renderYawOffset = villager.renderYawOffset;
-					zombie.setHealth(villager.getHealth());
-					zombie.setVillager(true);
-					zombie.setChild(villager.isChild());
-					
-					world.spawnEntityInWorld(zombie);
+					villager.onStruckByLightning(null);
 				}
 			}
 			
