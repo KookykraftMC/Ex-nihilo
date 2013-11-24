@@ -303,14 +303,14 @@ public class TileEntityBarrel extends TileEntity implements IFluidHandler, ISide
 		case BLAZE_COOKING:
 			timer++;
 
-			if (this.getBlockType().isFlammable(worldObj, xCoord, yCoord, zCoord, this.getBlockMetadata(), ForgeDirection.UP))
+			if (!worldObj.isRemote && this.getBlockType().isFlammable(worldObj, xCoord, yCoord, zCoord, this.getBlockMetadata(), ForgeDirection.UP))
 			{
 				//an earth-shattering kaboom...
 				worldObj.destroyBlock(xCoord, yCoord, zCoord, false);
 				this.worldObj.createExplosion(null, xCoord, yCoord, zCoord, 4.0f, true);
 			}
 
-			if (worldObj.rand.nextInt(20) == 0)
+			if (worldObj.isRemote && worldObj.rand.nextInt(20) == 0)
 			{
 				//spawn lava particles
 				this.worldObj.spawnParticle("lava", xCoord + (double)(worldObj.rand.nextFloat() * 0.6) + 0.2d, yCoord + 1, zCoord + (double)(worldObj.rand.nextFloat() * 0.6) + 0.2d, 0.0d, 0.0d, 0.0d);
