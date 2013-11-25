@@ -22,6 +22,7 @@ public class Hive {
 	private static int REQUIRED_SUBSTRATE_COUNT = 20;
 
 	public Boolean requiredCanSeeSky = null;
+	public Boolean requiresTree = null;
 
 	public List<String> flowers = new ArrayList<String>(); 
 	public List<Type> biomeTypes = new ArrayList<Type>();
@@ -39,15 +40,21 @@ public class Hive {
 		if (
 				(requiredBiome != null && biome.biomeID != requiredBiome.biomeID) ||
 				(minTemperature != null && biome.temperature < minTemperature) ||
-				(maxTemperature != null && biome.temperature >= maxTemperature) ||
+				(maxTemperature != null && biome.temperature > maxTemperature) ||
 				(minRainfall != null && biome.rainfall < minRainfall) ||
-				(maxRainfall != null && biome.rainfall >= maxRainfall) ||
+				(maxRainfall != null && biome.rainfall > maxRainfall) ||
 				(minYLevel != null && height < minYLevel) ||
-				(maxYLevel != null && height >= maxYLevel) ||
-				(requiredCanSeeSky != null && canSeeSky != requiredCanSeeSky)
+				(maxYLevel != null && height > maxYLevel) ||
+				(requiredCanSeeSky != null && canSeeSky != requiredCanSeeSky.booleanValue())
 				)
 		{
 			System.out.println("HIVE: Missing basic requirements");
+			return false;
+		}
+		
+		if(requiresTree != null && requiresTree.booleanValue() == true && local.leafCount < 20)
+		{
+			System.out.println("HIVE: Needs to be in a tree");
 			return false;
 		}
 

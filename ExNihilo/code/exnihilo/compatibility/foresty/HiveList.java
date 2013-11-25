@@ -19,6 +19,8 @@ public class HiveList {
 			meadows.maxRainfall = 0.9f;
 			meadows.minTemperature = 0.19f;
 			meadows.maxTemperature = 1.2f;
+			
+			meadows.requiredCanSeeSky = true;
 
 			meadows.biomeTypes.add(Type.PLAINS);
 
