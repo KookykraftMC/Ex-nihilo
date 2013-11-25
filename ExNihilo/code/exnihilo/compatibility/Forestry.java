@@ -14,9 +14,13 @@ import exnihilo.Blocks;
 import exnihilo.Items;
 import exnihilo.compatibility.foresty.Hive;
 import exnihilo.registries.SieveRegistry;
+import forestry.api.arboriculture.ITreeRoot;
 import forestry.api.core.BlockInterface;
+import forestry.api.genetics.AlleleManager;
 
 public class Forestry {
+	public static ITreeRoot trees = (ITreeRoot) AlleleManager.alleleRegistry.getSpeciesRoot("rootTrees");
+	
 	public static boolean isLoaded()
 	{
 		return Loader.isModLoaded("Forestry");

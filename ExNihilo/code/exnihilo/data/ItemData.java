@@ -27,49 +27,49 @@ public class ItemData {
 		}; 
 
 	//MESH
-	public static int MESH_ID = ITEM_ID_BASE + 4;
+	public static int MESH_ID = ITEM_ID_BASE + 5;
 	public static final String MESH_KEY = "mesh";
 	public static final String MESH_NAME = "Silk Mesh";
 	public static final String MESH_UNLOCALIZED_NAME = "mesh";
 
 	//SILKWORM
-	public static int SILKWORM_ID = ITEM_ID_BASE + 5;
+	public static int SILKWORM_ID = ITEM_ID_BASE + 6;
 	public static final String SILKWORM_KEY = "silkworm";
 	public static final String SILKWORM_NAME = "Silkworm";
 	public static final String SILKWORM_UNLOCALIZED_NAME = "silkworm";
 
 	//CROOK
-	public static int CROOK_ID = ITEM_ID_BASE + 6;
+	public static int CROOK_ID = ITEM_ID_BASE + 7;
 	public static final String CROOK_KEY = "crook";
 	public static final String CROOK_NAME = "Crook";
 	public static final String CROOK_UNLOCALIZED_NAME = "crook";
 
 	//SPORES
-	public static int SPORES_ID = ITEM_ID_BASE + 7;
+	public static int SPORES_ID = ITEM_ID_BASE + 8;
 	public static final String SPORES_KEY = "spores";
 	public static final String SPORES_NAME = "Ancient Spores";
 	public static final String SPORES_UNLOCALIZED_NAME = "spores";
 
 	//GRASS SEEDS!
-	public static int SEED_GRASS_ID = ITEM_ID_BASE + 8;
+	public static int SEED_GRASS_ID = ITEM_ID_BASE + 9;
 	public static final String SEED_GRASS_KEY = "seed_grass";
 	public static final String SEED_GRASS_NAME = "Grass Seeds";
 	public static final String SEED_GRASS_UNLOCALIZED_NAME = "seed_grass";
 
 	//STONES!
-	public static int STONES_ID = ITEM_ID_BASE + 9;
+	public static int STONES_ID = ITEM_ID_BASE + 10;
 	public static final String STONES_KEY = "stone";
 	public static final String STONES_NAME = "Stone";
 	public static final String STONES_UNLOCALIZED_NAME = "stone";
 
 	//PORCELAIN!
-	public static int PORCELAIN_ID = ITEM_ID_BASE + 10;
+	public static int PORCELAIN_ID = ITEM_ID_BASE + 11;
 	public static final String PORCELAIN_KEY = "porcelain";
 	public static final String PORCELAIN_NAME = "Porcelain Clay";
 	public static final String PORCELAIN_UNLOCALIZED_NAME = "porcelain";
 
 	//COOKED SILKWORMS!
-	public static int SILKWORM_COOKED_ID = ITEM_ID_BASE + 11;
+	public static int SILKWORM_COOKED_ID = ITEM_ID_BASE + 12;
 	public static final String SILKWORM_COOKED_KEY = "silkworm_cooked";
 	public static final String SILKWORM_COOKED_NAME = "Cooked Silkworm";
 	public static final String SILKWORM_COOKED_UNLOCALIZED_NAME = "silkworm_cooked";
@@ -93,28 +93,28 @@ public class ItemData {
 
 	//COPPER!
 	public static int COPPER_ORE_IDS[] = new int[3];
-	public static int COPPER_INGOT_ID = ITEM_ID_BASE + 12;
+	public static int COPPER_INGOT_ID = ITEM_ID_BASE + 13;
 	public static final String COPPER_ORE_KEY = "item_copper_gravel";
 	public static final String COPPER_ORE_NAMES[] = {"Broken Copper Ore", "Crushed Copper Ore", "Pulverized Copper Ore", "Copper Ingot"};
 	public static final String COPPER_ORE_UNLOCALIZED_NAMES[] = {"copper_broken", "copper_crushed", "copper_pulverized", "copper_ingot"};
 
 	//TIN!
 	public static int TIN_ORE_IDS[] = new int[3];
-	public static int TIN_INGOT_ID = ITEM_ID_BASE + 13;
+	public static int TIN_INGOT_ID = ITEM_ID_BASE + 14;
 	public static final String TIN_ORE_KEY = "item_tin_gravel";
 	public static final String TIN_ORE_NAMES[] = {"Broken Tin Ore", "Crushed Tin Ore", "Pulverized Tin Ore", "Tin Ingot"};
 	public static final String TIN_ORE_UNLOCALIZED_NAMES[] = {"tin_broken", "tin_crushed", "tin_pulverized", "tin_ingot"};
 
 	//SILVER!
 	public static int SILVER_ORE_IDS[] = new int[3];
-	public static int SILVER_INGOT_ID = ITEM_ID_BASE + 14;
+	public static int SILVER_INGOT_ID = ITEM_ID_BASE + 15;
 	public static final String SILVER_ORE_KEY = "item_silver_gravel";
 	public static final String SILVER_ORE_NAMES[] = {"Broken Silver Ore", "Crushed Silver Ore", "Pulverized Silver Ore", "Silver Ingot"};
 	public static final String SILVER_ORE_UNLOCALIZED_NAMES[] = {"silver_broken", "silver_crushed", "silver_pulverized", "silver_ingot"};
 
 	//LEAD!
 	public static int LEAD_ORE_IDS[] = new int[3];
-	public static int LEAD_INGOT_ID = ITEM_ID_BASE + 15;
+	public static int LEAD_INGOT_ID = ITEM_ID_BASE + 16;
 	public static final String LEAD_ORE_KEY = "item_lead_gravel";
 	public static final String LEAD_ORE_NAMES[] = {"Broken Lead Ore", "Crushed Lead Ore", "Pulverized Lead Ore", "Lead Ingot"};
 	public static final String LEAD_ORE_UNLOCALIZED_NAMES[] = {"lead_broken", "lead_crushed", "lead_pulverized", "lead_ingot"};
@@ -127,14 +127,14 @@ public class ItemData {
 
 	//PLATINUM!
 	public static int PLATINUM_ORE_IDS[] = new int[3];
-	public static int PLATINUM_INGOT_ID = ITEM_ID_BASE + 16;
+	public static int PLATINUM_INGOT_ID = ITEM_ID_BASE + 17;
 	public static final String PLATINUM_ORE_KEY = "item_platinum_gravel";
 	public static final String PLATINUM_ORE_NAMES[] = {"Broken Platinum Ore", "Crushed Platinum Ore", "Pulverized Platinum Ore", "Platinum Ingot"};
 	public static final String PLATINUM_ORE_UNLOCALIZED_NAMES[] = {"platinum_broken", "platinum_crushed", "platinum_pulverized", "platinum_ingot"};
 
 	//LEAD!
 	public static int NICKEL_ORE_IDS[] = new int[3];
-	public static int NICKEL_INGOT_ID = ITEM_ID_BASE + 17;
+	public static int NICKEL_INGOT_ID = ITEM_ID_BASE + 18;
 	public static final String NICKEL_ORE_KEY = "item_nickel_gravel";
 	public static final String NICKEL_ORE_NAMES[] = {"Broken Nickel Ore", "Crushed Nickel Ore", "Pulverized Nickel Ore", "Nickel Ingot"};
 	public static final String NICKEL_ORE_UNLOCALIZED_NAMES[] = {"nickel_broken", "nickel_crushed", "nickel_pulverized", "nickel_ingot"};
