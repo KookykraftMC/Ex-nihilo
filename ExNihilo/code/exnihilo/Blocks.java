@@ -12,6 +12,7 @@ import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import exnihilo.blocks.BlockBarrel;
 import exnihilo.blocks.BlockBarrelStone;
+import exnihilo.blocks.BlockBeeTrap;
 import exnihilo.blocks.BlockCrucible;
 import exnihilo.blocks.BlockCrucibleUnfired;
 import exnihilo.blocks.BlockDust;
@@ -53,6 +54,8 @@ public class Blocks {
 	public static Block Dust;
 	public static Block LeavesInfested;
 	public static Block Sieve;
+	public static Block BeeTrap;
+	
 	public static Block IronOre;
 	public static Block GoldOre;
 	public static Block CopperOre;
@@ -87,6 +90,9 @@ public class Blocks {
 		Sieve = new BlockSieve(BlockData.SIEVE_ID);
 		GameRegistry.registerBlock(Sieve, ItemBlockSieve.class, BlockData.SIEVE_KEY);
 
+		BeeTrap = new BlockBeeTrap(BlockData.BEE_TRAP_ID);
+		GameRegistry.registerBlock(BeeTrap, BlockData.BEE_TRAP_KEY);
+		
 		IronOre = new BlockIronOre(BlockData.IRON_ORE_ID);
 		GameRegistry.registerBlock(IronOre, ItemBlockIronOre.class, BlockData.IRON_ORE_KEY);
 
@@ -145,6 +151,8 @@ public class Blocks {
 		//Dust!
 		LanguageRegistry.addName(Dust, BlockData.DUST_NAME);
 
+		//Bee Trap
+		LanguageRegistry.addName(BeeTrap, BlockData.BEE_TRAP_NAME);
 
 		//Leaves!
 		for(int i = 0; i < 4; i++)

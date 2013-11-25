@@ -2,6 +2,7 @@ package exnihilo.compatibility;
 
 import java.lang.reflect.Method;
 import java.util.ArrayList;
+import java.util.Iterator;
 
 import net.minecraft.block.Block;
 import net.minecraft.item.Item;
@@ -14,12 +15,13 @@ import exnihilo.Blocks;
 import exnihilo.Items;
 import exnihilo.compatibility.foresty.Hive;
 import exnihilo.registries.SieveRegistry;
+import forestry.api.apiculture.FlowerManager;
 import forestry.api.arboriculture.ITreeRoot;
 import forestry.api.core.BlockInterface;
 import forestry.api.genetics.AlleleManager;
 
 public class Forestry {
-	public static ITreeRoot trees = (ITreeRoot) AlleleManager.alleleRegistry.getSpeciesRoot("rootTrees");
+	//public static ITreeRoot trees = (ITreeRoot) AlleleManager.alleleRegistry.getSpeciesRoot("rootTrees");
 	
 	public static boolean isLoaded()
 	{
@@ -47,6 +49,14 @@ public class Forestry {
 		meadows.maxRainfall = 0.9f;
 		meadows.minTemperature = 0.19f;
 		meadows.maxTemperature = 1.2f;
+		
+		Iterator<ItemStack> it = FlowerManager.plainFlowers.iterator();
+		while(it.hasNext())
+		{
+			ItemStack item = it.next();
+			meadows.flowers.add(item.itemID + ":" + item.getItemDamage());
+		}
+		
 	}
 	
 	public static boolean addsThisLeaf(Block block)

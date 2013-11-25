@@ -67,7 +67,7 @@ public class ItemData {
 	public static final String PORCELAIN_KEY = "porcelain";
 	public static final String PORCELAIN_NAME = "Porcelain Clay";
 	public static final String PORCELAIN_UNLOCALIZED_NAME = "porcelain";
-
+	
 	//COOKED SILKWORMS!
 	public static int SILKWORM_COOKED_ID = ITEM_ID_BASE + 12;
 	public static final String SILKWORM_COOKED_KEY = "silkworm_cooked";
@@ -234,6 +234,9 @@ public class ItemData {
 		//SPORES!
 		SPORES_ID = config.getItem(CATEGORY, SPORES_UNLOCALIZED_NAME, SPORES_ID).getInt() - 256;
 
+		//GRASS!
+		SEED_GRASS_ID = config.getItem(CATEGORY, SEED_GRASS_UNLOCALIZED_NAME, SEED_GRASS_ID).getInt() - 256;
+		
 		//STONES!
 		STONES_ID = config.getItem(CATEGORY, STONES_UNLOCALIZED_NAME, STONES_ID).getInt() - 256;
 
@@ -241,6 +244,7 @@ public class ItemData {
 		PORCELAIN_ID = config.getItem(CATEGORY, PORCELAIN_UNLOCALIZED_NAME, PORCELAIN_ID).getInt() - 256;
 
 		//COOKED SILKWORMS!
+		SILKWORM_ID = config.getItem(CATEGORY, SILKWORM_UNLOCALIZED_NAME, SILKWORM_ID).getInt() - 256;
 		SILKWORM_COOKED_ID = config.getItem(CATEGORY, SILKWORM_COOKED_UNLOCALIZED_NAME, SILKWORM_COOKED_ID).getInt() - 256;
 
 		//SEEDS
