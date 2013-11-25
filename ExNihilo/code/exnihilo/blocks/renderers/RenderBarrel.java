@@ -3,6 +3,7 @@ package exnihilo.blocks.renderers;
 import org.lwjgl.opengl.GL11;
 
 import exnihilo.blocks.BlockBarrel;
+import exnihilo.blocks.BlockBeeTrapTreated;
 import exnihilo.blocks.models.ModelBarrel;
 import exnihilo.blocks.models.ModelBarrelInternal;
 import exnihilo.blocks.tileentities.TileEntityBarrel;
@@ -72,6 +73,7 @@ public class RenderBarrel extends TileEntitySpecialRenderer{
 			Color color = barrel.color;
 			boolean transparency = false;
 			boolean clouds = false;
+			boolean trap = false;
 
 			switch (barrel.mode)
 			{
@@ -115,9 +117,9 @@ public class RenderBarrel extends TileEntitySpecialRenderer{
 				clouds = true;
 				break;
 
-			case WITCHY: //TODO: REMOVE THIS LATER! Let a few updates pass so that people get their barrels out of the Witchy state.
+			case BEETRAP: 
 				transparency = true;
-				clouds = true;
+				trap = true;
 				break;
 
 			case SOULSAND:
@@ -156,14 +158,24 @@ public class RenderBarrel extends TileEntitySpecialRenderer{
 				break;
 			}
 
+			
+			
 			if (clouds)
 			{
+				GL11.glTranslatef(0,-0.0001f,0);
 				internal.render(ColorRegistry.color("black"), BlockBarrel.iconClouds, transparency);
+				GL11.glTranslatef(0,0.0001f,0);
 			}
 			
-			GL11.glTranslatef(0,0.0001f,0);
-			
+			if (trap)
+			{
+				GL11.glTranslatef(0,-0.05f,0);
+				internal.render(ColorRegistry.color("white"), BlockBeeTrapTreated.topIcon, false);
+				GL11.glTranslatef(0,0.05f,0);
+			}
+
 			internal.render(color, icon, transparency);
+			
 			GL11.glPopMatrix();
 		}
 

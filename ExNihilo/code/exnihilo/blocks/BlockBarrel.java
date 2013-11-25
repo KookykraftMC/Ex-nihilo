@@ -5,6 +5,7 @@ import java.util.List;
 import cpw.mods.fml.common.registry.GameRegistry;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
+import exnihilo.Blocks;
 import exnihilo.ExNihilo;
 import exnihilo.Fluids;
 import exnihilo.Items;
@@ -29,6 +30,7 @@ import net.minecraft.util.Icon;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import net.minecraftforge.common.ForgeDirection;
+import net.minecraftforge.fluids.Fluid;
 import net.minecraftforge.fluids.FluidContainerRegistry;
 import net.minecraftforge.fluids.FluidRegistry;
 import net.minecraftforge.fluids.FluidStack;
@@ -179,7 +181,7 @@ public class BlockBarrel extends BlockContainer
 					}
 				}
 
-				//BARREL RECIPES!
+				//XXX BARREL RECIPES!
 				if (item!= null)
 				{
 					if (barrel.mode == BarrelMode.FLUID && barrel.isFull())
@@ -207,7 +209,9 @@ public class BlockBarrel extends BlockContainer
 								useItem(player);
 							}
 
-						} else if (barrel.fluid.fluidID == FluidRegistry.LAVA.getID())
+						} 
+						
+						if (barrel.fluid.fluidID == FluidRegistry.LAVA.getID())
 						{
 							//Redstone + Lava = Netherrack
 							if(ModData.ALLOW_BARREL_RECIPE_NETHERRACK && item.itemID == Item.redstone.itemID)
@@ -229,7 +233,9 @@ public class BlockBarrel extends BlockContainer
 								barrel.mode = BarrelMode.BLAZE_COOKING;
 								useItem(player);
 							}
-						}else if (barrel.fluid.fluidID == Fluids.fluidWitchWater.getID())
+						}
+						
+						if (barrel.fluid.fluidID == Fluids.fluidWitchWater.getID())
 						{
 							//Witch water + Sand = Soul Sand
 							if(ModData.ALLOW_BARREL_RECIPE_SOULSAND && item.itemID == Block.sand.blockID)
@@ -244,6 +250,13 @@ public class BlockBarrel extends BlockContainer
 								barrel.mode = BarrelMode.ENDER_COOKING;
 								useItem(player);
 							}
+						}
+						
+						Fluid seedOil = FluidRegistry.getFluid("seedoil");
+						if (seedOil != null && barrel.fluid.fluidID == seedOil.getID() && item.itemID == Blocks.BeeTrap.blockID)
+						{
+							barrel.mode = BarrelMode.BEETRAP;
+							useItem(player);
 						}
 					}
 				}

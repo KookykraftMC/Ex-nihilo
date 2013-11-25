@@ -11,8 +11,8 @@ import exnihilo.data.BlockData;
 import exnihilo.data.ModData;
 
 public class BlockBeeTrap extends Block{
-	Icon topIcon;
-	Icon sideIcon;
+	public static Icon topIcon;
+	public static Icon sideIcon;
 	
 	public BlockBeeTrap(int id) {
 		super(id, Material.ground);

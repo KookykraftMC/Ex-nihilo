@@ -63,7 +63,7 @@ public class TileEntityBarrel extends TileEntity implements IFluidHandler, ISide
 		ENDSTONE(8, ExtractMode.Always), 
 		MILKED(9, ExtractMode.None), 
 		SOULSAND(10, ExtractMode.Always),
-		WITCHY(11, ExtractMode.None), //TODO: Recycle Witchy. No longer in use.
+		BEETRAP(11, ExtractMode.Always), 
 		OBSIDIAN(12, ExtractMode.Always),
 		COBBLESTONE(13, ExtractMode.Always),
 		BLAZE_COOKING(14, ExtractMode.None),
@@ -107,7 +107,7 @@ public class TileEntityBarrel extends TileEntity implements IFluidHandler, ISide
 	@Override
 	public void updateEntity()
 	{	
-		//Check for updates
+		//XXX Barrel state logic.
 		if (updateTimer >= UPDATE_INTERVAL)
 		{
 			updateTimer = 0;
@@ -156,7 +156,7 @@ public class TileEntityBarrel extends TileEntity implements IFluidHandler, ISide
 				{
 					colorBase = new Color(fluid.getFluid().getColor());
 					mode = BarrelMode.SPORED;
-					worldObj.markBlockForUpdate(xCoord, yCoord, zCoord);
+					needsUpdate = true;
 				}
 
 				//Turn into cobblestone?
@@ -443,7 +443,6 @@ public class TileEntityBarrel extends TileEntity implements IFluidHandler, ISide
 
 			if (!worldObj.isRemote && worldObj.difficultySetting > 0)
 			{
-				//TODO: Get this shit working!
 				if(isDone())
 				{
 					timer = 0;
@@ -575,7 +574,7 @@ public class TileEntityBarrel extends TileEntity implements IFluidHandler, ISide
 
 	private ItemStack getExtractItem()
 	{
-		//TODO - add more item modes.
+		//XXX getExtractItem
 		switch (mode)
 		{
 		case CLAY:
@@ -607,6 +606,9 @@ public class TileEntityBarrel extends TileEntity implements IFluidHandler, ISide
 
 		case ENDER:
 			return new ItemStack(Item.enderPearl, 1, 0);
+			
+		case BEETRAP:
+			return new ItemStack(Blocks.BeeTrapTreated, 1, 0);
 
 		default:
 			return null;
@@ -683,8 +685,7 @@ public class TileEntityBarrel extends TileEntity implements IFluidHandler, ISide
 			break;	
 
 		case 11:
-			//TODO: Recycle this mode. No longer in use.
-			mode = BarrelMode.WITCHY;
+			mode = BarrelMode.BEETRAP;
 			break;
 
 		case 12:
@@ -992,6 +993,7 @@ public class TileEntityBarrel extends TileEntity implements IFluidHandler, ISide
 
 	@Override
 	public void setInventorySlotContents(int slot, ItemStack item) {
+		//XXX addItemFromPipe
 		if (slot == 0)
 		{
 			if (item == null)
@@ -1051,6 +1053,12 @@ public class TileEntityBarrel extends TileEntity implements IFluidHandler, ISide
 						mode = BarrelMode.ENDER_COOKING;
 					}
 				}
+				
+				Fluid seedOil = FluidRegistry.getFluid("seedoil");
+				if (seedOil != null && fluid.fluidID == seedOil.getID())
+				{
+					mode = BarrelMode.BEETRAP;
+				}
 			}
 		}
 
@@ -1059,25 +1067,21 @@ public class TileEntityBarrel extends TileEntity implements IFluidHandler, ISide
 
 	@Override
 	public String getInvName() {
-		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
 	public boolean isInvNameLocalized() {
-		// TODO Auto-generated method stub
 		return false;
 	}
 
 	@Override
 	public int getInventoryStackLimit() {
-		// TODO Auto-generated method stub
 		return 1;
 	}
 
 	@Override
 	public boolean isUseableByPlayer(EntityPlayer entityplayer) {
-		// TODO Auto-generated method stub
 		return false;
 	}
 
@@ -1088,8 +1092,7 @@ public class TileEntityBarrel extends TileEntity implements IFluidHandler, ISide
 	public void closeChest() {}
 
 	@Override
-	public boolean isItemValidForSlot(int slot, ItemStack item) {
-		// TODO Auto-generated method stub		
+	public boolean isItemValidForSlot(int slot, ItemStack item) {	
 		if (slot == 1)
 		{
 			return isItemValid(item);
@@ -1100,7 +1103,6 @@ public class TileEntityBarrel extends TileEntity implements IFluidHandler, ISide
 
 	@Override
 	public int[] getAccessibleSlotsFromSide(int side) {
-		// TODO Auto-generated method stub
 		if (side == 0)
 		{
 			return new int[]{0};
@@ -1114,7 +1116,6 @@ public class TileEntityBarrel extends TileEntity implements IFluidHandler, ISide
 
 	@Override
 	public boolean canInsertItem(int slot, ItemStack item, int side) {
-		// TODO Auto-generated method stub
 		if (side == 1 && slot == 1)
 		{
 			return isItemValid(item);
@@ -1125,7 +1126,6 @@ public class TileEntityBarrel extends TileEntity implements IFluidHandler, ISide
 
 	@Override
 	public boolean canExtractItem(int slot, ItemStack item, int side) {
-		// TODO Auto-generated method stub
 		if (side == 0 && slot == 0)
 		{
 			if (mode.canExtract == ExtractMode.Always)
@@ -1142,8 +1142,9 @@ public class TileEntityBarrel extends TileEntity implements IFluidHandler, ISide
 		return false;
 	}
 
-	private boolean isItemValid(ItemStack item)
+	public boolean isItemValid(ItemStack item)
 	{
+		///XXX isItemValid
 		if (!this.isFull() && mode == BarrelMode.COMPOST || mode == BarrelMode.EMPTY)
 		{
 			if(ModData.ALLOW_BARREL_RECIPE_DIRT && CompostRegistry.containsItem(item.itemID, item.getItemDamage()))
@@ -1193,6 +1194,12 @@ public class TileEntityBarrel extends TileEntity implements IFluidHandler, ISide
 				{
 					return true;
 				}
+			}
+			
+			Fluid seedOil = FluidRegistry.getFluid("seedoil");
+			if (seedOil != null && fluid.fluidID == seedOil.getID() && item.itemID == Blocks.BeeTrap.blockID)
+			{
+				return true;
 			}
 		}
 

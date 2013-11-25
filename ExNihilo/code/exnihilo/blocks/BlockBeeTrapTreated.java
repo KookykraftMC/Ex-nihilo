@@ -16,8 +16,8 @@ import exnihilo.data.BlockData;
 import exnihilo.data.ModData;
 
 public class BlockBeeTrapTreated extends BlockContainer{
-	Icon topIcon;
-	Icon sideIcon;
+	public static Icon topIcon;
+	public static Icon sideIcon;
 	
 	public BlockBeeTrapTreated(int id) {
 		super(id, Material.ground);
