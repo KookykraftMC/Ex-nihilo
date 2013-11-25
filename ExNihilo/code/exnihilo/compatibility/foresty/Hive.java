@@ -19,7 +19,7 @@ public class Hive {
 	public Float maxYLevel = null;
 
 	public String requiredSubstrate = null;
-	private static int REQUIRED_SUBSTRATE_COUNT = 20;
+	private static int REQUIRED_SUBSTRATE_COUNT = 15;
 
 	public Boolean requiredCanSeeSky = null;
 	public Boolean requiresTree = null;
@@ -85,7 +85,7 @@ public class Hive {
 				
 				for(int j = 0; j < types.length; j++)
 				{
-					if (types[j] == currentType);
+					if (types[j] == currentType)
 					{
 						found = true;
 					}

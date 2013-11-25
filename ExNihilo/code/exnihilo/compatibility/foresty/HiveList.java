@@ -15,7 +15,7 @@ public class HiveList {
 	public static Hive jungle;
 	public static Hive end;
 	public static Hive snow;
-	public static Hive water;
+	public static Hive swamp;
 
 	public static boolean generateForestryHives()
 	{
@@ -26,6 +26,10 @@ public class HiveList {
 			generateForestHive();
 			generateMeadowHive();
 			generateDesertHive();
+			generateJungleHive();
+			generateEndHive();
+			generateSnowHive();
+			generateSwampHive();
 
 			return true;
 		}
@@ -81,14 +85,72 @@ public class HiveList {
 	}
 
 	public static void generateJungleHive()
-	{}
+	{
+		jungle = new Hive(beehives.itemID, 4);
+		jungle.minRainfall = 0.89f;
+		jungle.minTemperature = 1.19f;
+
+		jungle.requiredCanSeeSky = true;
+		jungle.requiresTree = true;
+
+		jungle.biomeTypes.add(Type.JUNGLE);
+
+		jungle.flowers.add(Block.vine.blockID + ":0");
+		jungle.flowers.add(Block.vine.blockID + ":1");
+		jungle.flowers.add(Block.vine.blockID + ":2");
+		jungle.flowers.add(Block.vine.blockID + ":3");
+		jungle.flowers.add(Block.vine.blockID + ":4");
+		jungle.flowers.add(Block.vine.blockID + ":5");
+		jungle.flowers.add(Block.vine.blockID + ":6");
+		jungle.flowers.add(Block.vine.blockID + ":7");
+		jungle.flowers.add(Block.vine.blockID + ":8");
+		jungle.flowers.add(Block.vine.blockID + ":9");
+		jungle.flowers.add(Block.vine.blockID + ":10");
+		jungle.flowers.add(Block.vine.blockID + ":11");
+		jungle.flowers.add(Block.vine.blockID + ":12");
+		jungle.flowers.add(Block.vine.blockID + ":13");
+		jungle.flowers.add(Block.vine.blockID + ":14");
+		jungle.flowers.add(Block.vine.blockID + ":15");
+	}
 
 	public static void generateEndHive()
-	{}
+	{
+		end = new Hive(beehives.itemID, 5);
+		end.requiredCanSeeSky = true;
+		end.requiredSubstrate = Block.whiteStone.blockID + ":0";
+		end.biomeTypes.add(Type.END);
+	}
 
 	public static void generateSnowHive()
-	{}
+	{
+		snow = new Hive(beehives.itemID, 6);
+		snow.maxTemperature = 0.05f;
+
+		snow.requiredCanSeeSky = true;
+		snow.requiredSubstrate = Block.snow.blockID + ":0";
+		
+		snow.biomeTypes.add(Type.FROZEN);
+		
+		Iterator<ItemStack> it = FlowerManager.plainFlowers.iterator();
+		while(it.hasNext())
+		{
+			ItemStack item = it.next();
+			snow.flowers.add(item.itemID + ":" + item.getItemDamage());
+		}
+	}
 
 	public static void generateSwampHive()
-	{}
+	{
+		swamp = new Hive(beehives.itemID, 7);
+		jungle.minRainfall = 0.89f;
+		swamp.minTemperature = 0.19f;
+		swamp.maxTemperature = 1.2f;
+
+		swamp.requiredCanSeeSky = true;
+
+		swamp.biomeTypes.add(Type.SWAMP);
+
+		swamp.flowers.add(Block.mushroomBrown.blockID + ":0");
+		swamp.flowers.add(Block.mushroomRed.blockID + ":0");
+	}
 }

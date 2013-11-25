@@ -48,6 +48,10 @@ public class HiveRegistry {
 			registerHive(HiveList.forest);
 			registerHive(HiveList.meadow);
 			registerHive(HiveList.desert);
+			registerHive(HiveList.jungle);
+			registerHive(HiveList.end);
+			registerHive(HiveList.snow);
+			registerHive(HiveList.swamp);
 		}
 	}
 }
