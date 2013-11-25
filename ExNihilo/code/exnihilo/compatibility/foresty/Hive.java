@@ -81,10 +81,11 @@ public class Hive {
 			
 			while (it.hasNext()) {
 				boolean found = false;
+				Type currentType =it.next();
 				
 				for(int j = 0; j < types.length; j++)
 				{
-					if (types[j] == it.next())
+					if (types[j] == currentType);
 					{
 						found = true;
 					}

@@ -32,14 +32,22 @@ public class HiveRegistry {
 				{
 					System.out.println("Hive found, but requirements are not met.");
 				}
-			}else
-			{
-				System.out.println("Unable to locate hive");
 			}
-
-
 		}
+		System.out.println("Unable to locate appropriate hive");
 
 		return null;
+	}
+	
+	public static void registerForestryHives()
+	{
+		boolean hivesFound = (HiveList.generateForestryHives());
+		
+		if (hivesFound)
+		{
+			registerHive(HiveList.forest);
+			registerHive(HiveList.meadow);
+			registerHive(HiveList.desert);
+		}
 	}
 }

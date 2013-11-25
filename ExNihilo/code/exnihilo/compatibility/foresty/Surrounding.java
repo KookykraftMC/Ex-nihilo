@@ -11,7 +11,9 @@ public class Surrounding {
 	
 	public void addBlock(int blockID, int meta)
 	{
-		if (Block.blocksList[blockID].isLeaves(null, 0, 0, 0))
+		Block block = Block.blocksList[blockID];
+		
+		if (block != null && block.isLeaves(null, 0, 0, 0))
 		{
 			leafCount++;
 		}
