@@ -49,6 +49,7 @@ public class HiveList {
 		forest.requiresTree = true;
 
 		forest.biomeTypes.add(Type.FOREST);
+		forest.defaultSpawnBonus = 20;
 	}
 
 	private static void generateMeadowHive()
@@ -119,6 +120,7 @@ public class HiveList {
 		end.requiredCanSeeSky = true;
 		end.requiredSubstrate = Block.whiteStone.blockID + ":0";
 		end.biomeTypes.add(Type.END);
+		end.defaultSpawnBonus = -40;
 	}
 
 	public static void generateSnowHive()

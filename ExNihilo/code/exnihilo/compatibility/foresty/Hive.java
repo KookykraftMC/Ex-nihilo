@@ -17,6 +17,7 @@ public class Hive {
 	public Float maxRainfall = null;
 	public Float minYLevel = null;
 	public Float maxYLevel = null;
+	public int defaultSpawnBonus = 0;
 
 	public String requiredSubstrate = null;
 	private static int REQUIRED_SUBSTRATE_COUNT = 15;
@@ -122,9 +123,25 @@ public class Hive {
 		return true;
 	}
 
-	public float getSpawnChance(Surrounding local)
+	public int getSpawnChanceModifier(Surrounding local)
 	{
-		//TODO use the surrounding blocks to calculate the chance to spawn a bee hive.
-		return 1.0f;
+		int flowerCount = 0;
+		
+		if (!flowers.isEmpty())
+		{
+			Iterator<String> it = flowers.iterator();
+			boolean found = false;
+			
+			while (it.hasNext()) {
+				String key = it.next();
+				
+				if (local.blocks.containsKey(key))
+				{
+					flowerCount += local.blocks.get(key);
+				}
+			}
+		}
+		
+		return defaultSpawnBonus + flowerCount;
 	}
 }
