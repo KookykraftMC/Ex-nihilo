@@ -13,6 +13,7 @@ import cpw.mods.fml.relauncher.SideOnly;
 import exnihilo.blocks.BlockBarrel;
 import exnihilo.blocks.BlockBarrelStone;
 import exnihilo.blocks.BlockBeeTrap;
+import exnihilo.blocks.BlockBeeTrapTreated;
 import exnihilo.blocks.BlockCrucible;
 import exnihilo.blocks.BlockCrucibleUnfired;
 import exnihilo.blocks.BlockDust;
@@ -55,6 +56,7 @@ public class Blocks {
 	public static Block LeavesInfested;
 	public static Block Sieve;
 	public static Block BeeTrap;
+	public static Block BeeTrapTreated;
 	
 	public static Block IronOre;
 	public static Block GoldOre;
@@ -92,6 +94,8 @@ public class Blocks {
 
 		BeeTrap = new BlockBeeTrap(BlockData.BEE_TRAP_ID);
 		GameRegistry.registerBlock(BeeTrap, BlockData.BEE_TRAP_KEY);
+		BeeTrapTreated = new BlockBeeTrapTreated(BlockData.BEE_TRAP_TREATED_ID);
+		GameRegistry.registerBlock(BeeTrapTreated, BlockData.BEE_TRAP_TREATED_KEY);
 		
 		IronOre = new BlockIronOre(BlockData.IRON_ORE_ID);
 		GameRegistry.registerBlock(IronOre, ItemBlockIronOre.class, BlockData.IRON_ORE_KEY);
@@ -119,8 +123,6 @@ public class Blocks {
 
 		PlatinumOre = new BlockPlatinumOre(BlockData.PLATINUM_ORE_ID);
 		GameRegistry.registerBlock(PlatinumOre, ItemBlockPlatinumOre.class, BlockData.PLATINUM_ORE_KEY);
-
-
 	}
 
 	public static void registerNames()
@@ -139,7 +141,6 @@ public class Blocks {
 			LanguageRegistry.addName(barrelStoneInstance, BlockData.BARREL_STONE_NAME);	
 		}
 
-
 		//Crucible!
 		ItemStack crucibleInstance = new ItemStack(Crucible, 1, 0);
 		LanguageRegistry.addName(crucibleInstance, BlockData.CRUCIBLE_NAME);
@@ -153,6 +154,8 @@ public class Blocks {
 
 		//Bee Trap
 		LanguageRegistry.addName(BeeTrap, BlockData.BEE_TRAP_NAME);
+		//Bee Trap Treated
+		LanguageRegistry.addName(BeeTrapTreated, BlockData.BEE_TRAP_TREATED_NAME);
 
 		//Leaves!
 		for(int i = 0; i < 4; i++)
