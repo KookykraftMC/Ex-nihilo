@@ -66,7 +66,7 @@ public class BlockData {
 	public static int BEE_TRAP_TREATED_ID = 3017;
 	public static final String BEE_TRAP_TREATED_KEY = "bee_trap_treated";
 	public static final String BEE_TRAP_TREATED_UNLOCALIZED_NAME = "bee_trap_treated";
-	public static final String BEE_TRAP_TREATED_NAME = "Scented Articial Hive";
+	public static final String BEE_TRAP_TREATED_NAME = "Scented Artificial Hive";
 
 
 	//Infested Leaves!
