@@ -41,9 +41,7 @@ public class HiveRegistry {
 	
 	public static void registerForestryHives()
 	{
-		boolean hivesFound = (HiveList.generateForestryHives());
-		
-		if (hivesFound)
+		if (HiveList.generateForestryHives())
 		{
 			registerHive(HiveList.forest);
 			registerHive(HiveList.meadow);
