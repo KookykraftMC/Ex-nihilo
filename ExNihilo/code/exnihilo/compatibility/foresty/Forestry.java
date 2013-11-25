@@ -8,6 +8,7 @@ import net.minecraft.block.Block;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
+import net.minecraftforge.common.BiomeDictionary.Type;
 import net.minecraftforge.oredict.OreDictionary;
 import cpw.mods.fml.common.Loader;
 import cpw.mods.fml.common.registry.GameRegistry;
@@ -17,6 +18,7 @@ import exnihilo.registries.SieveRegistry;
 import forestry.api.apiculture.FlowerManager;
 import forestry.api.arboriculture.ITreeRoot;
 import forestry.api.core.BlockInterface;
+import forestry.api.core.ForestryAPI;
 import forestry.api.genetics.AlleleManager;
 
 public class Forestry {
@@ -41,23 +43,7 @@ public class Forestry {
 
 	public static void registerBeeHives()
 	{
-		ItemStack beehives = forestry.api.core.ItemInterface.getItem("beehives");
-
-		if (beehives != null)
-		{
-			Hive meadows = new Hive(beehives.itemID, 1);
-			meadows.minRainfall = 0.29f;
-			meadows.maxRainfall = 0.9f;
-			meadows.minTemperature = 0.19f;
-			meadows.maxTemperature = 1.2f;
-
-			Iterator<ItemStack> it = FlowerManager.plainFlowers.iterator();
-			while(it.hasNext())
-			{
-				ItemStack item = it.next();
-				meadows.flowers.add(item.itemID + ":" + item.getItemDamage());
-			}
-		}
+		HiveList.registerMeadowsHive();
 	}
 
 	public static boolean addsThisLeaf(Block block)

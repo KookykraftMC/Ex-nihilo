@@ -52,7 +52,6 @@ public class BlockBeeTrapTreated extends BlockContainer{
 
 	@Override
 	public TileEntity createNewTileEntity(World world) {
-		// TODO Auto-generated method stub
 		return new TileEntityBeeTrap();
 	}
 }

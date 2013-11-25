@@ -43,6 +43,7 @@ public class Hive {
 				(requiredCanSeeSky != null && canSeeSky != requiredCanSeeSky)
 				)
 		{
+			System.out.println("HIVE: Missing basic requirements");
 			return false;
 		}
 
@@ -56,6 +57,7 @@ public class Hive {
 
 			if (substrateCount < REQUIRED_SUBSTRATE_COUNT)
 			{
+				System.out.println("HIVE: Missing substrate");
 				return false;
 			}
 		}
@@ -79,6 +81,7 @@ public class Hive {
 				
 				if (!found)
 				{
+					System.out.println("HIVE: Wrong biome type");
 					return false;
 				}
 			}
@@ -95,6 +98,12 @@ public class Hive {
 					found = true;
 					break;
 				}
+			}
+			
+			if (!found)
+			{
+				System.out.println("HIVE: Missing flowers");
+				return false;
 			}
 		}
 
