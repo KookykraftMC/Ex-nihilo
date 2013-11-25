@@ -5,7 +5,7 @@ import java.lang.reflect.Method;
 
 import exnihilo.Blocks;
 import exnihilo.Items;
-import exnihilo.compatibility.Forestry;
+import exnihilo.compatibility.foresty.Forestry;
 import exnihilo.data.ItemData;
 import exnihilo.data.ModData;
 import net.minecraft.block.Block;

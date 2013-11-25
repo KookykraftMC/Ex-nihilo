@@ -4,7 +4,7 @@ import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import exnihilo.Blocks;
 import exnihilo.blocks.tileentities.TileEntityBarrel.BarrelMode;
-import exnihilo.compatibility.Forestry;
+import exnihilo.compatibility.foresty.Forestry;
 import exnihilo.data.BlockData;
 import exnihilo.registries.ColorRegistry;
 import exnihilo.registries.helpers.Color;
