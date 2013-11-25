@@ -56,6 +56,18 @@ public class BlockData {
 	public static final String DUST_UNLOCALIZED_NAME = "dust";
 	public static final String DUST_NAME = "Dust";
 
+	//Bee Trap!
+	public static int BEE_TRAP_ID = 3016;
+	public static final String BEE_TRAP_KEY = "bee_trap";
+	public static final String BEE_TRAP_UNLOCALIZED_NAME = "bee_trap";
+	public static final String BEE_TRAP_NAME = "Artificial Hive";
+
+	//Bee Trap (Treated)!
+	public static int BEE_TRAP_TREATED_ID = 3017;
+	public static final String BEE_TRAP_TREATED_KEY = "bee_trap_treated";
+	public static final String BEE_TRAP_TREATED_UNLOCALIZED_NAME = "bee_trap_treated";
+	public static final String BEE_TRAP_TREATED_NAME = "Scented Articial Hive";
+
 
 	//Infested Leaves!
 	public static int LEAVES_INFESTED_ID = 3002;
@@ -252,6 +264,8 @@ public class BlockData {
 		DUST_ID = config.getBlock(CATEGORY, DUST_KEY, DUST_ID).getInt();
 		LEAVES_INFESTED_ID = config.getBlock(CATEGORY, LEAVES_INFESTED_KEY, LEAVES_INFESTED_ID).getInt();
 		SIEVE_ID = config.getBlock(CATEGORY, SIEVE_KEY, SIEVE_ID).getInt();
+		BEE_TRAP_ID = config.getBlock(CATEGORY, BEE_TRAP_KEY, BEE_TRAP_ID).getInt();
+		BEE_TRAP_TREATED_ID = config.getBlock(CATEGORY, BEE_TRAP_TREATED_KEY, BEE_TRAP_TREATED_ID).getInt();
 		IRON_ORE_ID = config.getBlock(ORE_CATEGORY, IRON_ORE_KEY, IRON_ORE_ID).getInt();
 		GOLD_ORE_ID = config.getBlock(ORE_CATEGORY, GOLD_ORE_KEY, GOLD_ORE_ID).getInt();
 		TIN_ORE_ID = config.getBlock(ORE_CATEGORY, TIN_ORE_KEY, TIN_ORE_ID).getInt();
