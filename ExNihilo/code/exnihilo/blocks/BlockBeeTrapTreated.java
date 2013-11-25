@@ -8,6 +8,7 @@ import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.Icon;
 import net.minecraft.world.World;
+import cpw.mods.fml.common.registry.GameRegistry;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import exnihilo.blocks.tileentities.TileEntityBeeTrap;
@@ -23,6 +24,8 @@ public class BlockBeeTrapTreated extends BlockContainer{
 		
 		setStepSound(soundGrassFootstep);
 		setCreativeTab(CreativeTabs.tabBlock);
+		
+		GameRegistry.registerTileEntity(TileEntityBeeTrap.class, this.getUnlocalizedName());
 	}
 
 	@Override
