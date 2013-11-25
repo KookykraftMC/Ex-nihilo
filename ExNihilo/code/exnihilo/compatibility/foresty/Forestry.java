@@ -7,9 +7,11 @@ import java.util.Iterator;
 import net.minecraft.block.Block;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import net.minecraft.item.crafting.ShapelessRecipes;
 import net.minecraft.world.World;
 import net.minecraftforge.common.BiomeDictionary.Type;
 import net.minecraftforge.oredict.OreDictionary;
+import net.minecraftforge.oredict.ShapelessOreRecipe;
 import cpw.mods.fml.common.Loader;
 import cpw.mods.fml.common.registry.GameRegistry;
 import exnihilo.Blocks;
@@ -39,6 +41,7 @@ public class Forestry {
 		}
 		
 		HiveRegistry.registerForestryHives();
+		registerRecipes();
 	}
 
 	public static boolean addsThisLeaf(Block block)
@@ -59,5 +62,16 @@ public class Forestry {
 			catch (Exception ex){}
 		}
 		return false;
+	}
+	
+	private static void registerRecipes()
+	{
+		GameRegistry.addShapelessRecipe(
+						new ItemStack(Blocks.BeeTrap, 1, 0),
+						new Object[]
+								{ 
+							new ItemStack(Block.hay, 1, 0),
+							new ItemStack(Items.Mesh, 1, 0)
+								});
 	}
 }
