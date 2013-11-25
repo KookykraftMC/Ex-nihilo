@@ -54,7 +54,7 @@ public class TileEntityBeeTrap extends TileEntity {
 				System.out.println("Scan completed!");
 				//Call get hive. 
 
-				Hive hive = HiveRegistry.getHive(worldObj.getBiomeGenForCoords(xCoord, zCoord), blocks, worldObj.canBlockSeeTheSky(xCoord, yCoord, zCoord));
+				Hive hive = HiveRegistry.getHive(worldObj.getBiomeGenForCoords(xCoord, zCoord), blocks, worldObj.canBlockSeeTheSky(xCoord, yCoord, zCoord), yCoord);
 				//If hive != null, replace this block with the returned hive.
 				if (hive != null)
 				{

@@ -14,7 +14,7 @@ public class HiveRegistry {
 		hives.put(hive.blockID + ":" + hive.meta, hive);
 	}
 
-	public static Hive getHive(BiomeGenBase biome, Surrounding local, boolean canSeeSky)
+	public static Hive getHive(BiomeGenBase biome, Surrounding local, boolean canSeeSky, int height)
 	{
 		Iterator it = hives.entrySet().iterator();
 
@@ -25,7 +25,7 @@ public class HiveRegistry {
 
 			if (hive != null)
 			{
-				if (hive.areAllRequirementsMet(biome, local, canSeeSky))
+				if (hive.areAllRequirementsMet(biome, local, canSeeSky, height))
 				{
 					return hive;
 				}else

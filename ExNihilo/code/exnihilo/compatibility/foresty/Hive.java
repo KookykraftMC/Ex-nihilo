@@ -15,6 +15,8 @@ public class Hive {
 	public Float maxTemperature = null;
 	public Float minRainfall = null;
 	public Float maxRainfall = null;
+	public Float minYLevel = null;
+	public Float maxYLevel = null;
 
 	public String requiredSubstrate = null;
 	private static int REQUIRED_SUBSTRATE_COUNT = 20;
@@ -32,14 +34,16 @@ public class Hive {
 		this.meta = meta;
 	}
 
-	public boolean areAllRequirementsMet(BiomeGenBase biome, Surrounding local, boolean canSeeSky)
+	public boolean areAllRequirementsMet(BiomeGenBase biome, Surrounding local, boolean canSeeSky, int height)
 	{
 		if (
 				(requiredBiome != null && biome.biomeID != requiredBiome.biomeID) ||
 				(minTemperature != null && biome.temperature < minTemperature) ||
-				(maxTemperature != null && biome.temperature > maxTemperature) ||
+				(maxTemperature != null && biome.temperature >= maxTemperature) ||
 				(minRainfall != null && biome.rainfall < minRainfall) ||
-				(maxRainfall != null && biome.rainfall > maxRainfall) ||
+				(maxRainfall != null && biome.rainfall >= maxRainfall) ||
+				(minYLevel != null && height < minYLevel) ||
+				(maxYLevel != null && height >= maxYLevel) ||
 				(requiredCanSeeSky != null && canSeeSky != requiredCanSeeSky)
 				)
 		{
@@ -112,6 +116,7 @@ public class Hive {
 
 	public float getSpawnChance(Surrounding local)
 	{
+		//TODO use the surrounding blocks to calculate the chance to spawn a bee hive.
 		return 1.0f;
 	}
 }
