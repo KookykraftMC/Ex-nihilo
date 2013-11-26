@@ -8,6 +8,7 @@ import net.minecraft.block.Block;
 public class Surrounding {
 	public Map<String, Integer> blocks = new HashMap<String, Integer>();
 	public int leafCount;
+	public String blockAbove;
 	
 	public void addBlock(int blockID, int meta)
 	{
@@ -29,5 +30,10 @@ public class Surrounding {
 		{
 			blocks.put(key, 1);
 		}
+	}
+	
+	public void setBlockAbove(int blockID, int meta)
+	{
+		this.blockAbove = blockID + ":" + meta;
 	}
 }

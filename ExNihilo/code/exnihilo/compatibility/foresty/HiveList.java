@@ -232,6 +232,7 @@ public class HiveList {
 
 		water.biomeTypes.add(Type.WATER);
 		water.requiredSubstrate = FluidRegistry.WATER.getBlockID() + ":0";
+		water.requiresBlockAbove = FluidRegistry.WATER.getBlockID() + ":0";
 		water.flowers.add(Block.waterlily.blockID + ":0");
 	}
 	

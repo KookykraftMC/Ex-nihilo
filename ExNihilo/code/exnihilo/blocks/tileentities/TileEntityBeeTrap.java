@@ -84,7 +84,15 @@ public class TileEntityBeeTrap extends TileEntity {
 			}else
 			{
 				//scan not complete, continue scanning.
-				blocks.addBlock(worldObj.getBlockId(xCoord + x, yCoord + y,zCoord + z), worldObj.getBlockMetadata(xCoord + x, yCoord + y,zCoord + z));
+				int blockID = worldObj.getBlockId(xCoord + x, yCoord + y,zCoord + z);
+				int meta = worldObj.getBlockMetadata(xCoord + x, yCoord + y,zCoord + z);
+				
+				blocks.addBlock(blockID, meta);
+				if (x == 0 && y == 1 && z == 0)
+				{
+					blocks.setBlockAbove(blockID, meta);
+				}
+				
 				x++;
 			}
 			
