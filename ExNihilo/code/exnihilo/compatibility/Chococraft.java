@@ -30,7 +30,7 @@ public class Chococraft {
 		
     	if (gysahlSeeds != null)
     	{
-    		SieveRegistry.register(Block.dirt.blockID, 0, gysahlSeeds.itemID, 0, 1);
+    		SieveRegistry.register(Block.dirt.blockID, 0, gysahlSeeds.itemID, 0, 32);
     	}
 	}
 }
