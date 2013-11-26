@@ -10,7 +10,9 @@ import cpw.mods.fml.common.Loader;
 import cpw.mods.fml.common.registry.GameRegistry;
 import exnihilo.Blocks;
 import exnihilo.Items;
+import exnihilo.registries.CompostRegistry;
 import exnihilo.registries.SieveRegistry;
+import exnihilo.registries.helpers.Color;
 
 public class IC2 {
 	public static boolean isLoaded()
@@ -37,6 +39,42 @@ public class IC2 {
     	{
     		SieveRegistry.register(Block.sand.blockID, 0, crushedUranium.itemID, 4, 48);
     	}
+    	
+    	Item plantBall = null;
+    	for (Item i : Item.itemsList)
+		{
+			if (i != null)
+			{
+				if (i.getUnlocalizedName().contains("itemFuelPlantBall"))
+				{
+					plantBall = i;
+				}
+			}
+		}
+    	
+    	if (plantBall != null)
+    	{
+    		CompostRegistry.register(plantBall.itemID, 0, 0.5f, new Color("269900"));
+    	}
+    	
+    	Item plantBallCompressed = null;
+    	for (Item i : Item.itemsList)
+		{
+			if (i != null)
+			{
+				if (i.getUnlocalizedName().contains("itemFuelPlantCmpr"))
+				{
+					plantBallCompressed = i;
+				}
+			}
+		}
+    	
+    	if (plantBallCompressed != null)
+    	{
+    		CompostRegistry.register(plantBallCompressed.itemID, 0, 1.0f, new Color("269900"));
+    	}
+    	
+    	//CommonOre.dumpUnlocalizedNames("Ball");
 	}
 
 }
