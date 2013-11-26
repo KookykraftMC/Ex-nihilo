@@ -49,13 +49,13 @@ public class Hive {
 				(requiredCanSeeSky != null && canSeeSky != requiredCanSeeSky.booleanValue())
 				)
 		{
-			System.out.println("HIVE: Missing basic requirements");
+			//System.out.println("HIVE: Missing basic requirements");
 			return false;
 		}
 		
 		if(requiresTree != null && requiresTree.booleanValue() == true && local.leafCount < 20)
 		{
-			System.out.println("HIVE: Needs to be in a tree");
+			//System.out.println("HIVE: Needs to be in a tree");
 			return false;
 		}
 
@@ -69,7 +69,7 @@ public class Hive {
 
 			if (substrateCount < REQUIRED_SUBSTRATE_COUNT)
 			{
-				System.out.println("HIVE: Missing substrate");
+				//System.out.println("HIVE: Missing substrate. Required:" + REQUIRED_SUBSTRATE_COUNT + " of block " + requiredSubstrate + ", Found:" + substrateCount);
 				return false;
 			}
 		}
@@ -94,7 +94,7 @@ public class Hive {
 				
 				if (!found)
 				{
-					System.out.println("HIVE: Wrong biome type");
+					//System.out.println("HIVE: Wrong biome type");
 					return false;
 				}
 			}
@@ -115,7 +115,7 @@ public class Hive {
 			
 			if (!found)
 			{
-				System.out.println("HIVE: Missing flowers");
+				//System.out.println("HIVE: Missing flowers");
 				return false;
 			}
 		}

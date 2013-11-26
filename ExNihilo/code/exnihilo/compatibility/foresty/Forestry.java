@@ -40,7 +40,7 @@ public class Forestry {
 			SieveRegistry.register(Block.gravel.blockID, 0, apatite.itemID, apatite.getItemDamage(), 16);
 		}
 		
-		HiveRegistry.registerForestryHives();
+		HiveRegistry.registerHives();
 		registerRecipes();
 	}
 

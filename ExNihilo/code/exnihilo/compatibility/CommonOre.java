@@ -382,17 +382,28 @@ public class CommonOre {
 		HammerRegistry.registerOre(Blocks.PlatinumOre.blockID, 1, Items.PlatinumDust.itemID, 0);
 	}
 	
-	public static void dumpUnlocalizedNames()
+	public static void dumpUnlocalizedNames(String name)
 	{
-		for (Item b : Item.itemsList)
+		for (Block b : Block.blocksList)
 		{
 			if (b != null)
 			{
-				if (b.getUnlocalizedName().contains("apatite"))
+				if (b.getUnlocalizedName().contains(name))
 				{
-					System.out.println(b.getUnlocalizedName());
+					System.out.println(b.blockID + ":" + b.getClass().getName());
 				}
 			}
 		}
+		
+//		for (Item b : Item.itemsList)
+//		{
+//			if (b != null)
+//			{
+//				if (b.getUnlocalizedName().contains(name))
+//				{
+//					System.out.println(b.itemID + ":" + b.getUnlocalizedName());
+//				}
+//			}
+//		}
 	}
 }

@@ -2,13 +2,21 @@ package exnihilo.compatibility.foresty;
 
 import java.util.Iterator;
 
+import cpw.mods.fml.common.registry.GameRegistry;
+
 import net.minecraft.block.Block;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.common.BiomeDictionary.Type;
+import net.minecraftforge.fluids.FluidRegistry;
 import forestry.api.apiculture.FlowerManager;
 
 public class HiveList {
 	public static ItemStack beehives;
+	public static ItemStack extraBeesHives;
+	public static ItemStack magicBeesHives;
+	
+	//Forestry
 	public static Hive forest;
 	public static Hive meadow;
 	public static Hive desert;
@@ -16,6 +24,11 @@ public class HiveList {
 	public static Hive end;
 	public static Hive snow;
 	public static Hive swamp;
+	
+	//Extra Bees
+	public static Hive water;
+	public static Hive rock;
+	public static Hive nether;
 
 	public static boolean generateForestryHives()
 	{
@@ -36,7 +49,62 @@ public class HiveList {
 		return false;
 
 	}
+	
+	public static boolean generateExtreBeesHives()
+	{
+		Block ebHives = null;
+		
+		for (Block b : Block.blocksList)
+		{
+			if (b != null)
+			{
+				if (b.getClass().getName().contains("binnie.extrabees.worldgen.BlockExtraBeeHive"))
+				{
+					ebHives = b;
+				}
+			}
+		}
+		
+		if (ebHives != null)
+		{
+			extraBeesHives = new ItemStack(ebHives, 1, 0);
+			
+			generateWaterHive();
+			generateRockHive();
+			generateNetherHive();
+			return true;
+		}
+		
+		return false;
+	}
 
+	
+	public static boolean generateMagicBeesHives()
+	{
+		Block magicHives = null;
+		
+		for (Block b : Block.blocksList)
+		{
+			if (b != null)
+			{
+				if (b.getClass().getName().contains("magicbees.block.BlockHive"))
+				{
+					magicHives = b;
+				}
+			}
+		}
+		
+		if (magicHives != null)
+		{
+			magicBeesHives = new ItemStack(magicHives, 1, 0);
+			return true;
+		}
+		
+		return false;
+	}
+	
+	
+	
 	private static void generateForestHive()
 	{
 		forest = new Hive(beehives.itemID, 1);
@@ -144,7 +212,7 @@ public class HiveList {
 	public static void generateSwampHive()
 	{
 		swamp = new Hive(beehives.itemID, 7);
-		jungle.minRainfall = 0.89f;
+		swamp.minRainfall = 0.89f;
 		swamp.minTemperature = 0.19f;
 		swamp.maxTemperature = 1.2f;
 
@@ -154,5 +222,40 @@ public class HiveList {
 
 		swamp.flowers.add(Block.mushroomBrown.blockID + ":0");
 		swamp.flowers.add(Block.mushroomRed.blockID + ":0");
+	}
+	
+	//EXTRA BEES!
+	public static void generateWaterHive()
+	{
+		water = new Hive(extraBeesHives.itemID, 0);
+		water.minTemperature = 0.19f;
+
+		water.biomeTypes.add(Type.WATER);
+		water.requiredSubstrate = FluidRegistry.WATER.getBlockID() + ":0";
+		water.flowers.add(Block.waterlily.blockID + ":0");
+	}
+	
+	public static void generateRockHive()
+	{
+		rock = new Hive(extraBeesHives.itemID, 1);
+
+		rock.requiredCanSeeSky = false;
+
+		rock.requiredSubstrate = Block.stone.blockID + ":0";
+		rock.defaultSpawnBonus = -20;
+	}
+	
+	public static void generateNetherHive()
+	{
+		nether = new Hive(extraBeesHives.itemID, 2);
+
+		nether.requiredCanSeeSky = false;
+
+		nether.biomeTypes.add(Type.NETHER);
+		nether.requiredSubstrate = Block.netherrack.blockID + ":0";
+		nether.flowers.add(Block.netherStalk.blockID + ":0");
+		nether.flowers.add(Block.netherStalk.blockID + ":1");
+		nether.flowers.add(Block.netherStalk.blockID + ":2");
+		nether.flowers.add(Block.netherStalk.blockID + ":4");
 	}
 }

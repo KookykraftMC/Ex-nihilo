@@ -4,6 +4,8 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
 
+import exnihilo.compatibility.CommonOre;
+
 import net.minecraft.world.biome.BiomeGenBase;
 
 public class HiveRegistry {
@@ -28,10 +30,8 @@ public class HiveRegistry {
 				if (hive.areAllRequirementsMet(biome, local, canSeeSky, height))
 				{
 					return hive;
-				}else
-				{
-					System.out.println("Hive found, but requirements are not met.");
 				}
+				//System.out.println("Hive found, but requirements are not met.");
 			}
 		}
 		System.out.println("Unable to locate appropriate hive");
@@ -39,7 +39,7 @@ public class HiveRegistry {
 		return null;
 	}
 	
-	public static void registerForestryHives()
+	public static void registerHives()
 	{
 		if (HiveList.generateForestryHives())
 		{
@@ -51,5 +51,20 @@ public class HiveRegistry {
 			registerHive(HiveList.snow);
 			registerHive(HiveList.swamp);
 		}
+		
+		if(HiveList.generateExtreBeesHives())
+		{
+			registerHive(HiveList.water);
+			registerHive(HiveList.rock);
+			registerHive(HiveList.nether);
+			
+			System.out.println("Ex Nihilo: Found Extra Bees!");
+		}
+		
+		if(HiveList.generateMagicBeesHives())
+		{
+			System.out.println("Ex Nihilo: Found Magic Bees!");
+		}
+		//CommonOre.dumpUnlocalizedNames("hive");
 	}
 }
