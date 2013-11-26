@@ -54,6 +54,12 @@ public class Hive {
 			return false;
 		}
 		
+		if(requiresBlockAbove != null && !requiresBlockAbove.equals(local.blockAbove))
+		{
+			//System.out.println("HIVE: The block above needs to be " + local.blockAbove);
+			return false;
+		}
+		
 		if(requiresTree != null && requiresTree.booleanValue() == true && local.leafCount < 20)
 		{
 			//System.out.println("HIVE: Needs to be in a tree");
