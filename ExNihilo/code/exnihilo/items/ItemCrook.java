@@ -19,6 +19,7 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.ItemTool;
 import net.minecraft.world.World;
+import net.minecraftforge.fluids.FluidRegistry;
 
 public class ItemCrook extends ItemTool{
 	public static final double pullingForce = 1.5d;
@@ -29,7 +30,7 @@ public class ItemCrook extends ItemTool{
 	public ItemCrook(int id) 
 	{
 		super(id, 0.0f, EnumToolMaterial.WOOD, blocksEffectiveAgainst);
-		
+
 		this.setMaxDamage((int)(this.getMaxDamage() * 3));
 	}
 
@@ -94,14 +95,14 @@ public class ItemCrook extends ItemTool{
 					}
 					catch (Exception ex){}
 				}
-				
+
 				//If the Forestry method didn't work, try the vanilla way.
 				if (!extraDropped)
 				{
 					//Call it once here and it gets called again when it breaks. 
 					block.dropBlockAsItem(world, X, Y, Z, meta, 0);
 				}
-				
+
 
 				//Silkworms
 				if (ModData.ALLOW_SILKWORMS && world.rand.nextInt(100) == 0)
@@ -135,7 +136,7 @@ public class ItemCrook extends ItemTool{
 				player.destroyCurrentEquippedItem();
 			}
 		}
-		
+
 		return false;
 	}
 
@@ -196,5 +197,47 @@ public class ItemCrook extends ItemTool{
 	public void registerIcons(IconRegister register)
 	{
 		this.itemIcon = register.registerIcon(ModData.TEXTURE_LOCATION + ":Crook");
+	}
+
+	/**
+	 * Callback for item usage. If the item does something special on right clicking, he will have one of those. Return
+	 * True if something happen and false if it don't. This is for ITEMS, not BLOCKS
+	 */
+	public boolean onItemUse(ItemStack item, EntityPlayer player, World world, int x, int y, int z, int par7, float par8, float par9, float par10)
+	{
+		//TODO: Remove this during the 1.7 update?
+		// Fishing will allow the player to obtain Lilypads.
+		if (world.getBlockId(x, y, z) == Block.dirt.blockID && world.getBlockId(x, y + 1, z) == FluidRegistry.WATER.getBlockID() && y + 1 >= world.getTopSolidOrLiquidBlock(x, z) - 1)
+		{
+			if (!world.isRemote)
+			{
+				if (world.rand.nextInt(120) == 0)
+				{
+					ItemStack waterlily = new ItemStack(Block.waterlily.blockID, 1, 0);
+					EntityItem entity = new EntityItem(world, x + 0.5D, y + 1.5D, z + 0.5D, waterlily);
+
+					double distance = Math.sqrt(Math.pow(player.posX - entity.posX, 2) + Math.pow(player.posZ - entity.posZ, 2));
+
+					double scalarX = (player.posX - entity.posX) / distance;
+					double scalarZ = (player.posZ - entity.posZ) / distance;
+
+					double velX = scalarX * pullingForce;
+					double velZ = scalarZ * pullingForce;
+					double velY = 0.1d; //- (player.posY - entity.posY);
+
+					entity.addVelocity(velX, velY, velZ);
+					world.spawnEntityInWorld(entity);
+				}
+
+//				if (world.rand.nextInt(30) == 0)
+//				{
+//					world.destroyBlock(x, y, z, false);
+//				}
+			}
+			item.damageItem(1, player);
+
+			return true;
+		}
+		return false;
 	}
 }
