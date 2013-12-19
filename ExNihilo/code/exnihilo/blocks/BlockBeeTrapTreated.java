@@ -22,6 +22,7 @@ public class BlockBeeTrapTreated extends BlockContainer{
 	public BlockBeeTrapTreated(int id) {
 		super(id, Material.ground);
 		
+		setHardness(1.0f);
 		setStepSound(soundGrassFootstep);
 		setCreativeTab(CreativeTabs.tabBlock);
 		

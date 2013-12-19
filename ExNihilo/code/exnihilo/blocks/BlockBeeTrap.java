@@ -17,6 +17,7 @@ public class BlockBeeTrap extends Block{
 	public BlockBeeTrap(int id) {
 		super(id, Material.ground);
 		
+		setHardness(0.8f);
 		setStepSound(soundGrassFootstep);
 		setCreativeTab(CreativeTabs.tabBlock);
 	}
