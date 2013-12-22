@@ -24,6 +24,7 @@ import exnihilo.compatibility.Chococraft;
 import exnihilo.compatibility.CommonOre;
 import exnihilo.compatibility.IC2;
 import exnihilo.compatibility.Mekanism;
+import exnihilo.compatibility.ThermalExpansion;
 import exnihilo.compatibility.foresty.Forestry;
 import exnihilo.data.BlockData;
 import exnihilo.data.FluidData;
@@ -129,6 +130,13 @@ public class ExNihilo
 			System.out.println(ModData.NAME + ": Found Forestry!");
 
 			Forestry.loadCompatibility();
+		}
+		
+		if (ThermalExpansion.isLoaded())
+		{
+			System.out.println(ModData.NAME + ": Found ThermalExpansion!");
+
+			ThermalExpansion.loadCompatibility();
 		}
 
 		if (AppliedEnergistics.isLoaded())
