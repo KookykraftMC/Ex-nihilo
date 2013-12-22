@@ -1,6 +1,11 @@
 package exnihilo.compatibility;
 
+import ic2.api.recipe.IRecipeInput;
+import ic2.api.recipe.RecipeInputItemStack;
+import ic2.api.recipe.RecipeOutput;
+
 import java.util.ArrayList;
+import java.util.Map;
 
 import net.minecraft.block.Block;
 import net.minecraft.item.Item;
@@ -74,7 +79,44 @@ public class IC2 {
     		CompostRegistry.register(plantBallCompressed.itemID, 0, 1.0f, new Color("269900"));
     	}
     	
-    	//CommonOre.dumpUnlocalizedNames("Ball");
+    	//Remove the default IC2 cobblestone macerator recipe.
+    	Map<IRecipeInput, RecipeOutput> recipes = ic2.api.recipe.Recipes.macerator.getRecipes();
+    	IRecipeInput cobbleRecipe = null;
+    	IRecipeInput gravelRecipe = null;
+    	
+    	for (IRecipeInput i : recipes.keySet())
+    	{
+    		if(i.matches(new ItemStack(Block.cobblestone)))
+    		{
+    			cobbleRecipe = i;
+    		}
+    		
+    		if(i.matches(new ItemStack(Block.gravel)))
+    		{
+    			gravelRecipe = i;
+    		}
+    	}
+    	
+    	if (cobbleRecipe != null)
+    	{
+    		System.out.println("Ex Nihilo: Removing default IC2 Cobble->Sand macerator recipe.");
+    		
+    		recipes.remove(cobbleRecipe);
+    	}
+    	
+    	if (gravelRecipe != null)
+    	{
+    		System.out.println("Ex Nihilo: Removing default IC2 Gravel->Flint macerator recipe.");
+    		
+    		recipes.remove(gravelRecipe);
+    	}
+    	
+    	//Add the hammer recipe sequence.
+    	System.out.println("Ex Nihilo: Adding Hammer Sequence to IC2 Macerator");
+    	ic2.api.recipe.Recipes.macerator.addRecipe(new RecipeInputItemStack(new ItemStack(Block.cobblestone)), null, new ItemStack(Block.gravel));
+    	//ic2.api.recipe.Recipes.macerator.addRecipe(new RecipeInputItemStack(new ItemStack(Block.gravel,0,1)), null, new ItemStack(Block.sand,0,1));
+    	ic2.api.recipe.Recipes.macerator.addRecipe(new RecipeInputItemStack(new ItemStack(Block.gravel)), null, new ItemStack(Block.sand));
+    	ic2.api.recipe.Recipes.macerator.addRecipe(new RecipeInputItemStack(new ItemStack(Block.sand)), null, new ItemStack(Blocks.Dust));
 	}
 
 }
