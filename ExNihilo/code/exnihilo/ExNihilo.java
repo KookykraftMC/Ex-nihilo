@@ -110,12 +110,7 @@ public class ExNihilo
 
 		World.registerWorldProviders();
 		
-		if (ThermalExpansion.isLoaded())
-		{
-			System.out.println(ModData.NAME + ": Found ThermalExpansion!");
-
-			ThermalExpansion.loadCompatibility();
-		}
+		
 	}
 
 
@@ -139,7 +134,12 @@ public class ExNihilo
 			Forestry.loadCompatibility();
 		}
 		
+		if (ThermalExpansion.isLoaded())
+		{
+			System.out.println(ModData.NAME + ": Found ThermalExpansion!");
 
+			ThermalExpansion.loadCompatibility();
+		}
 
 		if (AppliedEnergistics.isLoaded())
 		{
