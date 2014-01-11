@@ -134,7 +134,7 @@ public class BlockSieve extends BlockContainer{
 		{
 			if (sieve.mode != SieveMode.EMPTY)
 			{
-				if(!(player instanceof EntityPlayerMP))
+				if(isHuman(player) || ModData.ALLOW_SIEVE_AUTOMATION)
 				{
 					sieve.ProcessContents(false);
 				}				
@@ -142,6 +142,11 @@ public class BlockSieve extends BlockContainer{
 		}
 
 		return true;
+	}
+	
+	private boolean isHuman(EntityPlayer player)
+	{
+		return !(player instanceof EntityPlayerMP);
 	}
 	
 	private void removeCurrentItem(EntityPlayer player)

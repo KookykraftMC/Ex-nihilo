@@ -46,6 +46,8 @@ public class ModData {
 	public static String ALLOW_SILKWORMS_KEY = "silkworms allowed";
 	public static boolean ALLOW_SILKWORMS = true;
 	
+	public static String ALLOW_SIEVE_AUTOMATION_KEY = "sieve automation allowed";
+	public static boolean ALLOW_SIEVE_AUTOMATION = false;
 	
 	//BARREL OPTIONS
 	public static String CATEGORY_OPTIONS_BARREL = "barrel options";
@@ -85,6 +87,7 @@ public class ModData {
 		//Options
 		ALLOW_BARRELS = config.get(CATEGORY_OPTIONS, ALLOW_BARRELS_KEY, ALLOW_BARRELS).getBoolean(ALLOW_BARRELS);
 		ALLOW_SIEVES = config.get(CATEGORY_OPTIONS, ALLOW_SIEVES_KEY, ALLOW_SIEVES).getBoolean(ALLOW_SIEVES);
+		ALLOW_SIEVE_AUTOMATION  = config.get(CATEGORY_OPTIONS, ALLOW_SIEVE_AUTOMATION_KEY, ALLOW_SIEVE_AUTOMATION).getBoolean(ALLOW_SIEVE_AUTOMATION);
 		ALLOW_CRUCIBLES = config.get(CATEGORY_OPTIONS, ALLOW_CRUCIBLES_KEY, ALLOW_CRUCIBLES).getBoolean(ALLOW_CRUCIBLES);
 		ALLOW_HAMMERS = config.get(CATEGORY_OPTIONS, ALLOW_HAMMERS_KEY, ALLOW_HAMMERS).getBoolean(ALLOW_HAMMERS);
 		ALLOW_CROOKS = config.get(CATEGORY_OPTIONS, ALLOW_CROOKS_KEY, ALLOW_CROOKS).getBoolean(ALLOW_CROOKS);
