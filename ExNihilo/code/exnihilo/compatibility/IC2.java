@@ -15,6 +15,7 @@ import cpw.mods.fml.common.Loader;
 import cpw.mods.fml.common.registry.GameRegistry;
 import exnihilo.Blocks;
 import exnihilo.Items;
+import exnihilo.data.ModData;
 import exnihilo.registries.CompostRegistry;
 import exnihilo.registries.SieveRegistry;
 import exnihilo.registries.helpers.Color;
@@ -80,42 +81,45 @@ public class IC2 {
     	}
     	
     	//Remove the default IC2 cobblestone macerator recipe.
-    	Map<IRecipeInput, RecipeOutput> recipes = ic2.api.recipe.Recipes.macerator.getRecipes();
-    	IRecipeInput cobbleRecipe = null;
-    	IRecipeInput gravelRecipe = null;
-    	
-    	for (IRecipeInput i : recipes.keySet())
+    	if (ModData.OVERWRITE_DEFAULT_MACERATOR_RECIPES)
     	{
-    		if(i.matches(new ItemStack(Block.cobblestone)))
-    		{
-    			cobbleRecipe = i;
-    		}
-    		
-    		if(i.matches(new ItemStack(Block.gravel)))
-    		{
-    			gravelRecipe = i;
-    		}
+    		Map<IRecipeInput, RecipeOutput> recipes = ic2.api.recipe.Recipes.macerator.getRecipes();
+        	IRecipeInput cobbleRecipe = null;
+        	IRecipeInput gravelRecipe = null;
+        	
+        	for (IRecipeInput i : recipes.keySet())
+        	{
+        		if(i.matches(new ItemStack(Block.cobblestone)))
+        		{
+        			cobbleRecipe = i;
+        		}
+        		
+        		if(i.matches(new ItemStack(Block.gravel)))
+        		{
+        			gravelRecipe = i;
+        		}
+        	}
+        	
+        	if (cobbleRecipe != null)
+        	{
+        		System.out.println("Ex Nihilo: Removing default IC2 Cobble->Sand macerator recipe.");
+        		
+        		recipes.remove(cobbleRecipe);
+        	}
+        	
+        	if (gravelRecipe != null)
+        	{
+        		System.out.println("Ex Nihilo: Removing default IC2 Gravel->Flint macerator recipe.");
+        		
+        		recipes.remove(gravelRecipe);
+        	}
+        	
+        	//Add the hammer recipe sequence.
+        	System.out.println("Ex Nihilo: Adding Hammer Sequence to IC2 Macerator");
+        	ic2.api.recipe.Recipes.macerator.addRecipe(new RecipeInputItemStack(new ItemStack(Block.cobblestone)), null, new ItemStack(Block.gravel));
+        	ic2.api.recipe.Recipes.macerator.addRecipe(new RecipeInputItemStack(new ItemStack(Block.gravel)), null, new ItemStack(Block.sand));
     	}
     	
-    	if (cobbleRecipe != null)
-    	{
-    		System.out.println("Ex Nihilo: Removing default IC2 Cobble->Sand macerator recipe.");
-    		
-    		recipes.remove(cobbleRecipe);
-    	}
-    	
-    	if (gravelRecipe != null)
-    	{
-    		System.out.println("Ex Nihilo: Removing default IC2 Gravel->Flint macerator recipe.");
-    		
-    		recipes.remove(gravelRecipe);
-    	}
-    	
-    	//Add the hammer recipe sequence.
-    	System.out.println("Ex Nihilo: Adding Hammer Sequence to IC2 Macerator");
-    	ic2.api.recipe.Recipes.macerator.addRecipe(new RecipeInputItemStack(new ItemStack(Block.cobblestone)), null, new ItemStack(Block.gravel));
-    	//ic2.api.recipe.Recipes.macerator.addRecipe(new RecipeInputItemStack(new ItemStack(Block.gravel,0,1)), null, new ItemStack(Block.sand,0,1));
-    	ic2.api.recipe.Recipes.macerator.addRecipe(new RecipeInputItemStack(new ItemStack(Block.gravel)), null, new ItemStack(Block.sand));
     	ic2.api.recipe.Recipes.macerator.addRecipe(new RecipeInputItemStack(new ItemStack(Block.sand)), null, new ItemStack(Blocks.Dust));
 	}
 

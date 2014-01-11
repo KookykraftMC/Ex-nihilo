@@ -13,6 +13,7 @@ import cpw.mods.fml.common.ModContainer;
 import cpw.mods.fml.common.event.FMLInterModComms;
 import exnihilo.Blocks;
 import exnihilo.ExNihilo;
+import exnihilo.data.ModData;
 
 public class ThermalExpansion {
 	public static boolean isLoaded()
@@ -22,8 +23,12 @@ public class ThermalExpansion {
 	
 	public static void loadCompatibility()
 	{	
-		addPulverizerRecipe(3200, new ItemStack(Block.cobblestone), new ItemStack(Block.gravel), new ItemStack(Block.sand), 10, true);
-		addPulverizerRecipe(3200, new ItemStack(Block.gravel), new ItemStack(Block.sand), new ItemStack(Blocks.Dust), 10, true);
+		if (ModData.OVERWRITE_DEFAULT_PULVERIZER_RECIPES)
+		{
+			addPulverizerRecipe(3200, new ItemStack(Block.cobblestone), new ItemStack(Block.gravel), new ItemStack(Block.sand), 10, true);
+			addPulverizerRecipe(3200, new ItemStack(Block.gravel), new ItemStack(Block.sand), new ItemStack(Blocks.Dust), 10, true);
+		}
+		
 		addPulverizerRecipe(3200, new ItemStack(Block.sand), new ItemStack(Blocks.Dust), null, 0, true);
 	}
 	

@@ -1,5 +1,6 @@
 package exnihilo;
 
+import java.io.File;
 import java.util.List;
 
 import net.minecraft.block.Block;
@@ -62,7 +63,7 @@ public class ExNihilo
 		//Item and Block IDs!
 		config = new Configuration(event.getSuggestedConfigurationFile());
 		config.load();
-
+		
 		ModData.load(config);
 		WorldData.load(config);
 
