@@ -1,9 +1,12 @@
 package exnihilo.compatibility;
 
+import java.lang.reflect.Method;
+
 import net.minecraft.block.Block;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.world.World;
 import cpw.mods.fml.common.FMLCommonHandler;
 import cpw.mods.fml.common.Loader;
 import cpw.mods.fml.common.ModContainer;
@@ -19,60 +22,35 @@ public class ThermalExpansion {
 	
 	public static void loadCompatibility()
 	{	
-		NBTTagCompound cobbleToGravel = new NBTTagCompound();
-		cobbleToGravel.setInteger("energy", 3200);
-		cobbleToGravel.setInteger("secondaryChance", 10);
-		cobbleToGravel.setBoolean("overwrite", true);
-		cobbleToGravel.setCompoundTag("input", new NBTTagCompound());
-		cobbleToGravel.setCompoundTag("primaryOutput", new NBTTagCompound());
-		cobbleToGravel.setCompoundTag("secondaryOutput", new NBTTagCompound());
+		addPulverizerRecipe(3200, new ItemStack(Block.cobblestone), new ItemStack(Block.gravel), new ItemStack(Block.sand), 10, true);
+		addPulverizerRecipe(3200, new ItemStack(Block.gravel), new ItemStack(Block.sand), new ItemStack(Blocks.Dust), 10, true);
+		addPulverizerRecipe(3200, new ItemStack(Block.sand), new ItemStack(Blocks.Dust), null, 0, true);
+	}
+	
+	public static void addPulverizerRecipe(int energy, ItemStack input, ItemStack primaryOutput, ItemStack secondaryOutput, int secondaryChance, boolean overwrite)
+	{
+		Class pulverizer = null;
+		Method addRecipe = null;
+		Object[] parameters ={(Object)energy, (Object)input, (Object)primaryOutput, (Object)secondaryOutput, (Object)secondaryChance, (Object)overwrite};
+		
+		try {
+			pulverizer = Class.forName("thermalexpansion.util.crafting.PulverizerManager");
 
-		new ItemStack(Block.cobblestone).writeToNBT(cobbleToGravel.getCompoundTag("input"));
-		new ItemStack(Block.gravel).writeToNBT(cobbleToGravel.getCompoundTag("primaryOutput"));
-		new ItemStack(Block.sand).writeToNBT(cobbleToGravel.getCompoundTag("secondaryOutput"));
-		
-		FMLInterModComms.sendRuntimeMessage(ExNihilo.instance, "ThermalExpansion", "PulverizerRecipe", cobbleToGravel);
-		System.out.println("Ex Nihilo: Added Cobble->Gravel recipe to TE Pulverizer");
-		
-//		if(FMLInterModComms.sendMessage("ThermalExpansion", "PulverizerRecipe", cobbleToGravel))
-//		{
-//			System.out.println("Ex Nihilo: Added Cobble->Gravel recipe to TE Pulverizer");
-//		}
-		
-		NBTTagCompound gravelToSand = new NBTTagCompound();
-		gravelToSand.setInteger("energy", 3200);
-		gravelToSand.setInteger("secondaryChance", 10);
-		gravelToSand.setBoolean("overwrite", true);
-		gravelToSand.setCompoundTag("input", new NBTTagCompound());
-		gravelToSand.setCompoundTag("primaryOutput", new NBTTagCompound());
-		gravelToSand.setCompoundTag("secondaryOutput", new NBTTagCompound());
+			if (pulverizer != null)
+			{	
+				//System.out.println("Ex Nihilo: Successfully located the PulverizerManager!");
+				addRecipe = pulverizer.getDeclaredMethod("addRecipe", int.class, ItemStack.class, ItemStack.class, ItemStack.class, int.class, boolean.class);
+				addRecipe.setAccessible(true);
+			}//else
+			//{System.out.println("Ex Nihilo: Could not locate PulverizerManager");}
 
-		new ItemStack(Block.gravel).writeToNBT(gravelToSand.getCompoundTag("input"));
-		new ItemStack(Block.sand).writeToNBT(gravelToSand.getCompoundTag("primaryOutput"));
-		new ItemStack(Blocks.Dust).writeToNBT(gravelToSand.getCompoundTag("secondaryOutput"));
-		
-		FMLInterModComms.sendRuntimeMessage(ExNihilo.instance, "ThermalExpansion", "PulverizerRecipe", gravelToSand);
-		System.out.println("Ex Nihilo: Added Gravel->Sand recipe to TE Pulverizer");
-		
-//		if(FMLInterModComms.sendMessage("ThermalExpansion", "PulverizerRecipe", gravelToSand))
-//		{
-//			System.out.println("Ex Nihilo: Added Gravel->Sand recipe to TE Pulverizer");
-//		}
-
-		NBTTagCompound sandToDust = new NBTTagCompound();
-		sandToDust.setInteger("energy", 3200);
-		sandToDust.setCompoundTag("input", new NBTTagCompound());
-		sandToDust.setCompoundTag("primaryOutput", new NBTTagCompound());
-
-		new ItemStack(Block.sand).writeToNBT(sandToDust.getCompoundTag("input"));
-		new ItemStack(Blocks.Dust).writeToNBT(sandToDust.getCompoundTag("primaryOutput"));
-		
-		FMLInterModComms.sendRuntimeMessage(ExNihilo.instance, "ThermalExpansion", "PulverizerRecipe", sandToDust);
-		System.out.println("Ex Nihilo: Added Sand->Dust recipe to TE Pulverizer");
-		
-//		if(FMLInterModComms.sendMessage("ThermalExpansion", "PulverizerRecipe", sandToDust))
-//		{
-//			System.out.println("Ex Nihilo: Added Sand->Dust recipe to TE Pulverizer");
-//		}
+			if (addRecipe != null)
+			{
+				//System.out.println("Ex Nihilo: Successfully located the addRecipe() method!");
+				addRecipe.invoke(null, parameters);
+			}//else
+			//{System.out.println("Ex Nihilo: Could not locate addRecipe method on class: PulverizerManager");}
+		}
+		catch (Exception ex){System.out.println("Ex Nihilo: Failed to add pulverizer recipes, " + ex.getMessage());}
 	}
 }

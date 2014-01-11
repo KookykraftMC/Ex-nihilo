@@ -121,6 +121,7 @@ public class ItemCrook extends ItemTool{
 				if (ModData.ALLOW_SILKWORMS && world.rand.nextInt(15) == 0)
 				{
 					world.spawnEntityInWorld(new EntityItem(world, X + 0.5D, Y + 0.5D, Z + 0.5D, new ItemStack(Items.Silkworm, 1, 0)));
+					world.getWorldTime();
 				}
 			}
 
