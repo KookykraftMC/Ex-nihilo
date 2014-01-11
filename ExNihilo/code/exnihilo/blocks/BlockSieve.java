@@ -18,6 +18,7 @@ import net.minecraft.block.material.Material;
 import net.minecraft.client.renderer.texture.IconRegister;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.Icon;
@@ -133,14 +134,10 @@ public class BlockSieve extends BlockContainer{
 		{
 			if (sieve.mode != SieveMode.EMPTY)
 			{
-				
-//				if (!player.capabilities.isCreativeMode)
-//				{
+				if(!(player instanceof EntityPlayerMP))
+				{
 					sieve.ProcessContents(false);
-//				}else{
-//					sieve.ProcessContents(true);
-//				}
-				
+				}				
 			}
 		}
 
