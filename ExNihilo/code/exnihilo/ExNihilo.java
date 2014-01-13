@@ -12,6 +12,7 @@ import net.minecraftforge.event.ForgeSubscribe;
 import cpw.mods.fml.common.Mod;
 import cpw.mods.fml.common.Mod.EventHandler;
 import cpw.mods.fml.common.Mod.Instance;
+import cpw.mods.fml.common.Loader;
 import cpw.mods.fml.common.ModMetadata;
 import cpw.mods.fml.common.SidedProxy;
 import cpw.mods.fml.common.event.FMLInitializationEvent;
@@ -122,7 +123,7 @@ public class ExNihilo
 	{
 		CommonOre.registerRecipes();
 
-		if (IC2.isLoaded())
+		if (Loader.isModLoaded("IC2"))
 		{
 			System.out.println(ModData.NAME + ": Found IC2!");
 
