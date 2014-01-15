@@ -26,24 +26,24 @@ import net.minecraft.world.World;
 
 public class BlockSieve extends BlockContainer{
 	public static Icon meshIcon;
-	
+
 	public BlockSieve(int id) {
 		super(id, Material.wood);
 		setCreativeTab(CreativeTabs.tabDecorations);
 		setHardness(2.0f);
 		setBurnProperties(this.blockID, 5,150);
-		
+
 		setUnlocalizedName(ModData.ID + "." + BlockData.SIEVE_KEY);
 		GameRegistry.registerTileEntity(TileEntitySieve.class, this.getUnlocalizedName());
 	}
-	
+
 	@Override
 	public void registerIcons(IconRegister register)
 	{
 		this.blockIcon = Block.planks.getIcon(0,0);
 		meshIcon = register.registerIcon(ModData.TEXTURE_LOCATION + ":" + "IconSieveMesh");
 	}
-	
+
 	@SideOnly(Side.CLIENT)
 	@Override
 	public void getSubBlocks(int id, CreativeTabs tabs, List subItems) {
@@ -69,13 +69,13 @@ public class BlockSieve extends BlockContainer{
 	{
 		return false;
 	}
-	
+
 	@Override
 	public boolean hasTileEntity()
 	{
 		return true;
 	}
-	
+
 	@Override
 	public int damageDropped (int metadata) {
 		return metadata;
@@ -104,51 +104,64 @@ public class BlockSieve extends BlockContainer{
 				sieve.AddDirt();
 				removeCurrentItem(player);
 			}
-			
+
 			if (player.getCurrentEquippedItem().itemID == Block.gravel.blockID)
 			{
 				sieve.AddGravel();
 				removeCurrentItem(player);
 			}
-			
+
 			if (player.getCurrentEquippedItem().itemID == Block.sand.blockID)
 			{
 				sieve.AddSand();
 				removeCurrentItem(player);
 			}
-			
+
 			if (player.getCurrentEquippedItem().itemID == Block.slowSand.blockID)
 			{
 				sieve.AddSoulSand();
 				removeCurrentItem(player);
 			}
-			
+
 			if (player.getCurrentEquippedItem().itemID == Blocks.Dust.blockID)
 			{
 				sieve.AddDust();
 				removeCurrentItem(player);
 			}
-			
-			
+
+
 		}else
 		{
-			if (sieve.mode != SieveMode.EMPTY)
+			if (world.isRemote)
 			{
-				if(isHuman(player) || ModData.ALLOW_SIEVE_AUTOMATION)
+				sieve.ProcessContents(false);
+			}else
+			{
+				if (sieve.mode != SieveMode.EMPTY)
 				{
-					sieve.ProcessContents(false);
-				}				
+					if(isHuman(player) || ModData.ALLOW_SIEVE_AUTOMATION)
+					{
+						sieve.ProcessContents(false);
+					}				
+				}
 			}
 		}
 
 		return true;
 	}
-	
+
 	private boolean isHuman(EntityPlayer player)
 	{
-		return !(player instanceof EntityPlayerMP);
+		boolean isHuman = (player instanceof EntityPlayerMP);
+
+		if (player.getEntityName().contains("CoFH"))
+		{
+			isHuman = false;
+		}
+
+		return isHuman;
 	}
-	
+
 	private void removeCurrentItem(EntityPlayer player)
 	{
 		ItemStack item = player.getCurrentEquippedItem();
