@@ -108,10 +108,6 @@ public class HiveList {
 	private static void generateForestHive()
 	{
 		forest = new Hive(beehives.itemID, 1);
-		forest.minRainfall = 0.29f;
-		forest.maxRainfall = 0.9f;
-		forest.minTemperature = 0.19f;
-		forest.maxTemperature = 1.2f;
 
 		forest.requiredCanSeeSky = true;
 		forest.requiresTree = true;
@@ -123,10 +119,6 @@ public class HiveList {
 	private static void generateMeadowHive()
 	{
 		meadow = new Hive(beehives.itemID, 2);
-		meadow.minRainfall = 0.29f;
-		meadow.maxRainfall = 0.9f;
-		meadow.minTemperature = 0.19f;
-		meadow.maxTemperature = 1.2f;
 
 		meadow.requiredCanSeeSky = true;
 
@@ -143,8 +135,6 @@ public class HiveList {
 	private static void generateDesertHive()
 	{
 		desert = new Hive(beehives.itemID, 3);
-		desert.maxRainfall = 0.0f;
-		desert.minTemperature = 1.19f;
 
 		desert.requiredCanSeeSky = true;
 
@@ -156,8 +146,6 @@ public class HiveList {
 	public static void generateJungleHive()
 	{
 		jungle = new Hive(beehives.itemID, 4);
-		jungle.minRainfall = 0.89f;
-		jungle.minTemperature = 1.19f;
 
 		jungle.requiredCanSeeSky = true;
 		jungle.requiresTree = true;
@@ -194,8 +182,7 @@ public class HiveList {
 	public static void generateSnowHive()
 	{
 		snow = new Hive(beehives.itemID, 6);
-		snow.maxTemperature = 0.05f;
-
+		
 		snow.requiredCanSeeSky = true;
 		snow.requiredSubstrate = Block.snow.blockID + ":0";
 		
@@ -212,9 +199,6 @@ public class HiveList {
 	public static void generateSwampHive()
 	{
 		swamp = new Hive(beehives.itemID, 7);
-		swamp.minRainfall = 0.89f;
-		swamp.minTemperature = 0.19f;
-		swamp.maxTemperature = 1.2f;
 
 		swamp.requiredCanSeeSky = true;
 
@@ -228,7 +212,6 @@ public class HiveList {
 	public static void generateWaterHive()
 	{
 		water = new Hive(extraBeesHives.itemID, 0);
-		water.minTemperature = 0.19f;
 
 		water.biomeTypes.add(Type.WATER);
 		water.requiredSubstrate = FluidRegistry.WATER.getBlockID() + ":0";
