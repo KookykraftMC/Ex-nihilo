@@ -27,6 +27,7 @@ public class SieveRegistry {
 	public static boolean dropLead = false;
 	public static boolean dropNickel = false;
 	public static boolean dropPlatinum = false;
+	public static boolean dropAluminum = false;
 	
 	public static void register(int sourceID, int sourceMeta, int outputID, int outputMeta, int rarity)
 	{
@@ -62,6 +63,7 @@ public class SieveRegistry {
 		dropSilver = config.get(CATEGORY_SIEVE_OPTIONS, "give silver", false, "Forces the sieve to give silver even if no mods are detected which require it.").getBoolean(false);
 		dropNickel = config.get(CATEGORY_SIEVE_OPTIONS, "give nickel", false, "Forces the sieve to give nickel even if no mods are detected which require it.").getBoolean(false);
 		dropPlatinum = config.get(CATEGORY_SIEVE_OPTIONS, "give platinum", false, "Forces the sieve to give platinum even if no mods are detected which require it.").getBoolean(false);
+		dropAluminum = config.get(CATEGORY_SIEVE_OPTIONS, "give aluminum", false, "Forces the sieve to give aluminum even if no mods are detected which require it.").getBoolean(false);
 	}
 	
 	public static void registerRewards()
@@ -159,6 +161,13 @@ public class SieveRegistry {
 			register(Block.gravel.blockID, 0, Items.PlatinumGravel.itemID, 0, 24);
 			register(Block.sand.blockID, 0, Items.PlatinumSand.itemID, 0, 24);
 			register(Blocks.Dust.blockID, 0, Items.PlatinumDust.itemID, 0, 24);
+		}
+		
+		if (dropAluminum)
+		{
+			register(Block.gravel.blockID, 0, Items.AluminumGravel.itemID, 0, 10);
+			register(Block.sand.blockID, 0, Items.AluminumSand.itemID, 0, 10);
+			register(Blocks.Dust.blockID, 0, Items.AluminumDust.itemID, 0, 10);
 		}
 	}
 }

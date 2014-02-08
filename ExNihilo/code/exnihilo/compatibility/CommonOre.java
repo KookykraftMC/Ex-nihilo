@@ -104,6 +104,18 @@ public class CommonOre {
 			registerHammerRecipes(ores, Items.PlatinumGravel.itemID, 0);
 		}
 		
+		ores = OreDictionary.getOres("ingotAluminum");
+		if (ores.size() > 1)
+		{
+			SieveRegistry.dropAluminum = true;
+		}
+		
+		ores = OreDictionary.getOres("oreAluminum");
+		if (ores.size() > 0)
+		{
+			registerHammerRecipes(ores, Items.AluminumGravel.itemID, 0);
+		}
+		
 		registerFurnaceRecipes();
 		registerOreRecipes();
 		SieveRegistry.RegisterOptionalOres();
@@ -296,6 +308,37 @@ public class CommonOre {
 									"xx",
 									'x', Items.PlatinumDust
 										}));
+				
+				//Aluminum	
+				GameRegistry.addRecipe(
+						new ShapedOreRecipe(
+								new ItemStack(Blocks.AluminumOre, 1, 0),
+								new Object[]
+										{
+									"xx",
+									"xx",
+									'x', Items.AluminumGravel
+										}));
+
+				GameRegistry.addRecipe(
+						new ShapedOreRecipe(
+								new ItemStack(Blocks.AluminumOre, 1, 1),
+								new Object[]
+										{
+									"xx",
+									"xx",
+									'x', Items.AluminumSand
+										}));
+
+				GameRegistry.addRecipe(
+						new ShapedOreRecipe(
+								new ItemStack(Blocks.AluminumOre, 1, 2),
+								new Object[]
+										{
+									"xx",
+									"xx",
+									'x', Items.AluminumDust
+										}));
 	}
 	
 	private static void registerFurnaceRecipes()
@@ -323,6 +366,10 @@ public class CommonOre {
 		FurnaceRecipes.smelting().addSmelting(Blocks.PlatinumOre.blockID, 0, new ItemStack(Items.PlatinumIngot, 1, 0), 0.1f);
 		FurnaceRecipes.smelting().addSmelting(Blocks.PlatinumOre.blockID, 1, new ItemStack(Items.PlatinumIngot, 1, 0), 0.1f);
 		FurnaceRecipes.smelting().addSmelting(Blocks.PlatinumOre.blockID, 2, new ItemStack(Items.PlatinumIngot, 1, 0), 0.1f);
+		
+		FurnaceRecipes.smelting().addSmelting(Blocks.AluminumOre.blockID, 0, new ItemStack(Items.AluminumIngot, 1, 0), 0.1f);
+		FurnaceRecipes.smelting().addSmelting(Blocks.AluminumOre.blockID, 1, new ItemStack(Items.AluminumIngot, 1, 0), 0.1f);
+		FurnaceRecipes.smelting().addSmelting(Blocks.AluminumOre.blockID, 2, new ItemStack(Items.AluminumIngot, 1, 0), 0.1f);
 	}
 
 	private static void registerHammerRecipes(ArrayList<ItemStack> ores, int rewardID, int rewardMeta)
@@ -344,6 +391,7 @@ public class CommonOre {
 		OreDictionary.registerOre("ingotLead", Items.LeadIngot);
 		OreDictionary.registerOre("ingotNickel", Items.NickelIngot);
 		OreDictionary.registerOre("ingotPlatinum", Items.PlatinumIngot);
+		OreDictionary.registerOre("ingotAluminum", Items.AluminumIngot);
 	}
 	
 	private static void registerCopperOres()
@@ -380,6 +428,12 @@ public class CommonOre {
 	{
 		HammerRegistry.registerOre(Blocks.PlatinumOre.blockID, 0, Items.PlatinumSand.itemID, 0);
 		HammerRegistry.registerOre(Blocks.PlatinumOre.blockID, 1, Items.PlatinumDust.itemID, 0);
+	}
+	
+	private static void registerAluminumOres()
+	{
+		HammerRegistry.registerOre(Blocks.AluminumOre.blockID, 0, Items.AluminumSand.itemID, 0);
+		HammerRegistry.registerOre(Blocks.AluminumOre.blockID, 1, Items.AluminumDust.itemID, 0);
 	}
 	
 	public static void dumpUnlocalizedNames(String name)
