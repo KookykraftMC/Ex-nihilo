@@ -26,6 +26,7 @@ public class CommonOre {
 		registerLeadOres();
 		registerNickleOres();
 		registerPlatinumOres();
+		registerAluminumOres();
 	}
 	
 	public static void registerRecipes()
