@@ -25,6 +25,7 @@ import exnihilo.blocks.itemBlocks.ItemBlockCrucible;
 import exnihilo.blocks.itemBlocks.ItemBlockCrucibleUnfired;
 import exnihilo.blocks.itemBlocks.ItemBlockLeavesInfested;
 import exnihilo.blocks.itemBlocks.ItemBlockSieve;
+import exnihilo.blocks.ores.BlockAluminumOre;
 import exnihilo.blocks.ores.BlockCopperOre;
 import exnihilo.blocks.ores.BlockGoldOre;
 import exnihilo.blocks.ores.BlockIronOre;
@@ -34,6 +35,7 @@ import exnihilo.blocks.ores.BlockOsmiumOre;
 import exnihilo.blocks.ores.BlockPlatinumOre;
 import exnihilo.blocks.ores.BlockSilverOre;
 import exnihilo.blocks.ores.BlockTinOre;
+import exnihilo.blocks.ores.itemBlocks.ItemBlockAluminumOre;
 import exnihilo.blocks.ores.itemBlocks.ItemBlockCopperOre;
 import exnihilo.blocks.ores.itemBlocks.ItemBlockGoldOre;
 import exnihilo.blocks.ores.itemBlocks.ItemBlockIronOre;
@@ -57,7 +59,7 @@ public class Blocks {
 	public static Block Sieve;
 	public static Block BeeTrap;
 	public static Block BeeTrapTreated;
-	
+
 	public static Block IronOre;
 	public static Block GoldOre;
 	public static Block CopperOre;
@@ -67,7 +69,7 @@ public class Blocks {
 	public static Block OsmiumOre;
 	public static Block NickelOre;
 	public static Block PlatinumOre;
-
+	public static Block AluminumOre;
 
 	public static void registerBlocks()
 	{
@@ -96,7 +98,7 @@ public class Blocks {
 		GameRegistry.registerBlock(BeeTrap, BlockData.BEE_TRAP_KEY);
 		BeeTrapTreated = new BlockBeeTrapTreated(BlockData.BEE_TRAP_TREATED_ID);
 		GameRegistry.registerBlock(BeeTrapTreated, BlockData.BEE_TRAP_TREATED_KEY);
-		
+
 		IronOre = new BlockIronOre(BlockData.IRON_ORE_ID);
 		GameRegistry.registerBlock(IronOre, ItemBlockIronOre.class, BlockData.IRON_ORE_KEY);
 
@@ -123,6 +125,9 @@ public class Blocks {
 
 		PlatinumOre = new BlockPlatinumOre(BlockData.PLATINUM_ORE_ID);
 		GameRegistry.registerBlock(PlatinumOre, ItemBlockPlatinumOre.class, BlockData.PLATINUM_ORE_KEY);
+
+		AluminumOre = new BlockAluminumOre(BlockData.ALUMINUM_ORE_ID);
+		GameRegistry.registerBlock(AluminumOre, ItemBlockAluminumOre.class, BlockData.ALUMINUM_ORE_KEY);
 	}
 
 	public static void registerNames()
@@ -229,6 +234,13 @@ public class Blocks {
 		{
 			ItemStack item = new ItemStack(PlatinumOre, 1, i);
 			LanguageRegistry.addName(item, BlockData.PLATINUM_ORE_NAMES[i]);
+		}
+
+		//Aluminum
+		for(int i = 0; i < 3; i++)
+		{
+			ItemStack item = new ItemStack(AluminumOre, 1, i);
+			LanguageRegistry.addName(item, BlockData.ALUMINUM_ORE_NAMES[i]);
 		}
 	}
 

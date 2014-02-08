@@ -254,6 +254,22 @@ public class BlockData {
 		"nickel_dust"
 		};
 
+	//ALUMINUM
+	public static int ALUMINUM_ORE_ID = 3016;
+	public static final String ALUMINUM_ORE_KEY = "aluminum_ore";
+	public static final String[] ALUMINUM_ORE_NAMES = 
+		{
+		"Aluminum Ore Gravel",
+		"Aluminum Ore Sand",
+		"Aluminum Ore Dust"
+		}; 
+	public static final String[] ALUMINUM_ORE_UNLOCALIZED_NAMES = 
+		{
+		"aluminum_gravel",
+		"aluminum_sand",
+		"aluminum_dust"
+		};
+
 	//Load it all!
 	public static void load(Configuration config)
 	{
@@ -275,6 +291,7 @@ public class BlockData {
 		OSMIUM_ORE_ID = config.getBlock(ORE_CATEGORY, OSMIUM_ORE_KEY, OSMIUM_ORE_ID).getInt();
 		PLATINUM_ORE_ID = config.getBlock(ORE_CATEGORY, PLATINUM_ORE_KEY, PLATINUM_ORE_ID).getInt();
 		NICKEL_ORE_ID = config.getBlock(ORE_CATEGORY, NICKEL_ORE_KEY, NICKEL_ORE_ID).getInt();
+		ALUMINUM_ORE_ID = config.getBlock(ORE_CATEGORY, ALUMINUM_ORE_KEY, ALUMINUM_ORE_ID).getInt();
 	}
 
 

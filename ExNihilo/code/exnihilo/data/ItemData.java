@@ -67,7 +67,7 @@ public class ItemData {
 	public static final String PORCELAIN_KEY = "porcelain";
 	public static final String PORCELAIN_NAME = "Porcelain Clay";
 	public static final String PORCELAIN_UNLOCALIZED_NAME = "porcelain";
-	
+
 	//COOKED SILKWORMS!
 	public static int SILKWORM_COOKED_ID = ITEM_ID_BASE + 12;
 	public static final String SILKWORM_COOKED_KEY = "silkworm_cooked";
@@ -132,12 +132,19 @@ public class ItemData {
 	public static final String PLATINUM_ORE_NAMES[] = {"Broken Platinum Ore", "Crushed Platinum Ore", "Pulverized Platinum Ore", "Platinum Ingot"};
 	public static final String PLATINUM_ORE_UNLOCALIZED_NAMES[] = {"platinum_broken", "platinum_crushed", "platinum_pulverized", "platinum_ingot"};
 
-	//LEAD!
+	//NICKEL!
 	public static int NICKEL_ORE_IDS[] = new int[3];
 	public static int NICKEL_INGOT_ID = ITEM_ID_BASE + 18;
 	public static final String NICKEL_ORE_KEY = "item_nickel_gravel";
 	public static final String NICKEL_ORE_NAMES[] = {"Broken Nickel Ore", "Crushed Nickel Ore", "Pulverized Nickel Ore", "Nickel Ingot"};
 	public static final String NICKEL_ORE_UNLOCALIZED_NAMES[] = {"nickel_broken", "nickel_crushed", "nickel_pulverized", "nickel_ingot"};
+
+	//ALUMINUM!
+	public static int ALUMINUM_ORE_IDS[] = new int[3];
+	public static int ALUMINUM_INGOT_ID = ITEM_ID_BASE + 19;
+	public static final String ALUMINUM_ORE_KEY = "item_aluminum_gravel";
+	public static final String ALUMINUM_ORE_NAMES[] = {"Broken Aluminum Ore", "Crushed Aluminum Ore", "Pulverized Aluminum Ore", "Aluminum Ingot"};
+	public static final String ALUMINUM_ORE_UNLOCALIZED_NAMES[] = {"aluminum_broken", "aluminum_crushed", "aluminum_pulverized", "aluminum_ingot"};
 	// ***
 	// SEED CATEGORY
 	// ***
@@ -236,7 +243,7 @@ public class ItemData {
 
 		//GRASS!
 		SEED_GRASS_ID = config.getItem(CATEGORY, SEED_GRASS_UNLOCALIZED_NAME, SEED_GRASS_ID).getInt() - 256;
-		
+
 		//STONES!
 		STONES_ID = config.getItem(CATEGORY, STONES_UNLOCALIZED_NAME, STONES_ID).getInt() - 256;
 
@@ -319,7 +326,12 @@ public class ItemData {
 		}
 		NICKEL_INGOT_ID = config.getItem(ORE_CATEGORY, NICKEL_ORE_UNLOCALIZED_NAMES[3], NICKEL_INGOT_ID).getInt() - 256;
 
-
+		//ALUMINUM ORE!
+		for(int i = 0; i < 3; i++)
+		{
+			ALUMINUM_ORE_IDS[i] = config.getItem(ORE_CATEGORY, ALUMINUM_ORE_UNLOCALIZED_NAMES[i], ITEM_ID_BASE + i + 47).getInt() - 256;
+		}
+		ALUMINUM_INGOT_ID = config.getItem(ORE_CATEGORY, ALUMINUM_ORE_UNLOCALIZED_NAMES[3], ALUMINUM_INGOT_ID).getInt() - 256;
 
 		DOLL_ID = config.getItem(CATEGORY, DOLL_UNLOCALIZED_NAME, DOLL_ID).getInt() - 256;
 		CREEPY_DOLL_ID = config.getItem(CATEGORY, CREEPY_DOLL_UNLOCALIZED_NAME, CREEPY_DOLL_ID).getInt() - 256;

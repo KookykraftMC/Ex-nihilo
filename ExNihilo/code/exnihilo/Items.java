@@ -23,6 +23,10 @@ import exnihilo.items.hammers.ItemHammerGold;
 import exnihilo.items.hammers.ItemHammerIron;
 import exnihilo.items.hammers.ItemHammerStone;
 import exnihilo.items.hammers.ItemHammerWood;
+import exnihilo.items.ores.ItemAluminumDust;
+import exnihilo.items.ores.ItemAluminumGravel;
+import exnihilo.items.ores.ItemAluminumIngot;
+import exnihilo.items.ores.ItemAluminumSand;
 import exnihilo.items.ores.ItemCopperDust;
 import exnihilo.items.ores.ItemCopperGravel;
 import exnihilo.items.ores.ItemCopperIngot;
@@ -86,7 +90,7 @@ public class Items {
 	public static Item Doll;
 	public static Item DollAngry;
 	public static Item DollCreepy;
-	
+
 	//Seeds
 	public static Item Spores;
 	public static Item GrassSeeds;
@@ -152,7 +156,11 @@ public class Items {
 	public static Item PlatinumDust;
 	public static Item PlatinumIngot;
 
-	
+	//Aluminum Ore
+	public static Item AluminumGravel;
+	public static Item AluminumSand;
+	public static Item AluminumDust;
+	public static Item AluminumIngot;
 
 
 	public static void registerItems()
@@ -192,7 +200,7 @@ public class Items {
 
 		Porcelain = new ItemPorcelainBall(ItemData.PORCELAIN_ID);
 		GameRegistry.registerItem(Porcelain, ItemData.PORCELAIN_UNLOCALIZED_NAME);
-		
+
 		Doll = new ItemDoll(ItemData.DOLL_ID);
 		GameRegistry.registerItem(Doll, ItemData.DOLL_UNLOCALIZED_NAME);
 		DollAngry = new ItemDollAngry(ItemData.ANGRY_DOLL_ID);
@@ -286,7 +294,7 @@ public class Items {
 		GameRegistry.registerItem(OsmiumSand, ItemData.OSMIUM_ORE_UNLOCALIZED_NAMES[1]);
 		OsmiumDust = new ItemOsmiumDust(ItemData.OSMIUM_ORE_IDS[2]);
 		GameRegistry.registerItem(OsmiumDust, ItemData.OSMIUM_ORE_UNLOCALIZED_NAMES[2]);
-		
+
 		//Nickle Ore
 		NickelGravel = new ItemNickelGravel(ItemData.NICKEL_ORE_IDS[0]);
 		GameRegistry.registerItem(NickelGravel, ItemData.NICKEL_ORE_UNLOCALIZED_NAMES[0]);
@@ -296,7 +304,7 @@ public class Items {
 		GameRegistry.registerItem(NickelDust, ItemData.NICKEL_ORE_UNLOCALIZED_NAMES[2]);
 		NickelIngot = new ItemNickelIngot(ItemData.NICKEL_INGOT_ID);
 		GameRegistry.registerItem(NickelIngot, ItemData.NICKEL_ORE_UNLOCALIZED_NAMES[3]);
-		
+
 		//Platinum Ore
 		PlatinumGravel = new ItemPlatinumGravel(ItemData.PLATINUM_ORE_IDS[0]);
 		GameRegistry.registerItem(PlatinumGravel, ItemData.PLATINUM_ORE_UNLOCALIZED_NAMES[0]);
@@ -306,10 +314,18 @@ public class Items {
 		GameRegistry.registerItem(PlatinumDust, ItemData.PLATINUM_ORE_UNLOCALIZED_NAMES[2]);
 		PlatinumIngot = new ItemPlatinumIngot(ItemData.PLATINUM_INGOT_ID);
 		GameRegistry.registerItem(PlatinumIngot, ItemData.PLATINUM_ORE_UNLOCALIZED_NAMES[3]);
-		
-		
-		
-		
+
+		//Aluminum Ore
+		AluminumGravel = new ItemAluminumGravel(ItemData.ALUMINUM_ORE_IDS[0]);
+		GameRegistry.registerItem(AluminumGravel, ItemData.ALUMINUM_ORE_UNLOCALIZED_NAMES[0]);
+		AluminumSand = new ItemAluminumSand(ItemData.ALUMINUM_ORE_IDS[1]);
+		GameRegistry.registerItem(AluminumSand, ItemData.ALUMINUM_ORE_UNLOCALIZED_NAMES[1]);
+		AluminumDust = new ItemAluminumDust(ItemData.ALUMINUM_ORE_IDS[2]);
+		GameRegistry.registerItem(AluminumDust, ItemData.ALUMINUM_ORE_UNLOCALIZED_NAMES[2]);
+		AluminumIngot = new ItemAluminumIngot(ItemData.ALUMINUM_INGOT_ID);
+		GameRegistry.registerItem(AluminumIngot, ItemData.ALUMINUM_ORE_UNLOCALIZED_NAMES[3]);
+
+
 	}
 
 	public static void registerNames()
@@ -329,7 +345,7 @@ public class Items {
 		LanguageRegistry.addName(GrassSeeds, ItemData.SEED_GRASS_NAME);
 		LanguageRegistry.addName(Stones, ItemData.STONES_NAME);
 		LanguageRegistry.addName(Porcelain, ItemData.PORCELAIN_NAME);
-		
+
 		LanguageRegistry.addName(Doll, ItemData.DOLL_NAME);
 		LanguageRegistry.addName(DollAngry, ItemData.ANGRY_DOLL_NAME);
 		LanguageRegistry.addName(DollCreepy, ItemData.CREEPY_DOLL_NAME);
@@ -378,15 +394,20 @@ public class Items {
 		LanguageRegistry.addName(OsmiumGravel, ItemData.OSMIUM_ORE_NAMES[0]);
 		LanguageRegistry.addName(OsmiumSand, ItemData.OSMIUM_ORE_NAMES[1]);
 		LanguageRegistry.addName(OsmiumDust, ItemData.OSMIUM_ORE_NAMES[2]);
-		
+
 		LanguageRegistry.addName(NickelGravel, ItemData.NICKEL_ORE_NAMES[0]);
 		LanguageRegistry.addName(NickelSand, ItemData.NICKEL_ORE_NAMES[1]);
 		LanguageRegistry.addName(NickelDust, ItemData.NICKEL_ORE_NAMES[2]);
 		LanguageRegistry.addName(NickelIngot, ItemData.NICKEL_ORE_NAMES[3]);
-		
+
 		LanguageRegistry.addName(PlatinumGravel, ItemData.PLATINUM_ORE_NAMES[0]);
 		LanguageRegistry.addName(PlatinumSand, ItemData.PLATINUM_ORE_NAMES[1]);
 		LanguageRegistry.addName(PlatinumDust, ItemData.PLATINUM_ORE_NAMES[2]);
 		LanguageRegistry.addName(PlatinumIngot, ItemData.PLATINUM_ORE_NAMES[3]);
+		
+		LanguageRegistry.addName(AluminumGravel, ItemData.ALUMINUM_ORE_NAMES[0]);
+		LanguageRegistry.addName(AluminumSand, ItemData.ALUMINUM_ORE_NAMES[1]);
+		LanguageRegistry.addName(AluminumDust, ItemData.ALUMINUM_ORE_NAMES[2]);
+		LanguageRegistry.addName(AluminumIngot, ItemData.ALUMINUM_ORE_NAMES[3]);
 	}
 }
