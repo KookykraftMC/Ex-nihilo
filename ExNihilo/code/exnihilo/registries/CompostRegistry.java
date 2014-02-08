@@ -102,11 +102,11 @@ public class CompostRegistry {
 		//melon slice
 		register(360, 0, 0.04f, ColorRegistry.color("melon"));
 		//melon
-		register(103, 0, 0.16f, ColorRegistry.color("melon"));
+		register(103, 0, 1.0f / 6, ColorRegistry.color("melon"));
 		//pumpkin
-		register(86, 0, 0.16f, ColorRegistry.color("pumpkin"));
+		register(86, 0, 1.0f / 6, ColorRegistry.color("pumpkin"));
 		//jack o lantern
-		register(91, 0, 0.16f, ColorRegistry.color("pumpkin"));
+		register(91, 0, 1.0f / 6, ColorRegistry.color("pumpkin"));
 		//cactus
 		register(81, 0, 0.10f, ColorRegistry.color("cactus"));
 		

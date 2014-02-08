@@ -190,9 +190,8 @@ public class Recipes {
 						new ItemStack(Block.cobblestone, 1, 0),
 						new Object[]
 								{
-							"xxx",
-							"xxx",
-							"xxx",
+							"xx",
+							"xx",
 							'x', Items.Stones
 								}));
 		

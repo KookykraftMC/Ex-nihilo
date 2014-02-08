@@ -26,7 +26,7 @@ import net.minecraftforge.fluids.FluidTankInfo;
 import net.minecraftforge.fluids.IFluidHandler;
 
 public class TileEntityCrucible extends TileEntity implements IFluidHandler, ISidedInventory{
-	private static final float MIN_RENDER_CAPACITY = 0.15f;
+	private static final float MIN_RENDER_CAPACITY = 0.20f;
 	private static final float MAX_RENDER_CAPACITY = 0.95f;
 	private static final int MAX_FLUID = 10000;
 	private static final int UPDATE_INTERVAL = 10;
