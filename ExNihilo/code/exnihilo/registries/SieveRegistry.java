@@ -106,7 +106,7 @@ public class SieveRegistry {
 		//Soul Sand!
 		register(Block.slowSand.blockID, 0, Item.netherQuartz.itemID, 0, 1);
 		register(Block.slowSand.blockID, 0, Item.netherQuartz.itemID, 0, 3);
-		register(Block.slowSand.blockID, 0, Block.netherStalk.blockID, 0, 20);
+		register(Block.slowSand.blockID, 0, Item.netherStalkSeeds.itemID, 0, 20);
 		register(Block.slowSand.blockID, 0, Item.ghastTear.itemID, 0, 64);
 		
 		//Dust!
