@@ -76,6 +76,13 @@ public class HiveRegistry {
 		
 		if(HiveList.generateMagicBeesHives())
 		{
+			registerHive(HiveList.curious);
+			registerHive(HiveList.resonating);
+			registerHive(HiveList.unusual);
+			registerHive(HiveList.deep);
+			registerHive(HiveList.infernal);
+			registerHive(HiveList.oblivion);
+			
 			System.out.println("Ex Nihilo: Found Magic Bees!");
 		}
 		//CommonOre.dumpUnlocalizedNames("hive");

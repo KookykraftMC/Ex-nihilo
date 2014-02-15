@@ -15,7 +15,7 @@ public class HiveList {
 	public static ItemStack beehives;
 	public static ItemStack extraBeesHives;
 	public static ItemStack magicBeesHives;
-	
+
 	//Forestry
 	public static Hive forest;
 	public static Hive meadow;
@@ -24,11 +24,19 @@ public class HiveList {
 	public static Hive end;
 	public static Hive snow;
 	public static Hive swamp;
-	
+
 	//Extra Bees
 	public static Hive water;
 	public static Hive rock;
 	public static Hive nether;
+
+	//Extra Bees
+	public static Hive curious;
+	public static Hive resonating;
+	public static Hive unusual;
+	public static Hive deep;
+	public static Hive oblivion;
+	public static Hive infernal;
 
 	public static boolean generateForestryHives()
 	{
@@ -49,11 +57,11 @@ public class HiveList {
 		return false;
 
 	}
-	
+
 	public static boolean generateExtreBeesHives()
 	{
 		Block ebHives = null;
-		
+
 		for (Block b : Block.blocksList)
 		{
 			if (b != null)
@@ -64,25 +72,25 @@ public class HiveList {
 				}
 			}
 		}
-		
+
 		if (ebHives != null)
 		{
 			extraBeesHives = new ItemStack(ebHives, 1, 0);
-			
+
 			generateWaterHive();
 			generateRockHive();
 			generateNetherHive();
 			return true;
 		}
-		
+
 		return false;
 	}
 
-	
+
 	public static boolean generateMagicBeesHives()
 	{
 		Block magicHives = null;
-		
+
 		for (Block b : Block.blocksList)
 		{
 			if (b != null)
@@ -93,18 +101,25 @@ public class HiveList {
 				}
 			}
 		}
-		
+
 		if (magicHives != null)
 		{
 			magicBeesHives = new ItemStack(magicHives, 1, 0);
+			
+			generateCuriousHive();
+			generateResonatingHive();
+			generateUnusualHive();
+			generateDeepHive();
+			generateOblivionHive();
+			generateInfernalHive();
 			return true;
 		}
-		
+
 		return false;
 	}
-	
-	
-	
+
+
+
 	private static void generateForestHive()
 	{
 		forest = new Hive(beehives.itemID, 1);
@@ -182,12 +197,12 @@ public class HiveList {
 	public static void generateSnowHive()
 	{
 		snow = new Hive(beehives.itemID, 6);
-		
+
 		snow.requiredCanSeeSky = true;
 		snow.requiredSubstrate = Block.snow.blockID + ":0";
-		
+
 		snow.biomeTypes.add(Type.FROZEN);
-		
+
 		Iterator<ItemStack> it = FlowerManager.plainFlowers.iterator();
 		while(it.hasNext())
 		{
@@ -207,7 +222,7 @@ public class HiveList {
 		swamp.flowers.add(Block.mushroomBrown.blockID + ":0");
 		swamp.flowers.add(Block.mushroomRed.blockID + ":0");
 	}
-	
+
 	//EXTRA BEES!
 	public static void generateWaterHive()
 	{
@@ -218,7 +233,7 @@ public class HiveList {
 		water.requiresBlockAbove = FluidRegistry.WATER.getBlockID() + ":0";
 		water.flowers.add(Block.waterlily.blockID + ":0");
 	}
-	
+
 	public static void generateRockHive()
 	{
 		rock = new Hive(extraBeesHives.itemID, 1);
@@ -228,7 +243,7 @@ public class HiveList {
 		rock.requiredSubstrate = Block.stone.blockID + ":0";
 		rock.defaultSpawnBonus = -20;
 	}
-	
+
 	public static void generateNetherHive()
 	{
 		nether = new Hive(extraBeesHives.itemID, 2);
@@ -242,4 +257,90 @@ public class HiveList {
 		nether.flowers.add(Block.netherStalk.blockID + ":2");
 		nether.flowers.add(Block.netherStalk.blockID + ":4");
 	}
+
+	//MAGIC BEES!
+	public static void generateCuriousHive()
+	{
+		curious = new Hive(magicBeesHives.itemID, 6);
+		
+		curious.requiredCanSeeSky = true;
+		curious.biomeTypes.add(Type.FOREST);
+		
+		curious.requiresTree = true;
+		
+		Iterator<ItemStack> it = FlowerManager.plainFlowers.iterator();
+		while(it.hasNext())
+		{
+			ItemStack item = it.next();
+			curious.flowers.add(item.itemID + ":" + item.getItemDamage());
+		}
+	}
+
+	public static void generateResonatingHive()
+	{
+		resonating = new Hive(magicBeesHives.itemID, 2);
+		
+		resonating.requiredCanSeeSky = true;
+		resonating.biomeTypes.add(Type.DESERT);
+		
+		Iterator<ItemStack> it = FlowerManager.plainFlowers.iterator();
+		while(it.hasNext())
+		{
+			ItemStack item = it.next();
+			resonating.flowers.add(item.itemID + ":" + item.getItemDamage());
+		}
+	}
+
+	public static void generateUnusualHive()
+	{
+		unusual = new Hive(magicBeesHives.itemID, 1);
+		
+		unusual.requiredCanSeeSky = true;
+		unusual.biomeTypes.add(Type.JUNGLE);
+		
+		Iterator<ItemStack> it = FlowerManager.plainFlowers.iterator();
+		while(it.hasNext())
+		{
+			ItemStack item = it.next();
+			unusual.flowers.add(item.itemID + ":" + item.getItemDamage());
+		}
+	}
+
+	public static void generateDeepHive()
+	{
+		deep = new Hive(magicBeesHives.itemID, 3);
+		
+		deep.requiredCanSeeSky = false;
+		deep.biomeTypes.add(Type.MOUNTAIN);
+		deep.maxYLevel = 15.0f;
+		
+		Iterator<ItemStack> it = FlowerManager.plainFlowers.iterator();
+		while(it.hasNext())
+		{
+			ItemStack item = it.next();
+			deep.flowers.add(item.itemID + ":" + item.getItemDamage());
+		}
+	}
+
+	public static void generateOblivionHive()
+	{
+		oblivion = new Hive(magicBeesHives.itemID, 5);
+		
+		oblivion.requiredCanSeeSky = false;
+		oblivion.biomeTypes.add(Type.END);
+		oblivion.requiredSubstrate = Block.whiteStone.blockID + ":0";
+		oblivion.defaultSpawnBonus = -40;
+	}
+
+	public static void generateInfernalHive()
+	{
+		infernal = new Hive(magicBeesHives.itemID, 4);
+		
+		infernal.requiredCanSeeSky = false;
+		infernal.biomeTypes.add(Type.NETHER);
+		infernal.maxYLevel = 15.0f;
+		infernal.requiredSubstrate = Block.netherrack.blockID + ":0";
+		oblivion.defaultSpawnBonus = -40;
+	}
+
 }
