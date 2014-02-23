@@ -27,6 +27,7 @@ import exnihilo.compatibility.Chococraft;
 import exnihilo.compatibility.CommonOre;
 import exnihilo.compatibility.IC2;
 import exnihilo.compatibility.Mekanism;
+import exnihilo.compatibility.MineFactoryReloaded;
 import exnihilo.compatibility.ThermalExpansion;
 import exnihilo.compatibility.foresty.Forestry;
 import exnihilo.data.BlockData;
@@ -163,6 +164,13 @@ public class ExNihilo
 			System.out.println(ModData.NAME + ": Found Chococraft!");
 
 			Chococraft.loadCompatibility();
+		}
+		
+		if (MineFactoryReloaded.isLoaded())
+		{
+			System.out.println(ModData.NAME + ": Found MineFactory Reloaded!");
+			
+			MineFactoryReloaded.loadCompatibility();
 		}
 	}
 

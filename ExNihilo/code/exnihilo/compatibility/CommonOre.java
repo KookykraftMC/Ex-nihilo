@@ -439,26 +439,26 @@ public class CommonOre {
 	
 	public static void dumpUnlocalizedNames(String name)
 	{
-//		for (Block b : Block.blocksList)
-//		{
-//			if (b != null)
-//			{
-//				if (b.getUnlocalizedName().contains(name))
-//				{
-//					System.out.println(b.blockID + ":" + b.getClass().getName());
-//				}
-//			}
-//		}
-		
-		for (Item b : Item.itemsList)
+		for (Block b : Block.blocksList)
 		{
 			if (b != null)
 			{
 				if (b.getUnlocalizedName().contains(name))
 				{
-					System.out.println(b.itemID + ":" + b.getUnlocalizedName());
+					System.out.println(b.blockID + ":" + b.getClass().getName());
 				}
 			}
 		}
+		
+//		for (Item b : Item.itemsList)
+//		{
+//			if (b != null)
+//			{
+//				if (b.getUnlocalizedName().contains(name))
+//				{
+//					System.out.println(b.itemID + ":" + b.getUnlocalizedName());
+//				}
+//			}
+//		}
 	}
 }

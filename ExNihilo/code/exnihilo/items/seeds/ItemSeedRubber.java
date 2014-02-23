@@ -1,5 +1,7 @@
 package exnihilo.items.seeds;
 
+import java.util.ArrayList;
+
 import cpw.mods.fml.common.registry.GameRegistry;
 import net.minecraft.block.Block;
 import net.minecraft.client.renderer.texture.IconRegister;
@@ -8,21 +10,26 @@ import net.minecraft.world.World;
 import net.minecraftforge.common.EnumPlantType;
 import exnihilo.data.ItemData;
 import exnihilo.data.ModData;
+import exnihilo.registries.helpers.SiftReward;
 
 public class ItemSeedRubber extends ItemSeedBase{
 
+	public static ArrayList<Block> saplings = new ArrayList<Block>();
+	
 	public ItemSeedRubber(int id) {
 		super(id, Block.sapling.blockID, Block.dirt.blockID);
 	}
-	
+
     @Override
     public int getPlantID(World world, int x, int y, int z)
     {
-    	Block rubberSapling = GameRegistry.findBlock("IC2", "blockRubSapling");
+    	//Block rubberSapling = GameRegistry.findBlock("IC2", "blockRubSapling");
     	
-    	if (rubberSapling != null)
+    	if (saplings.size() > 0)
     	{
-    		return rubberSapling.blockID;
+    		int rand = world.rand.nextInt(saplings.size());
+    		
+    		return saplings.get(rand).blockID;
     	}
     	
         return Block.sapling.blockID;

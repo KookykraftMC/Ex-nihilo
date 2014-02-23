@@ -16,6 +16,7 @@ import cpw.mods.fml.common.registry.GameRegistry;
 import exnihilo.Blocks;
 import exnihilo.Items;
 import exnihilo.data.ModData;
+import exnihilo.items.seeds.ItemSeedRubber;
 import exnihilo.registries.CompostRegistry;
 import exnihilo.registries.SieveRegistry;
 import exnihilo.registries.helpers.Color;
@@ -38,7 +39,10 @@ public class IC2 {
 			SieveRegistry.register(Blocks.Dust.blockID, 0, sulfur.itemID, sulfur.getItemDamage(), 32);
 		}
 
-		SieveRegistry.register(Block.dirt.blockID, 0, Items.SeedsRubber.itemID, 0, 64);
+		//TODO Find the IC2 rubber tree sapling and add it to the ItemSeedRubber saplings list.
+		Block rubberSapling = GameRegistry.findBlock("IC2", "blockRubSapling");
+		ItemSeedRubber.saplings.add(rubberSapling);
+		SieveRegistry.dropRubberSeeds = true;
 
 		Item crushedUranium = GameRegistry.findItem("IC2", "itemCrushedOre");
 		if (crushedUranium != null)

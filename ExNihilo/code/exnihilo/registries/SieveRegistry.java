@@ -29,6 +29,8 @@ public class SieveRegistry {
 	public static boolean dropPlatinum = false;
 	public static boolean dropAluminum = false;
 	
+	public static boolean dropRubberSeeds = false;
+	
 	public static void register(int sourceID, int sourceMeta, int outputID, int outputMeta, int rarity)
 	{
 		SiftReward entry = new SiftReward(sourceID, sourceMeta, outputID, outputMeta, rarity);
@@ -168,6 +170,11 @@ public class SieveRegistry {
 			register(Block.gravel.blockID, 0, Items.AluminumGravel.itemID, 0, 10);
 			register(Block.sand.blockID, 0, Items.AluminumSand.itemID, 0, 10);
 			register(Blocks.Dust.blockID, 0, Items.AluminumDust.itemID, 0, 10);
+		}
+		
+		if (dropRubberSeeds)
+		{
+			register(Block.dirt.blockID, 0, Items.SeedsRubber.itemID, 0, 64);
 		}
 	}
 }
