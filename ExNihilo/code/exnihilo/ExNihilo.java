@@ -41,6 +41,7 @@ import exnihilo.registries.ColorRegistry;
 import exnihilo.registries.CompostRegistry;
 import exnihilo.registries.CrucibleRegistry;
 import exnihilo.registries.HammerRegistry;
+import exnihilo.registries.HeatRegistry;
 import exnihilo.registries.SieveRegistry;
 import exnihilo.world.WorldProviderDefaultVoid;
 
@@ -105,6 +106,7 @@ public class ExNihilo
 		SieveRegistry.registerRewards();
 		HammerRegistry.registerSmashables();
 		CrucibleRegistry.registerMeltables();
+		HeatRegistry.registerVanillaHeatSources();
 
 		CommonOre.registerOres();
 		CommonOre.registerIngots();	
@@ -113,8 +115,6 @@ public class ExNihilo
 		Recipes.registerFurnaceRecipes();
 
 		World.registerWorldProviders();
-		
-		
 	}
 
 

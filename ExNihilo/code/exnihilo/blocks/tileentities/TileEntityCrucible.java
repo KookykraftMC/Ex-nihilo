@@ -6,6 +6,7 @@ import exnihilo.blocks.tileentities.TileEntitySieve.SieveMode;
 import exnihilo.data.BlockData;
 import exnihilo.registries.CompostRegistry;
 import exnihilo.registries.CrucibleRegistry;
+import exnihilo.registries.HeatRegistry;
 import exnihilo.registries.helpers.Meltable;
 import net.minecraft.block.Block;
 import net.minecraft.entity.player.EntityPlayer;
@@ -223,31 +224,12 @@ public class TileEntityCrucible extends TileEntity implements IFluidHandler, ISi
 
 	public float getMeltSpeed()
 	{
-		int BlockBelow = worldObj.getBlockId(xCoord, yCoord - 1, zCoord);
+		int targetID = worldObj.getBlockId(xCoord, yCoord - 1, zCoord);
+		int targetMeta = worldObj.getBlockMetadata(xCoord, yCoord - 1, zCoord);
 		
-		if (BlockBelow == Block.torchWood.blockID)
+		if (HeatRegistry.containsItem(targetID, targetMeta))
 		{
-			return 0.1f;
-		}
-
-		if (BlockBelow == Block.lavaStill.blockID)
-		{
-			return 0.2f;
-		}
-
-		if (BlockBelow == Block.lavaMoving.blockID)
-		{
-			return 0.1f;
-		}
-
-		if (BlockBelow == Block.furnaceBurning.blockID)
-		{
-			return 0.15f;
-		}
-
-		if (BlockBelow == Block.fire.blockID)
-		{
-			return 0.3f;
+			return HeatRegistry.getItem(targetID, targetMeta).value;
 		}
 
 		return 0.0f;
