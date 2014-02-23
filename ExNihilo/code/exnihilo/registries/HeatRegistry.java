@@ -17,6 +17,14 @@ public class HeatRegistry {
 		entries.put(id + ":" + meta, entry);
 	}
 	
+	public static void register(int id, float value)
+	{
+		for(int x = 0; x <= 15; x++)
+		{
+			register(id, x, value);
+		}
+	}
+	
 	public static boolean containsItem(int id, int meta)
 	{
 		return entries.containsKey(id + ":" + meta);
@@ -29,10 +37,10 @@ public class HeatRegistry {
 	
 	public static void registerVanillaHeatSources()
 	{
-		register(Block.torchWood.blockID, 0, 0.1f);
-		register(Block.lavaStill.blockID, 0, 0.2f);
-		register(Block.lavaMoving.blockID, 0, 0.1f);
-		register(Block.furnaceBurning.blockID, 0, 0.15f);
-		register(Block.fire.blockID, 0, 0.3f);
+		register(Block.torchWood.blockID, 0.1f);
+		register(Block.lavaStill.blockID, 0.2f);
+		register(Block.lavaMoving.blockID, 0.1f);
+		register(Block.furnaceBurning.blockID, 0.15f);
+		register(Block.fire.blockID, 0.3f);
 	}
 }
