@@ -230,9 +230,6 @@ public class TileEntityCrucible extends TileEntity implements IFluidHandler, ISi
 		if (HeatRegistry.containsItem(targetID, targetMeta))
 		{
 			return HeatRegistry.getItem(targetID, targetMeta).value;
-		}else
-		{
-			System.out.println("Unknown heat source: " + targetID + ":" + targetMeta);
 		}
 
 		return 0.0f;
