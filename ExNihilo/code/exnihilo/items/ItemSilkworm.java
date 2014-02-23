@@ -27,7 +27,7 @@ public class ItemSilkworm extends Item{
    public boolean onItemUse(ItemStack item, EntityPlayer player, World world, int x, int y, int z, int par7, float par8, float par9, float par10)
    {
 	   Block block = Block.blocksList[world.getBlockId(x, y, z)];
-	   if (block.isLeaves(null, 0, 0, 0) && !Forestry.addsThisLeaf(block))
+	   if (block.isLeaves(null, 0, 0, 0) && !Forestry.addsThisLeaf(block) && block.blockID != Blocks.LeavesInfested.blockID)
 	   {
 		   int oldID = world.getBlockId(x, y, z);
 		   int oldMeta = world.getBlockMetadata(x, y, z);

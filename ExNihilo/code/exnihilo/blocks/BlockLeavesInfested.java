@@ -26,11 +26,11 @@ import net.minecraft.world.ColorizerFoliage;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 
-public class BlockLeavesInfested extends Block implements ITileEntityProvider
+public class BlockLeavesInfested extends BlockLeaves implements ITileEntityProvider
 {
 	public BlockLeavesInfested(int par1) {
 		//super(par1);
-		super(par1, Material.leaves);
+		super(par1);
 		this.isBlockContainer = true;
 
 		setHardness(0.4f);
@@ -66,6 +66,11 @@ public class BlockLeavesInfested extends Block implements ITileEntityProvider
 		}
 		
 	}
+	
+	public Icon getIcon(int par1, int par2)
+    {
+        return this.blockIcon;
+    }
 
 	public int getLeafColor(IBlockAccess world, int par2, int par3, int par4)
 	{
@@ -97,12 +102,6 @@ public class BlockLeavesInfested extends Block implements ITileEntityProvider
 
 	@Override
 	public boolean hasTileEntity()
-	{
-		return true;
-	}
-
-	@Override
-	public boolean canSustainLeaves(World world, int x, int y, int z)
 	{
 		return true;
 	}
