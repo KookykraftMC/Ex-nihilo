@@ -23,8 +23,6 @@ public class ItemSeedRubber extends ItemSeedBase{
     @Override
     public int getPlantID(World world, int x, int y, int z)
     {
-    	//Block rubberSapling = GameRegistry.findBlock("IC2", "blockRubSapling");
-    	
     	if (saplings.size() > 0)
     	{
     		int rand = world.rand.nextInt(saplings.size());

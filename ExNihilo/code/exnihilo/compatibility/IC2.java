@@ -39,7 +39,6 @@ public class IC2 {
 			SieveRegistry.register(Blocks.Dust.blockID, 0, sulfur.itemID, sulfur.getItemDamage(), 32);
 		}
 
-		//TODO Find the IC2 rubber tree sapling and add it to the ItemSeedRubber saplings list.
 		Block rubberSapling = GameRegistry.findBlock("IC2", "blockRubSapling");
 		ItemSeedRubber.saplings.add(rubberSapling);
 		SieveRegistry.dropRubberSeeds = true;
