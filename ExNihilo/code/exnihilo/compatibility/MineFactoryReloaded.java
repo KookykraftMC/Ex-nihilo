@@ -35,6 +35,6 @@ public class MineFactoryReloaded {
 			ItemSeedRubber.saplings.add(rubberSapling);
 		}
 		
-		SieveRegistry.register(Block.dirt.blockID, 0, Items.SeedsRubber.itemID, 0, 64);
+		SieveRegistry.register(Block.dirt.blockID, 0, Items.SeedsRubber.itemID, 0, 45);
 	}
 }

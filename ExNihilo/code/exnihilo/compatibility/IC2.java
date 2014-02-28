@@ -41,7 +41,7 @@ public class IC2 {
 
 		Block rubberSapling = GameRegistry.findBlock("IC2", "blockRubSapling");
 		ItemSeedRubber.saplings.add(rubberSapling);
-		SieveRegistry.register(Block.dirt.blockID, 0, Items.SeedsRubber.itemID, 0, 64);
+		SieveRegistry.register(Block.dirt.blockID, 0, Items.SeedsRubber.itemID, 0, 45);
 
 		Item crushedUranium = GameRegistry.findItem("IC2", "itemCrushedOre");
 		if (crushedUranium != null)
