@@ -171,10 +171,5 @@ public class SieveRegistry {
 			register(Block.sand.blockID, 0, Items.AluminumSand.itemID, 0, 10);
 			register(Blocks.Dust.blockID, 0, Items.AluminumDust.itemID, 0, 10);
 		}
-		
-		if (dropRubberSeeds)
-		{
-			register(Block.dirt.blockID, 0, Items.SeedsRubber.itemID, 0, 64);
-		}
 	}
 }

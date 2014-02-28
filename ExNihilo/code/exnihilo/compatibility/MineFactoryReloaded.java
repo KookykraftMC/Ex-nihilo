@@ -4,6 +4,7 @@ import net.minecraft.block.Block;
 import net.minecraft.item.Item;
 import cpw.mods.fml.common.Loader;
 import cpw.mods.fml.common.registry.GameRegistry;
+import exnihilo.Items;
 import exnihilo.items.seeds.ItemSeedRubber;
 import exnihilo.registries.SieveRegistry;
 
@@ -34,6 +35,6 @@ public class MineFactoryReloaded {
 			ItemSeedRubber.saplings.add(rubberSapling);
 		}
 		
-		SieveRegistry.dropRubberSeeds = true;
+		SieveRegistry.register(Block.dirt.blockID, 0, Items.SeedsRubber.itemID, 0, 64);
 	}
 }
