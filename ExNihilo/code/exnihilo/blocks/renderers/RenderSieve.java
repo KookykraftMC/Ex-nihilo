@@ -71,20 +71,8 @@ public class RenderSieve extends TileEntitySpecialRenderer{
 		
 		switch (sieve.mode)
 		{
-		case DIRT:
-			icon = Block.dirt.getIcon(0, 0);
-			break;
-		case GRAVEL:
-			icon = Block.gravel.getIcon(0, 0);
-			break;
-		case SAND:
-			icon = Block.sand.getIcon(0, 0);
-			break;
-		case SOULSAND:
-			icon = Block.slowSand.getIcon(0, 0);
-			break;
-		case DUST:
-			icon = Blocks.Dust.getIcon(0, 0);
+		case FILLED:
+			icon = Block.blocksList[sieve.contentID].getIcon(0, sieve.contentMeta);
 			break;
 		default:
 			break;

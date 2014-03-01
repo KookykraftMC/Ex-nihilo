@@ -12,6 +12,7 @@ import exnihilo.blocks.tileentities.TileEntityBarrel.BarrelMode;
 import exnihilo.blocks.tileentities.TileEntitySieve.SieveMode;
 import exnihilo.data.BlockData;
 import exnihilo.data.ModData;
+import exnihilo.registries.SieveRegistry;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockContainer;
 import net.minecraft.block.material.Material;
@@ -19,6 +20,7 @@ import net.minecraft.client.renderer.texture.IconRegister;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.EntityPlayerMP;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.Icon;
@@ -31,10 +33,10 @@ public class BlockSieve extends BlockContainer{
 		super(id, Material.wood);
 		setCreativeTab(CreativeTabs.tabDecorations);
 		setHardness(2.0f);
-		setBurnProperties(this.blockID, 5,150);
+		setBurnProperties(this.blockID, 5, 150);
 
 		setUnlocalizedName(ModData.ID + "." + BlockData.SIEVE_KEY);
-		GameRegistry.registerTileEntity(TileEntitySieve.class, this.getUnlocalizedName());
+		GameRegistry.registerTileEntity(TileEntitySieve.class, ModData.ID + "." + BlockData.SIEVE_KEY);
 	}
 
 	@Override
@@ -99,37 +101,13 @@ public class BlockSieve extends BlockContainer{
 
 		if (sieve.mode == SieveMode.EMPTY && player.getCurrentEquippedItem() != null)
 		{
-			if (player.getCurrentEquippedItem().itemID == Block.dirt.blockID)
+			ItemStack held = player.getCurrentEquippedItem();
+			
+			if (SieveRegistry.Contains(held.itemID, held.getItemDamage()))
 			{
-				sieve.AddDirt();
+				sieve.addSievable(held.itemID, held.getItemDamage());
 				removeCurrentItem(player);
 			}
-
-			if (player.getCurrentEquippedItem().itemID == Block.gravel.blockID)
-			{
-				sieve.AddGravel();
-				removeCurrentItem(player);
-			}
-
-			if (player.getCurrentEquippedItem().itemID == Block.sand.blockID)
-			{
-				sieve.AddSand();
-				removeCurrentItem(player);
-			}
-
-			if (player.getCurrentEquippedItem().itemID == Block.slowSand.blockID)
-			{
-				sieve.AddSoulSand();
-				removeCurrentItem(player);
-			}
-
-			if (player.getCurrentEquippedItem().itemID == Blocks.Dust.blockID)
-			{
-				sieve.AddDust();
-				removeCurrentItem(player);
-			}
-
-
 		}else
 		{
 			if (world.isRemote)

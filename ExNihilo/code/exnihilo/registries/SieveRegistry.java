@@ -6,6 +6,8 @@ import java.util.Hashtable;
 import java.util.Iterator;
 import java.util.List;
 
+import cpw.mods.fml.common.registry.GameRegistry;
+
 import exnihilo.Blocks;
 import exnihilo.Items;
 import exnihilo.registries.helpers.Compostable;
@@ -34,7 +36,27 @@ public class SieveRegistry {
 	public static void register(int sourceID, int sourceMeta, int outputID, int outputMeta, int rarity)
 	{
 		SiftReward entry = new SiftReward(sourceID, sourceMeta, outputID, outputMeta, rarity);
-		rewards.add(entry);
+		
+		if(Block.blocksList[sourceID] != null)
+		{
+			rewards.add(entry);
+		}else
+		{
+			System.out.println("Ex Nihilo: An item was added to the SieveRegistry which was not a block");
+		}
+	}
+	
+	public static void register(int sourceID, int outputID, int outputMeta, int rarity)
+	{
+		SiftReward entry = new SiftReward(sourceID, outputID, outputMeta, rarity);
+		
+		if(Block.blocksList[sourceID] != null)
+		{
+			rewards.add(entry);
+		}else
+		{
+			System.out.println("Ex Nihilo: An item was added to the SieveRegistry which was not a block");
+		}
 	}
 	
 	public static ArrayList<SiftReward> getRewards(int id, int meta)
@@ -53,6 +75,38 @@ public class SieveRegistry {
 		}
 		
 		return rewardList;
+	}
+	
+	public static boolean Contains(int id, int meta)
+	{
+		Iterator<SiftReward> it = rewards.iterator();
+		while(it.hasNext())
+		{
+			SiftReward reward = it.next();
+
+			if (reward.sourceID == id && (reward.sourceMeta == meta || reward.ignoreMeta == true))
+			{
+				return true;
+			}
+		}
+		
+		return false;
+	}
+	
+	public static boolean Contains(int id)
+	{
+		Iterator<SiftReward> it = rewards.iterator();
+		while(it.hasNext())
+		{
+			SiftReward reward = it.next();
+
+			if (reward.sourceID == id && reward.ignoreMeta == true)
+			{
+				return true;
+			}
+		}
+		
+		return false;
 	}
 	
 	public static void load(Configuration config)
