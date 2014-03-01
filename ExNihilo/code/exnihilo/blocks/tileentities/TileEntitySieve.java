@@ -150,9 +150,9 @@ public class TileEntitySieve extends TileEntity{
 			for (int x = 0; x < 4; x++)
 			{	
 				ParticleSieve dust = new ParticleSieve(worldObj, 
-						xCoord + 0.8d * worldObj.rand.nextFloat() + 0.1d, 
+						xCoord + 0.8d * worldObj.rand.nextFloat() + 0.15d, 
 						yCoord + 0.69d, 
-						zCoord + 0.8d * worldObj.rand.nextFloat() + 0.1d, 
+						zCoord + 0.8d * worldObj.rand.nextFloat() + 0.15d, 
 						0.0d, 0.0d, 0.0d, icon);
 				
 				Minecraft.getMinecraft().effectRenderer.addEffect(dust);
