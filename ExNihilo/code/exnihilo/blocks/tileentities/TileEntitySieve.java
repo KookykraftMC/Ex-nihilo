@@ -45,6 +45,7 @@ public class TileEntitySieve extends TileEntity{
 	private int timer = 0;
 	private boolean update = false;
 	private boolean particleMode = false;
+	private int timesClicked = 0;
 
 
 	public enum SieveMode
@@ -80,6 +81,8 @@ public class TileEntitySieve extends TileEntity{
 		timer++;
 		if (timer >= UPDATE_INTERVAL)
 		{
+			timesClicked = 0;
+			
 			timer = 0;
 			disableParticles();
 
@@ -98,6 +101,13 @@ public class TileEntitySieve extends TileEntity{
 		}else
 		{
 			volume -= PROCESSING_INTERVAL;
+			
+			timesClicked++;
+			if (timesClicked >= 12)
+			{
+				worldObj.destroyBlock(xCoord, yCoord, zCoord, false);
+				this.worldObj.createExplosion(null, xCoord, yCoord, zCoord, 1.0f, true);
+			}
 		}
 
 		if (volume <= 0)
