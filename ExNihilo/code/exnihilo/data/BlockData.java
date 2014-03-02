@@ -14,7 +14,7 @@ public class BlockData {
 	private static final String ORE_CATEGORY = "ore blocks";	
 
 	//Barrels (Wood)!
-	public static int BARREL_ID = 3000;
+	public static int BARREL_ID = 3300;
 	public static final String BARREL_KEY = "barrel";
 	public static final String[] BARREL_NAMES = 
 		{
@@ -33,44 +33,44 @@ public class BlockData {
 
 
 	//Barrel (Stone)!
-	public static int BARREL_STONE_ID = 3006;
+	public static int BARREL_STONE_ID = 3306;
 	public static final String BARREL_STONE_KEY = "barrel_stone";
 	public static final String BARREL_STONE_UNLOCALIZED_NAME = "barrel.stone";
 	public static final String BARREL_STONE_NAME = "Stone Barrel";
 
 	//Crucible!
-	public static int CRUCIBLE_ID = 3007;
+	public static int CRUCIBLE_ID = 3307;
 	public static final String CRUCIBLE_KEY = "crucible";
 	public static final String CRUCIBLE_UNLOCALIZED_NAME = "crucible";
 	public static final String CRUCIBLE_NAME = "Crucible";
 
 	//Unfired Crucible!
-	public static int CRUCIBLE_UNFIRED_ID = 3008;
+	public static int CRUCIBLE_UNFIRED_ID = 3308;
 	public static final String CRUCIBLE_UNFIRED_KEY = "crucible_unfired";
 	public static final String CRUCIBLE_UNFIRED_UNLOCALIZED_NAME = "crucible_unfired";
 	public static final String CRUCIBLE_UNFIRED_NAME = "Unfired Crucible";
 
 	//Dust!
-	public static int DUST_ID = 3001;
+	public static int DUST_ID = 3301;
 	public static final String DUST_KEY = "dust";
 	public static final String DUST_UNLOCALIZED_NAME = "dust";
 	public static final String DUST_NAME = "Dust";
 
 	//Bee Trap!
-	public static int BEE_TRAP_ID = 3016;
+	public static int BEE_TRAP_ID = 3316;
 	public static final String BEE_TRAP_KEY = "bee_trap";
 	public static final String BEE_TRAP_UNLOCALIZED_NAME = "bee_trap";
 	public static final String BEE_TRAP_NAME = "Artificial Hive";
 
 	//Bee Trap (Treated)!
-	public static int BEE_TRAP_TREATED_ID = 3017;
+	public static int BEE_TRAP_TREATED_ID = 3317;
 	public static final String BEE_TRAP_TREATED_KEY = "bee_trap_treated";
 	public static final String BEE_TRAP_TREATED_UNLOCALIZED_NAME = "bee_trap_treated";
 	public static final String BEE_TRAP_TREATED_NAME = "Scented Artificial Hive";
 
 
 	//Infested Leaves!
-	public static int LEAVES_INFESTED_ID = 3002;
+	public static int LEAVES_INFESTED_ID = 3302;
 	public static final String LEAVES_INFESTED_KEY = "infested_leaves";
 	public static final String[] LEAVES_INFESTED_NAMES = 
 		{
@@ -89,7 +89,7 @@ public class BlockData {
 
 
 	//Sift Table
-	public static int SIEVE_ID = 3003;
+	public static int SIEVE_ID = 3303;
 	public static final String SIEVE_KEY = "sifting_table";
 	public static final String[] SIEVE_NAMES = 
 		{
@@ -111,7 +111,7 @@ public class BlockData {
 	//*****
 
 	//IRON
-	public static int IRON_ORE_ID = 3004;
+	public static int IRON_ORE_ID = 3304;
 	public static final String IRON_ORE_KEY = "iron_ore";
 	public static final String[] IRON_ORE_NAMES = 
 		{
@@ -127,7 +127,7 @@ public class BlockData {
 		}; 
 
 	//GOLD
-	public static int GOLD_ORE_ID = 3005;
+	public static int GOLD_ORE_ID = 3305;
 	public static final String GOLD_ORE_KEY = "gold_ore";
 	public static final String[] GOLD_ORE_NAMES = 
 		{
@@ -143,7 +143,7 @@ public class BlockData {
 		}; 
 
 	//COPPER
-	public static int COPPER_ORE_ID = 3009;
+	public static int COPPER_ORE_ID = 3309;
 	public static final String COPPER_ORE_KEY = "copper_ore";
 	public static final String[] COPPER_ORE_NAMES = 
 		{
@@ -159,7 +159,7 @@ public class BlockData {
 		}; 
 
 	//TIN
-	public static int TIN_ORE_ID = 3010;
+	public static int TIN_ORE_ID = 3310;
 	public static final String TIN_ORE_KEY = "tin_ore";
 	public static final String[] TIN_ORE_NAMES = 
 		{
@@ -175,7 +175,7 @@ public class BlockData {
 		};
 
 	//SILVER
-	public static int SILVER_ORE_ID = 3011;
+	public static int SILVER_ORE_ID = 3311;
 	public static final String SILVER_ORE_KEY = "silver_ore";
 	public static final String[] SILVER_ORE_NAMES = 
 		{
@@ -191,7 +191,7 @@ public class BlockData {
 		};
 
 	//LEAD
-	public static int LEAD_ORE_ID = 3012;
+	public static int LEAD_ORE_ID = 3312;
 	public static final String LEAD_ORE_KEY = "lead_ore";
 	public static final String[] LEAD_ORE_NAMES = 
 		{
@@ -207,7 +207,7 @@ public class BlockData {
 		};
 
 	//OSMIUM
-	public static int OSMIUM_ORE_ID = 3013;
+	public static int OSMIUM_ORE_ID = 3313;
 	public static final String OSMIUM_ORE_KEY = "osmium_ore";
 	public static final String[] OSMIUM_ORE_NAMES = 
 		{
@@ -223,7 +223,7 @@ public class BlockData {
 		};
 
 	//PLATINUM
-	public static int PLATINUM_ORE_ID = 3014;
+	public static int PLATINUM_ORE_ID = 3314;
 	public static final String PLATINUM_ORE_KEY = "platinum_ore";
 	public static final String[] PLATINUM_ORE_NAMES = 
 		{
@@ -239,7 +239,7 @@ public class BlockData {
 		};
 
 	//NICKLE
-	public static int NICKEL_ORE_ID = 3015;
+	public static int NICKEL_ORE_ID = 3315;
 	public static final String NICKEL_ORE_KEY = "nickel_ore";
 	public static final String[] NICKEL_ORE_NAMES = 
 		{
@@ -255,7 +255,7 @@ public class BlockData {
 		};
 
 	//ALUMINUM
-	public static int ALUMINUM_ORE_ID = 3016;
+	public static int ALUMINUM_ORE_ID = 3316;
 	public static final String ALUMINUM_ORE_KEY = "aluminum_ore";
 	public static final String[] ALUMINUM_ORE_NAMES = 
 		{

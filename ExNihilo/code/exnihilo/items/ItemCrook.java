@@ -28,10 +28,15 @@ public class ItemCrook extends ItemTool{
 	public static final Block[] blocksEffectiveAgainst = new Block[]{};
 
 	public ItemCrook(int id) 
-	{
+	{	
 		super(id, 0.0f, EnumToolMaterial.WOOD, blocksEffectiveAgainst);
 
 		this.setMaxDamage((int)(this.getMaxDamage() * 3));
+	}
+	
+	public ItemCrook(int id, EnumToolMaterial mat) 
+	{	
+		super(id, 0.0f, mat, blocksEffectiveAgainst);
 	}
 
 	@Override

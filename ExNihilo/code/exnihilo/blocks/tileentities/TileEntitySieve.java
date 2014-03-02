@@ -47,7 +47,6 @@ public class TileEntitySieve extends TileEntity{
 	private boolean particleMode = false;
 	private int timesClicked = 0;
 
-
 	public enum SieveMode
 	{EMPTY(0), FILLED(1);
 	private SieveMode(int v){this.value = v;}

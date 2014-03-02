@@ -46,83 +46,96 @@ public class Recipes {
 		if (ModData.ALLOW_HAMMERS)
 		{
 			//Hammers!
-		GameRegistry.addRecipe(
-				new ShapedOreRecipe(
-						new ItemStack(Items.HammerWood, 1, 0),
-						new Object[]
-								{
-							" x ",
-							" yx",
-							"y  ",
-							'x', "plankWood", 
-							'y', "stickWood"
-								}));
+			GameRegistry.addRecipe(
+					new ShapedOreRecipe(
+							new ItemStack(Items.HammerWood, 1, 0),
+							new Object[]
+									{
+								" x ",
+								" yx",
+								"y  ",
+								'x', "plankWood", 
+								'y', "stickWood"
+									}));
 
-		GameRegistry.addRecipe(
-				new ShapedOreRecipe(
-						new ItemStack(Items.HammerStone, 1, 0),
-						new Object[]
-								{
-							" x ",
-							" yx",
-							"y  ",
-							'x', Block.cobblestone, 
-							'y', "stickWood"
-								}));
+			GameRegistry.addRecipe(
+					new ShapedOreRecipe(
+							new ItemStack(Items.HammerStone, 1, 0),
+							new Object[]
+									{
+								" x ",
+								" yx",
+								"y  ",
+								'x', Block.cobblestone, 
+								'y', "stickWood"
+									}));
 
-		GameRegistry.addRecipe(
-				new ShapedOreRecipe(
-						new ItemStack(Items.HammerIron, 1, 0),
-						new Object[]
-								{
-							" x ",
-							" yx",
-							"y  ",
-							'x', Item.ingotIron, 
-							'y', "stickWood"
-								}));
+			GameRegistry.addRecipe(
+					new ShapedOreRecipe(
+							new ItemStack(Items.HammerIron, 1, 0),
+							new Object[]
+									{
+								" x ",
+								" yx",
+								"y  ",
+								'x', Item.ingotIron, 
+								'y', "stickWood"
+									}));
 
-		GameRegistry.addRecipe(
-				new ShapedOreRecipe(
-						new ItemStack(Items.HammerGold, 1, 0),
-						new Object[]
-								{
-							" x ",
-							" yx",
-							"y  ",
-							'x', Item.ingotGold, 
-							'y', "stickWood"
-								}));
+			GameRegistry.addRecipe(
+					new ShapedOreRecipe(
+							new ItemStack(Items.HammerGold, 1, 0),
+							new Object[]
+									{
+								" x ",
+								" yx",
+								"y  ",
+								'x', Item.ingotGold, 
+								'y', "stickWood"
+									}));
 
-		GameRegistry.addRecipe(
-				new ShapedOreRecipe(
-						new ItemStack(Items.HammerDiamond, 1, 0),
-						new Object[]
-								{
-							" x ",
-							" yx",
-							"y  ",
-							'x', Item.diamond, 
-							'y', "stickWood"
-								}));
+			GameRegistry.addRecipe(
+					new ShapedOreRecipe(
+							new ItemStack(Items.HammerDiamond, 1, 0),
+							new Object[]
+									{
+								" x ",
+								" yx",
+								"y  ",
+								'x', Item.diamond, 
+								'y', "stickWood"
+									}));
 		}
-		
+
 
 		if (ModData.ALLOW_CROOKS)
 		{
 			//Crook!
-		GameRegistry.addRecipe(
-				new ShapedOreRecipe(
-						new ItemStack(Items.Crook, 1, 0),
-						new Object[]
-								{
-							"xx ",
-							" x ",
-							" x ",
-							'x', "stickWood"
-								}));
+			GameRegistry.addRecipe(
+					new ShapedOreRecipe(
+							new ItemStack(Items.Crook, 1, 0),
+							new Object[]
+									{
+								"xx ",
+								" x ",
+								" x ",
+								'x', "stickWood"
+									}));
+
+			//Bone Crook!
+			GameRegistry.addRecipe(
+					new ShapedOreRecipe(
+							new ItemStack(Items.CrookBone, 1, 0),
+							new Object[]
+									{
+								"xx ",
+								" x ",
+								" x ",
+								'x', Item.bone
+									}));
+
 		}
-		
+
 
 		//Mesh!
 		GameRegistry.addRecipe(
@@ -135,28 +148,28 @@ public class Recipes {
 							"xxx",
 							'x', Item.silk
 								}));
-		
+
 		if (ModData.ALLOW_SIEVES)
 		{
-			
 
-		//SIEVES!
-		for(int i = 0; i < 4; i++)
-		{
-			GameRegistry.addRecipe(
-					new ShapedOreRecipe(
-							new ItemStack(Blocks.Sieve, 1, i),
-							new Object[]
-									{
-								"xzx",
-								"xzx",
-								"y y",
-								'x', new ItemStack(Block.planks, 1, i),
-								'y', "stickWood",
-								'z', Items.Mesh}));
+
+			//SIEVES!
+			for(int i = 0; i < 4; i++)
+			{
+				GameRegistry.addRecipe(
+						new ShapedOreRecipe(
+								new ItemStack(Blocks.Sieve, 1, i),
+								new Object[]
+										{
+									"xzx",
+									"xzx",
+									"y y",
+									'x', new ItemStack(Block.planks, 1, i),
+									'y', "stickWood",
+									'z', Items.Mesh}));
+			}
 		}
-		}
-		
+
 
 		//Porcelain!
 		GameRegistry.addRecipe(
@@ -169,19 +182,19 @@ public class Recipes {
 								}));
 		if (ModData.ALLOW_CRUCIBLES)
 		{
-		//Raw Crucible!
-		GameRegistry.addRecipe(
-				new ShapedOreRecipe(
-						new ItemStack(Blocks.CrucibleUnfired, 1, 0),
-						new Object[]
-								{
-							"x x",
-							"x x",
-							"xxx",
-							'x', new ItemStack(Items.Porcelain, 1, 0)
-								}));
+			//Raw Crucible!
+			GameRegistry.addRecipe(
+					new ShapedOreRecipe(
+							new ItemStack(Blocks.CrucibleUnfired, 1, 0),
+							new Object[]
+									{
+								"x x",
+								"x x",
+								"xxx",
+								'x', new ItemStack(Items.Porcelain, 1, 0)
+									}));
 		}
-		
+
 
 
 		//Stone -> Cobblestone!
@@ -194,94 +207,94 @@ public class Recipes {
 							"xx",
 							'x', Items.Stones
 								}));
-		
-		
+
+
 		//Precious Doll!
-				GameRegistry.addRecipe(
-						new ShapedOreRecipe(
-								new ItemStack(Items.Doll, 1, 0),
-								new Object[]
-										{
-									"xyx",
-									" x ",
-									"x x",
-									'x', Items.Porcelain,
-									'y', Item.diamond
-										}));
-				
-				GameRegistry.addRecipe(
-						new ShapedOreRecipe(
-								new ItemStack(Items.Doll, 1, 0),
-								new Object[]
-										{
-									"xyx",
-									" x ",
-									"x x",
-									'x', Items.Porcelain,
-									'y', Item.emerald
-										}));
-				
-				//Angry Doll!
-				GameRegistry.addRecipe(
-						new ShapedOreRecipe(
-								new ItemStack(Items.DollAngry, 1, 0),
-								new Object[]
-										{
-									"xyx",
-									"zwz",
-									"xvx",
-									'v', Item.redstone,
-									'w', Items.Doll,
-									'x', Item.blazePowder,
-									'y', Item.netherStalkSeeds,
-									'z', Item.glowstone
-										}));
-				
-				GameRegistry.addRecipe(
-						new ShapedOreRecipe(
-								new ItemStack(Items.DollAngry, 1, 0),
-								new Object[]
-										{
-									"xyx",
-									"zwz",
-									"xvx",
-									'v', Item.netherStalkSeeds,
-									'w', Items.Doll,
-									'x', Item.blazePowder,
-									'y', Item.redstone,
-									'z', Item.glowstone
-										}));
-				
-				//Creepy Doll
-				GameRegistry.addRecipe(
-						new ShapedOreRecipe(
-								new ItemStack(Items.DollCreepy, 1, 0),
-								new Object[]
-										{
-									"xyx",
-									"zwz",
-									"xvx",
-									'v', Item.redstone,
-									'w', Items.Doll,
-									'x', new ItemStack(Item.dyePowder, 1, 0),
-									'y', Item.netherStalkSeeds,
-									'z', new ItemStack(Item.dyePowder, 1, 4)
-										}));
-				
-				GameRegistry.addRecipe(
-						new ShapedOreRecipe(
-								new ItemStack(Items.DollCreepy, 1, 0),
-								new Object[]
-										{
-									"xyx",
-									"zwz",
-									"xvx",
-									'v', Item.netherStalkSeeds,
-									'w', Items.Doll,
-									'x', new ItemStack(Item.dyePowder, 1, 0),
-									'y', Item.redstone,
-									'z', new ItemStack(Item.dyePowder, 1, 4)
-										}));
+		GameRegistry.addRecipe(
+				new ShapedOreRecipe(
+						new ItemStack(Items.Doll, 1, 0),
+						new Object[]
+								{
+							"xyx",
+							" x ",
+							"x x",
+							'x', Items.Porcelain,
+							'y', Item.diamond
+								}));
+
+		GameRegistry.addRecipe(
+				new ShapedOreRecipe(
+						new ItemStack(Items.Doll, 1, 0),
+						new Object[]
+								{
+							"xyx",
+							" x ",
+							"x x",
+							'x', Items.Porcelain,
+							'y', Item.emerald
+								}));
+
+		//Angry Doll!
+		GameRegistry.addRecipe(
+				new ShapedOreRecipe(
+						new ItemStack(Items.DollAngry, 1, 0),
+						new Object[]
+								{
+							"xyx",
+							"zwz",
+							"xvx",
+							'v', Item.redstone,
+							'w', Items.Doll,
+							'x', Item.blazePowder,
+							'y', Item.netherStalkSeeds,
+							'z', Item.glowstone
+								}));
+
+		GameRegistry.addRecipe(
+				new ShapedOreRecipe(
+						new ItemStack(Items.DollAngry, 1, 0),
+						new Object[]
+								{
+							"xyx",
+							"zwz",
+							"xvx",
+							'v', Item.netherStalkSeeds,
+							'w', Items.Doll,
+							'x', Item.blazePowder,
+							'y', Item.redstone,
+							'z', Item.glowstone
+								}));
+
+		//Creepy Doll
+		GameRegistry.addRecipe(
+				new ShapedOreRecipe(
+						new ItemStack(Items.DollCreepy, 1, 0),
+						new Object[]
+								{
+							"xyx",
+							"zwz",
+							"xvx",
+							'v', Item.redstone,
+							'w', Items.Doll,
+							'x', new ItemStack(Item.dyePowder, 1, 0),
+							'y', Item.netherStalkSeeds,
+							'z', new ItemStack(Item.dyePowder, 1, 4)
+								}));
+
+		GameRegistry.addRecipe(
+				new ShapedOreRecipe(
+						new ItemStack(Items.DollCreepy, 1, 0),
+						new Object[]
+								{
+							"xyx",
+							"zwz",
+							"xvx",
+							'v', Item.netherStalkSeeds,
+							'w', Items.Doll,
+							'x', new ItemStack(Item.dyePowder, 1, 0),
+							'y', Item.redstone,
+							'z', new ItemStack(Item.dyePowder, 1, 4)
+								}));
 
 		registerOreRecipes();
 	}
@@ -354,7 +367,7 @@ public class Recipes {
 	public static void registerFurnaceRecipes()
 	{
 		FurnaceRecipes.smelting().addSmelting(Items.Silkworm.itemID, 0, new ItemStack(Items.SilkwormCooked, 1, 0), 0.1f);
-		
+
 		FurnaceRecipes.smelting().addSmelting(Blocks.IronOre.blockID, 0, new ItemStack(Item.ingotIron, 1, 0), 0.1f);
 		FurnaceRecipes.smelting().addSmelting(Blocks.IronOre.blockID, 1, new ItemStack(Item.ingotIron, 1, 0), 0.1f);
 		FurnaceRecipes.smelting().addSmelting(Blocks.IronOre.blockID, 2, new ItemStack(Item.ingotIron, 1, 0), 0.1f);
@@ -362,11 +375,11 @@ public class Recipes {
 		FurnaceRecipes.smelting().addSmelting(Blocks.GoldOre.blockID, 0, new ItemStack(Item.ingotGold, 1, 0), 0.1f);
 		FurnaceRecipes.smelting().addSmelting(Blocks.GoldOre.blockID, 1, new ItemStack(Item.ingotGold, 1, 0), 0.1f);
 		FurnaceRecipes.smelting().addSmelting(Blocks.GoldOre.blockID, 2, new ItemStack(Item.ingotGold, 1, 0), 0.1f);
-		
+
 		if (ModData.ALLOW_CRUCIBLES)
 		{
 			FurnaceRecipes.smelting().addSmelting(Blocks.CrucibleUnfired.blockID, 0, new ItemStack(Blocks.Crucible, 1, 0), 0.1f);
 		}
-		
+
 	}
 }

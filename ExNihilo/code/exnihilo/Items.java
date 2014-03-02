@@ -7,6 +7,7 @@ import exnihilo.blocks.itemBlocks.ItemBlockBarrel;
 import exnihilo.data.ItemData;
 import exnihilo.fluids.buckets.ItemBucketWitchWater;
 import exnihilo.items.ItemCrook;
+import exnihilo.items.ItemCrookBone;
 import exnihilo.items.ItemGrassSeeds;
 import exnihilo.items.ItemMesh;
 import exnihilo.items.ItemPorcelainBall;
@@ -81,6 +82,7 @@ public class Items {
 	public static Item HammerGold;
 	public static Item HammerDiamond;
 	public static Item Crook;
+	public static Item CrookBone;
 	public static Item Silkworm;
 	public static Item SilkwormCooked;
 	public static Item Mesh;
@@ -182,7 +184,9 @@ public class Items {
 
 		Crook = new ItemCrook(ItemData.CROOK_ID);
 		GameRegistry.registerItem(Crook, ItemData.CROOK_UNLOCALIZED_NAME);
-
+		CrookBone = new ItemCrookBone(ItemData.CROOK_BONE_ID);
+		GameRegistry.registerItem(CrookBone, ItemData.CROOK_BONE_UNLOCALIZED_NAME);
+		
 		Silkworm = new ItemSilkworm(ItemData.SILKWORM_ID);
 		GameRegistry.registerItem(Silkworm, ItemData.SILKWORM_UNLOCALIZED_NAME);
 
@@ -340,6 +344,7 @@ public class Items {
 		LanguageRegistry.addName(Silkworm, ItemData.SILKWORM_NAME);
 		LanguageRegistry.addName(SilkwormCooked, ItemData.SILKWORM_COOKED_NAME);
 		LanguageRegistry.addName(Crook, ItemData.CROOK_NAME);
+		LanguageRegistry.addName(CrookBone, ItemData.CROOK_BONE_NAME);
 		LanguageRegistry.addName(Mesh, ItemData.MESH_NAME);
 		LanguageRegistry.addName(Spores, ItemData.SPORES_NAME);
 		LanguageRegistry.addName(GrassSeeds, ItemData.SEED_GRASS_NAME);
