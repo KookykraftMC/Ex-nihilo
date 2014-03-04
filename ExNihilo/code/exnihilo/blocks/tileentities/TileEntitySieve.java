@@ -99,10 +99,13 @@ public class TileEntitySieve extends TileEntity{
 			volume = 0;
 		}else
 		{
-			volume -= PROCESSING_INTERVAL;
-			
 			timesClicked++;
-			if (timesClicked >= 12)
+			if (timesClicked <= 8)
+			{
+				volume -= PROCESSING_INTERVAL;
+			}
+			
+			if (timesClicked >= 20)
 			{
 				worldObj.destroyBlock(xCoord, yCoord, zCoord, false);
 				this.worldObj.createExplosion(null, xCoord, yCoord, zCoord, 1.0f, true);
