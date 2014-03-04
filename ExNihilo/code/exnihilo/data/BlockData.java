@@ -74,7 +74,7 @@ public class BlockData {
 	public static final String LEAVES_INFESTED_KEY = "infested_leaves";
 	public static final String[] LEAVES_INFESTED_NAMES = 
 		{
-		"Infested Oak Leaves",
+		"Infested Leaves",
 		"Infested Spruce Leaves",
 		"Infested Birch Leaves",
 		"Infested Jungle Leaves"
