@@ -34,7 +34,7 @@ public class ItemSilkworm extends Item{
 				int oldID = world.getBlockId(x, y, z);
 				int oldMeta = world.getBlockMetadata(x, y, z);
 
-				world.setBlock(x, y, z, Blocks.LeavesInfested.blockID, oldMeta, 3);
+				world.setBlock(x, y, z, Blocks.LeavesInfested.blockID, 0, 3);
 				TileEntityLeavesInfested te = (TileEntityLeavesInfested)world.getBlockTileEntity(x, y, z); 
 				te.setMimicBlock(oldID, oldMeta);
 
