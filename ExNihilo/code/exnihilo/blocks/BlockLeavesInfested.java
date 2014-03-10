@@ -3,6 +3,8 @@ package exnihilo.blocks;
 import java.util.Random;
 
 import cpw.mods.fml.common.registry.GameRegistry;
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
 import exnihilo.blocks.tileentities.TileEntityBarrel;
 import exnihilo.blocks.tileentities.TileEntityLeavesInfested;
 import exnihilo.data.BlockData;
@@ -53,6 +55,7 @@ public class BlockLeavesInfested extends BlockLeaves implements ITileEntityProvi
 		//Don't drop anything. This is to override the base chance to drop saplings. 
 	}
 
+	@SideOnly(Side.CLIENT)
 	public int colorMultiplier(IBlockAccess world, int x, int y, int z)
 	{
 		TileEntityLeavesInfested leaves = (TileEntityLeavesInfested) world.getBlockTileEntity(x, y, z);
@@ -67,9 +70,16 @@ public class BlockLeavesInfested extends BlockLeaves implements ITileEntityProvi
 		
 	}
 	
+	@SideOnly(Side.CLIENT)
 	public Icon getIcon(int par1, int par2)
     {
         return this.blockIcon;
+    }
+	
+	@SideOnly(Side.CLIENT)
+    public int getRenderColor(int par1)
+    {
+        return ColorRegistry.color("white").toInt();
     }
 
 	public int damageDropped(int par1)
