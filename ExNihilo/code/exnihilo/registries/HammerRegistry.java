@@ -31,7 +31,7 @@ public static ArrayList<Smashable> rewards = new ArrayList<Smashable>();
 		{
 			Smashable reward = it.next();
 
-			if (reward.sourceID == id && reward.sourceMeta == meta)
+			if (reward.sourceID == id && reward.sourceMeta == meta && reward.id != 0)
 			{
 				rewardList.add(reward);
 			}
