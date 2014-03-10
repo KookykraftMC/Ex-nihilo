@@ -31,9 +31,6 @@ public class TileEntityLeavesInfested extends TileEntity
 	public int meta = 0;
 	public Color color = ColorRegistry.color("white");
 
-	//	@SideOnly(Side.CLIENT)
-	//	Icon icon = Block.leaves.getIcon(0, 0);
-
 	private static final int SPREAD_INTERVAL = 100;
 	private int spreadTimer = 0;
 
@@ -100,45 +97,21 @@ public class TileEntityLeavesInfested extends TileEntity
 
 	private void spread()
 	{
-//		if (worldObj.rand.nextInt(20) == 0)
-//		{
-			int x = this.worldObj.rand.nextInt(3) - 1;
-			int y = this.worldObj.rand.nextInt(3) - 1;
-			int z = this.worldObj.rand.nextInt(3) - 1;
+		int x = this.worldObj.rand.nextInt(3) - 1;
+		int y = this.worldObj.rand.nextInt(3) - 1;
+		int z = this.worldObj.rand.nextInt(3) - 1;
 
-			int blockID = worldObj.getBlockId(xCoord + x, yCoord + y, zCoord + z);
-			int meta = worldObj.getBlockMetadata(xCoord + x, yCoord + y, zCoord + z);
+		int blockID = worldObj.getBlockId(xCoord + x, yCoord + y, zCoord + z);
+		int meta = worldObj.getBlockMetadata(xCoord + x, yCoord + y, zCoord + z);
 
-			Block target = Block.blocksList[blockID];
+		Block target = Block.blocksList[blockID];
 
-			if(target != null && target.isLeaves(null, 0, 0, 0) && target.blockID != Blocks.LeavesInfested.blockID && !Forestry.addsThisLeaf(target))
-			{
-				worldObj.setBlock(xCoord + x, yCoord + y, zCoord + z, Blocks.LeavesInfested.blockID, meta, 3);
-				TileEntityLeavesInfested te = (TileEntityLeavesInfested)worldObj.getBlockTileEntity(xCoord + x, yCoord + y, zCoord + z);
-				te.setMimicBlock(blockID, meta);
-			}
-//		}
-
-		//		for (int x = -1; x <= 1; x++)
-		//		{
-		//			for (int y = -1; y <= 1; y++)
-		//			{
-		//				for (int z = -1; z <= 1; z++)
-		//				{
-		//					int blockID = worldObj.getBlockId(xCoord + x, yCoord + y, zCoord + z);
-		//					int meta = worldObj.getBlockMetadata(xCoord + x, yCoord + y, zCoord + z);
-		//					
-		//					Block target = Block.blocksList[blockID];
-		//					
-		//					if(target != null && target.isLeaves(null, 0, 0, 0) && !Forestry.addsThisLeaf(target) && target.blockID != Blocks.LeavesInfested.blockID && worldObj.rand.nextInt(20) == 0)
-		//					{
-		//						worldObj.setBlock(xCoord + x, yCoord + y, zCoord + z, Blocks.LeavesInfested.blockID, meta, 3);
-		//						TileEntityLeavesInfested te = (TileEntityLeavesInfested)worldObj.getBlockTileEntity(xCoord + x, yCoord + y, zCoord + z);
-		//						te.setMimicBlock(blockID, meta);
-		//					}
-		//				}
-		//			}
-		//		}
+		if(target != null && target.isLeaves(null, 0, 0, 0) && target.blockID != Blocks.LeavesInfested.blockID && !Forestry.addsThisLeaf(target))
+		{
+			worldObj.setBlock(xCoord + x, yCoord + y, zCoord + z, Blocks.LeavesInfested.blockID, meta, 3);
+			TileEntityLeavesInfested te = (TileEntityLeavesInfested)worldObj.getBlockTileEntity(xCoord + x, yCoord + y, zCoord + z);
+			te.setMimicBlock(blockID, meta);
+		}
 	}
 
 	public void setMimicBlock(int blockID, int meta)

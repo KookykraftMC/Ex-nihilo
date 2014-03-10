@@ -72,11 +72,6 @@ public class BlockLeavesInfested extends BlockLeaves implements ITileEntityProvi
         return this.blockIcon;
     }
 
-	public int getLeafColor(IBlockAccess world, int par2, int par3, int par4)
-	{
-		return super.colorMultiplier(world, par2, par3, par4);
-	}
-
 	public int damageDropped(int par1)
 	{
 		return 0;
