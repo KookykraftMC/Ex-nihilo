@@ -214,9 +214,9 @@ public class SieveRegistry {
 		
 		if (dropPlatinum)
 		{
-			register(Block.gravel.blockID, 0, Items.PlatinumGravel.itemID, 0, 24);
-			register(Block.sand.blockID, 0, Items.PlatinumSand.itemID, 0, 24);
-			register(Blocks.Dust.blockID, 0, Items.PlatinumDust.itemID, 0, 24);
+			register(Block.gravel.blockID, 0, Items.PlatinumGravel.itemID, 0, 32);
+			register(Block.sand.blockID, 0, Items.PlatinumSand.itemID, 0, 32);
+			register(Blocks.Dust.blockID, 0, Items.PlatinumDust.itemID, 0, 32);
 		}
 		
 		if (dropAluminum)
