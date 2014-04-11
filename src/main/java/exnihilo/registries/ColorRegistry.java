@@ -1,12 +1,8 @@
 package exnihilo.registries;
 
 import java.util.Hashtable;
-import java.util.List;
 
-import net.minecraftforge.common.Configuration;
-
-import com.google.common.collect.Lists;
-
+import net.minecraftforge.common.config.Configuration;
 import exnihilo.registries.helpers.Color;
 
 

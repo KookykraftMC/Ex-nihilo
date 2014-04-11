@@ -1,6 +1,6 @@
 package exnihilo.data;
 
-import net.minecraftforge.common.Configuration;
+import net.minecraftforge.common.config.Configuration;
 
 public class WorldData {
 	private static String CATEGORY_WORLDGEN_OPTIONS = "void generation options";

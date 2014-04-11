@@ -1,7 +1,6 @@
 package exnihilo.data;
 
-import net.minecraftforge.common.Configuration;
-
+@SuppressWarnings("unused")
 public class ItemData {
 	private static final String CATEGORY = "Items";
 	private static final int ITEM_ID_BASE = 18000;
@@ -232,120 +231,120 @@ public class ItemData {
 
 
 	//LOAD ALL THE THINGS!
-	public static void load(Configuration config)
-	{
-		//HAMMERS!
-		for(int i = 0; i < 5; i++)
-		{
-			HAMMER_IDS[i] = config.getItem(CATEGORY, HAMMER_UNLOCALIZED_NAMES[i], GetNextID()).getInt() - 256;
-		}
-
-		//CROOK!
-		CROOK_ID = config.getItem(CATEGORY, CROOK_UNLOCALIZED_NAME, CROOK_ID).getInt() - 256;
-		CROOK_BONE_ID = config.getItem(CATEGORY, CROOK_BONE_UNLOCALIZED_NAME, CROOK_BONE_ID).getInt() - 256;
-		
-		//MESH!
-		MESH_ID = config.getItem(CATEGORY, MESH_UNLOCALIZED_NAME, MESH_ID).getInt() - 256;
-
-		//SPORES!
-		SPORES_ID = config.getItem(CATEGORY, SPORES_UNLOCALIZED_NAME, SPORES_ID).getInt() - 256;
-
-		//GRASS!
-		SEED_GRASS_ID = config.getItem(CATEGORY, SEED_GRASS_UNLOCALIZED_NAME, SEED_GRASS_ID).getInt() - 256;
-
-		//STONES!
-		STONES_ID = config.getItem(CATEGORY, STONES_UNLOCALIZED_NAME, STONES_ID).getInt() - 256;
-
-		//PORCELAIN!
-		PORCELAIN_ID = config.getItem(CATEGORY, PORCELAIN_UNLOCALIZED_NAME, PORCELAIN_ID).getInt() - 256;
-
-		//COOKED SILKWORMS!
-		SILKWORM_ID = config.getItem(CATEGORY, SILKWORM_UNLOCALIZED_NAME, SILKWORM_ID).getInt() - 256;
-		SILKWORM_COOKED_ID = config.getItem(CATEGORY, SILKWORM_COOKED_UNLOCALIZED_NAME, SILKWORM_COOKED_ID).getInt() - 256;
-
-		//SEEDS
-		SEED_OAK_ID = config.getItem(SEED_CATEGORY, SEED_OAK_UNLOCALIZED_NAME, SEED_OAK_ID).getInt() - 256;
-		SEED_SPRUCE_ID = config.getItem(SEED_CATEGORY, SEED_SPRUCE_UNLOCALIZED_NAME, SEED_SPRUCE_ID).getInt() - 256;
-		SEED_BIRCH_ID = config.getItem(SEED_CATEGORY, SEED_BIRCH_UNLOCALIZED_NAME, SEED_BIRCH_ID).getInt() - 256;
-		SEED_JUNGLE_ID = config.getItem(SEED_CATEGORY, SEED_JUNGLE_UNLOCALIZED_NAME, SEED_JUNGLE_ID).getInt() - 256;
-		SEED_CACTUS_ID = config.getItem(SEED_CATEGORY, SEED_CACTUS_UNLOCALIZED_NAME, SEED_CACTUS_ID).getInt() - 256;
-		SEED_SUGAR_CANE_ID = config.getItem(SEED_CATEGORY, SEED_SUGAR_CANE_UNLOCALIZED_NAME, SEED_SUGAR_CANE_ID).getInt() - 256;
-		SEED_CARROT_ID = config.getItem(SEED_CATEGORY, SEED_CARROT_UNLOCALIZED_NAME, SEED_CARROT_ID).getInt() - 256;
-		SEED_POTATO_ID = config.getItem(SEED_CATEGORY, SEED_POTATO_UNLOCALIZED_NAME, SEED_POTATO_ID).getInt() - 256;
-
-		SEED_RUBBER_ID = config.getItem(SEED_CATEGORY, SEED_RUBBER_UNLOCALIZED_NAME, SEED_RUBBER_ID).getInt() - 256;
-
-		//IRON ORE!
-		for(int i = 0; i < 3; i++)
-		{
-			IRON_ORE_IDS[i] = config.getItem(ORE_CATEGORY, IRON_ORE_UNLOCALIZED_NAMES[i], GetNextID()).getInt() - 256;
-		}
-
-		//GOLD ORE!
-		for(int i = 0; i < 3; i++)
-		{
-			GOLD_ORE_IDS[i] = config.getItem(ORE_CATEGORY, GOLD_ORE_UNLOCALIZED_NAMES[i], GetNextID()).getInt() - 256;
-		}
-
-		//COPPER ORE!
-		for(int i = 0; i < 3; i++)
-		{
-			COPPER_ORE_IDS[i] = config.getItem(ORE_CATEGORY, COPPER_ORE_UNLOCALIZED_NAMES[i], GetNextID()).getInt() - 256;
-		}
-		COPPER_INGOT_ID = config.getItem(ORE_CATEGORY, COPPER_ORE_UNLOCALIZED_NAMES[3], COPPER_INGOT_ID).getInt() - 256;
-
-		//TIN ORE!
-		for(int i = 0; i < 3; i++)
-		{
-			TIN_ORE_IDS[i] = config.getItem(ORE_CATEGORY, TIN_ORE_UNLOCALIZED_NAMES[i], GetNextID()).getInt() - 256;
-		}
-		TIN_INGOT_ID = config.getItem(ORE_CATEGORY, TIN_ORE_UNLOCALIZED_NAMES[3], TIN_INGOT_ID).getInt() - 256;
-
-		//LEAD ORE!
-		for(int i = 0; i < 3; i++)
-		{
-			LEAD_ORE_IDS[i] = config.getItem(ORE_CATEGORY, LEAD_ORE_UNLOCALIZED_NAMES[i], GetNextID()).getInt() - 256;
-		}
-		LEAD_INGOT_ID = config.getItem(ORE_CATEGORY, LEAD_ORE_UNLOCALIZED_NAMES[3], LEAD_INGOT_ID).getInt() - 256;
-
-		//SILVER ORE!
-		for(int i = 0; i < 3; i++)
-		{
-			SILVER_ORE_IDS[i] = config.getItem(ORE_CATEGORY, SILVER_ORE_UNLOCALIZED_NAMES[i], GetNextID()).getInt() - 256;
-		}
-		SILVER_INGOT_ID = config.getItem(ORE_CATEGORY, SILVER_ORE_UNLOCALIZED_NAMES[3], SILVER_INGOT_ID).getInt() - 256;
-
-		//OSMIUM ORE!
-		for(int i = 0; i < 3; i++)
-		{
-			OSMIUM_ORE_IDS[i] = config.getItem(ORE_CATEGORY, OSMIUM_ORE_UNLOCALIZED_NAMES[i], GetNextID()).getInt() - 256;
-		}
-
-		//PLATINUM ORE!
-		for(int i = 0; i < 3; i++)
-		{
-			PLATINUM_ORE_IDS[i] = config.getItem(ORE_CATEGORY, PLATINUM_ORE_UNLOCALIZED_NAMES[i], GetNextID()).getInt() - 256;
-		}
-		PLATINUM_INGOT_ID = config.getItem(ORE_CATEGORY, PLATINUM_ORE_UNLOCALIZED_NAMES[3], PLATINUM_INGOT_ID).getInt() - 256;
-
-		//NICKLE ORE!
-		for(int i = 0; i < 3; i++)
-		{
-			NICKEL_ORE_IDS[i] = config.getItem(ORE_CATEGORY, NICKEL_ORE_UNLOCALIZED_NAMES[i], GetNextID()).getInt() - 256;
-		}
-		NICKEL_INGOT_ID = config.getItem(ORE_CATEGORY, NICKEL_ORE_UNLOCALIZED_NAMES[3], NICKEL_INGOT_ID).getInt() - 256;
-
-		//ALUMINUM ORE!
-		for(int i = 0; i < 3; i++)
-		{
-			ALUMINUM_ORE_IDS[i] = config.getItem(ORE_CATEGORY, ALUMINUM_ORE_UNLOCALIZED_NAMES[i], GetNextID()).getInt() - 256;
-		}
-		ALUMINUM_INGOT_ID = config.getItem(ORE_CATEGORY, ALUMINUM_ORE_UNLOCALIZED_NAMES[3], ALUMINUM_INGOT_ID).getInt() - 256;
-
-		DOLL_ID = config.getItem(CATEGORY, DOLL_UNLOCALIZED_NAME, DOLL_ID).getInt() - 256;
-		CREEPY_DOLL_ID = config.getItem(CATEGORY, CREEPY_DOLL_UNLOCALIZED_NAME, CREEPY_DOLL_ID).getInt() - 256;
-		ANGRY_DOLL_ID = config.getItem(CATEGORY, ANGRY_DOLL_UNLOCALIZED_NAME, ANGRY_DOLL_ID).getInt() - 256;
-	}
+//	public static void load(Configuration config)
+//	{
+//		//HAMMERS!
+//		for(int i = 0; i < 5; i++)
+//		{
+//			HAMMER_IDS[i] = config.getItem(CATEGORY, HAMMER_UNLOCALIZED_NAMES[i], GetNextID()).getInt() - 256;
+//		}
+//
+//		//CROOK!
+//		CROOK_ID = config.getItem(CATEGORY, CROOK_UNLOCALIZED_NAME, CROOK_ID).getInt() - 256;
+//		CROOK_BONE_ID = config.getItem(CATEGORY, CROOK_BONE_UNLOCALIZED_NAME, CROOK_BONE_ID).getInt() - 256;
+//		
+//		//MESH!
+//		MESH_ID = config.getItem(CATEGORY, MESH_UNLOCALIZED_NAME, MESH_ID).getInt() - 256;
+//
+//		//SPORES!
+//		SPORES_ID = config.getItem(CATEGORY, SPORES_UNLOCALIZED_NAME, SPORES_ID).getInt() - 256;
+//
+//		//GRASS!
+//		SEED_GRASS_ID = config.getItem(CATEGORY, SEED_GRASS_UNLOCALIZED_NAME, SEED_GRASS_ID).getInt() - 256;
+//
+//		//STONES!
+//		STONES_ID = config.getItem(CATEGORY, STONES_UNLOCALIZED_NAME, STONES_ID).getInt() - 256;
+//
+//		//PORCELAIN!
+//		PORCELAIN_ID = config.getItem(CATEGORY, PORCELAIN_UNLOCALIZED_NAME, PORCELAIN_ID).getInt() - 256;
+//
+//		//COOKED SILKWORMS!
+//		SILKWORM_ID = config.getItem(CATEGORY, SILKWORM_UNLOCALIZED_NAME, SILKWORM_ID).getInt() - 256;
+//		SILKWORM_COOKED_ID = config.getItem(CATEGORY, SILKWORM_COOKED_UNLOCALIZED_NAME, SILKWORM_COOKED_ID).getInt() - 256;
+//
+//		//SEEDS
+//		SEED_OAK_ID = config.getItem(SEED_CATEGORY, SEED_OAK_UNLOCALIZED_NAME, SEED_OAK_ID).getInt() - 256;
+//		SEED_SPRUCE_ID = config.getItem(SEED_CATEGORY, SEED_SPRUCE_UNLOCALIZED_NAME, SEED_SPRUCE_ID).getInt() - 256;
+//		SEED_BIRCH_ID = config.getItem(SEED_CATEGORY, SEED_BIRCH_UNLOCALIZED_NAME, SEED_BIRCH_ID).getInt() - 256;
+//		SEED_JUNGLE_ID = config.getItem(SEED_CATEGORY, SEED_JUNGLE_UNLOCALIZED_NAME, SEED_JUNGLE_ID).getInt() - 256;
+//		SEED_CACTUS_ID = config.getItem(SEED_CATEGORY, SEED_CACTUS_UNLOCALIZED_NAME, SEED_CACTUS_ID).getInt() - 256;
+//		SEED_SUGAR_CANE_ID = config.getItem(SEED_CATEGORY, SEED_SUGAR_CANE_UNLOCALIZED_NAME, SEED_SUGAR_CANE_ID).getInt() - 256;
+//		SEED_CARROT_ID = config.getItem(SEED_CATEGORY, SEED_CARROT_UNLOCALIZED_NAME, SEED_CARROT_ID).getInt() - 256;
+//		SEED_POTATO_ID = config.getItem(SEED_CATEGORY, SEED_POTATO_UNLOCALIZED_NAME, SEED_POTATO_ID).getInt() - 256;
+//
+//		SEED_RUBBER_ID = config.getItem(SEED_CATEGORY, SEED_RUBBER_UNLOCALIZED_NAME, SEED_RUBBER_ID).getInt() - 256;
+//
+//		//IRON ORE!
+//		for(int i = 0; i < 3; i++)
+//		{
+//			IRON_ORE_IDS[i] = config.getItem(ORE_CATEGORY, IRON_ORE_UNLOCALIZED_NAMES[i], GetNextID()).getInt() - 256;
+//		}
+//
+//		//GOLD ORE!
+//		for(int i = 0; i < 3; i++)
+//		{
+//			GOLD_ORE_IDS[i] = config.getItem(ORE_CATEGORY, GOLD_ORE_UNLOCALIZED_NAMES[i], GetNextID()).getInt() - 256;
+//		}
+//
+//		//COPPER ORE!
+//		for(int i = 0; i < 3; i++)
+//		{
+//			COPPER_ORE_IDS[i] = config.getItem(ORE_CATEGORY, COPPER_ORE_UNLOCALIZED_NAMES[i], GetNextID()).getInt() - 256;
+//		}
+//		COPPER_INGOT_ID = config.getItem(ORE_CATEGORY, COPPER_ORE_UNLOCALIZED_NAMES[3], COPPER_INGOT_ID).getInt() - 256;
+//
+//		//TIN ORE!
+//		for(int i = 0; i < 3; i++)
+//		{
+//			TIN_ORE_IDS[i] = config.getItem(ORE_CATEGORY, TIN_ORE_UNLOCALIZED_NAMES[i], GetNextID()).getInt() - 256;
+//		}
+//		TIN_INGOT_ID = config.getItem(ORE_CATEGORY, TIN_ORE_UNLOCALIZED_NAMES[3], TIN_INGOT_ID).getInt() - 256;
+//
+//		//LEAD ORE!
+//		for(int i = 0; i < 3; i++)
+//		{
+//			LEAD_ORE_IDS[i] = config.getItem(ORE_CATEGORY, LEAD_ORE_UNLOCALIZED_NAMES[i], GetNextID()).getInt() - 256;
+//		}
+//		LEAD_INGOT_ID = config.getItem(ORE_CATEGORY, LEAD_ORE_UNLOCALIZED_NAMES[3], LEAD_INGOT_ID).getInt() - 256;
+//
+//		//SILVER ORE!
+//		for(int i = 0; i < 3; i++)
+//		{
+//			SILVER_ORE_IDS[i] = config.getItem(ORE_CATEGORY, SILVER_ORE_UNLOCALIZED_NAMES[i], GetNextID()).getInt() - 256;
+//		}
+//		SILVER_INGOT_ID = config.getItem(ORE_CATEGORY, SILVER_ORE_UNLOCALIZED_NAMES[3], SILVER_INGOT_ID).getInt() - 256;
+//
+//		//OSMIUM ORE!
+//		for(int i = 0; i < 3; i++)
+//		{
+//			OSMIUM_ORE_IDS[i] = config.getItem(ORE_CATEGORY, OSMIUM_ORE_UNLOCALIZED_NAMES[i], GetNextID()).getInt() - 256;
+//		}
+//
+//		//PLATINUM ORE!
+//		for(int i = 0; i < 3; i++)
+//		{
+//			PLATINUM_ORE_IDS[i] = config.getItem(ORE_CATEGORY, PLATINUM_ORE_UNLOCALIZED_NAMES[i], GetNextID()).getInt() - 256;
+//		}
+//		PLATINUM_INGOT_ID = config.getItem(ORE_CATEGORY, PLATINUM_ORE_UNLOCALIZED_NAMES[3], PLATINUM_INGOT_ID).getInt() - 256;
+//
+//		//NICKLE ORE!
+//		for(int i = 0; i < 3; i++)
+//		{
+//			NICKEL_ORE_IDS[i] = config.getItem(ORE_CATEGORY, NICKEL_ORE_UNLOCALIZED_NAMES[i], GetNextID()).getInt() - 256;
+//		}
+//		NICKEL_INGOT_ID = config.getItem(ORE_CATEGORY, NICKEL_ORE_UNLOCALIZED_NAMES[3], NICKEL_INGOT_ID).getInt() - 256;
+//
+//		//ALUMINUM ORE!
+//		for(int i = 0; i < 3; i++)
+//		{
+//			ALUMINUM_ORE_IDS[i] = config.getItem(ORE_CATEGORY, ALUMINUM_ORE_UNLOCALIZED_NAMES[i], GetNextID()).getInt() - 256;
+//		}
+//		ALUMINUM_INGOT_ID = config.getItem(ORE_CATEGORY, ALUMINUM_ORE_UNLOCALIZED_NAMES[3], ALUMINUM_INGOT_ID).getInt() - 256;
+//
+//		DOLL_ID = config.getItem(CATEGORY, DOLL_UNLOCALIZED_NAME, DOLL_ID).getInt() - 256;
+//		CREEPY_DOLL_ID = config.getItem(CATEGORY, CREEPY_DOLL_UNLOCALIZED_NAME, CREEPY_DOLL_ID).getInt() - 256;
+//		ANGRY_DOLL_ID = config.getItem(CATEGORY, ANGRY_DOLL_UNLOCALIZED_NAME, ANGRY_DOLL_ID).getInt() - 256;
+//	}
 	
 	public static int GetNextID()
 	{

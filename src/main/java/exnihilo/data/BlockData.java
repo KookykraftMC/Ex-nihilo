@@ -1,14 +1,6 @@
 package exnihilo.data;
 
-
-import java.util.List;
-
-import cpw.mods.fml.common.registry.GameRegistry;
-import net.minecraft.block.Block;
-import net.minecraft.block.material.Material;
-import net.minecraft.creativetab.CreativeTabs;
-import net.minecraftforge.common.Configuration;
-
+@SuppressWarnings("unused")
 public class BlockData {
 	private static final String CATEGORY = "blocks";
 	private static final String ORE_CATEGORY = "ore blocks";	
@@ -271,28 +263,28 @@ public class BlockData {
 		};
 
 	//Load it all!
-	public static void load(Configuration config)
-	{
-		BARREL_ID = config.getBlock(CATEGORY, BARREL_KEY, BARREL_ID).getInt();
-		BARREL_STONE_ID = config.getBlock(CATEGORY, BARREL_STONE_KEY, BARREL_STONE_ID).getInt();
-		CRUCIBLE_ID = config.getBlock(CATEGORY, CRUCIBLE_KEY, CRUCIBLE_ID).getInt();
-		CRUCIBLE_UNFIRED_ID = config.getBlock(CATEGORY, CRUCIBLE_UNFIRED_KEY, CRUCIBLE_UNFIRED_ID).getInt();
-		DUST_ID = config.getBlock(CATEGORY, DUST_KEY, DUST_ID).getInt();
-		LEAVES_INFESTED_ID = config.getBlock(CATEGORY, LEAVES_INFESTED_KEY, LEAVES_INFESTED_ID).getInt();
-		SIEVE_ID = config.getBlock(CATEGORY, SIEVE_KEY, SIEVE_ID).getInt();
-		BEE_TRAP_ID = config.getBlock(CATEGORY, BEE_TRAP_KEY, BEE_TRAP_ID).getInt();
-		BEE_TRAP_TREATED_ID = config.getBlock(CATEGORY, BEE_TRAP_TREATED_KEY, BEE_TRAP_TREATED_ID).getInt();
-		IRON_ORE_ID = config.getBlock(ORE_CATEGORY, IRON_ORE_KEY, IRON_ORE_ID).getInt();
-		GOLD_ORE_ID = config.getBlock(ORE_CATEGORY, GOLD_ORE_KEY, GOLD_ORE_ID).getInt();
-		TIN_ORE_ID = config.getBlock(ORE_CATEGORY, TIN_ORE_KEY, TIN_ORE_ID).getInt();
-		COPPER_ORE_ID = config.getBlock(ORE_CATEGORY, COPPER_ORE_KEY, COPPER_ORE_ID).getInt();
-		SILVER_ORE_ID = config.getBlock(ORE_CATEGORY, SILVER_ORE_KEY, SILVER_ORE_ID).getInt();
-		LEAD_ORE_ID = config.getBlock(ORE_CATEGORY, LEAD_ORE_KEY, LEAD_ORE_ID).getInt();
-		OSMIUM_ORE_ID = config.getBlock(ORE_CATEGORY, OSMIUM_ORE_KEY, OSMIUM_ORE_ID).getInt();
-		PLATINUM_ORE_ID = config.getBlock(ORE_CATEGORY, PLATINUM_ORE_KEY, PLATINUM_ORE_ID).getInt();
-		NICKEL_ORE_ID = config.getBlock(ORE_CATEGORY, NICKEL_ORE_KEY, NICKEL_ORE_ID).getInt();
-		ALUMINUM_ORE_ID = config.getBlock(ORE_CATEGORY, ALUMINUM_ORE_KEY, ALUMINUM_ORE_ID).getInt();
-	}
+//	public static void load(Configuration config)
+//	{
+//		BARREL_ID = config.getBlock(CATEGORY, BARREL_KEY, BARREL_ID).getInt();
+//		BARREL_STONE_ID = config.getBlock(CATEGORY, BARREL_STONE_KEY, BARREL_STONE_ID).getInt();
+//		CRUCIBLE_ID = config.getBlock(CATEGORY, CRUCIBLE_KEY, CRUCIBLE_ID).getInt();
+//		CRUCIBLE_UNFIRED_ID = config.getBlock(CATEGORY, CRUCIBLE_UNFIRED_KEY, CRUCIBLE_UNFIRED_ID).getInt();
+//		DUST_ID = config.getBlock(CATEGORY, DUST_KEY, DUST_ID).getInt();
+//		LEAVES_INFESTED_ID = config.getBlock(CATEGORY, LEAVES_INFESTED_KEY, LEAVES_INFESTED_ID).getInt();
+//		SIEVE_ID = config.getBlock(CATEGORY, SIEVE_KEY, SIEVE_ID).getInt();
+//		BEE_TRAP_ID = config.getBlock(CATEGORY, BEE_TRAP_KEY, BEE_TRAP_ID).getInt();
+//		BEE_TRAP_TREATED_ID = config.getBlock(CATEGORY, BEE_TRAP_TREATED_KEY, BEE_TRAP_TREATED_ID).getInt();
+//		IRON_ORE_ID = config.getBlock(ORE_CATEGORY, IRON_ORE_KEY, IRON_ORE_ID).getInt();
+//		GOLD_ORE_ID = config.getBlock(ORE_CATEGORY, GOLD_ORE_KEY, GOLD_ORE_ID).getInt();
+//		TIN_ORE_ID = config.getBlock(ORE_CATEGORY, TIN_ORE_KEY, TIN_ORE_ID).getInt();
+//		COPPER_ORE_ID = config.getBlock(ORE_CATEGORY, COPPER_ORE_KEY, COPPER_ORE_ID).getInt();
+//		SILVER_ORE_ID = config.getBlock(ORE_CATEGORY, SILVER_ORE_KEY, SILVER_ORE_ID).getInt();
+//		LEAD_ORE_ID = config.getBlock(ORE_CATEGORY, LEAD_ORE_KEY, LEAD_ORE_ID).getInt();
+//		OSMIUM_ORE_ID = config.getBlock(ORE_CATEGORY, OSMIUM_ORE_KEY, OSMIUM_ORE_ID).getInt();
+//		PLATINUM_ORE_ID = config.getBlock(ORE_CATEGORY, PLATINUM_ORE_KEY, PLATINUM_ORE_ID).getInt();
+//		NICKEL_ORE_ID = config.getBlock(ORE_CATEGORY, NICKEL_ORE_KEY, NICKEL_ORE_ID).getInt();
+//		ALUMINUM_ORE_ID = config.getBlock(ORE_CATEGORY, ALUMINUM_ORE_KEY, ALUMINUM_ORE_ID).getInt();
+//	}
 
 
 }

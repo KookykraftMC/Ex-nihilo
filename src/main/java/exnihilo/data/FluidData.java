@@ -1,7 +1,5 @@
 package exnihilo.data;
 
-import net.minecraftforge.common.Configuration;
-
 public class FluidData {
 	public static String CATEGORY_FLUIDS = "fluid blocks";
 	
@@ -18,11 +16,11 @@ public class FluidData {
 	public static final String BUCKET_WITCHWATER_UNLOCALIZED_NAME = "bucket_witchwater";
 	public static final String BUCKET_WITCHWATER_NAME = "Witch Water Bucket";
 	
-	public static void load(Configuration config)
-	{
-		WITCHWATER_ID = config.getBlock(CATEGORY_FLUIDS, WITCHWATER_KEY, WITCHWATER_ID).getInt();
-		
-		//BUCKETS!
-		BUCKET_WITCHWATER_ID = config.getItem(CATEGORY_BUCKETS, BUCKET_WITCHWATER_UNLOCALIZED_NAME, BUCKET_WITCHWATER_ID).getInt() - 256;
-	}
+//	public static void load(Configuration config)
+//	{
+//		WITCHWATER_ID = config.getBlock(CATEGORY_FLUIDS, WITCHWATER_KEY, WITCHWATER_ID).getInt();
+//		
+//		//BUCKETS!
+//		BUCKET_WITCHWATER_ID = config.getItem(CATEGORY_BUCKETS, BUCKET_WITCHWATER_UNLOCALIZED_NAME, BUCKET_WITCHWATER_ID).getInt() - 256;
+//	}
 }

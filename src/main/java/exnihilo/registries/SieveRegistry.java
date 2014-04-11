@@ -1,24 +1,14 @@
 package exnihilo.registries;
 
 import java.util.ArrayList;
-import java.util.Enumeration;
-import java.util.Hashtable;
 import java.util.Iterator;
-import java.util.List;
-
-import cpw.mods.fml.common.registry.GameRegistry;
-
-import exnihilo.Blocks;
-import exnihilo.Items;
-import exnihilo.registries.helpers.Compostable;
-import exnihilo.registries.helpers.SiftReward;
 
 import net.minecraft.block.Block;
-import net.minecraft.entity.item.EntityItem;
 import net.minecraft.item.Item;
-import net.minecraft.item.ItemStack;
-import net.minecraftforge.common.Configuration;
-
+import net.minecraftforge.common.config.Configuration;
+import exnihilo.Blocks;
+import exnihilo.Items;
+import exnihilo.registries.helpers.SiftReward;
 
 public class SieveRegistry {
 	public static ArrayList<SiftReward> rewards = new ArrayList<SiftReward>();
@@ -37,7 +27,7 @@ public class SieveRegistry {
 	{
 		SiftReward entry = new SiftReward(sourceID, sourceMeta, outputID, outputMeta, rarity);
 		
-		if(Block.blocksList[sourceID] != null)
+		if(Block.blockRegistry.getObjectById(sourceID) != null)
 		{
 			rewards.add(entry);
 		}else
@@ -50,7 +40,7 @@ public class SieveRegistry {
 	{
 		SiftReward entry = new SiftReward(sourceID, outputID, outputMeta, rarity);
 		
-		if(Block.blocksList[sourceID] != null)
+		if(Block.blockRegistry.getObjectById(sourceID) != null)
 		{
 			rewards.add(entry);
 		}else
@@ -59,6 +49,7 @@ public class SieveRegistry {
 		}
 	}
 	
+	@SuppressWarnings({ "unchecked", "rawtypes" })
 	public static ArrayList<SiftReward> getRewards(int id, int meta)
 	{
 		ArrayList<SiftReward> rewardList = new ArrayList();
@@ -125,105 +116,105 @@ public class SieveRegistry {
 	public static void registerRewards()
 	{
 		//Dirt!
-		register(Block.dirt.blockID, 0, Items.Stones.itemID, 0, 1);
-		register(Block.dirt.blockID, 0, Items.Stones.itemID, 0, 1);
-		register(Block.dirt.blockID, 0, Items.Stones.itemID, 0, 2);
-		register(Block.dirt.blockID, 0, Items.Stones.itemID, 0, 2);
-		register(Block.dirt.blockID, 0, Items.Stones.itemID, 0, 3);
-		register(Block.dirt.blockID, 0, Items.Stones.itemID, 0, 3);
-		register(Block.dirt.blockID, 0, Item.seeds.itemID, 0, 15);
-		register(Block.dirt.blockID, 0, Items.GrassSeeds.itemID, 0, 15);
-		register(Block.dirt.blockID, 0, Item.melonSeeds.itemID, 0, 32);
-		register(Block.dirt.blockID, 0, Item.pumpkinSeeds.itemID, 0, 32);
-		register(Block.dirt.blockID, 0, Items.SeedsSugarcane.itemID, 0, 32);
-		register(Block.dirt.blockID, 0, Items.SeedsCarrot.itemID, 0, 64);
-		register(Block.dirt.blockID, 0, Items.SeedsPotato.itemID, 0, 64);
-		register(Block.dirt.blockID, 0, Items.SeedsOak.itemID, 0, 64);
-		register(Block.dirt.blockID, 0, Items.SeedsSpruce.itemID, 0, 90);
-		register(Block.dirt.blockID, 0, Items.SeedsBirch.itemID, 0, 90);
+		register(Block.getIdFromBlock(net.minecraft.init.Blocks.dirt), 0, Item.getIdFromItem(Items.Stones), 0, 1);
+		register(Block.getIdFromBlock(net.minecraft.init.Blocks.dirt), 0, Item.getIdFromItem(Items.Stones), 0, 1);
+		register(Block.getIdFromBlock(net.minecraft.init.Blocks.dirt), 0, Item.getIdFromItem(Items.Stones), 0, 2);
+		register(Block.getIdFromBlock(net.minecraft.init.Blocks.dirt), 0, Item.getIdFromItem(Items.Stones), 0, 2);
+		register(Block.getIdFromBlock(net.minecraft.init.Blocks.dirt), 0, Item.getIdFromItem(Items.Stones), 0, 3);
+		register(Block.getIdFromBlock(net.minecraft.init.Blocks.dirt), 0, Item.getIdFromItem(Items.Stones), 0, 3);
+		register(Block.getIdFromBlock(net.minecraft.init.Blocks.dirt), 0, Item.getIdFromItem(net.minecraft.init.Items.wheat_seeds), 0, 15);
+		register(Block.getIdFromBlock(net.minecraft.init.Blocks.dirt), 0, Item.getIdFromItem(Items.GrassSeeds), 0, 15);
+		register(Block.getIdFromBlock(net.minecraft.init.Blocks.dirt), 0, Item.getIdFromItem(net.minecraft.init.Items.melon_seeds), 0, 32);
+		register(Block.getIdFromBlock(net.minecraft.init.Blocks.dirt), 0, Item.getIdFromItem(net.minecraft.init.Items.pumpkin_seeds), 0, 32);
+		register(Block.getIdFromBlock(net.minecraft.init.Blocks.dirt), 0, Item.getIdFromItem(Items.SeedsSugarcane), 0, 32);
+		register(Block.getIdFromBlock(net.minecraft.init.Blocks.dirt), 0, Item.getIdFromItem(Items.SeedsCarrot), 0, 64);
+		register(Block.getIdFromBlock(net.minecraft.init.Blocks.dirt), 0, Item.getIdFromItem(Items.SeedsPotato), 0, 64);
+		register(Block.getIdFromBlock(net.minecraft.init.Blocks.dirt), 0, Item.getIdFromItem(Items.SeedsOak), 0, 64);
+		register(Block.getIdFromBlock(net.minecraft.init.Blocks.dirt), 0, Item.getIdFromItem(Items.SeedsSpruce), 0, 90);
+		register(Block.getIdFromBlock(net.minecraft.init.Blocks.dirt), 0, Item.getIdFromItem(Items.SeedsBirch), 0, 90);
 
 		//Gravel!
-		register(Block.gravel.blockID, 0, Item.flint.itemID, 0, 4);
-		register(Block.gravel.blockID, 0, Items.IronGravel.itemID, 0, 5);
-		register(Block.gravel.blockID, 0, Items.GoldGravel.itemID, 0, 11);
-		register(Block.gravel.blockID, 0, Item.coal.itemID, 0, 8);
-		register(Block.gravel.blockID, 0, Item.dyePowder.itemID, 4, 20); //Lapis Lazuli
-		register(Block.gravel.blockID, 0, Item.diamond.itemID, 0, 128);
-		register(Block.gravel.blockID, 0, Item.emerald.itemID, 0, 150);
+		register(Block.getIdFromBlock(net.minecraft.init.Blocks.gravel), 0, Item.getIdFromItem(net.minecraft.init.Items.flint), 0, 4);
+		register(Block.getIdFromBlock(net.minecraft.init.Blocks.gravel), 0, Item.getIdFromItem(Items.IronGravel), 0, 5);
+		register(Block.getIdFromBlock(net.minecraft.init.Blocks.gravel), 0, Item.getIdFromItem(Items.GoldGravel), 0, 11);
+		register(Block.getIdFromBlock(net.minecraft.init.Blocks.gravel), 0, Item.getIdFromItem(net.minecraft.init.Items.coal), 0, 8);
+		register(Block.getIdFromBlock(net.minecraft.init.Blocks.gravel), 0, Item.getIdFromItem(net.minecraft.init.Items.dye), 4, 20); //Lapis Lazuli
+		register(Block.getIdFromBlock(net.minecraft.init.Blocks.gravel), 0, Item.getIdFromItem(net.minecraft.init.Items.diamond), 0, 128);
+		register(Block.getIdFromBlock(net.minecraft.init.Blocks.gravel), 0, Item.getIdFromItem(net.minecraft.init.Items.emerald), 0, 150);
 		
 		//Sand!
-		register(Block.sand.blockID, 0, Items.IronSand.itemID, 0, 5);
-		register(Block.sand.blockID, 0, Items.GoldSand.itemID, 0, 11);
-		register(Block.sand.blockID, 0, Item.dyePowder.itemID, 3, 32); //Cocoa beans
-		register(Block.sand.blockID, 0, Items.SeedsCactus.itemID, 0, 32);
-		register(Block.sand.blockID, 0, Items.SeedsJungle.itemID, 0, 64);
-		register(Block.sand.blockID, 0, Items.Spores.itemID, 0, 128);
+		register(Block.getIdFromBlock(net.minecraft.init.Blocks.sand), 0, Item.getIdFromItem(Items.IronSand), 0, 5);
+		register(Block.getIdFromBlock(net.minecraft.init.Blocks.sand), 0, Item.getIdFromItem(Items.GoldSand), 0, 11);
+		register(Block.getIdFromBlock(net.minecraft.init.Blocks.sand), 0, Item.getIdFromItem(net.minecraft.init.Items.dye), 3, 32); //Cocoa beans
+		register(Block.getIdFromBlock(net.minecraft.init.Blocks.sand), 0, Item.getIdFromItem(Items.SeedsCactus), 0, 32);
+		register(Block.getIdFromBlock(net.minecraft.init.Blocks.sand), 0, Item.getIdFromItem(Items.SeedsJungle), 0, 64);
+		register(Block.getIdFromBlock(net.minecraft.init.Blocks.sand), 0, Item.getIdFromItem(Items.Spores), 0, 128);
 				
 		//Soul Sand!
-		register(Block.slowSand.blockID, 0, Item.netherQuartz.itemID, 0, 1);
-		register(Block.slowSand.blockID, 0, Item.netherQuartz.itemID, 0, 3);
-		register(Block.slowSand.blockID, 0, Item.netherStalkSeeds.itemID, 0, 20);
-		register(Block.slowSand.blockID, 0, Item.ghastTear.itemID, 0, 64);
+		register(Block.getIdFromBlock(net.minecraft.init.Blocks.soul_sand), 0, Item.getIdFromItem(net.minecraft.init.Items.quartz), 0, 1);
+		register(Block.getIdFromBlock(net.minecraft.init.Blocks.soul_sand), 0, Item.getIdFromItem(net.minecraft.init.Items.quartz), 0, 3);
+		register(Block.getIdFromBlock(net.minecraft.init.Blocks.soul_sand), 0, Item.getIdFromItem(net.minecraft.init.Items.nether_wart), 0, 20);
+		register(Block.getIdFromBlock(net.minecraft.init.Blocks.soul_sand), 0, Item.getIdFromItem(net.minecraft.init.Items.ghast_tear), 0, 64);
 		
 		//Dust!
-		register(Blocks.Dust.blockID, 0, Items.IronDust.itemID, 0, 5);
-		register(Blocks.Dust.blockID, 0, Items.GoldDust.itemID, 0, 11);
-		register(Blocks.Dust.blockID, 0, Item.dyePowder.itemID, 15, 5); //Bone Meal
-		register(Blocks.Dust.blockID, 0, Item.redstone.itemID, 0, 8);		
-		register(Blocks.Dust.blockID, 0, Item.gunpowder.itemID, 0, 15);
-		register(Blocks.Dust.blockID, 0, Item.glowstone.itemID, 0, 16);
-		register(Blocks.Dust.blockID, 0, Item.blazePowder.itemID, 0, 20);
+		register(Block.getIdFromBlock(Blocks.Dust), 0, Item.getIdFromItem(Items.IronDust), 0, 5);
+		register(Block.getIdFromBlock(Blocks.Dust), 0, Item.getIdFromItem(Items.GoldDust), 0, 11);
+		register(Block.getIdFromBlock(Blocks.Dust), 0, Item.getIdFromItem(net.minecraft.init.Items.dye), 15, 5); //Bone Meal
+		register(Block.getIdFromBlock(Blocks.Dust), 0, Item.getIdFromItem(net.minecraft.init.Items.redstone), 0, 8);		
+		register(Block.getIdFromBlock(Blocks.Dust), 0, Item.getIdFromItem(net.minecraft.init.Items.gunpowder), 0, 15);
+		register(Block.getIdFromBlock(Blocks.Dust), 0, Item.getIdFromItem(net.minecraft.init.Items.glowstone_dust), 0, 16);
+		register(Block.getIdFromBlock(Blocks.Dust), 0, Item.getIdFromItem(net.minecraft.init.Items.blaze_powder), 0, 20);
 	}
 	
 	public static void RegisterOptionalOres()
 	{
 		if (dropCopper)
 		{
-			register(Block.gravel.blockID, 0, Items.CopperGravel.itemID, 0, 7);
-			register(Block.sand.blockID, 0, Items.CopperSand.itemID, 0, 7);
-			register(Blocks.Dust.blockID, 0, Items.CopperDust.itemID, 0, 7);
+			register(Block.getIdFromBlock(net.minecraft.init.Blocks.gravel), 0, Item.getIdFromItem(Items.CopperGravel), 0, 7);
+			register(Block.getIdFromBlock(net.minecraft.init.Blocks.sand), 0, Item.getIdFromItem(Items.CopperSand), 0, 7);
+			register(Block.getIdFromBlock(Blocks.Dust), 0, Item.getIdFromItem(Items.CopperDust), 0, 7);
 		}
 		
 		if (dropTin)
 		{
-			register(Block.gravel.blockID, 0, Items.TinGravel.itemID, 0, 7);
-			register(Block.sand.blockID, 0, Items.TinSand.itemID, 0, 7);
-			register(Blocks.Dust.blockID, 0, Items.TinDust.itemID, 0, 7);
+			register(Block.getIdFromBlock(net.minecraft.init.Blocks.gravel), 0, Item.getIdFromItem(Items.TinGravel), 0, 7);
+			register(Block.getIdFromBlock(net.minecraft.init.Blocks.sand), 0, Item.getIdFromItem(Items.TinSand), 0, 7);
+			register(Block.getIdFromBlock(Blocks.Dust), 0, Item.getIdFromItem(Items.TinDust), 0, 7);
 		}
 		
 		if (dropSilver)
 		{
-			register(Block.gravel.blockID, 0, Items.SilverGravel.itemID, 0, 11);
-			register(Block.sand.blockID, 0, Items.SilverSand.itemID, 0, 11);
-			register(Blocks.Dust.blockID, 0, Items.SilverDust.itemID, 0, 11);
+			register(Block.getIdFromBlock(net.minecraft.init.Blocks.gravel), 0, Item.getIdFromItem(Items.SilverGravel), 0, 11);
+			register(Block.getIdFromBlock(net.minecraft.init.Blocks.sand), 0, Item.getIdFromItem(Items.SilverSand), 0, 11);
+			register(Block.getIdFromBlock(Blocks.Dust), 0, Item.getIdFromItem(Items.SilverDust), 0, 11);
 		}
 		
 		if (dropLead)
 		{
-			register(Block.gravel.blockID, 0, Items.LeadGravel.itemID, 0, 9);
-			register(Block.sand.blockID, 0, Items.LeadSand.itemID, 0, 9);
-			register(Blocks.Dust.blockID, 0, Items.LeadDust.itemID, 0, 9);
+			register(Block.getIdFromBlock(net.minecraft.init.Blocks.gravel), 0, Item.getIdFromItem(Items.LeadGravel), 0, 9);
+			register(Block.getIdFromBlock(net.minecraft.init.Blocks.sand), 0, Item.getIdFromItem(Items.LeadSand), 0, 9);
+			register(Block.getIdFromBlock(Blocks.Dust), 0, Item.getIdFromItem(Items.LeadDust), 0, 9);
 		}
 		
 		if (dropNickel)
 		{
-			register(Block.gravel.blockID, 0, Items.NickelGravel.itemID, 0, 11);
-			register(Block.sand.blockID, 0, Items.NickelSand.itemID, 0, 11);
-			register(Blocks.Dust.blockID, 0, Items.NickelDust.itemID, 0, 11);
+			register(Block.getIdFromBlock(net.minecraft.init.Blocks.gravel), 0, Item.getIdFromItem(Items.NickelGravel), 0, 11);
+			register(Block.getIdFromBlock(net.minecraft.init.Blocks.sand), 0, Item.getIdFromItem(Items.NickelSand), 0, 11);
+			register(Block.getIdFromBlock(Blocks.Dust), 0, Item.getIdFromItem(Items.NickelDust), 0, 11);
 		}
 		
 		if (dropPlatinum)
 		{
-			register(Block.gravel.blockID, 0, Items.PlatinumGravel.itemID, 0, 32);
-			register(Block.sand.blockID, 0, Items.PlatinumSand.itemID, 0, 32);
-			register(Blocks.Dust.blockID, 0, Items.PlatinumDust.itemID, 0, 32);
+			register(Block.getIdFromBlock(net.minecraft.init.Blocks.gravel), 0, Item.getIdFromItem(Items.PlatinumGravel), 0, 32);
+			register(Block.getIdFromBlock(net.minecraft.init.Blocks.sand), 0, Item.getIdFromItem(Items.PlatinumSand), 0, 32);
+			register(Block.getIdFromBlock(Blocks.Dust), 0, Item.getIdFromItem(Items.PlatinumDust), 0, 32);
 		}
 		
 		if (dropAluminum)
 		{
-			register(Block.gravel.blockID, 0, Items.AluminumGravel.itemID, 0, 10);
-			register(Block.sand.blockID, 0, Items.AluminumSand.itemID, 0, 10);
-			register(Blocks.Dust.blockID, 0, Items.AluminumDust.itemID, 0, 10);
+			register(Block.getIdFromBlock(net.minecraft.init.Blocks.gravel), 0, Item.getIdFromItem(Items.AluminumGravel), 0, 10);
+			register(Block.getIdFromBlock(net.minecraft.init.Blocks.sand), 0, Item.getIdFromItem(Items.AluminumSand), 0, 10);
+			register(Block.getIdFromBlock(Blocks.Dust), 0, Item.getIdFromItem(Items.AluminumDust), 0, 10);
 		}
 	}
 }

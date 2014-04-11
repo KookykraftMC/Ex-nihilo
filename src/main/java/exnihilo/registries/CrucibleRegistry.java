@@ -3,13 +3,10 @@ package exnihilo.registries;
 import java.util.Hashtable;
 
 import net.minecraft.block.Block;
-import net.minecraft.util.Icon;
-import net.minecraftforge.common.Configuration;
+import net.minecraft.init.Blocks;
+import net.minecraftforge.common.config.Configuration;
 import net.minecraftforge.fluids.Fluid;
 import net.minecraftforge.fluids.FluidRegistry;
-
-import exnihilo.registries.helpers.Color;
-import exnihilo.registries.helpers.Compostable;
 import exnihilo.registries.helpers.Meltable;
 
 public class CrucibleRegistry {
@@ -40,12 +37,12 @@ public class CrucibleRegistry {
 
 	public static void registerMeltables() 
 	{
-		register(Block.cobblestone.blockID, 0, 2000, FluidRegistry.LAVA, 250, Block.cobblestone);
-		register(Block.stone.blockID, 0, 2000, FluidRegistry.LAVA, 250, Block.stone);
-		register(Block.gravel.blockID, 0, 2000, FluidRegistry.LAVA, 250, Block.gravel);
-		register(Block.netherrack.blockID, 0, 2000, FluidRegistry.LAVA, 1000, Block.netherrack);
+		register(Block.getIdFromBlock(Blocks.cobblestone), 0, 2000, FluidRegistry.LAVA, 250, Blocks.cobblestone);
+		register(Block.getIdFromBlock(Blocks.stone), 0, 2000, FluidRegistry.LAVA, 250, Blocks.stone);
+		register(Block.getIdFromBlock(Blocks.gravel), 0, 2000, FluidRegistry.LAVA, 250, Blocks.gravel);
+		register(Block.getIdFromBlock(Blocks.netherrack), 0, 2000, FluidRegistry.LAVA, 1000, Blocks.netherrack);
 		
-		register(Block.blockSnow.blockID, 0, 2000, FluidRegistry.WATER, 500, Block.blockSnow);
-		register(Block.ice.blockID, 0, 2000, FluidRegistry.WATER, 1000, Block.ice);
+		register(Block.getIdFromBlock(Blocks.snow), 0, 2000, FluidRegistry.WATER, 500, Blocks.snow);
+		register(Block.getIdFromBlock(Blocks.ice), 0, 2000, FluidRegistry.WATER, 1000, Blocks.ice);
 	}
 }

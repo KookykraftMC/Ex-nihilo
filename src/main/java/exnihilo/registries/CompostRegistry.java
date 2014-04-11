@@ -1,17 +1,14 @@
 package exnihilo.registries;
 
-import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.Hashtable;
 
-import exnihilo.Blocks;
+import net.minecraft.block.Block;
+import net.minecraft.init.Blocks;
+import net.minecraft.item.Item;
+import net.minecraftforge.common.config.Configuration;
 import exnihilo.Items;
 import exnihilo.registries.helpers.Color;
 import exnihilo.registries.helpers.Compostable;
-
-import net.minecraft.block.Block;
-import net.minecraft.item.Item;
-import net.minecraftforge.common.Configuration;
 
 
 public class CompostRegistry {
@@ -93,9 +90,9 @@ public class CompostRegistry {
 		register(350, 0, 0.15f, ColorRegistry.color("fish_cooked"));
 		
 		//cooked silkworms
-		register(Items.Silkworm.itemID, 0, 0.04f, ColorRegistry.color("silkworm_raw"));
+		register(Item.getIdFromItem(Items.Silkworm), 0, 0.04f, ColorRegistry.color("silkworm_raw"));
 		//cooked silkworms
-		register(Items.SilkwormCooked.itemID, 0, 0.04f, ColorRegistry.color("silkworm_cooked"));
+		register(Item.getIdFromItem(Items.SilkwormCooked), 0, 0.04f, ColorRegistry.color("silkworm_cooked"));
 		
 		//apple
 		register(260, 0, 0.10f, ColorRegistry.color("apple"));
@@ -124,7 +121,7 @@ public class CompostRegistry {
 		//vine
 		register(111, 0, 0.10f, ColorRegistry.color("vine"));
 		//tall grass
-		register(Block.tallGrass.blockID, 1, 0.08f, ColorRegistry.color("tall_grass"));
+		register(Block.getIdFromBlock(Blocks.tallgrass), 1, 0.08f, ColorRegistry.color("tall_grass"));
 		//egg
 		register(344, 0, 0.08f, ColorRegistry.color("egg"));
 		//netherwart
@@ -132,6 +129,6 @@ public class CompostRegistry {
 		//sugar cane
 		register(338, 0, 0.08f, ColorRegistry.color("sugar_cane"));
 		//string
-		register(Item.silk.itemID, 0, 0.04f, ColorRegistry.color("white"));
+		register(Item.getIdFromItem(net.minecraft.init.Items.string), 0, 0.04f, ColorRegistry.color("white"));
 	}
 }

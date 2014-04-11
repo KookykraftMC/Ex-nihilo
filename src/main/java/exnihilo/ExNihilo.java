@@ -1,25 +1,17 @@
 package exnihilo;
 
-import java.io.File;
-import java.util.List;
-
-import net.minecraft.block.Block;
 import net.minecraftforge.client.event.TextureStitchEvent;
-import net.minecraftforge.common.Configuration;
-import net.minecraftforge.common.DimensionManager;
 import net.minecraftforge.common.MinecraftForge;
-import net.minecraftforge.event.ForgeSubscribe;
+import net.minecraftforge.common.config.Configuration;
+import cpw.mods.fml.common.Loader;
 import cpw.mods.fml.common.Mod;
 import cpw.mods.fml.common.Mod.EventHandler;
 import cpw.mods.fml.common.Mod.Instance;
-import cpw.mods.fml.common.Loader;
-import cpw.mods.fml.common.ModMetadata;
 import cpw.mods.fml.common.SidedProxy;
 import cpw.mods.fml.common.event.FMLInitializationEvent;
 import cpw.mods.fml.common.event.FMLPostInitializationEvent;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
-import cpw.mods.fml.common.event.FMLServerStartingEvent;
-import cpw.mods.fml.common.network.NetworkMod;
+import cpw.mods.fml.common.eventhandler.SubscribeEvent;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import exnihilo.compatibility.AppliedEnergistics;
@@ -30,12 +22,8 @@ import exnihilo.compatibility.Mekanism;
 import exnihilo.compatibility.MineFactoryReloaded;
 import exnihilo.compatibility.ThermalExpansion;
 import exnihilo.compatibility.foresty.Forestry;
-import exnihilo.data.BlockData;
-import exnihilo.data.FluidData;
-import exnihilo.data.ItemData;
 import exnihilo.data.ModData;
 import exnihilo.data.WorldData;
-import exnihilo.network.PacketHandler;
 import exnihilo.proxies.Proxy;
 import exnihilo.registries.ColorRegistry;
 import exnihilo.registries.CompostRegistry;
@@ -43,10 +31,8 @@ import exnihilo.registries.CrucibleRegistry;
 import exnihilo.registries.HammerRegistry;
 import exnihilo.registries.HeatRegistry;
 import exnihilo.registries.SieveRegistry;
-import exnihilo.world.WorldProviderDefaultVoid;
 
 @Mod(modid = ModData.ID, name = ModData.NAME, version = ModData.VERSION)
-@NetworkMod(clientSideRequired = true, serverSideRequired = false, channels = {"crowley"}, packetHandler = PacketHandler.class)
 
 public class ExNihilo 
 {
@@ -70,14 +56,14 @@ public class ExNihilo
 		ModData.load(config);
 		WorldData.load(config);
 
-		BlockData.load(config);
+//		BlockData.load(config);
 		Blocks.registerBlocks();
 
-		FluidData.load(config);
+//		FluidData.load(config);
 		Fluids.registerFluids();
 		Fluids.registerBuckets();
 
-		ItemData.load(config);
+//		ItemData.load(config);
 		Items.registerItems();
 
 		Entities.registerEntities();
@@ -174,7 +160,7 @@ public class ExNihilo
 		}
 	}
 
-	@ForgeSubscribe
+	@SubscribeEvent
 	@SideOnly(Side.CLIENT)
 	public void textureHook(TextureStitchEvent.Post event) {
 		Fluids.registerIcons(event);
