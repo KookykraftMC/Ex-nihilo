@@ -1,5 +1,14 @@
 package exnihilo.blocks.renderers;
 
+import net.minecraft.block.Block;
+import net.minecraft.client.renderer.texture.TextureMap;
+import net.minecraft.client.renderer.tileentity.TileEntitySpecialRenderer;
+import net.minecraft.init.Blocks;
+import net.minecraft.tileentity.TileEntity;
+import net.minecraft.util.IIcon;
+import net.minecraft.util.ResourceLocation;
+import net.minecraftforge.fluids.Fluid;
+
 import org.lwjgl.opengl.GL11;
 
 import exnihilo.blocks.BlockBarrel;
@@ -10,21 +19,6 @@ import exnihilo.blocks.tileentities.TileEntityBarrel;
 import exnihilo.blocks.tileentities.TileEntityBarrel.BarrelMode;
 import exnihilo.registries.ColorRegistry;
 import exnihilo.registries.helpers.Color;
-
-import net.minecraft.block.Block;
-import net.minecraft.block.BlockFluid;
-import net.minecraft.client.Minecraft;
-import net.minecraft.client.renderer.Tessellator;
-import net.minecraft.client.renderer.texture.TextureManager;
-import net.minecraft.client.renderer.texture.TextureMap;
-import net.minecraft.client.renderer.tileentity.TileEntitySpecialRenderer;
-import net.minecraft.entity.Entity;
-import net.minecraft.tileentity.TileEntity;
-import net.minecraft.util.Icon;
-import net.minecraft.util.ResourceLocation;
-import net.minecraftforge.fluids.Fluid;
-import net.minecraftforge.fluids.FluidRegistry;
-import net.minecraftforge.fluids.FluidStack;
 
 public class RenderBarrel extends TileEntitySpecialRenderer{
 	private ModelBarrel barrel;
@@ -50,7 +44,7 @@ public class RenderBarrel extends TileEntitySpecialRenderer{
 		GL11.glTranslatef((float)x + 0.5F,(float)y + 1.5F,(float)z + 0.5F);
 		GL11.glScalef(-0.8F, -1F, 0.8F);
 
-		bindBarrelTexture(tileentity.getBlockType().blockID, tileentity.getBlockMetadata());
+		bindBarrelTexture(tileentity.getBlockType(), tileentity.getBlockMetadata());
 		barrel.simpleRender(0.0625F);
 
 		GL11.glPopMatrix();
@@ -69,7 +63,7 @@ public class RenderBarrel extends TileEntitySpecialRenderer{
 			bindInternalTexture();
 
 			Fluid content = barrel.fluid.getFluid();
-			Icon icon = content.getIcon();
+			IIcon icon = content.getIcon();
 			Color color = barrel.color;
 			boolean transparency = false;
 			boolean clouds = false;
@@ -87,11 +81,11 @@ public class RenderBarrel extends TileEntitySpecialRenderer{
 				break;
 
 			case DIRT:
-				icon = Block.dirt.getIcon(0, 0);
+				icon = Blocks.dirt.getIcon(0, 0);
 				break;
 
 			case CLAY:
-				icon = Block.blockClay.getIcon(0, 0);
+				icon = Blocks.clay.getIcon(0, 0);
 				break;
 
 			case SPORED:
@@ -105,11 +99,11 @@ public class RenderBarrel extends TileEntitySpecialRenderer{
 				break;
 
 			case NETHERRACK:
-				icon = Block.netherrack.getIcon(0, 0);
+				icon = Blocks.netherrack.getIcon(0, 0);
 				break;
 
 			case ENDSTONE:
-				icon = Block.whiteStone.getIcon(0, 0);
+				icon = Blocks.end_stone.getIcon(0, 0);
 				break;
 
 			case MILKED:
@@ -123,15 +117,15 @@ public class RenderBarrel extends TileEntitySpecialRenderer{
 				break;
 
 			case SOULSAND:
-				icon = Block.slowSand.getIcon(0, 0);
+				icon = Blocks.soul_sand.getIcon(0, 0);
 				break;
 				
 			case OBSIDIAN:
-				icon = Block.obsidian.getIcon(0, 0);
+				icon = Blocks.obsidian.getIcon(0, 0);
 				break;
 				
 			case COBBLESTONE:
-				icon = Block.cobblestone.getIcon(0, 0);
+				icon = Blocks.cobblestone.getIcon(0, 0);
 				break;
 				
 			case BLAZE_COOKING:
@@ -182,11 +176,11 @@ public class RenderBarrel extends TileEntitySpecialRenderer{
 
 	}
 
-	public void bindBarrelTexture(int blockID, int meta)
+	public void bindBarrelTexture(Block block, int meta)
 	{
 		if (meta >= 0)
 		{
-			bindTexture(barrel.getBarrelTexture(blockID, meta));
+			bindTexture(barrel.getBarrelTexture(block, meta));
 		}
 	}
 
@@ -195,8 +189,4 @@ public class RenderBarrel extends TileEntitySpecialRenderer{
 		ResourceLocation fluidTexture = TextureMap.locationBlocksTexture;
 		bindTexture(fluidTexture);
 	}
-
-
-
-
 }

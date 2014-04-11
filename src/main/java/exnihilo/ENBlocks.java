@@ -98,10 +98,10 @@ public class ENBlocks {
 		CopperOre = new BlockCopperOre();
 		GameRegistry.registerBlock(CopperOre, ItemBlockCopperOre.class, BlockData.COPPER_ORE_KEY);
 
-		TinOre = new BlockTinOre(BlockData.TIN_ORE_ID);
+		TinOre = new BlockTinOre();
 		GameRegistry.registerBlock(TinOre, ItemBlockTinOre.class, BlockData.TIN_ORE_KEY);
 
-		SilverOre = new BlockSilverOre(BlockData.SILVER_ORE_ID);
+		SilverOre = new BlockSilverOre();
 		GameRegistry.registerBlock(SilverOre, ItemBlockSilverOre.class, BlockData.SILVER_ORE_KEY);
 
 		LeadOre = new BlockLeadOre();

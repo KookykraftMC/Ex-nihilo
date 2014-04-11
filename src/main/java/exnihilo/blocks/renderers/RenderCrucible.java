@@ -1,21 +1,19 @@
 package exnihilo.blocks.renderers;
 
+import net.minecraft.client.renderer.texture.TextureMap;
+import net.minecraft.client.renderer.tileentity.TileEntitySpecialRenderer;
+import net.minecraft.tileentity.TileEntity;
+import net.minecraft.util.IIcon;
+import net.minecraft.util.ResourceLocation;
+import net.minecraftforge.fluids.Fluid;
+
 import org.lwjgl.opengl.GL11;
 
 import exnihilo.blocks.models.ModelCrucible;
 import exnihilo.blocks.models.ModelCrucibleInternal;
-import exnihilo.blocks.tileentities.TileEntityBarrel;
 import exnihilo.blocks.tileentities.TileEntityCrucible;
 import exnihilo.registries.ColorRegistry;
 import exnihilo.registries.helpers.Color;
-import net.minecraft.block.Block;
-import net.minecraft.client.renderer.texture.TextureMap;
-import net.minecraft.client.renderer.tileentity.TileEntitySpecialRenderer;
-import net.minecraft.tileentity.TileEntity;
-import net.minecraft.util.Icon;
-import net.minecraft.util.ResourceLocation;
-import net.minecraftforge.fluids.Fluid;
-import net.minecraftforge.fluids.FluidRegistry;
 
 public class RenderCrucible extends TileEntitySpecialRenderer{
 	private ModelCrucible model;
@@ -85,7 +83,7 @@ public class RenderCrucible extends TileEntitySpecialRenderer{
 	{
 		TileEntityCrucible crucible = (TileEntityCrucible)tileentity;
 		
-		Icon icon = crucible.getContentIcon();
+		IIcon icon = crucible.getContentIcon();
 		Color color = ColorRegistry.color("white");
 		internal.render(color, icon, false);
 	}
@@ -95,7 +93,7 @@ public class RenderCrucible extends TileEntitySpecialRenderer{
 		TileEntityCrucible crucible = (TileEntityCrucible)tileentity;
 		
 		Fluid content = crucible.fluid.getFluid();
-		Icon icon = content.getIcon();
+		IIcon icon = content.getIcon();
 		Color color = new Color(content.getColor());
 		internal.render(color, icon, true);
 	}
@@ -104,7 +102,7 @@ public class RenderCrucible extends TileEntitySpecialRenderer{
 	
 	public void bindCrucibleTexture()
 	{
-		bindTexture(model.textures[0]);
+		bindTexture(ModelCrucible.textures[0]);
 	}
 	
 	public void bindInternalTexture()

@@ -3,29 +3,30 @@ package exnihilo.blocks.ores;
 import java.util.List;
 
 import net.minecraft.block.BlockSand;
-import net.minecraft.client.renderer.texture.IconRegister;
+import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.creativetab.CreativeTabs;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
-import net.minecraft.util.Icon;
+import net.minecraft.util.IIcon;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import exnihilo.data.BlockData;
 import exnihilo.data.ModData;
 
-public class BlockTinOre extends BlockSand{
-	private Icon dust;
-	private Icon gravel;
-	private Icon sand;
+public class BlockTinOre extends BlockSand {
+	private IIcon dust;
+	private IIcon gravel;
+	private IIcon sand;
 	
-	public BlockTinOre(int id) {
-		super(id);
+	public BlockTinOre() {
+		super();
 		setHardness(0.4f);
-		setStepSound(soundSandFootstep);
-		setUnlocalizedName(ModData.ID + "." + BlockData.TIN_ORE_KEY);
+		setStepSound(soundTypeSand);
+		setBlockName(ModData.ID + "." + BlockData.TIN_ORE_KEY);
 	}
 	
 	@Override
-	public void registerIcons(IconRegister register)
+	public void registerBlockIcons(IIconRegister register)
 	{
 		gravel = register.registerIcon(ModData.TEXTURE_LOCATION + ":IconTinGravel");
 		sand = register.registerIcon(ModData.TEXTURE_LOCATION + ":IconTinSand");
@@ -34,7 +35,7 @@ public class BlockTinOre extends BlockSand{
 	
 	@SideOnly(Side.CLIENT)
 	@Override
-    public Icon getIcon(int id, int meta)
+    public IIcon getIcon(int id, int meta)
     {
 		switch(meta)
 		{
@@ -45,16 +46,15 @@ public class BlockTinOre extends BlockSand{
 		case 2:
 			return dust;
 		}
-		
-        return this.blockIcon;
+        return blockIcon;
     }
 	
-	
-	@SideOnly(Side.CLIENT)
 	@Override
-	public void getSubBlocks(int id, CreativeTabs tabs, List subItems) {
+	@SuppressWarnings({ "rawtypes", "unchecked" })
+	@SideOnly(Side.CLIENT)
+	public void getSubBlocks(Item item, CreativeTabs tabs, List subItems) {
 		for (int i = 0; i < 3; i++) {
-			subItems.add(new ItemStack(id, 1, i));
+			subItems.add(new ItemStack(item, 1, i));
 		}
 	}
 	
@@ -62,6 +62,4 @@ public class BlockTinOre extends BlockSand{
 	public int damageDropped (int meta) {
 		return meta;
 	}
-	
-	
 }

@@ -2,12 +2,13 @@ package exnihilo.blocks.ores.itemBlocks;
 
 import net.minecraft.item.ItemBlock;
 import net.minecraft.item.ItemStack;
+import exnihilo.ENBlocks;
 import exnihilo.data.BlockData;
 import exnihilo.data.ModData;
 
-public class ItemBlockOsmiumOre extends ItemBlock{
-	public ItemBlockOsmiumOre(int par1) {
-		super(par1);
+public class ItemBlockOsmiumOre extends ItemBlock {
+	public ItemBlockOsmiumOre() {
+		super(ENBlocks.OsmiumOre);
 		setHasSubtypes(true);
 	}
 	
