@@ -11,7 +11,7 @@ import cpw.mods.fml.common.FMLCommonHandler;
 import cpw.mods.fml.common.Loader;
 import cpw.mods.fml.common.ModContainer;
 import cpw.mods.fml.common.event.FMLInterModComms;
-import exnihilo.Blocks;
+import exnihilo.ENBlocks;
 import exnihilo.ExNihilo;
 import exnihilo.data.ModData;
 
@@ -26,10 +26,10 @@ public class ThermalExpansion {
 		if (ModData.OVERWRITE_DEFAULT_PULVERIZER_RECIPES)
 		{
 			addPulverizerRecipe(3200, new ItemStack(Block.cobblestone), new ItemStack(Block.gravel), new ItemStack(Block.sand), 10, true);
-			addPulverizerRecipe(3200, new ItemStack(Block.gravel), new ItemStack(Block.sand), new ItemStack(Blocks.Dust), 10, true);
+			addPulverizerRecipe(3200, new ItemStack(Block.gravel), new ItemStack(Block.sand), new ItemStack(ENBlocks.Dust), 10, true);
 		}
 		
-		addPulverizerRecipe(3200, new ItemStack(Block.sand), new ItemStack(Blocks.Dust), null, 0, true);
+		addPulverizerRecipe(3200, new ItemStack(Block.sand), new ItemStack(ENBlocks.Dust), null, 0, true);
 	}
 	
 	public static void addPulverizerRecipe(int energy, ItemStack input, ItemStack primaryOutput, ItemStack secondaryOutput, int secondaryChance, boolean overwrite)

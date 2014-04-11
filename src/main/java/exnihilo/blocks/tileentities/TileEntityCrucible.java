@@ -1,6 +1,6 @@
 package exnihilo.blocks.tileentities;
 
-import exnihilo.Blocks;
+import exnihilo.ENBlocks;
 import exnihilo.blocks.tileentities.TileEntityBarrel.BarrelMode;
 import exnihilo.blocks.tileentities.TileEntitySieve.SieveMode;
 import exnihilo.data.BlockData;

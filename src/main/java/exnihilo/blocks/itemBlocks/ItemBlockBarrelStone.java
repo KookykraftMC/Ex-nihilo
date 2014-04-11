@@ -1,5 +1,6 @@
 package exnihilo.blocks.itemBlocks;
 
+import exnihilo.ENBlocks;
 import exnihilo.data.BlockData;
 import exnihilo.data.ModData;
 import net.minecraft.item.ItemBlock;
@@ -7,9 +8,8 @@ import net.minecraft.item.ItemStack;
 
 public class ItemBlockBarrelStone extends ItemBlock
 {
-
-	public ItemBlockBarrelStone(int par1) {
-		super(par1);
+	public ItemBlockBarrelStone() {
+		super(ENBlocks.BarrelStone);
 	}
 	
 	public String getUnlocalizedName(ItemStack itemstack)

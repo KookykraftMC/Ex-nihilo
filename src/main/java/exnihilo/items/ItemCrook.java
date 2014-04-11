@@ -3,8 +3,8 @@ package exnihilo.items;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 
-import exnihilo.Blocks;
-import exnihilo.Items;
+import exnihilo.ENBlocks;
+import exnihilo.ENItems;
 import exnihilo.compatibility.foresty.Forestry;
 import exnihilo.data.ItemData;
 import exnihilo.data.ModData;
@@ -112,20 +112,20 @@ public class ItemCrook extends ItemTool{
 				//Silkworms
 				if (ModData.ALLOW_SILKWORMS && world.rand.nextInt(100) == 0)
 				{
-					world.spawnEntityInWorld(new EntityItem(world, X + 0.5D, Y + 0.5D, Z + 0.5D, new ItemStack(Items.Silkworm, 1, 0)));
+					world.spawnEntityInWorld(new EntityItem(world, X + 0.5D, Y + 0.5D, Z + 0.5D, new ItemStack(ENItems.Silkworm, 1, 0)));
 				}
 			}
 
 			validTarget = true;
 		}
 
-		if (blockID == Blocks.LeavesInfested.blockID)
+		if (blockID == ENBlocks.LeavesInfested.blockID)
 		{
 			if (!world.isRemote)
 			{
 				if (ModData.ALLOW_SILKWORMS && world.rand.nextInt(15) == 0)
 				{
-					world.spawnEntityInWorld(new EntityItem(world, X + 0.5D, Y + 0.5D, Z + 0.5D, new ItemStack(Items.Silkworm, 1, 0)));
+					world.spawnEntityInWorld(new EntityItem(world, X + 0.5D, Y + 0.5D, Z + 0.5D, new ItemStack(ENItems.Silkworm, 1, 0)));
 					world.getWorldTime();
 				}
 			}

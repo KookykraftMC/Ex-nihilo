@@ -2,7 +2,7 @@ package exnihilo.blocks.renderers;
 
 import org.lwjgl.opengl.GL11;
 
-import exnihilo.Blocks;
+import exnihilo.ENBlocks;
 import exnihilo.blocks.BlockSieve;
 import exnihilo.blocks.models.ModelBlock;
 import exnihilo.blocks.models.ModelSieve;

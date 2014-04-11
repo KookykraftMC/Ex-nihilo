@@ -33,7 +33,6 @@ import exnihilo.registries.HeatRegistry;
 import exnihilo.registries.SieveRegistry;
 
 @Mod(modid = ModData.ID, name = ModData.NAME, version = ModData.VERSION)
-
 public class ExNihilo 
 {
 	@Instance
@@ -57,14 +56,14 @@ public class ExNihilo
 		WorldData.load(config);
 
 //		BlockData.load(config);
-		Blocks.registerBlocks();
+		ENBlocks.registerBlocks();
 
 //		FluidData.load(config);
 		Fluids.registerFluids();
 		Fluids.registerBuckets();
 
 //		ItemData.load(config);
-		Items.registerItems();
+		ENItems.registerItems();
 
 		Entities.registerEntities();
 
@@ -85,9 +84,9 @@ public class ExNihilo
 	@EventHandler
 	public void Initialize(FMLInitializationEvent event)
 	{
-		Blocks.registerNames();
-		Fluids.registerNames();
-		Items.registerNames();
+//		ENBlocks.registerNames();
+//		Fluids.registerNames();
+//		ENItems.registerNames();
 
 		SieveRegistry.registerRewards();
 		HammerRegistry.registerSmashables();

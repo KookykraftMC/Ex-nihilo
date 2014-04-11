@@ -5,8 +5,8 @@ import java.util.Iterator;
 
 import cpw.mods.fml.common.registry.GameRegistry;
 
-import exnihilo.Blocks;
-import exnihilo.Items;
+import exnihilo.ENBlocks;
+import exnihilo.ENItems;
 import exnihilo.registries.HammerRegistry;
 import exnihilo.registries.SieveRegistry;
 import exnihilo.registries.helpers.Smashable;
@@ -42,7 +42,7 @@ public class CommonOre {
 		ores = OreDictionary.getOres("oreCopper");
 		if (ores.size() > 0)
 		{
-			registerHammerRecipes(ores, Items.CopperGravel.itemID, 0);
+			registerHammerRecipes(ores, ENItems.CopperGravel.itemID, 0);
 		}
 		
 		ores = OreDictionary.getOres("ingotTin");
@@ -54,7 +54,7 @@ public class CommonOre {
 		ores = OreDictionary.getOres("oreTin");
 		if (ores.size() > 0)
 		{
-			registerHammerRecipes(ores, Items.TinGravel.itemID, 0);
+			registerHammerRecipes(ores, ENItems.TinGravel.itemID, 0);
 		}
 		
 		ores = OreDictionary.getOres("ingotSilver");
@@ -66,7 +66,7 @@ public class CommonOre {
 		ores = OreDictionary.getOres("oreSilver");
 		if (ores.size() > 0)
 		{
-			registerHammerRecipes(ores, Items.SilverGravel.itemID, 0);
+			registerHammerRecipes(ores, ENItems.SilverGravel.itemID, 0);
 		}
 		
 		ores = OreDictionary.getOres("ingotLead");
@@ -78,7 +78,7 @@ public class CommonOre {
 		ores = OreDictionary.getOres("oreLead");
 		if (ores.size() > 0)
 		{
-			registerHammerRecipes(ores, Items.LeadGravel.itemID, 0);
+			registerHammerRecipes(ores, ENItems.LeadGravel.itemID, 0);
 		}
 		
 		ores = OreDictionary.getOres("ingotNickel");
@@ -90,7 +90,7 @@ public class CommonOre {
 		ores = OreDictionary.getOres("oreNickel");
 		if (ores.size() > 0)
 		{
-			registerHammerRecipes(ores, Items.NickelGravel.itemID, 0);
+			registerHammerRecipes(ores, ENItems.NickelGravel.itemID, 0);
 		}
 		
 		ores = OreDictionary.getOres("ingotPlatinum");
@@ -102,7 +102,7 @@ public class CommonOre {
 		ores = OreDictionary.getOres("orePlatinum");
 		if (ores.size() > 0)
 		{
-			registerHammerRecipes(ores, Items.PlatinumGravel.itemID, 0);
+			registerHammerRecipes(ores, ENItems.PlatinumGravel.itemID, 0);
 		}
 		
 		ores = OreDictionary.getOres("ingotAluminum");
@@ -114,7 +114,7 @@ public class CommonOre {
 		ores = OreDictionary.getOres("oreAluminum");
 		if (ores.size() > 0)
 		{
-			registerHammerRecipes(ores, Items.AluminumGravel.itemID, 0);
+			registerHammerRecipes(ores, ENItems.AluminumGravel.itemID, 0);
 		}
 		
 		registerFurnaceRecipes();
@@ -126,251 +126,251 @@ public class CommonOre {
 		//Copper
 		GameRegistry.addRecipe(
 				new ShapedOreRecipe(
-						new ItemStack(Blocks.CopperOre, 1, 0),
+						new ItemStack(ENBlocks.CopperOre, 1, 0),
 						new Object[]
 								{
 							"xx",
 							"xx",
-							'x', Items.CopperGravel
+							'x', ENItems.CopperGravel
 								}));
 
 		GameRegistry.addRecipe(
 				new ShapedOreRecipe(
-						new ItemStack(Blocks.CopperOre, 1, 1),
+						new ItemStack(ENBlocks.CopperOre, 1, 1),
 						new Object[]
 								{
 							"xx",
 							"xx",
-							'x', Items.CopperSand
+							'x', ENItems.CopperSand
 								}));
 
 		GameRegistry.addRecipe(
 				new ShapedOreRecipe(
-						new ItemStack(Blocks.CopperOre, 1, 2),
+						new ItemStack(ENBlocks.CopperOre, 1, 2),
 						new Object[]
 								{
 							"xx",
 							"xx",
-							'x', Items.CopperDust
+							'x', ENItems.CopperDust
 								}));
 		
 		//Tin
 				GameRegistry.addRecipe(
 						new ShapedOreRecipe(
-								new ItemStack(Blocks.TinOre, 1, 0),
+								new ItemStack(ENBlocks.TinOre, 1, 0),
 								new Object[]
 										{
 									"xx",
 									"xx",
-									'x', Items.TinGravel
+									'x', ENItems.TinGravel
 										}));
 
 				GameRegistry.addRecipe(
 						new ShapedOreRecipe(
-								new ItemStack(Blocks.TinOre, 1, 1),
+								new ItemStack(ENBlocks.TinOre, 1, 1),
 								new Object[]
 										{
 									"xx",
 									"xx",
-									'x', Items.TinSand
+									'x', ENItems.TinSand
 										}));
 
 				GameRegistry.addRecipe(
 						new ShapedOreRecipe(
-								new ItemStack(Blocks.TinOre, 1, 2),
+								new ItemStack(ENBlocks.TinOre, 1, 2),
 								new Object[]
 										{
 									"xx",
 									"xx",
-									'x', Items.TinDust
+									'x', ENItems.TinDust
 										}));
 				
 				//Silver
 				GameRegistry.addRecipe(
 						new ShapedOreRecipe(
-								new ItemStack(Blocks.SilverOre, 1, 0),
+								new ItemStack(ENBlocks.SilverOre, 1, 0),
 								new Object[]
 										{
 									"xx",
 									"xx",
-									'x', Items.SilverGravel
+									'x', ENItems.SilverGravel
 										}));
 
 				GameRegistry.addRecipe(
 						new ShapedOreRecipe(
-								new ItemStack(Blocks.SilverOre, 1, 1),
+								new ItemStack(ENBlocks.SilverOre, 1, 1),
 								new Object[]
 										{
 									"xx",
 									"xx",
-									'x', Items.SilverSand
+									'x', ENItems.SilverSand
 										}));
 
 				GameRegistry.addRecipe(
 						new ShapedOreRecipe(
-								new ItemStack(Blocks.SilverOre, 1, 2),
+								new ItemStack(ENBlocks.SilverOre, 1, 2),
 								new Object[]
 										{
 									"xx",
 									"xx",
-									'x', Items.SilverDust
+									'x', ENItems.SilverDust
 										}));
 				
 				//Lead
 				GameRegistry.addRecipe(
 						new ShapedOreRecipe(
-								new ItemStack(Blocks.LeadOre, 1, 0),
+								new ItemStack(ENBlocks.LeadOre, 1, 0),
 								new Object[]
 										{
 									"xx",
 									"xx",
-									'x', Items.LeadGravel
+									'x', ENItems.LeadGravel
 										}));
 
 				GameRegistry.addRecipe(
 						new ShapedOreRecipe(
-								new ItemStack(Blocks.LeadOre, 1, 1),
+								new ItemStack(ENBlocks.LeadOre, 1, 1),
 								new Object[]
 										{
 									"xx",
 									"xx",
-									'x', Items.LeadSand
+									'x', ENItems.LeadSand
 										}));
 
 				GameRegistry.addRecipe(
 						new ShapedOreRecipe(
-								new ItemStack(Blocks.LeadOre, 1, 2),
+								new ItemStack(ENBlocks.LeadOre, 1, 2),
 								new Object[]
 										{
 									"xx",
 									"xx",
-									'x', Items.LeadDust
+									'x', ENItems.LeadDust
 										}));
 				
 				//Nickel	
 				GameRegistry.addRecipe(
 						new ShapedOreRecipe(
-								new ItemStack(Blocks.NickelOre, 1, 0),
+								new ItemStack(ENBlocks.NickelOre, 1, 0),
 								new Object[]
 										{
 									"xx",
 									"xx",
-									'x', Items.NickelGravel
+									'x', ENItems.NickelGravel
 										}));
 
 				GameRegistry.addRecipe(
 						new ShapedOreRecipe(
-								new ItemStack(Blocks.NickelOre, 1, 1),
+								new ItemStack(ENBlocks.NickelOre, 1, 1),
 								new Object[]
 										{
 									"xx",
 									"xx",
-									'x', Items.NickelSand
+									'x', ENItems.NickelSand
 										}));
 
 				GameRegistry.addRecipe(
 						new ShapedOreRecipe(
-								new ItemStack(Blocks.NickelOre, 1, 2),
+								new ItemStack(ENBlocks.NickelOre, 1, 2),
 								new Object[]
 										{
 									"xx",
 									"xx",
-									'x', Items.NickelDust
+									'x', ENItems.NickelDust
 										}));
 				
 				
 				//Platinum	
 				GameRegistry.addRecipe(
 						new ShapedOreRecipe(
-								new ItemStack(Blocks.PlatinumOre, 1, 0),
+								new ItemStack(ENBlocks.PlatinumOre, 1, 0),
 								new Object[]
 										{
 									"xx",
 									"xx",
-									'x', Items.PlatinumGravel
+									'x', ENItems.PlatinumGravel
 										}));
 
 				GameRegistry.addRecipe(
 						new ShapedOreRecipe(
-								new ItemStack(Blocks.PlatinumOre, 1, 1),
+								new ItemStack(ENBlocks.PlatinumOre, 1, 1),
 								new Object[]
 										{
 									"xx",
 									"xx",
-									'x', Items.PlatinumSand
+									'x', ENItems.PlatinumSand
 										}));
 
 				GameRegistry.addRecipe(
 						new ShapedOreRecipe(
-								new ItemStack(Blocks.PlatinumOre, 1, 2),
+								new ItemStack(ENBlocks.PlatinumOre, 1, 2),
 								new Object[]
 										{
 									"xx",
 									"xx",
-									'x', Items.PlatinumDust
+									'x', ENItems.PlatinumDust
 										}));
 				
 				//Aluminum	
 				GameRegistry.addRecipe(
 						new ShapedOreRecipe(
-								new ItemStack(Blocks.AluminumOre, 1, 0),
+								new ItemStack(ENBlocks.AluminumOre, 1, 0),
 								new Object[]
 										{
 									"xx",
 									"xx",
-									'x', Items.AluminumGravel
+									'x', ENItems.AluminumGravel
 										}));
 
 				GameRegistry.addRecipe(
 						new ShapedOreRecipe(
-								new ItemStack(Blocks.AluminumOre, 1, 1),
+								new ItemStack(ENBlocks.AluminumOre, 1, 1),
 								new Object[]
 										{
 									"xx",
 									"xx",
-									'x', Items.AluminumSand
+									'x', ENItems.AluminumSand
 										}));
 
 				GameRegistry.addRecipe(
 						new ShapedOreRecipe(
-								new ItemStack(Blocks.AluminumOre, 1, 2),
+								new ItemStack(ENBlocks.AluminumOre, 1, 2),
 								new Object[]
 										{
 									"xx",
 									"xx",
-									'x', Items.AluminumDust
+									'x', ENItems.AluminumDust
 										}));
 	}
 	
 	private static void registerFurnaceRecipes()
 	{
-		FurnaceRecipes.smelting().addSmelting(Blocks.CopperOre.blockID, 0, new ItemStack(Items.CopperIngot, 1, 0), 0.1f);
-		FurnaceRecipes.smelting().addSmelting(Blocks.CopperOre.blockID, 1, new ItemStack(Items.CopperIngot, 1, 0), 0.1f);
-		FurnaceRecipes.smelting().addSmelting(Blocks.CopperOre.blockID, 2, new ItemStack(Items.CopperIngot, 1, 0), 0.1f);
+		FurnaceRecipes.smelting().addSmelting(ENBlocks.CopperOre.blockID, 0, new ItemStack(ENItems.CopperIngot, 1, 0), 0.1f);
+		FurnaceRecipes.smelting().addSmelting(ENBlocks.CopperOre.blockID, 1, new ItemStack(ENItems.CopperIngot, 1, 0), 0.1f);
+		FurnaceRecipes.smelting().addSmelting(ENBlocks.CopperOre.blockID, 2, new ItemStack(ENItems.CopperIngot, 1, 0), 0.1f);
 		
-		FurnaceRecipes.smelting().addSmelting(Blocks.TinOre.blockID, 0, new ItemStack(Items.TinIngot, 1, 0), 0.1f);
-		FurnaceRecipes.smelting().addSmelting(Blocks.TinOre.blockID, 1, new ItemStack(Items.TinIngot, 1, 0), 0.1f);
-		FurnaceRecipes.smelting().addSmelting(Blocks.TinOre.blockID, 2, new ItemStack(Items.TinIngot, 1, 0), 0.1f);
+		FurnaceRecipes.smelting().addSmelting(ENBlocks.TinOre.blockID, 0, new ItemStack(ENItems.TinIngot, 1, 0), 0.1f);
+		FurnaceRecipes.smelting().addSmelting(ENBlocks.TinOre.blockID, 1, new ItemStack(ENItems.TinIngot, 1, 0), 0.1f);
+		FurnaceRecipes.smelting().addSmelting(ENBlocks.TinOre.blockID, 2, new ItemStack(ENItems.TinIngot, 1, 0), 0.1f);
 		
-		FurnaceRecipes.smelting().addSmelting(Blocks.SilverOre.blockID, 0, new ItemStack(Items.SilverIngot, 1, 0), 0.1f);
-		FurnaceRecipes.smelting().addSmelting(Blocks.SilverOre.blockID, 1, new ItemStack(Items.SilverIngot, 1, 0), 0.1f);
-		FurnaceRecipes.smelting().addSmelting(Blocks.SilverOre.blockID, 2, new ItemStack(Items.SilverIngot, 1, 0), 0.1f);
+		FurnaceRecipes.smelting().addSmelting(ENBlocks.SilverOre.blockID, 0, new ItemStack(ENItems.SilverIngot, 1, 0), 0.1f);
+		FurnaceRecipes.smelting().addSmelting(ENBlocks.SilverOre.blockID, 1, new ItemStack(ENItems.SilverIngot, 1, 0), 0.1f);
+		FurnaceRecipes.smelting().addSmelting(ENBlocks.SilverOre.blockID, 2, new ItemStack(ENItems.SilverIngot, 1, 0), 0.1f);
 		
-		FurnaceRecipes.smelting().addSmelting(Blocks.LeadOre.blockID, 0, new ItemStack(Items.LeadIngot, 1, 0), 0.1f);
-		FurnaceRecipes.smelting().addSmelting(Blocks.LeadOre.blockID, 1, new ItemStack(Items.LeadIngot, 1, 0), 0.1f);
-		FurnaceRecipes.smelting().addSmelting(Blocks.LeadOre.blockID, 2, new ItemStack(Items.LeadIngot, 1, 0), 0.1f);
+		FurnaceRecipes.smelting().addSmelting(ENBlocks.LeadOre.blockID, 0, new ItemStack(ENItems.LeadIngot, 1, 0), 0.1f);
+		FurnaceRecipes.smelting().addSmelting(ENBlocks.LeadOre.blockID, 1, new ItemStack(ENItems.LeadIngot, 1, 0), 0.1f);
+		FurnaceRecipes.smelting().addSmelting(ENBlocks.LeadOre.blockID, 2, new ItemStack(ENItems.LeadIngot, 1, 0), 0.1f);
 		
-		FurnaceRecipes.smelting().addSmelting(Blocks.NickelOre.blockID, 0, new ItemStack(Items.NickelIngot, 1, 0), 0.1f);
-		FurnaceRecipes.smelting().addSmelting(Blocks.NickelOre.blockID, 1, new ItemStack(Items.NickelIngot, 1, 0), 0.1f);
-		FurnaceRecipes.smelting().addSmelting(Blocks.NickelOre.blockID, 2, new ItemStack(Items.NickelIngot, 1, 0), 0.1f);
+		FurnaceRecipes.smelting().addSmelting(ENBlocks.NickelOre.blockID, 0, new ItemStack(ENItems.NickelIngot, 1, 0), 0.1f);
+		FurnaceRecipes.smelting().addSmelting(ENBlocks.NickelOre.blockID, 1, new ItemStack(ENItems.NickelIngot, 1, 0), 0.1f);
+		FurnaceRecipes.smelting().addSmelting(ENBlocks.NickelOre.blockID, 2, new ItemStack(ENItems.NickelIngot, 1, 0), 0.1f);
 		
-		FurnaceRecipes.smelting().addSmelting(Blocks.PlatinumOre.blockID, 0, new ItemStack(Items.PlatinumIngot, 1, 0), 0.1f);
-		FurnaceRecipes.smelting().addSmelting(Blocks.PlatinumOre.blockID, 1, new ItemStack(Items.PlatinumIngot, 1, 0), 0.1f);
-		FurnaceRecipes.smelting().addSmelting(Blocks.PlatinumOre.blockID, 2, new ItemStack(Items.PlatinumIngot, 1, 0), 0.1f);
+		FurnaceRecipes.smelting().addSmelting(ENBlocks.PlatinumOre.blockID, 0, new ItemStack(ENItems.PlatinumIngot, 1, 0), 0.1f);
+		FurnaceRecipes.smelting().addSmelting(ENBlocks.PlatinumOre.blockID, 1, new ItemStack(ENItems.PlatinumIngot, 1, 0), 0.1f);
+		FurnaceRecipes.smelting().addSmelting(ENBlocks.PlatinumOre.blockID, 2, new ItemStack(ENItems.PlatinumIngot, 1, 0), 0.1f);
 		
-		FurnaceRecipes.smelting().addSmelting(Blocks.AluminumOre.blockID, 0, new ItemStack(Items.AluminumIngot, 1, 0), 0.1f);
-		FurnaceRecipes.smelting().addSmelting(Blocks.AluminumOre.blockID, 1, new ItemStack(Items.AluminumIngot, 1, 0), 0.1f);
-		FurnaceRecipes.smelting().addSmelting(Blocks.AluminumOre.blockID, 2, new ItemStack(Items.AluminumIngot, 1, 0), 0.1f);
+		FurnaceRecipes.smelting().addSmelting(ENBlocks.AluminumOre.blockID, 0, new ItemStack(ENItems.AluminumIngot, 1, 0), 0.1f);
+		FurnaceRecipes.smelting().addSmelting(ENBlocks.AluminumOre.blockID, 1, new ItemStack(ENItems.AluminumIngot, 1, 0), 0.1f);
+		FurnaceRecipes.smelting().addSmelting(ENBlocks.AluminumOre.blockID, 2, new ItemStack(ENItems.AluminumIngot, 1, 0), 0.1f);
 	}
 
 	private static void registerHammerRecipes(ArrayList<ItemStack> ores, int rewardID, int rewardMeta)
@@ -386,55 +386,55 @@ public class CommonOre {
 	
 	public static void registerIngots()
 	{
-		OreDictionary.registerOre("ingotCopper", Items.CopperIngot);
-		OreDictionary.registerOre("ingotTin", Items.TinIngot);
-		OreDictionary.registerOre("ingotSilver", Items.SilverIngot);
-		OreDictionary.registerOre("ingotLead", Items.LeadIngot);
-		OreDictionary.registerOre("ingotNickel", Items.NickelIngot);
-		OreDictionary.registerOre("ingotPlatinum", Items.PlatinumIngot);
-		OreDictionary.registerOre("ingotAluminum", Items.AluminumIngot);
+		OreDictionary.registerOre("ingotCopper", ENItems.CopperIngot);
+		OreDictionary.registerOre("ingotTin", ENItems.TinIngot);
+		OreDictionary.registerOre("ingotSilver", ENItems.SilverIngot);
+		OreDictionary.registerOre("ingotLead", ENItems.LeadIngot);
+		OreDictionary.registerOre("ingotNickel", ENItems.NickelIngot);
+		OreDictionary.registerOre("ingotPlatinum", ENItems.PlatinumIngot);
+		OreDictionary.registerOre("ingotAluminum", ENItems.AluminumIngot);
 	}
 	
 	private static void registerCopperOres()
 	{
-		HammerRegistry.registerOre(Blocks.CopperOre.blockID, 0, Items.CopperSand.itemID, 0);
-		HammerRegistry.registerOre(Blocks.CopperOre.blockID, 1, Items.CopperDust.itemID, 0);
+		HammerRegistry.registerOre(ENBlocks.CopperOre.blockID, 0, ENItems.CopperSand.itemID, 0);
+		HammerRegistry.registerOre(ENBlocks.CopperOre.blockID, 1, ENItems.CopperDust.itemID, 0);
 	}
 	
 	private static void registerTinOres()
 	{
-		HammerRegistry.registerOre(Blocks.TinOre.blockID, 0, Items.TinSand.itemID, 0);
-		HammerRegistry.registerOre(Blocks.TinOre.blockID, 1, Items.TinDust.itemID, 0);
+		HammerRegistry.registerOre(ENBlocks.TinOre.blockID, 0, ENItems.TinSand.itemID, 0);
+		HammerRegistry.registerOre(ENBlocks.TinOre.blockID, 1, ENItems.TinDust.itemID, 0);
 	}
 	
 	private static void registerSilverOres()
 	{
-		HammerRegistry.registerOre(Blocks.SilverOre.blockID, 0, Items.SilverSand.itemID, 0);
-		HammerRegistry.registerOre(Blocks.SilverOre.blockID, 1, Items.SilverDust.itemID, 0);
+		HammerRegistry.registerOre(ENBlocks.SilverOre.blockID, 0, ENItems.SilverSand.itemID, 0);
+		HammerRegistry.registerOre(ENBlocks.SilverOre.blockID, 1, ENItems.SilverDust.itemID, 0);
 	}
 	
 	private static void registerLeadOres()
 	{
-		HammerRegistry.registerOre(Blocks.LeadOre.blockID, 0, Items.LeadSand.itemID, 0);
-		HammerRegistry.registerOre(Blocks.LeadOre.blockID, 1, Items.LeadDust.itemID, 0);
+		HammerRegistry.registerOre(ENBlocks.LeadOre.blockID, 0, ENItems.LeadSand.itemID, 0);
+		HammerRegistry.registerOre(ENBlocks.LeadOre.blockID, 1, ENItems.LeadDust.itemID, 0);
 	}
 	
 	private static void registerNickleOres()
 	{
-		HammerRegistry.registerOre(Blocks.NickelOre.blockID, 0, Items.NickelSand.itemID, 0);
-		HammerRegistry.registerOre(Blocks.NickelOre.blockID, 1, Items.NickelDust.itemID, 0);
+		HammerRegistry.registerOre(ENBlocks.NickelOre.blockID, 0, ENItems.NickelSand.itemID, 0);
+		HammerRegistry.registerOre(ENBlocks.NickelOre.blockID, 1, ENItems.NickelDust.itemID, 0);
 	}
 	
 	private static void registerPlatinumOres()
 	{
-		HammerRegistry.registerOre(Blocks.PlatinumOre.blockID, 0, Items.PlatinumSand.itemID, 0);
-		HammerRegistry.registerOre(Blocks.PlatinumOre.blockID, 1, Items.PlatinumDust.itemID, 0);
+		HammerRegistry.registerOre(ENBlocks.PlatinumOre.blockID, 0, ENItems.PlatinumSand.itemID, 0);
+		HammerRegistry.registerOre(ENBlocks.PlatinumOre.blockID, 1, ENItems.PlatinumDust.itemID, 0);
 	}
 	
 	private static void registerAluminumOres()
 	{
-		HammerRegistry.registerOre(Blocks.AluminumOre.blockID, 0, Items.AluminumSand.itemID, 0);
-		HammerRegistry.registerOre(Blocks.AluminumOre.blockID, 1, Items.AluminumDust.itemID, 0);
+		HammerRegistry.registerOre(ENBlocks.AluminumOre.blockID, 0, ENItems.AluminumSand.itemID, 0);
+		HammerRegistry.registerOre(ENBlocks.AluminumOre.blockID, 1, ENItems.AluminumDust.itemID, 0);
 	}
 	
 	public static void dumpUnlocalizedNames(String name)

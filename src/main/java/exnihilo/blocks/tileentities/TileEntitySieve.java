@@ -5,7 +5,7 @@ import java.util.Iterator;
 
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
-import exnihilo.Blocks;
+import exnihilo.ENBlocks;
 import exnihilo.blocks.tileentities.TileEntityBarrel.BarrelMode;
 import exnihilo.data.BlockData;
 import exnihilo.particles.ParticleSieve;

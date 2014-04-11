@@ -1,12 +1,12 @@
 package exnihilo.blocks.models;
 
 import net.minecraft.client.renderer.Tessellator;
-import net.minecraft.util.Icon;
+import net.minecraft.util.IIcon;
 
 import org.lwjgl.opengl.GL11;
 
 public class ModelSieveContents {
-	public void renderTop(Icon icon)
+	public void renderTop(IIcon icon)
 	{
 		Tessellator tessellator = Tessellator.instance;
 
@@ -38,7 +38,7 @@ public class ModelSieveContents {
 		//GL11.glEnable(GL11.GL_CULL_FACE);
 	}
 	
-	public void renderBottom(Icon icon)
+	public void renderBottom(IIcon icon)
 	{
 		Tessellator tessellator = Tessellator.instance;
 

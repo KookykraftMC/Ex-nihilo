@@ -2,14 +2,14 @@ package exnihilo.blocks.itemBlocks;
 
 import net.minecraft.item.ItemBlock;
 import net.minecraft.item.ItemStack;
+import exnihilo.ENBlocks;
 import exnihilo.data.BlockData;
 import exnihilo.data.ModData;
 
 public class ItemBlockCrucible extends ItemBlock
 {
-
-	public ItemBlockCrucible(int par1) {
-		super(par1);
+	public ItemBlockCrucible() {
+		super(ENBlocks.Crucible);
 	}
 	
 	public String getUnlocalizedName(ItemStack itemstack)

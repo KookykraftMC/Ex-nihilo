@@ -1,6 +1,6 @@
 package exnihilo.items;
 
-import exnihilo.Blocks;
+import exnihilo.ENBlocks;
 import exnihilo.blocks.tileentities.TileEntityLeavesInfested;
 import exnihilo.compatibility.foresty.Forestry;
 import exnihilo.data.ItemData;
@@ -29,12 +29,12 @@ public class ItemSilkworm extends Item{
 		if (!world.isAirBlock(x, y, z))
 		{
 			Block block = Block.blocksList[world.getBlockId(x, y, z)];
-			if (block.isLeaves(null, 0, 0, 0) && !Forestry.addsThisLeaf(block) && block.blockID != Blocks.LeavesInfested.blockID)
+			if (block.isLeaves(null, 0, 0, 0) && !Forestry.addsThisLeaf(block) && block.blockID != ENBlocks.LeavesInfested.blockID)
 			{
 				int oldID = world.getBlockId(x, y, z);
 				int oldMeta = world.getBlockMetadata(x, y, z);
 
-				world.setBlock(x, y, z, Blocks.LeavesInfested.blockID, 0, 3);
+				world.setBlock(x, y, z, ENBlocks.LeavesInfested.blockID, 0, 3);
 				TileEntityLeavesInfested te = (TileEntityLeavesInfested)world.getBlockTileEntity(x, y, z); 
 				te.setMimicBlock(oldID, oldMeta);
 

@@ -1,5 +1,6 @@
 package exnihilo.blocks.itemBlocks;
 
+import exnihilo.ENBlocks;
 import exnihilo.data.BlockData;
 import exnihilo.data.ModData;
 import net.minecraft.item.ItemBlock;
@@ -7,8 +8,8 @@ import net.minecraft.item.ItemStack;
 
 public class ItemBlockLeavesInfested extends ItemBlock{
 
-	public ItemBlockLeavesInfested(int par1) {
-		super(par1);
+	public ItemBlockLeavesInfested() {
+		super(ENBlocks.LeavesInfested);
 		setHasSubtypes(true);
 	}
 	
@@ -23,5 +24,4 @@ public class ItemBlockLeavesInfested extends ItemBlock{
 	{
 		return meta;
 	}
-
 }

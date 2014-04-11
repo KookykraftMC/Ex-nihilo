@@ -6,7 +6,7 @@ import net.minecraft.item.Item;
 import net.minecraftforge.client.MinecraftForgeClient;
 import cpw.mods.fml.client.registry.ClientRegistry;
 import cpw.mods.fml.client.registry.RenderingRegistry;
-import exnihilo.Items;
+import exnihilo.ENItems;
 import exnihilo.blocks.models.ModelBarrel;
 import exnihilo.blocks.models.ModelBlock;
 import exnihilo.blocks.models.ModelCrucible;
@@ -65,7 +65,7 @@ public class ClientProxy extends Proxy {
 		ClientRegistry.bindTileEntitySpecialRenderer(TileEntityCrucibleUnfired.class, new RenderCrucibleUnfired(crucibleRaw));
 		MinecraftForgeClient.registerItemRenderer(BlockData.CRUCIBLE_UNFIRED_ID, new ItemRenderCrucibleUnfired(crucibleRaw));
 
-		RenderingRegistry.registerEntityRenderingHandler(EntityStone.class, new RenderSnowball(Items.Stones));
+		RenderingRegistry.registerEntityRenderingHandler(EntityStone.class, new RenderSnowball(ENItems.Stones));
 	}
 
 }

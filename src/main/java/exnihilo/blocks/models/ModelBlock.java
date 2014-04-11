@@ -1,19 +1,16 @@
 package exnihilo.blocks.models;
 
+import net.minecraft.client.model.ModelBase;
+import net.minecraft.client.renderer.Tessellator;
+import net.minecraft.util.IIcon;
+
 import org.lwjgl.opengl.GL11;
 
 import exnihilo.registries.helpers.Color;
 
-import net.minecraft.block.Block;
-import net.minecraft.client.model.ModelBase;
-import net.minecraft.client.renderer.Tessellator;
-import net.minecraft.tileentity.TileEntity;
-import net.minecraft.util.Icon;
-import net.minecraft.world.IBlockAccess;
-
 public class ModelBlock extends ModelBase{
 
-	public void render(Color color, Icon icon, int brightness, boolean blend)
+	public void render(Color color, IIcon icon, int brightness, boolean blend)
 	{
 		Tessellator tessellator = Tessellator.instance;
 

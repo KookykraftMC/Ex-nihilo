@@ -14,8 +14,8 @@ import net.minecraftforge.oredict.OreDictionary;
 import net.minecraftforge.oredict.ShapelessOreRecipe;
 import cpw.mods.fml.common.Loader;
 import cpw.mods.fml.common.registry.GameRegistry;
-import exnihilo.Blocks;
-import exnihilo.Items;
+import exnihilo.ENBlocks;
+import exnihilo.ENItems;
 import exnihilo.registries.SieveRegistry;
 import forestry.api.apiculture.FlowerManager;
 import forestry.api.arboriculture.ITreeRoot;
@@ -67,11 +67,11 @@ public class Forestry {
 	private static void registerRecipes()
 	{
 		GameRegistry.addShapelessRecipe(
-						new ItemStack(Blocks.BeeTrap, 1, 0),
+						new ItemStack(ENBlocks.BeeTrap, 1, 0),
 						new Object[]
 								{ 
 							new ItemStack(Block.hay, 1, 0),
-							new ItemStack(Items.Mesh, 1, 0)
+							new ItemStack(ENItems.Mesh, 1, 0)
 								});
 	}
 }

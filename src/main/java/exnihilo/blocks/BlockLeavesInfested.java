@@ -1,55 +1,47 @@
 package exnihilo.blocks;
 
-import java.util.Random;
-
+import net.minecraft.block.Block;
+import net.minecraft.block.BlockLeaves;
+import net.minecraft.block.ITileEntityProvider;
+import net.minecraft.client.renderer.texture.IIconRegister;
+import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.init.Blocks;
+import net.minecraft.init.Items;
+import net.minecraft.item.ItemStack;
+import net.minecraft.tileentity.TileEntity;
+import net.minecraft.util.IIcon;
+import net.minecraft.world.IBlockAccess;
+import net.minecraft.world.World;
 import cpw.mods.fml.common.registry.GameRegistry;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
-import exnihilo.blocks.tileentities.TileEntityBarrel;
 import exnihilo.blocks.tileentities.TileEntityLeavesInfested;
 import exnihilo.data.BlockData;
 import exnihilo.data.ModData;
 import exnihilo.registries.ColorRegistry;
-import exnihilo.registries.helpers.Color;
-
-import net.minecraft.block.Block;
-import net.minecraft.block.BlockContainer;
-import net.minecraft.block.BlockLeaves;
-import net.minecraft.block.ITileEntityProvider;
-import net.minecraft.block.material.Material;
-import net.minecraft.client.Minecraft;
-import net.minecraft.client.renderer.texture.IconRegister;
-import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.item.Item;
-import net.minecraft.item.ItemStack;
-import net.minecraft.tileentity.TileEntity;
-import net.minecraft.util.Icon;
-import net.minecraft.world.ColorizerFoliage;
-import net.minecraft.world.IBlockAccess;
-import net.minecraft.world.World;
 
 public class BlockLeavesInfested extends BlockLeaves implements ITileEntityProvider
 {
-	public BlockLeavesInfested(int par1) {
-		//super(par1);
-		super(par1);
+	public BlockLeavesInfested() {
+		super();
 		this.isBlockContainer = true;
 
 		setHardness(0.4f);
 		setLightOpacity(1);
-		setStepSound(soundGrassFootstep);
-		setBurnProperties(this.blockID, 5,150);
+		setStepSound(soundTypeGrass);
+		Blocks.fire.setFireInfo(this, 5,150);
 
-		setUnlocalizedName(ModData.ID + "." + BlockData.LEAVES_INFESTED_KEY);
+		setBlockName(ModData.ID + "." + BlockData.LEAVES_INFESTED_KEY);
 		GameRegistry.registerTileEntity(TileEntityLeavesInfested.class, this.getUnlocalizedName());
 	}
 
 	@Override
-	public void registerIcons(IconRegister register)
+	public void registerBlockIcons(IIconRegister register)
 	{
-		blockIcon = Block.leaves.getIcon(0, 0);
+		blockIcon = Blocks.leaves.getIcon(0, 0);
 	}
 
+	@Override
 	public void dropBlockAsItemWithChance(World world, int x, int y, int z, int par5, float par6, int par7)
 	{
 		//Don't drop anything. This is to override the base chance to drop saplings. 
@@ -58,7 +50,7 @@ public class BlockLeavesInfested extends BlockLeaves implements ITileEntityProvi
 	@SideOnly(Side.CLIENT)
 	public int colorMultiplier(IBlockAccess world, int x, int y, int z)
 	{
-		TileEntityLeavesInfested leaves = (TileEntityLeavesInfested) world.getBlockTileEntity(x, y, z);
+		TileEntityLeavesInfested leaves = (TileEntityLeavesInfested) world.getTileEntity(x, y, z);
 		
 		if (leaves != null)
 		{
@@ -71,9 +63,9 @@ public class BlockLeavesInfested extends BlockLeaves implements ITileEntityProvi
 	}
 	
 	@SideOnly(Side.CLIENT)
-	public Icon getIcon(int par1, int par2)
+	public IIcon getIcon(int par1, int par2)
     {
-        return this.blockIcon;
+        return blockIcon;
     }
 	
 	@SideOnly(Side.CLIENT)
@@ -118,22 +110,22 @@ public class BlockLeavesInfested extends BlockLeaves implements ITileEntityProvi
 	}
 
 	@Override
-	public boolean removeBlockByPlayer(World world, EntityPlayer player, int x, int y, int z)
+	public boolean removedByPlayer(World world, EntityPlayer player, int x, int y, int z)
 	{
 		if (!world.isRemote)
 		{
-			TileEntityLeavesInfested leaves = (TileEntityLeavesInfested) world.getBlockTileEntity(x, y, z);
+			TileEntityLeavesInfested leaves = (TileEntityLeavesInfested) world.getTileEntity(x, y, z);
 
 			if (leaves != null)
 			{
 				if (world.rand.nextFloat() < leaves.getProgress() * (float)ModData.SILKWORM_STRING_PROBABILITY)
 				{
-					this.dropBlockAsItem_do(world, x, y, z, new ItemStack(Item.silk.itemID, 1, 0));
+					this.dropBlockAsItem(world, x, y, z, new ItemStack(Items.string, 1, 0));
 				}
 
 				if (world.rand.nextFloat() < leaves.getProgress() * (float)(ModData.SILKWORM_STRING_PROBABILITY / 4.0d))
 				{
-					this.dropBlockAsItem_do(world, x, y, z, new ItemStack(Item.silk.itemID, 1, 0));
+					this.dropBlockAsItem(world, x, y, z, new ItemStack(Items.string, 1, 0));
 				}
 			}
 		}
@@ -142,22 +134,28 @@ public class BlockLeavesInfested extends BlockLeaves implements ITileEntityProvi
 	}
 
 	@Override
-	public void breakBlock(World world, int x, int y, int z, int par5, int par6)
+	public void breakBlock(World world, int x, int y, int z, Block par5, int par6)
 	{
 		super.breakBlock(world, x, y, z, par5, par6);
-		world.removeBlockTileEntity(x, y, z);
+		world.removeTileEntity(x, y, z);
 	}
 
 	@Override
 	public boolean onBlockEventReceived(World par1World, int par2, int par3, int par4, int par5, int par6)
 	{
 		super.onBlockEventReceived(par1World, par2, par3, par4, par5, par6);
-		TileEntity tileentity = par1World.getBlockTileEntity(par2, par3, par4);
+		TileEntity tileentity = par1World.getTileEntity(par2, par3, par4);
 		return tileentity != null ? tileentity.receiveClientEvent(par5, par6) : false;
 	}
 
 	@Override
-	public TileEntity createNewTileEntity(World world) {
+	public TileEntity createNewTileEntity(World world, int meta) {
 		return new TileEntityLeavesInfested();
+	}
+
+	@Override
+	public String[] func_150125_e() {
+		// TODO Auto-generated method stub
+		return new String[] {"infested"};
 	}
 }

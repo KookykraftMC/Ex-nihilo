@@ -2,7 +2,7 @@ package exnihilo.blocks.tileentities;
 
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
-import exnihilo.Blocks;
+import exnihilo.ENBlocks;
 import exnihilo.blocks.tileentities.TileEntityBarrel.BarrelMode;
 import exnihilo.compatibility.foresty.Forestry;
 import exnihilo.data.BlockData;
@@ -106,9 +106,9 @@ public class TileEntityLeavesInfested extends TileEntity
 
 		Block target = Block.blocksList[blockID];
 
-		if(target != null && target.isLeaves(null, 0, 0, 0) && target.blockID != Blocks.LeavesInfested.blockID && !Forestry.addsThisLeaf(target))
+		if(target != null && target.isLeaves(null, 0, 0, 0) && target.blockID != ENBlocks.LeavesInfested.blockID && !Forestry.addsThisLeaf(target))
 		{
-			worldObj.setBlock(xCoord + x, yCoord + y, zCoord + z, Blocks.LeavesInfested.blockID, meta, 3);
+			worldObj.setBlock(xCoord + x, yCoord + y, zCoord + z, ENBlocks.LeavesInfested.blockID, meta, 3);
 			TileEntityLeavesInfested te = (TileEntityLeavesInfested)worldObj.getBlockTileEntity(xCoord + x, yCoord + y, zCoord + z);
 			te.setMimicBlock(blockID, meta);
 		}

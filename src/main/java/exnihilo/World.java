@@ -1,11 +1,10 @@
 package exnihilo;
 
+import net.minecraftforge.common.DimensionManager;
 import exnihilo.data.WorldData;
 import exnihilo.world.WorldProviderDefaultVoid;
 import exnihilo.world.WorldProviderEndVoid;
 import exnihilo.world.WorldProviderHellVoid;
-import net.minecraftforge.common.Configuration;
-import net.minecraftforge.common.DimensionManager;
 
 public class World {
 	

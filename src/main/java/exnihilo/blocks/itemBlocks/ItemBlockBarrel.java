@@ -1,15 +1,15 @@
 package exnihilo.blocks.itemBlocks;
 
-import exnihilo.data.BlockData;
-import exnihilo.data.ModData;
 import net.minecraft.item.ItemBlock;
 import net.minecraft.item.ItemStack;
+import exnihilo.ENBlocks;
+import exnihilo.data.BlockData;
+import exnihilo.data.ModData;
 
 public class ItemBlockBarrel extends ItemBlock
 {
-
-	public ItemBlockBarrel(int par1) {
-		super(par1);
+	public ItemBlockBarrel() {
+		super(ENBlocks.Barrel);
 		setHasSubtypes(true);
 	}
 	

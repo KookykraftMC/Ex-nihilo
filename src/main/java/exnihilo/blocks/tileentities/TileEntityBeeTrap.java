@@ -1,6 +1,6 @@
 package exnihilo.blocks.tileentities;
 
-import exnihilo.Blocks;
+import exnihilo.ENBlocks;
 import exnihilo.blocks.tileentities.TileEntityCrucible.CrucibleMode;
 import exnihilo.compatibility.foresty.Forestry;
 import exnihilo.compatibility.foresty.Hive;
@@ -99,7 +99,7 @@ public class TileEntityBeeTrap extends TileEntity {
 			//If the timer expires, then we require re-treatment with seed oil.
 			if (timer > TIMER_MAX)
 			{
-				worldObj.setBlock(xCoord, yCoord, zCoord, Blocks.BeeTrap.blockID, 0, 3);
+				worldObj.setBlock(xCoord, yCoord, zCoord, ENBlocks.BeeTrap.blockID, 0, 3);
 			}
 		}
 	}

@@ -4,10 +4,11 @@ import java.util.ArrayList;
 import java.util.Iterator;
 
 import net.minecraft.block.Block;
+import net.minecraft.init.Blocks;
 import net.minecraft.item.Item;
 import net.minecraftforge.common.config.Configuration;
-import exnihilo.Blocks;
-import exnihilo.Items;
+import exnihilo.ENBlocks;
+import exnihilo.ENItems;
 import exnihilo.registries.helpers.Smashable;
 
 public class HammerRegistry {
@@ -64,29 +65,29 @@ public static ArrayList<Smashable> rewards = new ArrayList<Smashable>();
 	
 	public static void registerSmashables()
 	{		
-		register(Block.getIdFromBlock(net.minecraft.init.Blocks.stone), 0, Item.getIdFromItem(Items.Stones), 0, 1.00f, 0.0f);
-		register(Block.getIdFromBlock(net.minecraft.init.Blocks.stone), 0, Item.getIdFromItem(Items.Stones), 0, 0.75f, 0.1f);
-		register(Block.getIdFromBlock(net.minecraft.init.Blocks.stone), 0, Item.getIdFromItem(Items.Stones), 0, 0.75f, 0.1f);
-		register(Block.getIdFromBlock(net.minecraft.init.Blocks.stone), 0, Item.getIdFromItem(Items.Stones), 0, 0.50f, 0.1f);
-		register(Block.getIdFromBlock(net.minecraft.init.Blocks.stone), 0, Item.getIdFromItem(Items.Stones), 0, 0.25f, 0.1f);
-		register(Block.getIdFromBlock(net.minecraft.init.Blocks.stone), 0, Item.getIdFromItem(Items.Stones), 0, 0.05f, 0.1f);
+		register(Block.getIdFromBlock(Blocks.stone), 0, Item.getIdFromItem(ENItems.Stones), 0, 1.00f, 0.0f);
+		register(Block.getIdFromBlock(Blocks.stone), 0, Item.getIdFromItem(ENItems.Stones), 0, 0.75f, 0.1f);
+		register(Block.getIdFromBlock(Blocks.stone), 0, Item.getIdFromItem(ENItems.Stones), 0, 0.75f, 0.1f);
+		register(Block.getIdFromBlock(Blocks.stone), 0, Item.getIdFromItem(ENItems.Stones), 0, 0.50f, 0.1f);
+		register(Block.getIdFromBlock(Blocks.stone), 0, Item.getIdFromItem(ENItems.Stones), 0, 0.25f, 0.1f);
+		register(Block.getIdFromBlock(Blocks.stone), 0, Item.getIdFromItem(ENItems.Stones), 0, 0.05f, 0.1f);
 		
-		register(Block.getIdFromBlock(net.minecraft.init.Blocks.cobblestone), 0, Block.getIdFromBlock(net.minecraft.init.Blocks.gravel), 0, 1.0f, 0.0f);
-		register(Block.getIdFromBlock(net.minecraft.init.Blocks.gravel), 0, Block.getIdFromBlock(net.minecraft.init.Blocks.sand), 0, 1.0f, 0.0f);
-		register(Block.getIdFromBlock(net.minecraft.init.Blocks.sand), 0, Block.getIdFromBlock(Blocks.Dust), 0, 1.0f, 0.0f);
+		register(Block.getIdFromBlock(Blocks.cobblestone), 0, Block.getIdFromBlock(Blocks.gravel), 0, 1.0f, 0.0f);
+		register(Block.getIdFromBlock(Blocks.gravel), 0, Block.getIdFromBlock(Blocks.sand), 0, 1.0f, 0.0f);
+		register(Block.getIdFromBlock(Blocks.sand), 0, Block.getIdFromBlock(ENBlocks.Dust), 0, 1.0f, 0.0f);
 		
-		register(Block.getIdFromBlock(net.minecraft.init.Blocks.sandstone), 0, Block.getIdFromBlock(net.minecraft.init.Blocks.sand), 0, 1.0f, 0.0f);
-		register(Block.getIdFromBlock(net.minecraft.init.Blocks.sandstone), 1, Block.getIdFromBlock(net.minecraft.init.Blocks.sand), 0, 1.0f, 0.0f);
-		register(Block.getIdFromBlock(net.minecraft.init.Blocks.sandstone), 2, Block.getIdFromBlock(net.minecraft.init.Blocks.sand), 0, 1.0f, 0.0f);
+		register(Block.getIdFromBlock(Blocks.sandstone), 0, Block.getIdFromBlock(Blocks.sand), 0, 1.0f, 0.0f);
+		register(Block.getIdFromBlock(Blocks.sandstone), 1, Block.getIdFromBlock(Blocks.sand), 0, 1.0f, 0.0f);
+		register(Block.getIdFromBlock(Blocks.sandstone), 2, Block.getIdFromBlock(Blocks.sand), 0, 1.0f, 0.0f);
 		
-		register(Block.getIdFromBlock(net.minecraft.init.Blocks.stonebrick), 0, Block.getIdFromBlock(net.minecraft.init.Blocks.stonebrick), 2, 1.0f, 0.0f);
+		register(Block.getIdFromBlock(Blocks.stonebrick), 0, Block.getIdFromBlock(Blocks.stonebrick), 2, 1.0f, 0.0f);
 		
-		register(Block.getIdFromBlock(net.minecraft.init.Blocks.stonebrick), 2, Item.getIdFromItem(Items.Stones), 0, 1.00f, 0.0f);
-		register(Block.getIdFromBlock(net.minecraft.init.Blocks.stonebrick), 2, Item.getIdFromItem(Items.Stones), 0, 0.75f, 0.1f);
-		register(Block.getIdFromBlock(net.minecraft.init.Blocks.stonebrick), 2, Item.getIdFromItem(Items.Stones), 0, 0.75f, 0.1f);
-		register(Block.getIdFromBlock(net.minecraft.init.Blocks.stonebrick), 2, Item.getIdFromItem(Items.Stones), 0, 0.50f, 0.1f);
-		register(Block.getIdFromBlock(net.minecraft.init.Blocks.stonebrick), 2, Item.getIdFromItem(Items.Stones), 0, 0.25f, 0.1f);
-		register(Block.getIdFromBlock(net.minecraft.init.Blocks.stonebrick), 2, Item.getIdFromItem(Items.Stones), 0, 0.05f, 0.1f);
+		register(Block.getIdFromBlock(Blocks.stonebrick), 2, Item.getIdFromItem(ENItems.Stones), 0, 1.00f, 0.0f);
+		register(Block.getIdFromBlock(Blocks.stonebrick), 2, Item.getIdFromItem(ENItems.Stones), 0, 0.75f, 0.1f);
+		register(Block.getIdFromBlock(Blocks.stonebrick), 2, Item.getIdFromItem(ENItems.Stones), 0, 0.75f, 0.1f);
+		register(Block.getIdFromBlock(Blocks.stonebrick), 2, Item.getIdFromItem(ENItems.Stones), 0, 0.50f, 0.1f);
+		register(Block.getIdFromBlock(Blocks.stonebrick), 2, Item.getIdFromItem(ENItems.Stones), 0, 0.25f, 0.1f);
+		register(Block.getIdFromBlock(Blocks.stonebrick), 2, Item.getIdFromItem(ENItems.Stones), 0, 0.05f, 0.1f);
 		
 		registerIronOres();
 		registerGoldOres();
@@ -107,15 +108,15 @@ public static ArrayList<Smashable> rewards = new ArrayList<Smashable>();
 	
 	private static void registerIronOres()
 	{
-		registerOre(Block.getIdFromBlock(net.minecraft.init.Blocks.iron_ore), 0, Item.getIdFromItem(Items.IronGravel), 0);
-		registerOre(Block.getIdFromBlock(Blocks.IronOre), 0, Item.getIdFromItem(Items.IronSand), 0);
-		registerOre(Block.getIdFromBlock(Blocks.IronOre), 1, Item.getIdFromItem(Items.IronDust), 0);
+		registerOre(Block.getIdFromBlock(Blocks.iron_ore), 0, Item.getIdFromItem(ENItems.IronGravel), 0);
+		registerOre(Block.getIdFromBlock(ENBlocks.IronOre), 0, Item.getIdFromItem(ENItems.IronSand), 0);
+		registerOre(Block.getIdFromBlock(ENBlocks.IronOre), 1, Item.getIdFromItem(ENItems.IronDust), 0);
 	}
 	
 	private static void registerGoldOres()
 	{
-		registerOre(Block.getIdFromBlock(net.minecraft.init.Blocks.gold_ore), 0, Item.getIdFromItem(Items.GoldGravel), 0);
-		registerOre(Block.getIdFromBlock(Blocks.GoldOre), 0, Item.getIdFromItem(Items.GoldSand), 0);
-		registerOre(Block.getIdFromBlock(Blocks.GoldOre), 1, Item.getIdFromItem(Items.GoldDust), 0);
+		registerOre(Block.getIdFromBlock(Blocks.gold_ore), 0, Item.getIdFromItem(ENItems.GoldGravel), 0);
+		registerOre(Block.getIdFromBlock(ENBlocks.GoldOre), 0, Item.getIdFromItem(ENItems.GoldSand), 0);
+		registerOre(Block.getIdFromBlock(ENBlocks.GoldOre), 1, Item.getIdFromItem(ENItems.GoldDust), 0);
 	}
 }

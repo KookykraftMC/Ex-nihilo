@@ -1,6 +1,6 @@
 package exnihilo.items;
 
-import exnihilo.Blocks;
+import exnihilo.ENBlocks;
 import exnihilo.data.ItemData;
 import exnihilo.data.ModData;
 import net.minecraft.block.Block;

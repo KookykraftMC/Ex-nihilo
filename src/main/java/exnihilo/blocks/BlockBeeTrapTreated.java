@@ -1,12 +1,11 @@
 package exnihilo.blocks;
 
-import net.minecraft.block.Block;
 import net.minecraft.block.BlockContainer;
 import net.minecraft.block.material.Material;
-import net.minecraft.client.renderer.texture.IconRegister;
+import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.tileentity.TileEntity;
-import net.minecraft.util.Icon;
+import net.minecraft.util.IIcon;
 import net.minecraft.world.World;
 import cpw.mods.fml.common.registry.GameRegistry;
 import cpw.mods.fml.relauncher.Side;
@@ -15,15 +14,15 @@ import exnihilo.blocks.tileentities.TileEntityBeeTrap;
 import exnihilo.data.BlockData;
 import exnihilo.data.ModData;
 
-public class BlockBeeTrapTreated extends BlockContainer{
-	public static Icon topIcon;
-	public static Icon sideIcon;
+public class BlockBeeTrapTreated extends BlockContainer {
+	public static IIcon topIcon;
+	public static IIcon sideIcon;
 	
-	public BlockBeeTrapTreated(int id) {
-		super(id, Material.ground);
+	public BlockBeeTrapTreated() {
+		super(Material.ground);
 		
 		setHardness(1.0f);
-		setStepSound(soundGrassFootstep);
+		setStepSound(soundTypeGrass);
 		setCreativeTab(CreativeTabs.tabBlock);
 		
 		GameRegistry.registerTileEntity(TileEntityBeeTrap.class, this.getUnlocalizedName());
@@ -36,26 +35,26 @@ public class BlockBeeTrapTreated extends BlockContainer{
 	}
 	
 	@Override
-	public void registerIcons(IconRegister register)
+	public void registerBlockIcons(IIconRegister register)
 	{
-		this.topIcon = register.registerIcon(ModData.TEXTURE_LOCATION + ":IconBeeTrapTopTreated");
-		this.sideIcon = register.registerIcon(ModData.TEXTURE_LOCATION + ":IconBeeTrapSideTreated");
-		this.blockIcon = this.sideIcon;
+		topIcon = register.registerIcon(ModData.TEXTURE_LOCATION + ":IconBeeTrapTopTreated");
+		sideIcon = register.registerIcon(ModData.TEXTURE_LOCATION + ":IconBeeTrapSideTreated");
+		blockIcon = sideIcon;
 	}
 	
 	@Override
 	@SideOnly(Side.CLIENT)
-	public Icon getIcon(int side, int meta)
+	public IIcon getIcon(int side, int meta)
     {
 		if (side == 0 || side == 1)
 		{
-			return this.topIcon;
+			return topIcon;
 		}
-		return this.sideIcon;
+		return sideIcon;
     }
 
 	@Override
-	public TileEntity createNewTileEntity(World world) {
+	public TileEntity createNewTileEntity(World world, int meta) {
 		return new TileEntityBeeTrap();
 	}
 }

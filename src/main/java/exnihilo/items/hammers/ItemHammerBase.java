@@ -3,8 +3,8 @@ package exnihilo.items.hammers;
 import java.util.ArrayList;
 import java.util.Iterator;
 
-import exnihilo.Blocks;
-import exnihilo.Items;
+import exnihilo.ENBlocks;
+import exnihilo.ENItems;
 import exnihilo.data.ItemData;
 import exnihilo.registries.HammerRegistry;
 import exnihilo.registries.SieveRegistry;

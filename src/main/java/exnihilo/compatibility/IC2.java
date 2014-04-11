@@ -13,8 +13,8 @@ import net.minecraft.item.ItemStack;
 import net.minecraftforge.oredict.OreDictionary;
 import cpw.mods.fml.common.Loader;
 import cpw.mods.fml.common.registry.GameRegistry;
-import exnihilo.Blocks;
-import exnihilo.Items;
+import exnihilo.ENBlocks;
+import exnihilo.ENItems;
 import exnihilo.data.ModData;
 import exnihilo.items.seeds.ItemSeedRubber;
 import exnihilo.registries.CompostRegistry;
@@ -36,12 +36,12 @@ public class IC2 {
 		{
 			ItemStack sulfur = ores.toArray(new ItemStack[ores.size()])[0];
 
-			SieveRegistry.register(Blocks.Dust.blockID, 0, sulfur.itemID, sulfur.getItemDamage(), 32);
+			SieveRegistry.register(ENBlocks.Dust.blockID, 0, sulfur.itemID, sulfur.getItemDamage(), 32);
 		}
 
 		Block rubberSapling = GameRegistry.findBlock("IC2", "blockRubSapling");
 		ItemSeedRubber.saplings.add(rubberSapling);
-		SieveRegistry.register(Block.dirt.blockID, 0, Items.SeedsRubber.itemID, 0, 45);
+		SieveRegistry.register(Block.dirt.blockID, 0, ENItems.SeedsRubber.itemID, 0, 45);
 
 		Item crushedUranium = GameRegistry.findItem("IC2", "itemCrushedOre");
 		if (crushedUranium != null)
@@ -123,7 +123,7 @@ public class IC2 {
 			ic2.api.recipe.Recipes.macerator.addRecipe(new RecipeInputItemStack(new ItemStack(Block.gravel)), null, new ItemStack(Block.sand));
 		}
 
-		ic2.api.recipe.Recipes.macerator.addRecipe(new RecipeInputItemStack(new ItemStack(Block.sand)), null, new ItemStack(Blocks.Dust));
+		ic2.api.recipe.Recipes.macerator.addRecipe(new RecipeInputItemStack(new ItemStack(Block.sand)), null, new ItemStack(ENBlocks.Dust));
 	}
 
 }

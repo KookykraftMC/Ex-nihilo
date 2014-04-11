@@ -1,16 +1,12 @@
 package exnihilo.blocks.models;
 
 import net.minecraft.client.renderer.Tessellator;
-import net.minecraft.util.Icon;
+import net.minecraft.util.IIcon;
 
 import org.lwjgl.opengl.GL11;
 
-import exnihilo.registries.ColorRegistry;
-import exnihilo.registries.helpers.Color;
-
-
 public class ModelSieveMesh {
-	public void render(Icon icon)
+	public void render(IIcon icon)
 	{
 		Tessellator tessellator = Tessellator.instance;
 

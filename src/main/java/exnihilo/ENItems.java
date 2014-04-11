@@ -1,11 +1,8 @@
 package exnihilo;
 
+import net.minecraft.item.Item;
 import cpw.mods.fml.common.registry.GameRegistry;
-import cpw.mods.fml.common.registry.LanguageRegistry;
-import exnihilo.blocks.BlockBarrel;
-import exnihilo.blocks.itemBlocks.ItemBlockBarrel;
 import exnihilo.data.ItemData;
-import exnihilo.fluids.buckets.ItemBucketWitchWater;
 import exnihilo.items.ItemCrook;
 import exnihilo.items.ItemCrookBone;
 import exnihilo.items.ItemGrassSeeds;
@@ -18,7 +15,6 @@ import exnihilo.items.ItemStone;
 import exnihilo.items.dolls.ItemDoll;
 import exnihilo.items.dolls.ItemDollAngry;
 import exnihilo.items.dolls.ItemDollCreepy;
-import exnihilo.items.hammers.ItemHammerBase;
 import exnihilo.items.hammers.ItemHammerDiamond;
 import exnihilo.items.hammers.ItemHammerGold;
 import exnihilo.items.hammers.ItemHammerIron;
@@ -70,12 +66,8 @@ import exnihilo.items.seeds.ItemSeedPotato;
 import exnihilo.items.seeds.ItemSeedRubber;
 import exnihilo.items.seeds.ItemSeedSpruce;
 import exnihilo.items.seeds.ItemSeedSugarcane;
-import net.minecraft.item.EnumToolMaterial;
-import net.minecraft.item.Item;
-import net.minecraft.item.ItemPickaxe;
-import net.minecraft.item.ItemStack;
 
-public class Items {
+public class ENItems {
 	public static Item HammerWood;
 	public static Item HammerStone;
 	public static Item HammerIron;
@@ -332,87 +324,87 @@ public class Items {
 
 	}
 
-	public static void registerNames()
-	{
-		//Hammers!
-		LanguageRegistry.addName(HammerWood, ItemData.HAMMER_NAMES[0]);
-		LanguageRegistry.addName(HammerStone, ItemData.HAMMER_NAMES[1]);
-		LanguageRegistry.addName(HammerIron, ItemData.HAMMER_NAMES[2]);
-		LanguageRegistry.addName(HammerGold, ItemData.HAMMER_NAMES[3]);
-		LanguageRegistry.addName(HammerDiamond, ItemData.HAMMER_NAMES[4]);
-
-		LanguageRegistry.addName(Silkworm, ItemData.SILKWORM_NAME);
-		LanguageRegistry.addName(SilkwormCooked, ItemData.SILKWORM_COOKED_NAME);
-		LanguageRegistry.addName(Crook, ItemData.CROOK_NAME);
-		LanguageRegistry.addName(CrookBone, ItemData.CROOK_BONE_NAME);
-		LanguageRegistry.addName(Mesh, ItemData.MESH_NAME);
-		LanguageRegistry.addName(Spores, ItemData.SPORES_NAME);
-		LanguageRegistry.addName(GrassSeeds, ItemData.SEED_GRASS_NAME);
-		LanguageRegistry.addName(Stones, ItemData.STONES_NAME);
-		LanguageRegistry.addName(Porcelain, ItemData.PORCELAIN_NAME);
-
-		LanguageRegistry.addName(Doll, ItemData.DOLL_NAME);
-		LanguageRegistry.addName(DollAngry, ItemData.ANGRY_DOLL_NAME);
-		LanguageRegistry.addName(DollCreepy, ItemData.CREEPY_DOLL_NAME);
-
-		LanguageRegistry.addName(SeedsOak, ItemData.SEED_OAK_NAME);
-		LanguageRegistry.addName(SeedsSpruce, ItemData.SEED_SPRUCE_NAME);
-		LanguageRegistry.addName(SeedsBirch, ItemData.SEED_BIRCH_NAME);
-		LanguageRegistry.addName(SeedsJungle, ItemData.SEED_JUNGLE_NAME);
-
-		LanguageRegistry.addName(SeedsCactus, ItemData.SEED_CACTUS_NAME);
-		LanguageRegistry.addName(SeedsSugarcane, ItemData.SEED_SUGAR_CANE_NAME);
-
-		LanguageRegistry.addName(SeedsCarrot, ItemData.SEED_CARROT_NAME);
-		LanguageRegistry.addName(SeedsPotato, ItemData.SEED_POTATO_NAME);
-
-		LanguageRegistry.addName(SeedsRubber, ItemData.SEED_RUBBER_NAME);
-
-		LanguageRegistry.addName(IronGravel, ItemData.IRON_ORE_NAMES[0]);
-		LanguageRegistry.addName(IronSand, ItemData.IRON_ORE_NAMES[1]);
-		LanguageRegistry.addName(IronDust, ItemData.IRON_ORE_NAMES[2]);
-
-		LanguageRegistry.addName(GoldGravel, ItemData.GOLD_ORE_NAMES[0]);
-		LanguageRegistry.addName(GoldSand, ItemData.GOLD_ORE_NAMES[1]);
-		LanguageRegistry.addName(GoldDust, ItemData.GOLD_ORE_NAMES[2]);
-
-		LanguageRegistry.addName(CopperGravel, ItemData.COPPER_ORE_NAMES[0]);
-		LanguageRegistry.addName(CopperSand, ItemData.COPPER_ORE_NAMES[1]);
-		LanguageRegistry.addName(CopperDust, ItemData.COPPER_ORE_NAMES[2]);
-		LanguageRegistry.addName(CopperIngot, ItemData.COPPER_ORE_NAMES[3]);
-
-		LanguageRegistry.addName(TinGravel, ItemData.TIN_ORE_NAMES[0]);
-		LanguageRegistry.addName(TinSand, ItemData.TIN_ORE_NAMES[1]);
-		LanguageRegistry.addName(TinDust, ItemData.TIN_ORE_NAMES[2]);
-		LanguageRegistry.addName(TinIngot, ItemData.TIN_ORE_NAMES[3]);
-
-		LanguageRegistry.addName(SilverGravel, ItemData.SILVER_ORE_NAMES[0]);
-		LanguageRegistry.addName(SilverSand, ItemData.SILVER_ORE_NAMES[1]);
-		LanguageRegistry.addName(SilverDust, ItemData.SILVER_ORE_NAMES[2]);
-		LanguageRegistry.addName(SilverIngot, ItemData.SILVER_ORE_NAMES[3]);
-
-		LanguageRegistry.addName(LeadGravel, ItemData.LEAD_ORE_NAMES[0]);
-		LanguageRegistry.addName(LeadSand, ItemData.LEAD_ORE_NAMES[1]);
-		LanguageRegistry.addName(LeadDust, ItemData.LEAD_ORE_NAMES[2]);
-		LanguageRegistry.addName(LeadIngot, ItemData.LEAD_ORE_NAMES[3]);
-
-		LanguageRegistry.addName(OsmiumGravel, ItemData.OSMIUM_ORE_NAMES[0]);
-		LanguageRegistry.addName(OsmiumSand, ItemData.OSMIUM_ORE_NAMES[1]);
-		LanguageRegistry.addName(OsmiumDust, ItemData.OSMIUM_ORE_NAMES[2]);
-
-		LanguageRegistry.addName(NickelGravel, ItemData.NICKEL_ORE_NAMES[0]);
-		LanguageRegistry.addName(NickelSand, ItemData.NICKEL_ORE_NAMES[1]);
-		LanguageRegistry.addName(NickelDust, ItemData.NICKEL_ORE_NAMES[2]);
-		LanguageRegistry.addName(NickelIngot, ItemData.NICKEL_ORE_NAMES[3]);
-
-		LanguageRegistry.addName(PlatinumGravel, ItemData.PLATINUM_ORE_NAMES[0]);
-		LanguageRegistry.addName(PlatinumSand, ItemData.PLATINUM_ORE_NAMES[1]);
-		LanguageRegistry.addName(PlatinumDust, ItemData.PLATINUM_ORE_NAMES[2]);
-		LanguageRegistry.addName(PlatinumIngot, ItemData.PLATINUM_ORE_NAMES[3]);
-		
-		LanguageRegistry.addName(AluminumGravel, ItemData.ALUMINUM_ORE_NAMES[0]);
-		LanguageRegistry.addName(AluminumSand, ItemData.ALUMINUM_ORE_NAMES[1]);
-		LanguageRegistry.addName(AluminumDust, ItemData.ALUMINUM_ORE_NAMES[2]);
-		LanguageRegistry.addName(AluminumIngot, ItemData.ALUMINUM_ORE_NAMES[3]);
-	}
+//	public static void registerNames()
+//	{
+//		//Hammers!
+//		LanguageRegistry.addName(HammerWood, ItemData.HAMMER_NAMES[0]);
+//		LanguageRegistry.addName(HammerStone, ItemData.HAMMER_NAMES[1]);
+//		LanguageRegistry.addName(HammerIron, ItemData.HAMMER_NAMES[2]);
+//		LanguageRegistry.addName(HammerGold, ItemData.HAMMER_NAMES[3]);
+//		LanguageRegistry.addName(HammerDiamond, ItemData.HAMMER_NAMES[4]);
+//
+//		LanguageRegistry.addName(Silkworm, ItemData.SILKWORM_NAME);
+//		LanguageRegistry.addName(SilkwormCooked, ItemData.SILKWORM_COOKED_NAME);
+//		LanguageRegistry.addName(Crook, ItemData.CROOK_NAME);
+//		LanguageRegistry.addName(CrookBone, ItemData.CROOK_BONE_NAME);
+//		LanguageRegistry.addName(Mesh, ItemData.MESH_NAME);
+//		LanguageRegistry.addName(Spores, ItemData.SPORES_NAME);
+//		LanguageRegistry.addName(GrassSeeds, ItemData.SEED_GRASS_NAME);
+//		LanguageRegistry.addName(Stones, ItemData.STONES_NAME);
+//		LanguageRegistry.addName(Porcelain, ItemData.PORCELAIN_NAME);
+//
+//		LanguageRegistry.addName(Doll, ItemData.DOLL_NAME);
+//		LanguageRegistry.addName(DollAngry, ItemData.ANGRY_DOLL_NAME);
+//		LanguageRegistry.addName(DollCreepy, ItemData.CREEPY_DOLL_NAME);
+//
+//		LanguageRegistry.addName(SeedsOak, ItemData.SEED_OAK_NAME);
+//		LanguageRegistry.addName(SeedsSpruce, ItemData.SEED_SPRUCE_NAME);
+//		LanguageRegistry.addName(SeedsBirch, ItemData.SEED_BIRCH_NAME);
+//		LanguageRegistry.addName(SeedsJungle, ItemData.SEED_JUNGLE_NAME);
+//
+//		LanguageRegistry.addName(SeedsCactus, ItemData.SEED_CACTUS_NAME);
+//		LanguageRegistry.addName(SeedsSugarcane, ItemData.SEED_SUGAR_CANE_NAME);
+//
+//		LanguageRegistry.addName(SeedsCarrot, ItemData.SEED_CARROT_NAME);
+//		LanguageRegistry.addName(SeedsPotato, ItemData.SEED_POTATO_NAME);
+//
+//		LanguageRegistry.addName(SeedsRubber, ItemData.SEED_RUBBER_NAME);
+//
+//		LanguageRegistry.addName(IronGravel, ItemData.IRON_ORE_NAMES[0]);
+//		LanguageRegistry.addName(IronSand, ItemData.IRON_ORE_NAMES[1]);
+//		LanguageRegistry.addName(IronDust, ItemData.IRON_ORE_NAMES[2]);
+//
+//		LanguageRegistry.addName(GoldGravel, ItemData.GOLD_ORE_NAMES[0]);
+//		LanguageRegistry.addName(GoldSand, ItemData.GOLD_ORE_NAMES[1]);
+//		LanguageRegistry.addName(GoldDust, ItemData.GOLD_ORE_NAMES[2]);
+//
+//		LanguageRegistry.addName(CopperGravel, ItemData.COPPER_ORE_NAMES[0]);
+//		LanguageRegistry.addName(CopperSand, ItemData.COPPER_ORE_NAMES[1]);
+//		LanguageRegistry.addName(CopperDust, ItemData.COPPER_ORE_NAMES[2]);
+//		LanguageRegistry.addName(CopperIngot, ItemData.COPPER_ORE_NAMES[3]);
+//
+//		LanguageRegistry.addName(TinGravel, ItemData.TIN_ORE_NAMES[0]);
+//		LanguageRegistry.addName(TinSand, ItemData.TIN_ORE_NAMES[1]);
+//		LanguageRegistry.addName(TinDust, ItemData.TIN_ORE_NAMES[2]);
+//		LanguageRegistry.addName(TinIngot, ItemData.TIN_ORE_NAMES[3]);
+//
+//		LanguageRegistry.addName(SilverGravel, ItemData.SILVER_ORE_NAMES[0]);
+//		LanguageRegistry.addName(SilverSand, ItemData.SILVER_ORE_NAMES[1]);
+//		LanguageRegistry.addName(SilverDust, ItemData.SILVER_ORE_NAMES[2]);
+//		LanguageRegistry.addName(SilverIngot, ItemData.SILVER_ORE_NAMES[3]);
+//
+//		LanguageRegistry.addName(LeadGravel, ItemData.LEAD_ORE_NAMES[0]);
+//		LanguageRegistry.addName(LeadSand, ItemData.LEAD_ORE_NAMES[1]);
+//		LanguageRegistry.addName(LeadDust, ItemData.LEAD_ORE_NAMES[2]);
+//		LanguageRegistry.addName(LeadIngot, ItemData.LEAD_ORE_NAMES[3]);
+//
+//		LanguageRegistry.addName(OsmiumGravel, ItemData.OSMIUM_ORE_NAMES[0]);
+//		LanguageRegistry.addName(OsmiumSand, ItemData.OSMIUM_ORE_NAMES[1]);
+//		LanguageRegistry.addName(OsmiumDust, ItemData.OSMIUM_ORE_NAMES[2]);
+//
+//		LanguageRegistry.addName(NickelGravel, ItemData.NICKEL_ORE_NAMES[0]);
+//		LanguageRegistry.addName(NickelSand, ItemData.NICKEL_ORE_NAMES[1]);
+//		LanguageRegistry.addName(NickelDust, ItemData.NICKEL_ORE_NAMES[2]);
+//		LanguageRegistry.addName(NickelIngot, ItemData.NICKEL_ORE_NAMES[3]);
+//
+//		LanguageRegistry.addName(PlatinumGravel, ItemData.PLATINUM_ORE_NAMES[0]);
+//		LanguageRegistry.addName(PlatinumSand, ItemData.PLATINUM_ORE_NAMES[1]);
+//		LanguageRegistry.addName(PlatinumDust, ItemData.PLATINUM_ORE_NAMES[2]);
+//		LanguageRegistry.addName(PlatinumIngot, ItemData.PLATINUM_ORE_NAMES[3]);
+//		
+//		LanguageRegistry.addName(AluminumGravel, ItemData.ALUMINUM_ORE_NAMES[0]);
+//		LanguageRegistry.addName(AluminumSand, ItemData.ALUMINUM_ORE_NAMES[1]);
+//		LanguageRegistry.addName(AluminumDust, ItemData.ALUMINUM_ORE_NAMES[2]);
+//		LanguageRegistry.addName(AluminumIngot, ItemData.ALUMINUM_ORE_NAMES[3]);
+//	}
 }

@@ -1,45 +1,41 @@
 package exnihilo.blocks;
 
-import cpw.mods.fml.common.registry.GameRegistry;
-import exnihilo.blocks.tileentities.TileEntityBarrel;
-import exnihilo.blocks.tileentities.TileEntityCrucible;
-import exnihilo.blocks.tileentities.TileEntityBarrel.BarrelMode;
-import exnihilo.data.BlockData;
-import exnihilo.data.ModData;
-import exnihilo.registries.CompostRegistry;
-import net.minecraft.block.Block;
 import net.minecraft.block.BlockContainer;
 import net.minecraft.block.material.Material;
-import net.minecraft.client.renderer.texture.IconRegister;
+import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.item.Item;
+import net.minecraft.init.Blocks;
+import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
-import net.minecraftforge.common.ForgeDirection;
+import net.minecraftforge.common.util.ForgeDirection;
 import net.minecraftforge.fluids.FluidContainerRegistry;
-import net.minecraftforge.fluids.FluidRegistry;
 import net.minecraftforge.fluids.FluidStack;
+import cpw.mods.fml.common.registry.GameRegistry;
+import exnihilo.blocks.tileentities.TileEntityCrucible;
+import exnihilo.data.BlockData;
+import exnihilo.data.ModData;
 
 public class BlockCrucible extends BlockContainer{
 
-	public BlockCrucible(int id) {
-		super(id, Material.rock);
+	public BlockCrucible() {
+		super(Material.rock);
 
 		setCreativeTab(CreativeTabs.tabDecorations);
 		setHardness(2.0f);
 
-		setUnlocalizedName(ModData.ID + "." + BlockData.CRUCIBLE_KEY);
+		setBlockName(ModData.ID + "." + BlockData.CRUCIBLE_KEY);
 		GameRegistry.registerTileEntity(TileEntityCrucible.class, this.getUnlocalizedName());
 	}
 
 
 	@Override
-	public void registerIcons(IconRegister register)
+	public void registerBlockIcons(IIconRegister register)
 	{
-		blockIcon = Block.stone.getIcon(0, 0);
+		blockIcon = Blocks.stone.getIcon(0, 0);
 	}
 
 	@Override
@@ -67,14 +63,14 @@ public class BlockCrucible extends BlockContainer{
 	}
 
 	@Override
-	public TileEntity createNewTileEntity(World world) {
+	public TileEntity createNewTileEntity(World world, int meta) {
 		return new TileEntityCrucible();
 	}
 
 	@Override
 	public int getLightValue(IBlockAccess world, int x, int y, int z)
 	{
-		TileEntityCrucible te = (TileEntityCrucible) world.getBlockTileEntity(x, y, z);
+		TileEntityCrucible te = (TileEntityCrucible) world.getTileEntity(x, y, z);
 		return te.getLightLevel();
 	}
 
@@ -87,7 +83,7 @@ public class BlockCrucible extends BlockContainer{
 		}
 		else
 		{
-			TileEntityCrucible crucible = (TileEntityCrucible) world.getBlockTileEntity(x, y, z);
+			TileEntityCrucible crucible = (TileEntityCrucible) world.getTileEntity(x, y, z);
 
 			if (player.getCurrentEquippedItem() != null)
 			{
@@ -117,9 +113,9 @@ public class BlockCrucible extends BlockContainer{
 
 						if (!player.capabilities.isCreativeMode)
 						{
-							if (item.itemID == Item.potion.itemID && item.getItemDamage() == 0)
+							if (item.getItem() == Items.potionitem && item.getItemDamage() == 0)
 							{
-								player.inventory.setInventorySlotContents(player.inventory.currentItem, new ItemStack(Item.glassBottle, 1, 0));
+								player.inventory.setInventorySlotContents(player.inventory.currentItem, new ItemStack(Items.glass_bottle, 1, 0));
 							}else
 							{
 								player.inventory.setInventorySlotContents(player.inventory.currentItem, getContainer(item));
@@ -167,9 +163,9 @@ public class BlockCrucible extends BlockContainer{
 	private ItemStack getContainer(ItemStack item)
 	{
 		if (item.stackSize == 1) {
-			if (item.getItem().hasContainerItem()) 
+			if (item.getItem().hasContainerItem(item)) 
 			{
-				return item.getItem().getContainerItemStack(item);
+				return item.getItem().getContainerItem(item);
 			} else 
 			{
 				return null;

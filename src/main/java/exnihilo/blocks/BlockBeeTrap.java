@@ -1,24 +1,24 @@
 package exnihilo.blocks;
 
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
-import net.minecraft.client.renderer.texture.IconRegister;
+import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.creativetab.CreativeTabs;
-import net.minecraft.util.Icon;
+import net.minecraft.util.IIcon;
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
 import exnihilo.data.BlockData;
 import exnihilo.data.ModData;
 
 public class BlockBeeTrap extends Block{
-	public static Icon topIcon;
-	public static Icon sideIcon;
+	public static IIcon topIcon;
+	public static IIcon sideIcon;
 	
-	public BlockBeeTrap(int id) {
-		super(id, Material.ground);
+	public BlockBeeTrap() {
+		super(Material.ground);
 		
 		setHardness(0.8f);
-		setStepSound(soundGrassFootstep);
+		setStepSound(soundTypeGrass);
 		setCreativeTab(CreativeTabs.tabBlock);
 	}
 
@@ -29,21 +29,21 @@ public class BlockBeeTrap extends Block{
 	}
 	
 	@Override
-	public void registerIcons(IconRegister register)
+	public void registerBlockIcons(IIconRegister register)
 	{
-		this.topIcon = register.registerIcon(ModData.TEXTURE_LOCATION + ":IconBeeTrapTopRaw");
-		this.sideIcon = register.registerIcon(ModData.TEXTURE_LOCATION + ":IconBeeTrapSideRaw");
-		this.blockIcon = this.sideIcon;
+		topIcon = register.registerIcon(ModData.TEXTURE_LOCATION + ":IconBeeTrapTopRaw");
+		sideIcon = register.registerIcon(ModData.TEXTURE_LOCATION + ":IconBeeTrapSideRaw");
+		blockIcon = sideIcon;
 	}
 	
 	@Override
 	@SideOnly(Side.CLIENT)
-	public Icon getIcon(int side, int meta)
+	public IIcon getIcon(int side, int meta)
     {
 		if (side == 0 || side == 1)
 		{
-			return this.topIcon;
+			return topIcon;
 		}
-		return this.sideIcon;
+		return sideIcon;
     }
 }

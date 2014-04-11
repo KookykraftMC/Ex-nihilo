@@ -6,13 +6,13 @@
 
 package exnihilo.blocks.models;
 
-import exnihilo.Blocks;
-import exnihilo.ExNihilo;
-import exnihilo.data.ModData;
+import net.minecraft.block.Block;
 import net.minecraft.client.model.ModelBase;
 import net.minecraft.client.model.ModelRenderer;
 import net.minecraft.entity.Entity;
 import net.minecraft.util.ResourceLocation;
+import exnihilo.ENBlocks;
+import exnihilo.data.ModData;
 
 public class ModelBarrel extends ModelBase
 {
@@ -34,12 +34,12 @@ public class ModelBarrel extends ModelBase
     public ModelRenderer side4;
     
     
-    public ResourceLocation getBarrelTexture(int blockID, int meta)
+    public ResourceLocation getBarrelTexture(Block block, int meta)
     {
-    	if(blockID == Blocks.Barrel.blockID)
+    	if(block == ENBlocks.Barrel)
     	{
     		return textures[meta];
-    	}else if(blockID == Blocks.BarrelStone.blockID)
+    	}else if(block == ENBlocks.BarrelStone)
     	{
     		return textures[4];
     	}

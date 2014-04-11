@@ -3,9 +3,9 @@ package exnihilo.blocks.tileentities;
 import cpw.mods.fml.common.registry.GameRegistry;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
-import exnihilo.Blocks;
+import exnihilo.ENBlocks;
 import exnihilo.Fluids;
-import exnihilo.Items;
+import exnihilo.ENItems;
 import exnihilo.data.BlockData;
 import exnihilo.data.ModData;
 import exnihilo.registries.ColorRegistry;
@@ -608,7 +608,7 @@ public class TileEntityBarrel extends TileEntity implements IFluidHandler, ISide
 			return new ItemStack(Item.enderPearl, 1, 0);
 			
 		case BEETRAP:
-			return new ItemStack(Blocks.BeeTrapTreated, 1, 0);
+			return new ItemStack(ENBlocks.BeeTrapTreated, 1, 0);
 
 		default:
 			return null;
@@ -1016,7 +1016,7 @@ public class TileEntityBarrel extends TileEntity implements IFluidHandler, ISide
 			{
 				if(fluid.fluidID == FluidRegistry.WATER.getID())
 				{
-					if (ModData.ALLOW_BARREL_RECIPE_CLAY && item.itemID == Blocks.Dust.blockID)
+					if (ModData.ALLOW_BARREL_RECIPE_CLAY && item.itemID == ENBlocks.Dust.blockID)
 					{
 						this.mode = BarrelMode.CLAY;
 					}
@@ -1034,7 +1034,7 @@ public class TileEntityBarrel extends TileEntity implements IFluidHandler, ISide
 						this.mode = BarrelMode.ENDSTONE;
 					}
 
-					if(ModData.ALLOW_BARREL_RECIPE_BLAZE_RODS && item.itemID == Items.DollAngry.itemID)
+					if(ModData.ALLOW_BARREL_RECIPE_BLAZE_RODS && item.itemID == ENItems.DollAngry.itemID)
 					{
 						mode = BarrelMode.BLAZE_COOKING;
 					}
@@ -1048,7 +1048,7 @@ public class TileEntityBarrel extends TileEntity implements IFluidHandler, ISide
 						mode = BarrelMode.SOULSAND;
 					}
 
-					if(ModData.ALLOW_BARREL_RECIPE_ENDER_PEARLS && item.itemID == Items.DollCreepy.itemID)
+					if(ModData.ALLOW_BARREL_RECIPE_ENDER_PEARLS && item.itemID == ENItems.DollCreepy.itemID)
 					{
 						mode = BarrelMode.ENDER_COOKING;
 					}
@@ -1157,7 +1157,7 @@ public class TileEntityBarrel extends TileEntity implements IFluidHandler, ISide
 		{
 			if(fluid.fluidID == FluidRegistry.WATER.getID())
 			{
-				if (ModData.ALLOW_BARREL_RECIPE_CLAY && item.itemID == Blocks.Dust.blockID)
+				if (ModData.ALLOW_BARREL_RECIPE_CLAY && item.itemID == ENBlocks.Dust.blockID)
 				{
 					return true;
 				}
@@ -1176,7 +1176,7 @@ public class TileEntityBarrel extends TileEntity implements IFluidHandler, ISide
 					return true;
 				}
 
-				if(ModData.ALLOW_BARREL_RECIPE_BLAZE_RODS && item.itemID == Items.DollAngry.itemID)
+				if(ModData.ALLOW_BARREL_RECIPE_BLAZE_RODS && item.itemID == ENItems.DollAngry.itemID)
 				{
 					return true;
 				}
@@ -1190,14 +1190,14 @@ public class TileEntityBarrel extends TileEntity implements IFluidHandler, ISide
 					return true;
 				}
 
-				if(ModData.ALLOW_BARREL_RECIPE_ENDER_PEARLS && item.itemID == Items.DollCreepy.itemID)
+				if(ModData.ALLOW_BARREL_RECIPE_ENDER_PEARLS && item.itemID == ENItems.DollCreepy.itemID)
 				{
 					return true;
 				}
 			}
 			
 			Fluid seedOil = FluidRegistry.getFluid("seedoil");
-			if (seedOil != null && fluid.fluidID == seedOil.getID() && item.itemID == Blocks.BeeTrap.blockID)
+			if (seedOil != null && fluid.fluidID == seedOil.getID() && item.itemID == ENBlocks.BeeTrap.blockID)
 			{
 				return true;
 			}

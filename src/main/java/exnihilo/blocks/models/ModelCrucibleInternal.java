@@ -2,7 +2,7 @@ package exnihilo.blocks.models;
 
 import net.minecraft.client.model.ModelBase;
 import net.minecraft.client.renderer.Tessellator;
-import net.minecraft.util.Icon;
+import net.minecraft.util.IIcon;
 
 import org.lwjgl.opengl.GL11;
 
@@ -10,7 +10,7 @@ import exnihilo.registries.helpers.Color;
 
 public class ModelCrucibleInternal extends ModelBase{
 
-	public void render(Color color, Icon icon, boolean blend)
+	public void render(Color color, IIcon icon, boolean blend)
 	{
 		Tessellator tessellator = Tessellator.instance;
 		
