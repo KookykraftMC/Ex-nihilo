@@ -1,16 +1,14 @@
 package exnihilo.blocks.tileentities;
 
+import net.minecraft.block.Block;
+import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.tileentity.TileEntity;
+import net.minecraft.world.biome.BiomeGenBase;
 import exnihilo.ENBlocks;
-import exnihilo.blocks.tileentities.TileEntityCrucible.CrucibleMode;
 import exnihilo.compatibility.foresty.Forestry;
 import exnihilo.compatibility.foresty.Hive;
 import exnihilo.compatibility.foresty.HiveRegistry;
 import exnihilo.compatibility.foresty.Surrounding;
-import net.minecraft.nbt.NBTTagCompound;
-import net.minecraft.tileentity.TileEntity;
-import net.minecraft.world.biome.BiomeGenBase;
-import net.minecraftforge.fluids.FluidRegistry;
-import net.minecraftforge.fluids.FluidStack;
 
 public class TileEntityBeeTrap extends TileEntity {
 	private Surrounding blocks = new Surrounding();
@@ -84,13 +82,13 @@ public class TileEntityBeeTrap extends TileEntity {
 			}else
 			{
 				//scan not complete, continue scanning.
-				int blockID = worldObj.getBlockId(xCoord + x, yCoord + y,zCoord + z);
+				Block block = worldObj.getBlock(xCoord + x, yCoord + y,zCoord + z);
 				int meta = worldObj.getBlockMetadata(xCoord + x, yCoord + y,zCoord + z);
 				
-				blocks.addBlock(blockID, meta);
+				blocks.addBlock(block, meta);
 				if (x == 0 && y == 1 && z == 0)
 				{
-					blocks.setBlockAbove(blockID, meta);
+					blocks.setBlockAbove(block, meta);
 				}
 				
 				x++;
@@ -99,7 +97,7 @@ public class TileEntityBeeTrap extends TileEntity {
 			//If the timer expires, then we require re-treatment with seed oil.
 			if (timer > TIMER_MAX)
 			{
-				worldObj.setBlock(xCoord, yCoord, zCoord, ENBlocks.BeeTrap.blockID, 0, 3);
+				worldObj.setBlock(xCoord, yCoord, zCoord, ENBlocks.BeeTrap, 0, 3);
 			}
 		}
 	}

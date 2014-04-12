@@ -1,8 +1,7 @@
 package exnihilo.registries.helpers;
 
 import net.minecraft.block.Block;
-import net.minecraft.item.Item;
-import net.minecraft.util.Icon;
+import net.minecraft.util.IIcon;
 import net.minecraftforge.fluids.Fluid;
 
 public class Meltable {
@@ -24,7 +23,7 @@ public class Meltable {
 		this.appearance = appearance;
 	}
 	
-	public Icon getIcon()
+	public IIcon getIcon()
 	{
 		return appearance.getIcon(0, 0);
 	}

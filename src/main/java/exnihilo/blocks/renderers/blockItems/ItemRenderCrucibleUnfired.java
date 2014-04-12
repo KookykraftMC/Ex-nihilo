@@ -4,12 +4,9 @@ import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.texture.TextureManager;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.client.IItemRenderer;
-import net.minecraftforge.client.IItemRenderer.ItemRenderType;
-import net.minecraftforge.client.IItemRenderer.ItemRendererHelper;
 
 import org.lwjgl.opengl.GL11;
 
-import exnihilo.blocks.models.ModelCrucible;
 import exnihilo.blocks.models.ModelCrucibleRaw;
 
 public class ItemRenderCrucibleUnfired implements IItemRenderer{
@@ -118,7 +115,7 @@ public class ItemRenderCrucibleUnfired implements IItemRenderer{
 
         if (texturemanager != null)
         {
-    		texturemanager.bindTexture(model.textures[0]);
+    		texturemanager.bindTexture(ModelCrucibleRaw.textures[0]);
         }
     }
 }

@@ -2,6 +2,7 @@ package exnihilo;
 
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
+import net.minecraft.init.Items;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.client.event.TextureStitchEvent;
@@ -30,9 +31,6 @@ public class Fluids {
 		
 		blockWitchWater = new BlockWitchWater(FluidData.WITCHWATER_ID, fluidWitchWater, Material.water);
 		GameRegistry.registerBlock(blockWitchWater, FluidData.WITCHWATER_KEY);
-		
-		fluidWitchWater.setBlockID(blockWitchWater);
-		
 	}
 	
 	public static void registerBuckets()
@@ -40,7 +38,7 @@ public class Fluids {
 		//BUCKETS!
 		BucketWitchWater = new ItemBucketWitchWater(FluidData.BUCKET_WITCHWATER_ID, blockWitchWater.blockID);
 		GameRegistry.registerItem(BucketWitchWater, FluidData.BUCKET_WITCHWATER_UNLOCALIZED_NAME);
-		FluidContainerRegistry.registerFluidContainer(FluidRegistry.getFluidStack("witchwater", FluidContainerRegistry.BUCKET_VOLUME), new ItemStack(BucketWitchWater), new ItemStack(Item.bucketEmpty));
+		FluidContainerRegistry.registerFluidContainer(FluidRegistry.getFluidStack("witchwater", FluidContainerRegistry.BUCKET_VOLUME), new ItemStack(BucketWitchWater), new ItemStack(Items.bucket));
 		BucketHandler.INSTANCE.buckets.put(blockWitchWater, BucketWitchWater);
 		
 		
@@ -57,7 +55,7 @@ public class Fluids {
 	
 	public static void registerIcons(TextureStitchEvent.Post event)
 	{
-		if (event.map.textureType == 0) {
+		if (event.map.getTextureType() == 0) {
                     fluidWitchWater.setIcons(blockWitchWater.getBlockTextureFromSide(1), blockWitchWater.getBlockTextureFromSide(2));
             }
 	}

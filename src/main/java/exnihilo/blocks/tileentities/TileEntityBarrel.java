@@ -1,40 +1,37 @@
 package exnihilo.blocks.tileentities;
 
-import cpw.mods.fml.common.registry.GameRegistry;
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
+import net.minecraft.block.Block;
+import net.minecraft.entity.item.EntityItem;
+import net.minecraft.entity.monster.EntityBlaze;
+import net.minecraft.entity.monster.EntityEnderman;
+import net.minecraft.entity.monster.EntitySlime;
+import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.init.Blocks;
+import net.minecraft.init.Items;
+import net.minecraft.inventory.ISidedInventory;
+import net.minecraft.item.Item;
+import net.minecraft.item.ItemStack;
+import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.network.NetworkManager;
+import net.minecraft.network.Packet;
+import net.minecraft.network.play.server.S35PacketUpdateTileEntity;
+import net.minecraft.tileentity.TileEntity;
+import net.minecraft.util.IIcon;
+import net.minecraftforge.common.util.ForgeDirection;
+import net.minecraftforge.fluids.Fluid;
+import net.minecraftforge.fluids.FluidRegistry;
+import net.minecraftforge.fluids.FluidStack;
+import net.minecraftforge.fluids.FluidTankInfo;
+import net.minecraftforge.fluids.IFluidHandler;
 import exnihilo.ENBlocks;
-import exnihilo.Fluids;
 import exnihilo.ENItems;
+import exnihilo.Fluids;
 import exnihilo.data.BlockData;
 import exnihilo.data.ModData;
 import exnihilo.registries.ColorRegistry;
 import exnihilo.registries.CompostRegistry;
 import exnihilo.registries.helpers.Color;
 import exnihilo.registries.helpers.Compostable;
-import net.minecraft.block.Block;
-import net.minecraft.client.Minecraft;
-import net.minecraft.entity.Entity;
-import net.minecraft.entity.item.EntityItem;
-import net.minecraft.entity.monster.EntityBlaze;
-import net.minecraft.entity.monster.EntityEnderman;
-import net.minecraft.entity.monster.EntitySlime;
-import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.inventory.ISidedInventory;
-import net.minecraft.item.Item;
-import net.minecraft.item.ItemStack;
-import net.minecraft.nbt.NBTTagCompound;
-import net.minecraft.network.INetworkManager;
-import net.minecraft.network.packet.Packet;
-import net.minecraft.network.packet.Packet132TileEntityData;
-import net.minecraft.tileentity.TileEntity;
-import net.minecraft.util.Icon;
-import net.minecraftforge.common.ForgeDirection;
-import net.minecraftforge.fluids.Fluid;
-import net.minecraftforge.fluids.FluidRegistry;
-import net.minecraftforge.fluids.FluidStack;
-import net.minecraftforge.fluids.FluidTankInfo;
-import net.minecraftforge.fluids.IFluidHandler;
 
 public class TileEntityBarrel extends TileEntity implements IFluidHandler, ISidedInventory{	
 	private static final float MIN_RENDER_CAPACITY = 0.1f;
@@ -89,7 +86,7 @@ public class TileEntityBarrel extends TileEntity implements IFluidHandler, ISide
 	public BarrelMode mode;
 	public Color color;
 	private Color colorBase;
-	public Icon icon;
+	public IIcon icon;
 
 	private boolean needsUpdate = false;
 	private int updateTimer = 0;
@@ -152,7 +149,7 @@ public class TileEntityBarrel extends TileEntity implements IFluidHandler, ISide
 				}
 
 				//Check for spores.
-				if(!worldObj.isRemote && isFull() && ModData.ALLOW_BARREL_RECIPE_SOULSAND && getNearbyBlocks(Block.mycelium.blockID, 0) > 0)
+				if(!worldObj.isRemote && isFull() && ModData.ALLOW_BARREL_RECIPE_SOULSAND && getNearbyBlocks(Blocks.mycelium, 0) > 0)
 				{
 					colorBase = new Color(fluid.getFluid().getColor());
 					mode = BarrelMode.SPORED;
@@ -160,13 +157,13 @@ public class TileEntityBarrel extends TileEntity implements IFluidHandler, ISide
 				}
 
 				//Turn into cobblestone?
-				if (isFull() && worldObj.getBlockId(xCoord, yCoord + 1, zCoord) == FluidRegistry.LAVA.getBlockID())
+				if (isFull() && worldObj.getBlock(xCoord, yCoord + 1, zCoord) == FluidRegistry.LAVA.getBlock())
 				{
 					mode = BarrelMode.COBBLESTONE;
 				}
 
 				//Spread moss.
-				if(!worldObj.isRemote && fluid.amount > 0 && worldObj.getBlockMaterial(xCoord, yCoord, zCoord).getCanBurn() && worldObj.rand.nextInt(500) == 0)
+				if(!worldObj.isRemote && fluid.amount > 0 && worldObj.getBlock(xCoord, yCoord, zCoord).getMaterial().getCanBurn() && worldObj.rand.nextInt(500) == 0)
 				{
 					int x = xCoord + (worldObj.rand.nextInt(MOSS_SPREAD_X_POS - MOSS_SPREAD_X_NEG + 1) + MOSS_SPREAD_X_NEG);
 					int y = yCoord + (worldObj.rand.nextInt(MOSS_SPREAD_Y_POS - MOSS_SPREAD_Y_NEG + 1) + MOSS_SPREAD_Y_NEG);
@@ -175,18 +172,18 @@ public class TileEntityBarrel extends TileEntity implements IFluidHandler, ISide
 
 					if(!worldObj.isAirBlock(x, y, z) && worldObj.getTopSolidOrLiquidBlock(x, z) > y && lightLevel >= 9 && lightLevel <= 11)
 					{
-						int selected = worldObj.getBlockId(x, y, z);
+						Block selected = worldObj.getBlock(x, y, z);
 						int meta = worldObj.getBlockMetadata(x, y, z);
 
-						if (selected == Block.stoneBrick.blockID && meta == 0)
+						if (selected == Blocks.stonebrick && meta == 0)
 						{
-							worldObj.setBlock(x, y, z, Block.stoneBrick.blockID, 1, 3);
+							worldObj.setBlock(x, y, z, Blocks.stonebrick, 1, 3);
 							drain(ForgeDirection.DOWN, 100, true);
 						}
 
-						if (selected == Block.cobblestone.blockID)
+						if (selected == Blocks.cobblestone)
 						{
-							worldObj.setBlock(x, y, z, Block.cobblestoneMossy.blockID, 0, 3);
+							worldObj.setBlock(x, y, z, Blocks.mossy_cobblestone, 0, 3);
 							drain(ForgeDirection.DOWN, 100, true);
 						}
 					}
@@ -197,7 +194,7 @@ public class TileEntityBarrel extends TileEntity implements IFluidHandler, ISide
 			if (fluid.fluidID == FluidRegistry.LAVA.getID())
 			{
 				//Burn the barrel it is flammable.
-				if(worldObj.getBlockMaterial(xCoord, yCoord, zCoord).getCanBurn())
+				if(worldObj.getBlock(xCoord, yCoord, zCoord).getMaterial().getCanBurn())
 				{
 					timer++;
 					if (timer % 30 == 0)
@@ -216,20 +213,20 @@ public class TileEntityBarrel extends TileEntity implements IFluidHandler, ISide
 						if (fluid.amount < 1000)
 						{
 							//burn
-							worldObj.setBlock(xCoord, yCoord + 2, zCoord, Block.fire.blockID);
+							worldObj.setBlock(xCoord, yCoord + 2, zCoord, Blocks.fire);
 							return;
 						}
 						else
 						{
 							//spit lava on the ground
-							worldObj.setBlock(xCoord, yCoord, zCoord, Block.lavaMoving.blockID, 0, 3);
+							worldObj.setBlock(xCoord, yCoord, zCoord, Blocks.lava, 0, 3);
 							return;
 						}	
 					}
 				}
 
 				//Turn into obsidian
-				if (isFull() && worldObj.getBlockId(xCoord, yCoord + 1, zCoord) == FluidRegistry.WATER.getBlockID())
+				if (isFull() && worldObj.getBlock(xCoord, yCoord + 1, zCoord) == FluidRegistry.WATER.getBlock())
 				{
 					mode = BarrelMode.OBSIDIAN;
 				}
@@ -243,10 +240,10 @@ public class TileEntityBarrel extends TileEntity implements IFluidHandler, ISide
 
 				//Change color
 				Color colorDirt = ColorRegistry.color("dirt");
-				color = color.average(colorBase, colorDirt, (float)timer / (float)MAX_COMPOSTING_TIME);
+				color = Color.average(colorBase, colorDirt, (float)timer / (float)MAX_COMPOSTING_TIME);
 
 				//Are we done yet?
-				if(timer >= this.MAX_COMPOSTING_TIME)
+				if(timer >= TileEntityBarrel.MAX_COMPOSTING_TIME)
 				{
 					mode = BarrelMode.DIRT;
 					timer = 0;
@@ -260,7 +257,7 @@ public class TileEntityBarrel extends TileEntity implements IFluidHandler, ISide
 			timer++;
 
 			Color colorSlime = ColorRegistry.color("water_slime_offset");
-			color = color.average(colorBase, colorSlime, (float)timer / (float)MAX_COMPOSTING_TIME);
+			color = Color.average(colorBase, colorSlime, (float)timer / (float)MAX_COMPOSTING_TIME);
 
 			if (isDone())
 			{
@@ -271,7 +268,7 @@ public class TileEntityBarrel extends TileEntity implements IFluidHandler, ISide
 			break;
 
 		case SLIME:
-			if(worldObj.difficultySetting > 0)
+			if(worldObj.difficultySetting.getDifficultyId() > 0)
 			{
 				timer++;
 
@@ -295,12 +292,12 @@ public class TileEntityBarrel extends TileEntity implements IFluidHandler, ISide
 			break;
 
 		case SPORED:
-			int nearbyMycelium = getNearbyBlocks(Block.mycelium.blockID, 0);
+			int nearbyMycelium = getNearbyBlocks(Blocks.mycelium, 0);
 
 			timer += 1 + (nearbyMycelium / 2);
 
 			Color colorWitchy = ColorRegistry.color("water_witchy_offset");
-			color = color.average(colorBase, colorWitchy, (float)timer / (float)MAX_COMPOSTING_TIME);
+			color = Color.average(colorBase, colorWitchy, (float)timer / (float)MAX_COMPOSTING_TIME);
 
 			if(!worldObj.isRemote && nearbyMycelium > 0)
 			{
@@ -311,14 +308,14 @@ public class TileEntityBarrel extends TileEntity implements IFluidHandler, ISide
 					{
 						for (int z = -2; z <= 2; z++)
 						{
-							if(worldObj.getBlockId(xCoord + x, yCoord + y, zCoord + z) == Block.mycelium.blockID && worldObj.isAirBlock(xCoord + x, yCoord + y + 1, zCoord + z) && worldObj.rand.nextInt(1500) == 0)
+							if(worldObj.getBlock(xCoord + x, yCoord + y, zCoord + z) == Blocks.mycelium && worldObj.isAirBlock(xCoord + x, yCoord + y + 1, zCoord + z) && worldObj.rand.nextInt(1500) == 0)
 							{
 								int choice = worldObj.rand.nextInt(2);
 
 								if (choice == 0)
-									worldObj.setBlock(xCoord + x, yCoord + y + 1, zCoord + z, Block.mushroomBrown.blockID, 0, 3);
+									worldObj.setBlock(xCoord + x, yCoord + y + 1, zCoord + z, Blocks.brown_mushroom, 0, 3);
 								if (choice == 1)
-									worldObj.setBlock(xCoord + x, yCoord + y + 1, zCoord + z, Block.mushroomRed.blockID, 0, 3);
+									worldObj.setBlock(xCoord + x, yCoord + y + 1, zCoord + z, Blocks.red_mushroom, 0, 3);
 							}
 						}
 					}
@@ -339,10 +336,10 @@ public class TileEntityBarrel extends TileEntity implements IFluidHandler, ISide
 		case BLAZE_COOKING:
 			timer++;
 
-			if (!worldObj.isRemote && worldObj.getBlockMaterial(xCoord, yCoord, zCoord).getCanBurn())
+			if (!worldObj.isRemote && worldObj.getBlock(xCoord, yCoord, zCoord).getMaterial().getCanBurn())
 			{
 				//an earth-shattering kaboom...
-				worldObj.destroyBlock(xCoord, yCoord, zCoord, false);
+				worldObj.func_147480_a(xCoord, yCoord, zCoord, false);
 				this.worldObj.createExplosion(null, xCoord, yCoord, zCoord, 4.0f, true);
 			}
 
@@ -355,7 +352,7 @@ public class TileEntityBarrel extends TileEntity implements IFluidHandler, ISide
 			if (timer >= (int)(0.7 * MAX_COMPOSTING_TIME) && worldObj.isAirBlock(xCoord, yCoord + 1, zCoord))
 			{
 				//Spawn fire!
-				worldObj.setBlock(xCoord, yCoord+1, zCoord, Block.fire.blockID);
+				worldObj.setBlock(xCoord, yCoord+1, zCoord, Blocks.fire);
 			}
 
 			if(isDone())
@@ -376,7 +373,7 @@ public class TileEntityBarrel extends TileEntity implements IFluidHandler, ISide
 				}
 			}
 
-			if (!worldObj.isRemote && worldObj.difficultySetting > 0)
+			if (!worldObj.isRemote && worldObj.difficultySetting.getDifficultyId() > 0)
 			{
 				if(isDone())
 				{
@@ -393,8 +390,8 @@ public class TileEntityBarrel extends TileEntity implements IFluidHandler, ISide
 						for (int z = -1; z <= 1; z++)
 						{
 							if (
-									(worldObj.isAirBlock(xCoord + x, yCoord + y, zCoord + z) || worldObj.getBlockId(xCoord + x, yCoord + y, zCoord + z) == Block.fire.blockID) && 
-									(worldObj.isAirBlock(xCoord + x, yCoord + y + 1, zCoord + z) || worldObj.getBlockId(xCoord + x, yCoord + y, zCoord + z) == Block.fire.blockID) && 
+									(worldObj.isAirBlock(xCoord + x, yCoord + y, zCoord + z) || worldObj.getBlock(xCoord + x, yCoord + y, zCoord + z) == Blocks.fire) && 
+									(worldObj.isAirBlock(xCoord + x, yCoord + y + 1, zCoord + z) || worldObj.getBlock(xCoord + x, yCoord + y, zCoord + z) == Blocks.fire) && 
 									worldObj.rand.nextInt(10) == 0 && !isDone())
 							{
 								timer = MAX_COMPOSTING_TIME;
@@ -441,7 +438,7 @@ public class TileEntityBarrel extends TileEntity implements IFluidHandler, ISide
 				this.worldObj.spawnParticle("portal", xCoord + (double)(worldObj.rand.nextFloat() * 0.6) + 0.2d, yCoord + 1, zCoord + (double)(worldObj.rand.nextFloat() * 0.6) + 0.2d, (double)f, (double)f1, (double)f2);
 			}
 
-			if (!worldObj.isRemote && worldObj.difficultySetting > 0)
+			if (!worldObj.isRemote && worldObj.difficultySetting.getDifficultyId() > 0)
 			{
 				if(isDone())
 				{
@@ -578,34 +575,34 @@ public class TileEntityBarrel extends TileEntity implements IFluidHandler, ISide
 		switch (mode)
 		{
 		case CLAY:
-			return new ItemStack(Block.blockClay, 1, 0);
+			return new ItemStack(Blocks.clay, 1, 0);
 
 		case DIRT:
-			return new ItemStack(Block.dirt, 1, 0);
+			return new ItemStack(Blocks.dirt, 1, 0);
 
 		case ENDSTONE:
-			return new ItemStack(Block.whiteStone, 1, 0);
+			return new ItemStack(Blocks.end_stone, 1, 0);
 
 		case NETHERRACK:
-			return new ItemStack(Block.netherrack, 1, 0);
+			return new ItemStack(Blocks.netherrack, 1, 0);
 
 		case SLIME:
-			return new ItemStack(Item.slimeBall, 1 + worldObj.rand.nextInt(4));
+			return new ItemStack(Items.slime_ball, 1 + worldObj.rand.nextInt(4));
 
 		case SOULSAND:
-			return new ItemStack(Block.slowSand, 1, 0);
+			return new ItemStack(Blocks.soul_sand, 1, 0);
 
 		case OBSIDIAN:
-			return new ItemStack(Block.obsidian, 1, 0);
+			return new ItemStack(Blocks.obsidian, 1, 0);
 
 		case COBBLESTONE:
-			return new ItemStack(Block.cobblestone, 1, 0);
+			return new ItemStack(Blocks.cobblestone, 1, 0);
 
 		case BLAZE:
-			return new ItemStack(Item.blazeRod, 1, 0);
+			return new ItemStack(Items.blaze_rod, 1, 0);
 
 		case ENDER:
-			return new ItemStack(Item.enderPearl, 1, 0);
+			return new ItemStack(Items.ender_pearl, 1, 0);
 			
 		case BEETRAP:
 			return new ItemStack(ENBlocks.BeeTrapTreated, 1, 0);
@@ -740,13 +737,13 @@ public class TileEntityBarrel extends TileEntity implements IFluidHandler, ISide
 		NBTTagCompound tag = new NBTTagCompound();
 		this.writeToNBT(tag);
 
-		return new Packet132TileEntityData(this.xCoord, this.yCoord, this.zCoord, BlockData.BARREL_ID, tag);
+		return new S35PacketUpdateTileEntity(this.xCoord, this.yCoord, this.zCoord, BlockData.BARREL_ID, tag);
 	}
 
 	@Override
-	public void onDataPacket(INetworkManager net, Packet132TileEntityData pkt)
+	public void onDataPacket(NetworkManager net, S35PacketUpdateTileEntity pkt)
 	{
-		NBTTagCompound tag = pkt.data;
+		NBTTagCompound tag = pkt.func_148857_g();
 		readFromNBT(tag);
 	}
 
@@ -919,7 +916,7 @@ public class TileEntityBarrel extends TileEntity implements IFluidHandler, ISide
 		return array;
 	}
 
-	public int getNearbyBlocks(int blockID, int blockMeta)
+	public int getNearbyBlocks(Block block, int blockMeta)
 	{
 		int count = 0;
 
@@ -929,7 +926,7 @@ public class TileEntityBarrel extends TileEntity implements IFluidHandler, ISide
 			{
 				for (int z = -1; z <= 1; z++)
 				{
-					if(worldObj.getBlockId(xCoord + x, yCoord + y, zCoord + z) == blockID && worldObj.getBlockMetadata(xCoord + x, yCoord + y, zCoord + z) == blockMeta)
+					if(worldObj.getBlock(xCoord + x, yCoord + y, zCoord + z) == block && worldObj.getBlockMetadata(xCoord + x, yCoord + y, zCoord + z) == blockMeta)
 					{
 						count++;
 					}
@@ -1006,9 +1003,9 @@ public class TileEntityBarrel extends TileEntity implements IFluidHandler, ISide
 		{
 			if (mode == BarrelMode.COMPOST || mode == BarrelMode.EMPTY)
 			{
-				if(CompostRegistry.containsItem(item.itemID, item.getItemDamage()))
+				if(CompostRegistry.containsItem(Item.getIdFromItem(item.getItem()), item.getItemDamage()))
 				{
-					this.addCompostItem(CompostRegistry.getItem(item.itemID, item.getItemDamage()));
+					this.addCompostItem(CompostRegistry.getItem(Item.getIdFromItem(item.getItem()), item.getItemDamage()));
 				}
 			}
 
@@ -1016,7 +1013,7 @@ public class TileEntityBarrel extends TileEntity implements IFluidHandler, ISide
 			{
 				if(fluid.fluidID == FluidRegistry.WATER.getID())
 				{
-					if (ModData.ALLOW_BARREL_RECIPE_CLAY && item.itemID == ENBlocks.Dust.blockID)
+					if (ModData.ALLOW_BARREL_RECIPE_CLAY && Block.getBlockFromItem(item.getItem()) == ENBlocks.Dust)
 					{
 						this.mode = BarrelMode.CLAY;
 					}
@@ -1024,17 +1021,17 @@ public class TileEntityBarrel extends TileEntity implements IFluidHandler, ISide
 
 				if(fluid.fluidID == FluidRegistry.LAVA.getID())
 				{
-					if (ModData.ALLOW_BARREL_RECIPE_NETHERRACK && item.itemID == Item.redstone.itemID)
+					if (ModData.ALLOW_BARREL_RECIPE_NETHERRACK && item.getItem() == Items.redstone)
 					{
 						this.mode = BarrelMode.NETHERRACK;
 					}
 
-					if (ModData.ALLOW_BARREL_RECIPE_ENDSTONE && item.itemID == Item.glowstone.itemID)
+					if (ModData.ALLOW_BARREL_RECIPE_ENDSTONE && item.getItem() == Items.glowstone_dust)
 					{
 						this.mode = BarrelMode.ENDSTONE;
 					}
 
-					if(ModData.ALLOW_BARREL_RECIPE_BLAZE_RODS && item.itemID == ENItems.DollAngry.itemID)
+					if(ModData.ALLOW_BARREL_RECIPE_BLAZE_RODS && item.getItem() == ENItems.DollAngry)
 					{
 						mode = BarrelMode.BLAZE_COOKING;
 					}
@@ -1042,13 +1039,13 @@ public class TileEntityBarrel extends TileEntity implements IFluidHandler, ISide
 
 				if (fluid.fluidID == Fluids.fluidWitchWater.getID())
 				{
-					if(ModData.ALLOW_BARREL_RECIPE_SOULSAND && item.itemID == Block.sand.blockID)
+					if(ModData.ALLOW_BARREL_RECIPE_SOULSAND && Block.getBlockFromItem(item.getItem()) == Blocks.sand)
 					{
 						resetColor();
 						mode = BarrelMode.SOULSAND;
 					}
 
-					if(ModData.ALLOW_BARREL_RECIPE_ENDER_PEARLS && item.itemID == ENItems.DollCreepy.itemID)
+					if(ModData.ALLOW_BARREL_RECIPE_ENDER_PEARLS && item.getItem() == ENItems.DollCreepy)
 					{
 						mode = BarrelMode.ENDER_COOKING;
 					}
@@ -1066,12 +1063,12 @@ public class TileEntityBarrel extends TileEntity implements IFluidHandler, ISide
 	}
 
 	@Override
-	public String getInvName() {
+	public String getInventoryName() {
 		return null;
 	}
 
 	@Override
-	public boolean isInvNameLocalized() {
+	public boolean hasCustomInventoryName() {
 		return false;
 	}
 
@@ -1086,10 +1083,10 @@ public class TileEntityBarrel extends TileEntity implements IFluidHandler, ISide
 	}
 
 	@Override
-	public void openChest() {}
+	public void openInventory() {}
 
 	@Override
-	public void closeChest() {}
+	public void closeInventory() {}
 
 	@Override
 	public boolean isItemValidForSlot(int slot, ItemStack item) {	
@@ -1133,7 +1130,7 @@ public class TileEntityBarrel extends TileEntity implements IFluidHandler, ISide
 				return true;
 			}
 
-			if (worldObj.difficultySetting == 0 && mode.canExtract == ExtractMode.PeacefulOnly)
+			if (worldObj.difficultySetting.equals(0) && mode.canExtract == ExtractMode.PeacefulOnly)
 			{
 				return true;
 			}
@@ -1147,7 +1144,7 @@ public class TileEntityBarrel extends TileEntity implements IFluidHandler, ISide
 		///XXX isItemValid
 		if (!this.isFull() && mode == BarrelMode.COMPOST || mode == BarrelMode.EMPTY)
 		{
-			if(ModData.ALLOW_BARREL_RECIPE_DIRT && CompostRegistry.containsItem(item.itemID, item.getItemDamage()))
+			if(ModData.ALLOW_BARREL_RECIPE_DIRT && CompostRegistry.containsItem(Item.getIdFromItem(item.getItem()), item.getItemDamage()))
 			{
 				return true;
 			}
@@ -1157,7 +1154,7 @@ public class TileEntityBarrel extends TileEntity implements IFluidHandler, ISide
 		{
 			if(fluid.fluidID == FluidRegistry.WATER.getID())
 			{
-				if (ModData.ALLOW_BARREL_RECIPE_CLAY && item.itemID == ENBlocks.Dust.blockID)
+				if (ModData.ALLOW_BARREL_RECIPE_CLAY && Block.getBlockFromItem(item.getItem()) == ENBlocks.Dust)
 				{
 					return true;
 				}
@@ -1166,17 +1163,17 @@ public class TileEntityBarrel extends TileEntity implements IFluidHandler, ISide
 
 			if(fluid.fluidID == FluidRegistry.LAVA.getID())
 			{
-				if (ModData.ALLOW_BARREL_RECIPE_NETHERRACK && item.itemID == Item.redstone.itemID)
+				if (ModData.ALLOW_BARREL_RECIPE_NETHERRACK && item.getItem() == Items.redstone)
 				{
 					return true;
 				}
 
-				if (ModData.ALLOW_BARREL_RECIPE_ENDSTONE && item.itemID == Item.glowstone.itemID)
+				if (ModData.ALLOW_BARREL_RECIPE_ENDSTONE && item.getItem() == Items.glowstone_dust)
 				{
 					return true;
 				}
 
-				if(ModData.ALLOW_BARREL_RECIPE_BLAZE_RODS && item.itemID == ENItems.DollAngry.itemID)
+				if(ModData.ALLOW_BARREL_RECIPE_BLAZE_RODS && item.getItem() == ENItems.DollAngry)
 				{
 					return true;
 				}
@@ -1185,19 +1182,19 @@ public class TileEntityBarrel extends TileEntity implements IFluidHandler, ISide
 
 			if (fluid.fluidID == Fluids.fluidWitchWater.getID())
 			{
-				if(ModData.ALLOW_BARREL_RECIPE_SOULSAND && item.itemID == Block.sand.blockID)
+				if(ModData.ALLOW_BARREL_RECIPE_SOULSAND && Block.getBlockFromItem(item.getItem()) == Blocks.sand)
 				{
 					return true;
 				}
 
-				if(ModData.ALLOW_BARREL_RECIPE_ENDER_PEARLS && item.itemID == ENItems.DollCreepy.itemID)
+				if(ModData.ALLOW_BARREL_RECIPE_ENDER_PEARLS && item.getItem() == ENItems.DollCreepy)
 				{
 					return true;
 				}
 			}
 			
 			Fluid seedOil = FluidRegistry.getFluid("seedoil");
-			if (seedOil != null && fluid.fluidID == seedOil.getID() && item.itemID == ENBlocks.BeeTrap.blockID)
+			if (seedOil != null && fluid.fluidID == seedOil.getID() && Block.getBlockFromItem(item.getItem()) == ENBlocks.BeeTrap)
 			{
 				return true;
 			}

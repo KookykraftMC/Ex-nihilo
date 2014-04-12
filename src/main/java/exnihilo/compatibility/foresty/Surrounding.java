@@ -10,16 +10,16 @@ public class Surrounding {
 	public int leafCount;
 	public String blockAbove;
 	
-	public void addBlock(int blockID, int meta)
+	public void addBlock(Block par1Block, int meta)
 	{
-		Block block = Block.blocksList[blockID];
+		Block block = par1Block;
 		
 		if (block != null && block.isLeaves(null, 0, 0, 0))
 		{
 			leafCount++;
 		}
 		
-		String key = blockID + ":" + meta;
+		String key = block + ":" + meta;
 		
 		if (blocks.containsKey(key))
 		{
@@ -32,8 +32,8 @@ public class Surrounding {
 		}
 	}
 	
-	public void setBlockAbove(int blockID, int meta)
+	public void setBlockAbove(Block block, int meta)
 	{
-		this.blockAbove = blockID + ":" + meta;
+		this.blockAbove = block + ":" + meta;
 	}
 }

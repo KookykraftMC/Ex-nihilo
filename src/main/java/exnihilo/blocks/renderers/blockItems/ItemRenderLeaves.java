@@ -1,19 +1,16 @@
 package exnihilo.blocks.renderers.blockItems;
 
-import org.lwjgl.opengl.GL11;
-
-import exnihilo.blocks.models.ModelBarrel;
-import exnihilo.blocks.models.ModelBlock;
-import exnihilo.registries.helpers.Color;
-
-
-import net.minecraft.block.Block;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.texture.TextureManager;
 import net.minecraft.client.renderer.texture.TextureMap;
+import net.minecraft.init.Blocks;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.client.IItemRenderer;
-import net.minecraftforge.client.IItemRenderer.ItemRenderType;
+
+import org.lwjgl.opengl.GL11;
+
+import exnihilo.blocks.models.ModelBlock;
+import exnihilo.registries.helpers.Color;
 
 public class ItemRenderLeaves implements IItemRenderer{
 	private ModelBlock model;
@@ -123,8 +120,8 @@ public class ItemRenderLeaves implements IItemRenderer{
 		
 		bindTexture();
 		
-		model.render(new Color(Block.leaves.getRenderColor(item.getItemDamage())),
-				Block.leaves.getIcon(0, item.getItemDamage()),
+		model.render(new Color(Blocks.leaves.getRenderColor(item.getItemDamage())),
+				Blocks.leaves.getIcon(0, item.getItemDamage()),
 				Integer.MAX_VALUE,
 				blend);
 		

@@ -1,20 +1,16 @@
 package exnihilo.blocks.renderers.blockItems;
 
-import org.lwjgl.opengl.GL11;
-
-import exnihilo.blocks.BlockSieve;
-import exnihilo.blocks.models.ModelBarrel;
-import exnihilo.blocks.models.ModelSieve;
-import exnihilo.blocks.models.ModelSieveMesh;
-
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.texture.TextureManager;
 import net.minecraft.client.renderer.texture.TextureMap;
 import net.minecraft.item.ItemStack;
-import net.minecraft.tileentity.TileEntity;
 import net.minecraftforge.client.IItemRenderer;
-import net.minecraftforge.client.IItemRenderer.ItemRenderType;
-import net.minecraftforge.client.IItemRenderer.ItemRendererHelper;
+
+import org.lwjgl.opengl.GL11;
+
+import exnihilo.blocks.BlockSieve;
+import exnihilo.blocks.models.ModelSieve;
+import exnihilo.blocks.models.ModelSieveMesh;
 
 public class ItemRenderSieve implements IItemRenderer{
 	private ModelSieve model;
@@ -161,7 +157,7 @@ public class ItemRenderSieve implements IItemRenderer{
         {
         	if (meta >= 0)
     		{
-    			texturemanager.bindTexture(model.textures[meta]);
+    			texturemanager.bindTexture(ModelSieve.textures[meta]);
     		}
         }
     }

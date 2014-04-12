@@ -1,29 +1,16 @@
 package exnihilo.blocks.tileentities;
 
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
+import net.minecraft.block.Block;
+import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.network.NetworkManager;
+import net.minecraft.network.Packet;
+import net.minecraft.network.play.server.S35PacketUpdateTileEntity;
+import net.minecraft.tileentity.TileEntity;
 import exnihilo.ENBlocks;
-import exnihilo.blocks.tileentities.TileEntityBarrel.BarrelMode;
 import exnihilo.compatibility.foresty.Forestry;
 import exnihilo.data.BlockData;
 import exnihilo.registries.ColorRegistry;
 import exnihilo.registries.helpers.Color;
-import net.minecraft.block.Block;
-import net.minecraft.client.Minecraft;
-import net.minecraft.client.renderer.texture.TextureManager;
-import net.minecraft.client.renderer.texture.TextureMap;
-import net.minecraft.item.Item;
-import net.minecraft.nbt.NBTTagCompound;
-import net.minecraft.network.INetworkManager;
-import net.minecraft.network.packet.Packet;
-import net.minecraft.network.packet.Packet132TileEntityData;
-import net.minecraft.tileentity.TileEntity;
-import net.minecraft.util.Icon;
-import net.minecraft.util.ResourceLocation;
-import net.minecraft.world.IBlockAccess;
-import net.minecraft.world.World;
-import net.minecraftforge.fluids.FluidRegistry;
-import net.minecraftforge.fluids.FluidStack;
 
 public class TileEntityLeavesInfested extends TileEntity
 {
@@ -101,7 +88,7 @@ public class TileEntityLeavesInfested extends TileEntity
 		int y = this.worldObj.rand.nextInt(3) - 1;
 		int z = this.worldObj.rand.nextInt(3) - 1;
 
-		int blockID = worldObj.getBlockId(xCoord + x, yCoord + y, zCoord + z);
+		Block block = worldObj.getBlock(xCoord + x, yCoord + y, zCoord + z);
 		int meta = worldObj.getBlockMetadata(xCoord + x, yCoord + y, zCoord + z);
 
 		Block target = Block.blocksList[blockID];
@@ -150,13 +137,13 @@ public class TileEntityLeavesInfested extends TileEntity
 		NBTTagCompound tag = new NBTTagCompound();
 		this.writeToNBT(tag);
 
-		return new Packet132TileEntityData(this.xCoord, this.yCoord, this.zCoord, BlockData.LEAVES_INFESTED_ID, tag);
+		return new S35PacketUpdateTileEntity(this.xCoord, this.yCoord, this.zCoord, BlockData.LEAVES_INFESTED_ID, tag);
 	}
 
 	@Override
-	public void onDataPacket(INetworkManager net, Packet132TileEntityData pkt)
+	public void onDataPacket(NetworkManager net, S35PacketUpdateTileEntity pkt)
 	{
-		NBTTagCompound tag = pkt.data;
+		NBTTagCompound tag = pkt.func_148857_g();
 		this.readFromNBT(tag);
 	}
 }

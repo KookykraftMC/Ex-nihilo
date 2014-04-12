@@ -1,24 +1,19 @@
 package exnihilo.blocks.renderers;
 
+import net.minecraft.client.renderer.texture.TextureMap;
+import net.minecraft.client.renderer.tileentity.TileEntitySpecialRenderer;
+import net.minecraft.tileentity.TileEntity;
+import net.minecraft.util.IIcon;
+
 import org.lwjgl.opengl.GL11;
 
 import exnihilo.ENBlocks;
 import exnihilo.blocks.BlockSieve;
-import exnihilo.blocks.models.ModelBlock;
 import exnihilo.blocks.models.ModelSieve;
 import exnihilo.blocks.models.ModelSieveContents;
 import exnihilo.blocks.models.ModelSieveMesh;
-import exnihilo.blocks.tileentities.TileEntityBarrel;
-import exnihilo.blocks.tileentities.TileEntityLeavesInfested;
 import exnihilo.blocks.tileentities.TileEntitySieve;
 import exnihilo.blocks.tileentities.TileEntitySieve.SieveMode;
-import exnihilo.registries.helpers.Color;
-
-import net.minecraft.block.Block;
-import net.minecraft.client.renderer.texture.TextureMap;
-import net.minecraft.client.renderer.tileentity.TileEntitySpecialRenderer;
-import net.minecraft.tileentity.TileEntity;
-import net.minecraft.util.Icon;
 
 public class RenderSieve extends TileEntitySpecialRenderer{
 	private ModelSieve model;
@@ -67,12 +62,12 @@ public class RenderSieve extends TileEntitySpecialRenderer{
 	private void renderContents(TileEntity tileentity, double x, double y, double z, float f)
 	{
 		TileEntitySieve sieve = (TileEntitySieve) tileentity;
-		Icon icon = null;
+		IIcon icon = null;
 		
 		switch (sieve.mode)
 		{
 		case FILLED:
-			icon = Block.blocksList[sieve.contentID].getIcon(0, sieve.contentMeta);
+			icon = ENBlocks.Sieve.getIcon(0, sieve.contentMeta);
 			break;
 		default:
 			break;
@@ -104,7 +99,7 @@ public class RenderSieve extends TileEntitySpecialRenderer{
 	{
 		if (meta >= 0)
 		{
-			bindTexture(model.textures[meta]);
+			bindTexture(ModelSieve.textures[meta]);
 		}
 	}
 }

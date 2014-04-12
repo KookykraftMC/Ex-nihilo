@@ -2,11 +2,8 @@ package exnihilo.blocks.renderers.blockItems;
 
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.texture.TextureManager;
-import net.minecraft.client.renderer.texture.TextureMap;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.client.IItemRenderer;
-import net.minecraftforge.client.IItemRenderer.ItemRenderType;
-import net.minecraftforge.client.IItemRenderer.ItemRendererHelper;
 
 import org.lwjgl.opengl.GL11;
 
@@ -118,7 +115,7 @@ public class ItemRenderCrucible implements IItemRenderer{
 
         if (texturemanager != null)
         {
-    		texturemanager.bindTexture(model.textures[0]);
+    		texturemanager.bindTexture(ModelCrucible.textures[0]);
         }
     }
 }

@@ -1,20 +1,11 @@
 package exnihilo.blocks.renderers;
 
-import net.minecraft.client.renderer.texture.TextureMap;
 import net.minecraft.client.renderer.tileentity.TileEntitySpecialRenderer;
 import net.minecraft.tileentity.TileEntity;
-import net.minecraft.util.Icon;
-import net.minecraft.util.ResourceLocation;
-import net.minecraftforge.fluids.Fluid;
 
 import org.lwjgl.opengl.GL11;
 
-import exnihilo.blocks.models.ModelCrucible;
-import exnihilo.blocks.models.ModelCrucibleInternal;
 import exnihilo.blocks.models.ModelCrucibleRaw;
-import exnihilo.blocks.tileentities.TileEntityCrucible;
-import exnihilo.registries.ColorRegistry;
-import exnihilo.registries.helpers.Color;
 
 public class RenderCrucibleUnfired extends TileEntitySpecialRenderer{
 	private ModelCrucibleRaw model;
@@ -43,6 +34,6 @@ public class RenderCrucibleUnfired extends TileEntitySpecialRenderer{
 	
 	public void bindCrucibleTexture()
 	{
-		bindTexture(model.textures[0]);
+		bindTexture(ModelCrucibleRaw.textures[0]);
 	}
 }

@@ -1,30 +1,27 @@
 package exnihilo.blocks.tileentities;
 
-import exnihilo.ENBlocks;
-import exnihilo.blocks.tileentities.TileEntityBarrel.BarrelMode;
-import exnihilo.blocks.tileentities.TileEntitySieve.SieveMode;
-import exnihilo.data.BlockData;
-import exnihilo.registries.CompostRegistry;
-import exnihilo.registries.CrucibleRegistry;
-import exnihilo.registries.HeatRegistry;
-import exnihilo.registries.helpers.Meltable;
 import net.minecraft.block.Block;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.init.Blocks;
 import net.minecraft.inventory.ISidedInventory;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
-import net.minecraft.network.INetworkManager;
-import net.minecraft.network.packet.Packet;
-import net.minecraft.network.packet.Packet132TileEntityData;
+import net.minecraft.network.NetworkManager;
+import net.minecraft.network.Packet;
+import net.minecraft.network.play.server.S35PacketUpdateTileEntity;
 import net.minecraft.tileentity.TileEntity;
-import net.minecraft.util.Icon;
-import net.minecraftforge.common.ForgeDirection;
+import net.minecraft.util.IIcon;
+import net.minecraftforge.common.util.ForgeDirection;
 import net.minecraftforge.fluids.Fluid;
 import net.minecraftforge.fluids.FluidRegistry;
 import net.minecraftforge.fluids.FluidStack;
 import net.minecraftforge.fluids.FluidTankInfo;
 import net.minecraftforge.fluids.IFluidHandler;
+import exnihilo.data.BlockData;
+import exnihilo.registries.CrucibleRegistry;
+import exnihilo.registries.HeatRegistry;
+import exnihilo.registries.helpers.Meltable;
 
 public class TileEntityCrucible extends TileEntity implements IFluidHandler, ISidedInventory{
 	private static final float MIN_RENDER_CAPACITY = 0.20f;
@@ -51,20 +48,20 @@ public class TileEntityCrucible extends TileEntity implements IFluidHandler, ISi
 
 	public TileEntityCrucible()
 	{
-		mode = mode.EMPTY;
+		mode = CrucibleMode.EMPTY;
 		fluid = new FluidStack(FluidRegistry.WATER, 0);
 	}
 
 	public float getAdjustedVolume()
 	{
-		float volume = (solidVolume + fluidVolume + airVolume) / this.MAX_FLUID;
+		float volume = (solidVolume + fluidVolume + airVolume) / TileEntityCrucible.MAX_FLUID;
 		float capacity = MAX_RENDER_CAPACITY - MIN_RENDER_CAPACITY;
 		float adjusted = volume * capacity;		
 		adjusted += MIN_RENDER_CAPACITY;
 		return adjusted;
 	}
 
-	public Icon getContentIcon()
+	public IIcon getContentIcon()
 	{
 		if (worldObj.isRemote)
 		{
@@ -76,7 +73,7 @@ public class TileEntityCrucible extends TileEntity implements IFluidHandler, ISi
 			}
 			else
 			{
-				return Block.stone.getIcon(0, 0);
+				return Blocks.stone.getIcon(0, 0);
 			}
 		}
 		return null;
@@ -125,28 +122,28 @@ public class TileEntityCrucible extends TileEntity implements IFluidHandler, ISi
 		NBTTagCompound tag = new NBTTagCompound();
 		this.writeToNBT(tag);
 
-		return new Packet132TileEntityData(this.xCoord, this.yCoord, this.zCoord, BlockData.SIEVE_ID, tag);
+		return new S35PacketUpdateTileEntity(this.xCoord, this.yCoord, this.zCoord, BlockData.SIEVE_ID, tag);
 	}
 
 	@Override
-	public void onDataPacket(INetworkManager net, Packet132TileEntityData pkt)
+	public void onDataPacket(NetworkManager net, S35PacketUpdateTileEntity pkt)
 	{
-		NBTTagCompound tag = pkt.data;
+		NBTTagCompound tag = pkt.func_148857_g();
 		this.readFromNBT(tag);
 	}
 
 	public boolean addItem(ItemStack item)
 	{
-		if (!CrucibleRegistry.containsItem(item.itemID, item.getItemDamage()))
+		if (!CrucibleRegistry.containsItem(Item.getIdFromItem(item.getItem()), item.getItemDamage()))
 		{
 			return false;
 		}
 
-		Meltable meltable = CrucibleRegistry.getItem(item.itemID, item.getItemDamage());
+		Meltable meltable = CrucibleRegistry.getItem(Item.getIdFromItem(item.getItem()), item.getItemDamage());
 
 		if (!worldObj.isRemote && getCapacity() >= meltable.solidVolume && isFluidValid(meltable.fluid))
 		{
-			this.contentID = item.itemID; 
+			this.contentID = Item.getIdFromItem(item.getItem()); 
 			this.contentMeta = item.getItemDamage();
 
 			this.solidVolume += meltable.fluidVolume;
@@ -196,7 +193,7 @@ public class TileEntityCrucible extends TileEntity implements IFluidHandler, ISi
 			//System.out.println("fluid: " + fluid.amount + ", fluidVolume: " + fluidVolume + ", air: " + airVolume);
 			needsUpdate = true;
 		}
-		else if (Math.round(this.getCapacity()) >= this.MAX_FLUID)
+		else if (Math.round(this.getCapacity()) >= TileEntityCrucible.MAX_FLUID)
 		{
 			this.mode = CrucibleMode.EMPTY;
 			needsUpdate = true;
@@ -219,17 +216,17 @@ public class TileEntityCrucible extends TileEntity implements IFluidHandler, ISi
 
 	public float getCapacity()
 	{
-		return this.MAX_FLUID - (solidVolume + fluidVolume + airVolume);
+		return TileEntityCrucible.MAX_FLUID - (solidVolume + fluidVolume + airVolume);
 	}
 
 	public float getMeltSpeed()
 	{
-		int targetID = worldObj.getBlockId(xCoord, yCoord - 1, zCoord);
+		Block targetBlock = worldObj.getBlock(xCoord, yCoord - 1, zCoord);
 		int targetMeta = worldObj.getBlockMetadata(xCoord, yCoord - 1, zCoord);
 		
-		if (HeatRegistry.containsItem(targetID, targetMeta))
+		if (HeatRegistry.containsItem(Block.getIdFromBlock(targetBlock), targetMeta))
 		{
-			return HeatRegistry.getItem(targetID, targetMeta).value;
+			return HeatRegistry.getItem(Block.getIdFromBlock(targetBlock), targetMeta).value;
 		}
 
 		return 0.0f;
@@ -427,7 +424,7 @@ public class TileEntityCrucible extends TileEntity implements IFluidHandler, ISi
 	{
 		if (mode == CrucibleMode.USED)
 		{
-			float lumens = fluid.getFluid().getLuminosity() * (this.fluidVolume / this.MAX_FLUID);
+			float lumens = fluid.getFluid().getLuminosity() * (this.fluidVolume / TileEntityCrucible.MAX_FLUID);
 
 			return Math.round(lumens);
 		}
@@ -467,9 +464,9 @@ public class TileEntityCrucible extends TileEntity implements IFluidHandler, ISi
 	public void setInventorySlotContents(int slot, ItemStack item) {
 		if (slot == 1)
 		{			
-			if (CrucibleRegistry.containsItem(item.itemID, item.getItemDamage()))
+			if (CrucibleRegistry.containsItem(Item.getIdFromItem(item.getItem()), item.getItemDamage()))
 			{
-				Meltable meltable = CrucibleRegistry.getItem(item.itemID, item.getItemDamage());
+				Meltable meltable = CrucibleRegistry.getItem(Item.getIdFromItem(item.getItem()), item.getItemDamage());
 				
 				if(this.getCapacity() >= meltable.solidVolume && isFluidValid(meltable.fluid))
 				{
@@ -480,13 +477,13 @@ public class TileEntityCrucible extends TileEntity implements IFluidHandler, ISi
 	}
 
 	@Override
-	public String getInvName() {
+	public String getInventoryName() {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public boolean isInvNameLocalized() {
+	public boolean hasCustomInventoryName() {
 		// TODO Auto-generated method stub
 		return false;
 	}
@@ -504,19 +501,19 @@ public class TileEntityCrucible extends TileEntity implements IFluidHandler, ISi
 	}
 
 	@Override
-	public void openChest() {}
+	public void openInventory() {}
 
 	@Override
-	public void closeChest() {}
+	public void closeInventory() {}
 
 	@Override
 	public boolean isItemValidForSlot(int slot, ItemStack item) {
 		// TODO Auto-generated method stub		
 		if (slot == 1)
 		{
-			if (CrucibleRegistry.containsItem(item.itemID, item.getItemDamage()))
+			if (CrucibleRegistry.containsItem(Item.getIdFromItem(item.getItem()), item.getItemDamage()))
 			{
-				Meltable meltable = CrucibleRegistry.getItem(item.itemID, item.getItemDamage());
+				Meltable meltable = CrucibleRegistry.getItem(Item.getIdFromItem(item.getItem()), item.getItemDamage());
 				
 				if(this.getCapacity() >= meltable.solidVolume && isFluidValid(meltable.fluid))
 				{
@@ -542,9 +539,9 @@ public class TileEntityCrucible extends TileEntity implements IFluidHandler, ISi
 	public boolean canInsertItem(int slot, ItemStack item, int side) {
 		if (side == 1 && slot == 1)
 		{
-			if (CrucibleRegistry.containsItem(item.itemID, item.getItemDamage()))
+			if (CrucibleRegistry.containsItem(Item.getIdFromItem(item.getItem()), item.getItemDamage()))
 			{
-				Meltable meltable = CrucibleRegistry.getItem(item.itemID, item.getItemDamage());
+				Meltable meltable = CrucibleRegistry.getItem(Item.getIdFromItem(item.getItem()), item.getItemDamage());
 				
 				if(this.getCapacity() >= meltable.solidVolume && isFluidValid(meltable.fluid))
 				{

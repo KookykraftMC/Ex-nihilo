@@ -1,15 +1,14 @@
 package exnihilo.blocks.renderers.blockItems;
 
-import org.lwjgl.opengl.GL11;
-
-import exnihilo.blocks.models.ModelBarrel;
-
-
+import net.minecraft.block.Block;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.texture.TextureManager;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.client.IItemRenderer;
-import net.minecraftforge.client.IItemRenderer.ItemRenderType;
+
+import org.lwjgl.opengl.GL11;
+
+import exnihilo.blocks.models.ModelBarrel;
 
 public class ItemRenderBarrel implements IItemRenderer{
 	private ModelBarrel model;
@@ -113,13 +112,13 @@ public class ItemRenderBarrel implements IItemRenderer{
 			break;
 		}
 		
-		bindTexture(item.itemID, item.getItemDamage());
+		bindTexture(Block.getBlockFromItem(item.getItem()), item.getItemDamage());
 		model.simpleRender(0.0625F);
 		
 		GL11.glPopMatrix();
 	}
 	
-	protected void bindTexture(int blockID, int meta)
+	protected void bindTexture(Block block, int meta)
     {
         TextureManager texturemanager = Minecraft.getMinecraft().getTextureManager();
 
@@ -127,7 +126,7 @@ public class ItemRenderBarrel implements IItemRenderer{
         {
         	if (meta >= 0)
     		{
-    			texturemanager.bindTexture(model.getBarrelTexture(blockID, meta));
+    			texturemanager.bindTexture(model.getBarrelTexture(block, meta));
     		}
         }
     }
