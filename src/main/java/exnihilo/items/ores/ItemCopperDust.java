@@ -18,13 +18,13 @@ public class ItemCopperDust extends Item{
 	@Override
 	public String getUnlocalizedName()
 	{
-		return ItemData.COPPER_ORE_UNLOCALIZED_NAMES[2];
+		return ModData.ID + "." + ItemData.COPPER_ORE_UNLOCALIZED_NAMES[2];
 	}
 	
 	@Override
 	public String getUnlocalizedName(ItemStack item)
 	{
-		return ItemData.COPPER_ORE_UNLOCALIZED_NAMES[2];
+		return ModData.ID + "." + ItemData.COPPER_ORE_UNLOCALIZED_NAMES[2];
 	}
 	
 	@Override

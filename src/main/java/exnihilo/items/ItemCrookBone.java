@@ -16,13 +16,13 @@ public class ItemCrookBone extends ItemCrook
 	@Override
 	public String getUnlocalizedName()
 	{
-		return ItemData.CROOK_BONE_UNLOCALIZED_NAME;
+		return ModData.ID + "." + ItemData.CROOK_BONE_UNLOCALIZED_NAME;
 	}
 
 	@Override
 	public String getUnlocalizedName(ItemStack item)
 	{
-		return ItemData.CROOK_BONE_UNLOCALIZED_NAME;
+		return ModData.ID + "." + ItemData.CROOK_BONE_UNLOCALIZED_NAME;
 	}
 	
 	@Override

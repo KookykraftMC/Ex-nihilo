@@ -18,13 +18,13 @@ public class ItemOsmiumDust extends Item{
 	@Override
 	public String getUnlocalizedName()
 	{
-		return ItemData.OSMIUM_ORE_UNLOCALIZED_NAMES[2];
+		return ModData.ID + "." + ItemData.OSMIUM_ORE_UNLOCALIZED_NAMES[2];
 	}
 	
 	@Override
 	public String getUnlocalizedName(ItemStack item)
 	{
-		return ItemData.OSMIUM_ORE_UNLOCALIZED_NAMES[2];
+		return ModData.ID + "." + ItemData.OSMIUM_ORE_UNLOCALIZED_NAMES[2];
 	}
 	
 	@Override

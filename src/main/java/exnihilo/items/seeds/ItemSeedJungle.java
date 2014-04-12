@@ -39,13 +39,13 @@ public class ItemSeedJungle extends ItemSeedBase{
 	@Override
 	public String getUnlocalizedName()
 	{
-		return ItemData.SEED_JUNGLE_UNLOCALIZED_NAME;
+		return ModData.ID + "." + ItemData.SEED_JUNGLE_UNLOCALIZED_NAME;
 	}
 	
 	@Override
 	public String getUnlocalizedName(ItemStack item)
 	{
-		return ItemData.SEED_JUNGLE_UNLOCALIZED_NAME;
+		return ModData.ID + "." + ItemData.SEED_JUNGLE_UNLOCALIZED_NAME;
 	}
 	
 	@Override

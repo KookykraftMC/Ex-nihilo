@@ -18,13 +18,13 @@ public class ItemPlatinumIngot extends Item{
 	@Override
 	public String getUnlocalizedName()
 	{
-		return ItemData.PLATINUM_ORE_UNLOCALIZED_NAMES[3];
+		return ModData.ID + "." + ItemData.PLATINUM_ORE_UNLOCALIZED_NAMES[3];
 	}
 	
 	@Override
 	public String getUnlocalizedName(ItemStack item)
 	{
-		return ItemData.PLATINUM_ORE_UNLOCALIZED_NAMES[3];
+		return ModData.ID + "." + ItemData.PLATINUM_ORE_UNLOCALIZED_NAMES[3];
 	}
 	
 	@Override

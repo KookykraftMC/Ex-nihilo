@@ -18,13 +18,13 @@ public class ItemTinSand extends Item{
 	@Override
 	public String getUnlocalizedName()
 	{
-		return ItemData.TIN_ORE_UNLOCALIZED_NAMES[1];
+		return ModData.ID + "." + ItemData.TIN_ORE_UNLOCALIZED_NAMES[1];
 	}
 	
 	@Override
 	public String getUnlocalizedName(ItemStack item)
 	{
-		return ItemData.TIN_ORE_UNLOCALIZED_NAMES[1];
+		return ModData.ID + "." + ItemData.TIN_ORE_UNLOCALIZED_NAMES[1];
 	}
 	
 	@Override

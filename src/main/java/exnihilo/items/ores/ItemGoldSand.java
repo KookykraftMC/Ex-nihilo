@@ -18,13 +18,13 @@ public class ItemGoldSand extends Item{
 	@Override
 	public String getUnlocalizedName()
 	{
-		return ItemData.GOLD_ORE_UNLOCALIZED_NAMES[1];
+		return ModData.ID + "." + ItemData.GOLD_ORE_UNLOCALIZED_NAMES[1];
 	}
 	
 	@Override
 	public String getUnlocalizedName(ItemStack item)
 	{
-		return ItemData.GOLD_ORE_UNLOCALIZED_NAMES[1];
+		return ModData.ID + "." + ItemData.GOLD_ORE_UNLOCALIZED_NAMES[1];
 	}
 	
 	@Override

@@ -189,13 +189,13 @@ public class ItemCrook extends ItemTool{
 	@Override
 	public String getUnlocalizedName()
 	{
-		return ItemData.CROOK_UNLOCALIZED_NAME;
+		return ModData.ID + "." + ItemData.CROOK_UNLOCALIZED_NAME;
 	}
 
 	@Override
 	public String getUnlocalizedName(ItemStack item)
 	{
-		return ItemData.CROOK_UNLOCALIZED_NAME;
+		return ModData.ID + "." + ItemData.CROOK_UNLOCALIZED_NAME;
 	}
 
 	@Override

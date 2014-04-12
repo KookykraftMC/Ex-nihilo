@@ -18,13 +18,13 @@ public class ItemSilverIngot extends Item{
 	@Override
 	public String getUnlocalizedName()
 	{
-		return ItemData.SILVER_ORE_UNLOCALIZED_NAMES[3];
+		return ModData.ID + "." + ItemData.SILVER_ORE_UNLOCALIZED_NAMES[3];
 	}
 	
 	@Override
 	public String getUnlocalizedName(ItemStack item)
 	{
-		return ItemData.SILVER_ORE_UNLOCALIZED_NAMES[3];
+		return ModData.ID + "." + ItemData.SILVER_ORE_UNLOCALIZED_NAMES[3];
 	}
 	
 	@Override

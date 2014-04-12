@@ -17,13 +17,13 @@ public class ItemDollAngry extends Item {
 	@Override
 	public String getUnlocalizedName()
 	{
-		return ItemData.ANGRY_DOLL_UNLOCALIZED_NAME;
+		return ModData.ID + "." + ItemData.ANGRY_DOLL_UNLOCALIZED_NAME;
 	}
 	
 	@Override
 	public String getUnlocalizedName(ItemStack item)
 	{
-		return ItemData.ANGRY_DOLL_UNLOCALIZED_NAME;
+		return ModData.ID + "." + ItemData.ANGRY_DOLL_UNLOCALIZED_NAME;
 	}
 	
 	@Override

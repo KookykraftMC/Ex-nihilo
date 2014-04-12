@@ -18,13 +18,13 @@ public class ItemNickelSand extends Item{
 	@Override
 	public String getUnlocalizedName()
 	{
-		return ItemData.NICKEL_ORE_UNLOCALIZED_NAMES[1];
+		return ModData.ID + "." + ItemData.NICKEL_ORE_UNLOCALIZED_NAMES[1];
 	}
 	
 	@Override
 	public String getUnlocalizedName(ItemStack item)
 	{
-		return ItemData.NICKEL_ORE_UNLOCALIZED_NAMES[1];
+		return ModData.ID + "." + ItemData.NICKEL_ORE_UNLOCALIZED_NAMES[1];
 	}
 	
 	@Override

@@ -17,13 +17,13 @@ public class ItemDoll extends Item {
 	@Override
 	public String getUnlocalizedName()
 	{
-		return ItemData.DOLL_UNLOCALIZED_NAME;
+		return ModData.ID + "." + ItemData.DOLL_UNLOCALIZED_NAME;
 	}
 	
 	@Override
 	public String getUnlocalizedName(ItemStack item)
 	{
-		return ItemData.DOLL_UNLOCALIZED_NAME;
+		return ModData.ID + "." + ItemData.DOLL_UNLOCALIZED_NAME;
 	}
 	
 	@Override

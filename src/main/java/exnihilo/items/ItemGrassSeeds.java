@@ -43,13 +43,13 @@ public class ItemGrassSeeds  extends Item{
 	@Override
 	public String getUnlocalizedName()
 	{
-		return ItemData.SEED_GRASS_UNLOCALIZED_NAME;
+		return ModData.ID + "." + ItemData.SEED_GRASS_UNLOCALIZED_NAME;
 	}
 
 	@Override
 	public String getUnlocalizedName(ItemStack item)
 	{
-		return ItemData.SEED_GRASS_UNLOCALIZED_NAME;
+		return ModData.ID + "." + ItemData.SEED_GRASS_UNLOCALIZED_NAME;
 	}
 
 	@Override

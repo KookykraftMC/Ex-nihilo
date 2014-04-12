@@ -18,13 +18,13 @@ public class ItemAluminumGravel extends Item{
 	@Override
 	public String getUnlocalizedName()
 	{
-		return ItemData.ALUMINUM_ORE_UNLOCALIZED_NAMES[0];
+		return ModData.ID + "." + ItemData.ALUMINUM_ORE_UNLOCALIZED_NAMES[0];
 	}
 	
 	@Override
 	public String getUnlocalizedName(ItemStack item)
 	{
-		return ItemData.ALUMINUM_ORE_UNLOCALIZED_NAMES[0];
+		return ModData.ID + "." + ItemData.ALUMINUM_ORE_UNLOCALIZED_NAMES[0];
 	}
 	
 	@Override

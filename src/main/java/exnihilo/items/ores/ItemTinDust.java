@@ -18,13 +18,13 @@ public class ItemTinDust extends Item{
 	@Override
 	public String getUnlocalizedName()
 	{
-		return ItemData.TIN_ORE_UNLOCALIZED_NAMES[2];
+		return ModData.ID + "." + ItemData.TIN_ORE_UNLOCALIZED_NAMES[2];
 	}
 	
 	@Override
 	public String getUnlocalizedName(ItemStack item)
 	{
-		return ItemData.TIN_ORE_UNLOCALIZED_NAMES[2];
+		return ModData.ID + "." + ItemData.TIN_ORE_UNLOCALIZED_NAMES[2];
 	}
 	
 	@Override

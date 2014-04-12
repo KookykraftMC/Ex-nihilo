@@ -17,13 +17,13 @@ public class ItemSilkwormCooked extends ItemFood {
 	@Override
 	public String getUnlocalizedName()
 	{
-		return ItemData.SILKWORM_COOKED_UNLOCALIZED_NAME;
+		return ModData.ID + "." + ItemData.SILKWORM_COOKED_UNLOCALIZED_NAME;
 	}
 	
 	@Override
 	public String getUnlocalizedName(ItemStack item)
 	{
-		return ItemData.SILKWORM_COOKED_UNLOCALIZED_NAME;
+		return ModData.ID + "." + ItemData.SILKWORM_COOKED_UNLOCALIZED_NAME;
 	}
 	
 	@Override

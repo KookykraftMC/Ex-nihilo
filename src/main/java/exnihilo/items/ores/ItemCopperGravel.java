@@ -18,13 +18,13 @@ public class ItemCopperGravel extends Item{
 	@Override
 	public String getUnlocalizedName()
 	{
-		return ItemData.COPPER_ORE_UNLOCALIZED_NAMES[0];
+		return ModData.ID + "." + ItemData.COPPER_ORE_UNLOCALIZED_NAMES[0];
 	}
 	
 	@Override
 	public String getUnlocalizedName(ItemStack item)
 	{
-		return ItemData.COPPER_ORE_UNLOCALIZED_NAMES[0];
+		return ModData.ID + "." + ItemData.COPPER_ORE_UNLOCALIZED_NAMES[0];
 	}
 	
 	@Override

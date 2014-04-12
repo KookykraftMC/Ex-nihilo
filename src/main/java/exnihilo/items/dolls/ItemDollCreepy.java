@@ -17,13 +17,13 @@ public class ItemDollCreepy extends Item {
 	@Override
 	public String getUnlocalizedName()
 	{
-		return ItemData.CREEPY_DOLL_UNLOCALIZED_NAME;
+		return ModData.ID + "." + ItemData.CREEPY_DOLL_UNLOCALIZED_NAME;
 	}
 	
 	@Override
 	public String getUnlocalizedName(ItemStack item)
 	{
-		return ItemData.CREEPY_DOLL_UNLOCALIZED_NAME;
+		return ModData.ID + "." + ItemData.CREEPY_DOLL_UNLOCALIZED_NAME;
 	}
 	
 	@Override

@@ -16,13 +16,13 @@ public class ItemPorcelainBall extends Item{
 	@Override
 	public String getUnlocalizedName()
 	{
-		return ItemData.PORCELAIN_UNLOCALIZED_NAME;
+		return ModData.ID + "." + ItemData.PORCELAIN_UNLOCALIZED_NAME;
 	}
 
 	@Override
 	public String getUnlocalizedName(ItemStack item)
 	{
-		return ItemData.PORCELAIN_UNLOCALIZED_NAME;
+		return ModData.ID + "." + ItemData.PORCELAIN_UNLOCALIZED_NAME;
 	}
 
 	@Override

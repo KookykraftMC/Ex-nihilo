@@ -61,13 +61,13 @@ public class ItemSilkworm extends Item{
 	@Override
 	public String getUnlocalizedName()
 	{
-		return ItemData.SILKWORM_UNLOCALIZED_NAME;
+		return ModData.ID + "." + ItemData.SILKWORM_UNLOCALIZED_NAME;
 	}
 
 	@Override
 	public String getUnlocalizedName(ItemStack item)
 	{
-		return ItemData.SILKWORM_UNLOCALIZED_NAME;
+		return ModData.ID + "." + ItemData.SILKWORM_UNLOCALIZED_NAME;
 	}
 
 	@Override

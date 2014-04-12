@@ -18,13 +18,13 @@ public class ItemCopperIngot  extends Item{
 	@Override
 	public String getUnlocalizedName()
 	{
-		return ItemData.COPPER_ORE_UNLOCALIZED_NAMES[3];
+		return ModData.ID + "." + ItemData.COPPER_ORE_UNLOCALIZED_NAMES[3];
 	}
 	
 	@Override
 	public String getUnlocalizedName(ItemStack item)
 	{
-		return ItemData.COPPER_ORE_UNLOCALIZED_NAMES[3];
+		return ModData.ID + "." + ItemData.COPPER_ORE_UNLOCALIZED_NAMES[3];
 	}
 	
 	@Override

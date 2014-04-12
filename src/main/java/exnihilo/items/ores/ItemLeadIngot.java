@@ -18,13 +18,13 @@ public class ItemLeadIngot extends Item{
 	@Override
 	public String getUnlocalizedName()
 	{
-		return ItemData.LEAD_ORE_UNLOCALIZED_NAMES[3];
+		return ModData.ID + "." + ItemData.LEAD_ORE_UNLOCALIZED_NAMES[3];
 	}
 	
 	@Override
 	public String getUnlocalizedName(ItemStack item)
 	{
-		return ItemData.LEAD_ORE_UNLOCALIZED_NAMES[3];
+		return ModData.ID + "." + ItemData.LEAD_ORE_UNLOCALIZED_NAMES[3];
 	}
 	
 	@Override

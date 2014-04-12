@@ -13,13 +13,13 @@ public class ItemHammerIron extends ItemHammerBase {
 	@Override
 	public String getUnlocalizedName()
 	{
-		return ItemData.HAMMER_UNLOCALIZED_NAMES[2];
+		return ModData.ID + "." + ItemData.HAMMER_UNLOCALIZED_NAMES[2];
 	}
 	
 	@Override
 	public String getUnlocalizedName(ItemStack item)
 	{
-		return ItemData.HAMMER_UNLOCALIZED_NAMES[2];
+		return ModData.ID + "." + ItemData.HAMMER_UNLOCALIZED_NAMES[2];
 	}
 	
 	@Override

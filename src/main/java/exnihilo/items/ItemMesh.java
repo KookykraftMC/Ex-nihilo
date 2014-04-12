@@ -17,13 +17,13 @@ public class ItemMesh extends Item {
 	@Override
 	public String getUnlocalizedName()
 	{
-		return ItemData.MESH_UNLOCALIZED_NAME;
+		return ModData.ID + "." + ItemData.MESH_UNLOCALIZED_NAME;
 	}
 	
 	@Override
 	public String getUnlocalizedName(ItemStack item)
 	{
-		return ItemData.MESH_UNLOCALIZED_NAME;
+		return ModData.ID + "." + ItemData.MESH_UNLOCALIZED_NAME;
 	}
 	
 	@Override

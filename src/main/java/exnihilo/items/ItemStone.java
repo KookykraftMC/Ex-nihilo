@@ -20,13 +20,13 @@ public class ItemStone extends Item {
 	@Override
 	public String getUnlocalizedName()
 	{
-		return ItemData.STONES_UNLOCALIZED_NAME;
+		return ModData.ID + "." + ItemData.STONES_UNLOCALIZED_NAME;
 	}
 	
 	@Override
 	public String getUnlocalizedName(ItemStack item)
 	{
-		return ItemData.STONES_UNLOCALIZED_NAME;
+		return ModData.ID + "." + ItemData.STONES_UNLOCALIZED_NAME;
 	}
 	
 	@Override

@@ -18,13 +18,13 @@ public class ItemSilverGravel extends Item{
 	@Override
 	public String getUnlocalizedName()
 	{
-		return ItemData.SILVER_ORE_UNLOCALIZED_NAMES[0];
+		return ModData.ID + "." + ItemData.SILVER_ORE_UNLOCALIZED_NAMES[0];
 	}
 	
 	@Override
 	public String getUnlocalizedName(ItemStack item)
 	{
-		return ItemData.SILVER_ORE_UNLOCALIZED_NAMES[0];
+		return ModData.ID + "." + ItemData.SILVER_ORE_UNLOCALIZED_NAMES[0];
 	}
 	
 	@Override

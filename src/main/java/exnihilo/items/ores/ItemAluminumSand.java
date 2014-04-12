@@ -18,13 +18,13 @@ public class ItemAluminumSand extends Item{
 	@Override
 	public String getUnlocalizedName()
 	{
-		return ItemData.ALUMINUM_ORE_UNLOCALIZED_NAMES[1];
+		return ModData.ID + "." + ItemData.ALUMINUM_ORE_UNLOCALIZED_NAMES[1];
 	}
 	
 	@Override
 	public String getUnlocalizedName(ItemStack item)
 	{
-		return ItemData.ALUMINUM_ORE_UNLOCALIZED_NAMES[1];
+		return ModData.ID + "." + ItemData.ALUMINUM_ORE_UNLOCALIZED_NAMES[1];
 	}
 	
 	@Override

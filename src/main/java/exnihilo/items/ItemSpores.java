@@ -71,13 +71,13 @@ public class ItemSpores extends Item{
 	@Override
 	public String getUnlocalizedName()
 	{
-		return ItemData.SPORES_UNLOCALIZED_NAME;
+		return ModData.ID + "." + ItemData.SPORES_UNLOCALIZED_NAME;
 	}
 
 	@Override
 	public String getUnlocalizedName(ItemStack item)
 	{
-		return ItemData.SPORES_UNLOCALIZED_NAME;
+		return ModData.ID + "." + ItemData.SPORES_UNLOCALIZED_NAME;
 	}
 
 	@Override

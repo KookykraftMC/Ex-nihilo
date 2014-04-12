@@ -18,13 +18,13 @@ public class ItemPlatinumDust extends Item{
 	@Override
 	public String getUnlocalizedName()
 	{
-		return ItemData.PLATINUM_ORE_UNLOCALIZED_NAMES[2];
+		return ModData.ID + "." + ItemData.PLATINUM_ORE_UNLOCALIZED_NAMES[2];
 	}
 	
 	@Override
 	public String getUnlocalizedName(ItemStack item)
 	{
-		return ItemData.PLATINUM_ORE_UNLOCALIZED_NAMES[2];
+		return ModData.ID + "." + ItemData.PLATINUM_ORE_UNLOCALIZED_NAMES[2];
 	}
 	
 	@Override
