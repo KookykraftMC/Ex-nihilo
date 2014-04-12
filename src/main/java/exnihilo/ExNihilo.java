@@ -14,7 +14,6 @@ import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 import cpw.mods.fml.common.eventhandler.SubscribeEvent;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
-import exnihilo.compatibility.Chococraft;
 import exnihilo.compatibility.CommonOre;
 import exnihilo.data.ModData;
 import exnihilo.data.WorldData;
@@ -106,7 +105,7 @@ public class ExNihilo
 	{
 		CommonOre.registerRecipes();
 
-		//Not Working in Dev Environment
+		//For Later Forge Versions
 //		if (Loader.isModLoaded("IC2"))
 //		{
 //			System.out.println(ModData.NAME + ": Found IC2!");
@@ -146,12 +145,13 @@ public class ExNihilo
 //			Mekanism.loadCompatibility();
 //		}
 
-		if (Chococraft.isLoaded())
-		{
-			System.out.println(ModData.NAME + ": Found Chococraft!");
-
-			Chococraft.loadCompatibility();
-		}
+		//No 1.7 API out yet
+//		if (Chococraft.isLoaded())
+//		{
+//			System.out.println(ModData.NAME + ": Found Chococraft!");
+//
+//			Chococraft.loadCompatibility();
+//		}
 		
 		//No 1.7 API out yet
 //		if (MineFactoryReloaded.isLoaded())
