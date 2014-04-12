@@ -159,166 +159,166 @@ public class ENItems {
 
 	public static void registerItems()
 	{
-		HammerWood = new ItemHammerWood(ItemData.HAMMER_IDS[0]);
+		HammerWood = new ItemHammerWood();
 		GameRegistry.registerItem(HammerWood, ItemData.HAMMER_UNLOCALIZED_NAMES[0]);
 
-		HammerStone = new ItemHammerStone(ItemData.HAMMER_IDS[1]);
+		HammerStone = new ItemHammerStone();
 		GameRegistry.registerItem(HammerWood, ItemData.HAMMER_UNLOCALIZED_NAMES[1]);
 
-		HammerIron = new ItemHammerIron(ItemData.HAMMER_IDS[2]);
+		HammerIron = new ItemHammerIron();
 		GameRegistry.registerItem(HammerIron, ItemData.HAMMER_UNLOCALIZED_NAMES[2]);
 
-		HammerGold = new ItemHammerGold(ItemData.HAMMER_IDS[3]);
+		HammerGold = new ItemHammerGold();
 		GameRegistry.registerItem(HammerGold, ItemData.HAMMER_UNLOCALIZED_NAMES[3]);
 
-		HammerDiamond = new ItemHammerDiamond(ItemData.HAMMER_IDS[4]);
+		HammerDiamond = new ItemHammerDiamond();
 		GameRegistry.registerItem(HammerDiamond, ItemData.HAMMER_UNLOCALIZED_NAMES[4]);
 
-		Crook = new ItemCrook(ItemData.CROOK_ID);
+		Crook = new ItemCrook();
 		GameRegistry.registerItem(Crook, ItemData.CROOK_UNLOCALIZED_NAME);
-		CrookBone = new ItemCrookBone(ItemData.CROOK_BONE_ID);
+		CrookBone = new ItemCrookBone();
 		GameRegistry.registerItem(CrookBone, ItemData.CROOK_BONE_UNLOCALIZED_NAME);
 		
-		Silkworm = new ItemSilkworm(ItemData.SILKWORM_ID);
+		Silkworm = new ItemSilkworm();
 		GameRegistry.registerItem(Silkworm, ItemData.SILKWORM_UNLOCALIZED_NAME);
 
-		Mesh = new ItemMesh(ItemData.MESH_ID);
+		Mesh = new ItemMesh();
 		GameRegistry.registerItem(Mesh, ItemData.MESH_UNLOCALIZED_NAME);
 
-		Spores = new ItemSpores(ItemData.SPORES_ID);
+		Spores = new ItemSpores();
 		GameRegistry.registerItem(Spores, ItemData.SPORES_UNLOCALIZED_NAME);
 
-		GrassSeeds = new ItemGrassSeeds(ItemData.SEED_GRASS_ID);
+		GrassSeeds = new ItemGrassSeeds();
 		GameRegistry.registerItem(GrassSeeds, ItemData.SEED_GRASS_UNLOCALIZED_NAME);
 
-		Stones = new ItemStone(ItemData.STONES_ID);
+		Stones = new ItemStone();
 		GameRegistry.registerItem(Stones, ItemData.STONES_UNLOCALIZED_NAME);
 
-		Porcelain = new ItemPorcelainBall(ItemData.PORCELAIN_ID);
+		Porcelain = new ItemPorcelainBall();
 		GameRegistry.registerItem(Porcelain, ItemData.PORCELAIN_UNLOCALIZED_NAME);
 
-		Doll = new ItemDoll(ItemData.DOLL_ID);
+		Doll = new ItemDoll();
 		GameRegistry.registerItem(Doll, ItemData.DOLL_UNLOCALIZED_NAME);
-		DollAngry = new ItemDollAngry(ItemData.ANGRY_DOLL_ID);
+		DollAngry = new ItemDollAngry();
 		GameRegistry.registerItem(DollAngry, ItemData.ANGRY_DOLL_UNLOCALIZED_NAME);
-		DollCreepy = new ItemDollCreepy(ItemData.CREEPY_DOLL_ID);
+		DollCreepy = new ItemDollCreepy();
 		GameRegistry.registerItem(DollCreepy, ItemData.CREEPY_DOLL_UNLOCALIZED_NAME);
 
-		SilkwormCooked = new ItemSilkwormCooked(ItemData.SILKWORM_COOKED_ID);
+		SilkwormCooked = new ItemSilkwormCooked();
 		GameRegistry.registerItem(SilkwormCooked, ItemData.SILKWORM_COOKED_UNLOCALIZED_NAME);
 
-		SeedsOak = new ItemSeedOak(ItemData.SEED_OAK_ID);
+		SeedsOak = new ItemSeedOak();
 		GameRegistry.registerItem(SeedsOak, ItemData.SEED_OAK_UNLOCALIZED_NAME);
-		SeedsSpruce = new ItemSeedSpruce(ItemData.SEED_SPRUCE_ID);
+		SeedsSpruce = new ItemSeedSpruce();
 		GameRegistry.registerItem(SeedsSpruce, ItemData.SEED_SPRUCE_UNLOCALIZED_NAME);
-		SeedsBirch = new ItemSeedBirch(ItemData.SEED_BIRCH_ID);
+		SeedsBirch = new ItemSeedBirch();
 		GameRegistry.registerItem(SeedsBirch, ItemData.SEED_BIRCH_UNLOCALIZED_NAME);
-		SeedsJungle = new ItemSeedJungle(ItemData.SEED_JUNGLE_ID);
+		SeedsJungle = new ItemSeedJungle();
 		GameRegistry.registerItem(SeedsJungle, ItemData.SEED_JUNGLE_UNLOCALIZED_NAME);
-		SeedsCactus = new ItemSeedCactus(ItemData.SEED_CACTUS_ID);
+		SeedsCactus = new ItemSeedCactus();
 		GameRegistry.registerItem(SeedsCactus, ItemData.SEED_CACTUS_UNLOCALIZED_NAME);
-		SeedsSugarcane = new ItemSeedSugarcane(ItemData.SEED_SUGAR_CANE_ID);
+		SeedsSugarcane = new ItemSeedSugarcane();
 		GameRegistry.registerItem(SeedsSugarcane, ItemData.SEED_SUGAR_CANE_UNLOCALIZED_NAME);
-		SeedsCarrot = new ItemSeedCarrot(ItemData.SEED_CARROT_ID);
+		SeedsCarrot = new ItemSeedCarrot();
 		GameRegistry.registerItem(SeedsCarrot, ItemData.SEED_CARROT_UNLOCALIZED_NAME);
-		SeedsPotato = new ItemSeedPotato(ItemData.SEED_POTATO_ID);
+		SeedsPotato = new ItemSeedPotato();
 		GameRegistry.registerItem(SeedsPotato, ItemData.SEED_POTATO_UNLOCALIZED_NAME);
 
-		SeedsRubber = new ItemSeedRubber(ItemData.SEED_RUBBER_ID);
+		SeedsRubber = new ItemSeedRubber();
 		GameRegistry.registerItem(SeedsRubber, ItemData.SEED_RUBBER_UNLOCALIZED_NAME);
 
 		//Iron Ore
-		IronGravel = new ItemIronGravel(ItemData.IRON_ORE_IDS[0]);
+		IronGravel = new ItemIronGravel();
 		GameRegistry.registerItem(IronGravel, ItemData.IRON_ORE_UNLOCALIZED_NAMES[0]);
-		IronSand = new ItemIronSand(ItemData.IRON_ORE_IDS[1]);
+		IronSand = new ItemIronSand();
 		GameRegistry.registerItem(IronSand, ItemData.IRON_ORE_UNLOCALIZED_NAMES[1]);
-		IronDust = new ItemIronDust(ItemData.IRON_ORE_IDS[2]);
+		IronDust = new ItemIronDust();
 		GameRegistry.registerItem(IronDust, ItemData.IRON_ORE_UNLOCALIZED_NAMES[2]);
 
 		//Gold Ore
-		GoldGravel = new ItemGoldGravel(ItemData.GOLD_ORE_IDS[0]);
+		GoldGravel = new ItemGoldGravel();
 		GameRegistry.registerItem(GoldGravel, ItemData.GOLD_ORE_UNLOCALIZED_NAMES[0]);
-		GoldSand = new ItemGoldSand(ItemData.GOLD_ORE_IDS[1]);
+		GoldSand = new ItemGoldSand();
 		GameRegistry.registerItem(GoldSand, ItemData.GOLD_ORE_UNLOCALIZED_NAMES[1]);
-		GoldDust = new ItemGoldDust(ItemData.GOLD_ORE_IDS[2]);
+		GoldDust = new ItemGoldDust();
 		GameRegistry.registerItem(GoldDust, ItemData.GOLD_ORE_UNLOCALIZED_NAMES[2]);
 
 		//Copper Ore
-		CopperGravel = new ItemCopperGravel(ItemData.COPPER_ORE_IDS[0]);
+		CopperGravel = new ItemCopperGravel();
 		GameRegistry.registerItem(CopperGravel, ItemData.COPPER_ORE_UNLOCALIZED_NAMES[0]);
-		CopperSand = new ItemCopperSand(ItemData.COPPER_ORE_IDS[1]);
+		CopperSand = new ItemCopperSand();
 		GameRegistry.registerItem(CopperSand, ItemData.COPPER_ORE_UNLOCALIZED_NAMES[1]);
-		CopperDust = new ItemCopperDust(ItemData.COPPER_ORE_IDS[2]);
+		CopperDust = new ItemCopperDust();
 		GameRegistry.registerItem(CopperDust, ItemData.COPPER_ORE_UNLOCALIZED_NAMES[2]);
-		CopperIngot = new ItemCopperIngot(ItemData.COPPER_INGOT_ID);
+		CopperIngot = new ItemCopperIngot();
 		GameRegistry.registerItem(CopperIngot, ItemData.COPPER_ORE_UNLOCALIZED_NAMES[3]);
 
 		//Tin Ore
-		TinGravel = new ItemTinGravel(ItemData.TIN_ORE_IDS[0]);
+		TinGravel = new ItemTinGravel();
 		GameRegistry.registerItem(TinGravel, ItemData.TIN_ORE_UNLOCALIZED_NAMES[0]);
-		TinSand = new ItemTinSand(ItemData.TIN_ORE_IDS[1]);
+		TinSand = new ItemTinSand();
 		GameRegistry.registerItem(TinSand, ItemData.TIN_ORE_UNLOCALIZED_NAMES[1]);
-		TinDust = new ItemTinDust(ItemData.TIN_ORE_IDS[2]);
+		TinDust = new ItemTinDust();
 		GameRegistry.registerItem(TinDust, ItemData.TIN_ORE_UNLOCALIZED_NAMES[2]);
-		TinIngot = new ItemTinIngot(ItemData.TIN_INGOT_ID);
+		TinIngot = new ItemTinIngot();
 		GameRegistry.registerItem(TinIngot, ItemData.TIN_ORE_UNLOCALIZED_NAMES[3]);
 
 		//Silver Ore
-		SilverGravel = new ItemSilverGravel(ItemData.SILVER_ORE_IDS[0]);
+		SilverGravel = new ItemSilverGravel();
 		GameRegistry.registerItem(SilverGravel, ItemData.SILVER_ORE_UNLOCALIZED_NAMES[0]);
-		SilverSand = new ItemSilverSand(ItemData.SILVER_ORE_IDS[1]);
+		SilverSand = new ItemSilverSand();
 		GameRegistry.registerItem(SilverSand, ItemData.SILVER_ORE_UNLOCALIZED_NAMES[1]);
-		SilverDust = new ItemSilverDust(ItemData.SILVER_ORE_IDS[2]);
+		SilverDust = new ItemSilverDust();
 		GameRegistry.registerItem(SilverDust, ItemData.SILVER_ORE_UNLOCALIZED_NAMES[2]);
-		SilverIngot = new ItemSilverIngot(ItemData.SILVER_INGOT_ID);
+		SilverIngot = new ItemSilverIngot();
 		GameRegistry.registerItem(SilverIngot, ItemData.SILVER_ORE_UNLOCALIZED_NAMES[3]);
 
 		//Lead Ore
-		LeadGravel = new ItemLeadGravel(ItemData.LEAD_ORE_IDS[0]);
+		LeadGravel = new ItemLeadGravel();
 		GameRegistry.registerItem(LeadGravel, ItemData.LEAD_ORE_UNLOCALIZED_NAMES[0]);
-		LeadSand = new ItemLeadSand(ItemData.LEAD_ORE_IDS[1]);
+		LeadSand = new ItemLeadSand();
 		GameRegistry.registerItem(LeadSand, ItemData.LEAD_ORE_UNLOCALIZED_NAMES[1]);
-		LeadDust = new ItemLeadDust(ItemData.LEAD_ORE_IDS[2]);
+		LeadDust = new ItemLeadDust();
 		GameRegistry.registerItem(LeadDust, ItemData.LEAD_ORE_UNLOCALIZED_NAMES[2]);
-		LeadIngot = new ItemLeadIngot(ItemData.LEAD_INGOT_ID);
+		LeadIngot = new ItemLeadIngot();
 		GameRegistry.registerItem(LeadIngot, ItemData.LEAD_ORE_UNLOCALIZED_NAMES[3]);
 
 		//Osmium Ore
-		OsmiumGravel = new ItemOsmiumGravel(ItemData.OSMIUM_ORE_IDS[0]);
+		OsmiumGravel = new ItemOsmiumGravel();
 		GameRegistry.registerItem(OsmiumGravel, ItemData.OSMIUM_ORE_UNLOCALIZED_NAMES[0]);
-		OsmiumSand = new ItemOsmiumSand(ItemData.OSMIUM_ORE_IDS[1]);
+		OsmiumSand = new ItemOsmiumSand();
 		GameRegistry.registerItem(OsmiumSand, ItemData.OSMIUM_ORE_UNLOCALIZED_NAMES[1]);
-		OsmiumDust = new ItemOsmiumDust(ItemData.OSMIUM_ORE_IDS[2]);
+		OsmiumDust = new ItemOsmiumDust();
 		GameRegistry.registerItem(OsmiumDust, ItemData.OSMIUM_ORE_UNLOCALIZED_NAMES[2]);
 
 		//Nickle Ore
-		NickelGravel = new ItemNickelGravel(ItemData.NICKEL_ORE_IDS[0]);
+		NickelGravel = new ItemNickelGravel();
 		GameRegistry.registerItem(NickelGravel, ItemData.NICKEL_ORE_UNLOCALIZED_NAMES[0]);
-		NickelSand = new ItemNickelSand(ItemData.NICKEL_ORE_IDS[1]);
+		NickelSand = new ItemNickelSand();
 		GameRegistry.registerItem(NickelSand, ItemData.NICKEL_ORE_UNLOCALIZED_NAMES[1]);
-		NickelDust = new ItemNickelDust(ItemData.NICKEL_ORE_IDS[2]);
+		NickelDust = new ItemNickelDust();
 		GameRegistry.registerItem(NickelDust, ItemData.NICKEL_ORE_UNLOCALIZED_NAMES[2]);
-		NickelIngot = new ItemNickelIngot(ItemData.NICKEL_INGOT_ID);
+		NickelIngot = new ItemNickelIngot();
 		GameRegistry.registerItem(NickelIngot, ItemData.NICKEL_ORE_UNLOCALIZED_NAMES[3]);
 
 		//Platinum Ore
-		PlatinumGravel = new ItemPlatinumGravel(ItemData.PLATINUM_ORE_IDS[0]);
+		PlatinumGravel = new ItemPlatinumGravel();
 		GameRegistry.registerItem(PlatinumGravel, ItemData.PLATINUM_ORE_UNLOCALIZED_NAMES[0]);
-		PlatinumSand = new ItemPlatinumSand(ItemData.PLATINUM_ORE_IDS[1]);
+		PlatinumSand = new ItemPlatinumSand();
 		GameRegistry.registerItem(PlatinumSand, ItemData.PLATINUM_ORE_UNLOCALIZED_NAMES[1]);
-		PlatinumDust = new ItemPlatinumDust(ItemData.PLATINUM_ORE_IDS[2]);
+		PlatinumDust = new ItemPlatinumDust();
 		GameRegistry.registerItem(PlatinumDust, ItemData.PLATINUM_ORE_UNLOCALIZED_NAMES[2]);
-		PlatinumIngot = new ItemPlatinumIngot(ItemData.PLATINUM_INGOT_ID);
+		PlatinumIngot = new ItemPlatinumIngot();
 		GameRegistry.registerItem(PlatinumIngot, ItemData.PLATINUM_ORE_UNLOCALIZED_NAMES[3]);
 
 		//Aluminum Ore
-		AluminumGravel = new ItemAluminumGravel(ItemData.ALUMINUM_ORE_IDS[0]);
+		AluminumGravel = new ItemAluminumGravel();
 		GameRegistry.registerItem(AluminumGravel, ItemData.ALUMINUM_ORE_UNLOCALIZED_NAMES[0]);
-		AluminumSand = new ItemAluminumSand(ItemData.ALUMINUM_ORE_IDS[1]);
+		AluminumSand = new ItemAluminumSand();
 		GameRegistry.registerItem(AluminumSand, ItemData.ALUMINUM_ORE_UNLOCALIZED_NAMES[1]);
-		AluminumDust = new ItemAluminumDust(ItemData.ALUMINUM_ORE_IDS[2]);
+		AluminumDust = new ItemAluminumDust();
 		GameRegistry.registerItem(AluminumDust, ItemData.ALUMINUM_ORE_UNLOCALIZED_NAMES[2]);
-		AluminumIngot = new ItemAluminumIngot(ItemData.ALUMINUM_INGOT_ID);
+		AluminumIngot = new ItemAluminumIngot();
 		GameRegistry.registerItem(AluminumIngot, ItemData.ALUMINUM_ORE_UNLOCALIZED_NAMES[3]);
 
 

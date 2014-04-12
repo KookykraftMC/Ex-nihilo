@@ -1,18 +1,18 @@
 package exnihilo.registries.helpers;
 
-
+import net.minecraft.item.Item;
 
 public class Compostable {
 
 	public String unlocalizedName;
-	public int id;
+	public Item item;
 	public int meta;
 	public float value;
 	public Color color;
 	
-	public Compostable(int id, int meta, float value, Color color)
+	public Compostable(Item item, int meta, float value, Color color)
 	{
-		this.id = id;
+		this.item = item;
 		this.meta = meta;
 		this.value = value;
 		this.color = color;

@@ -1,46 +1,49 @@
 package exnihilo.items;
 
-import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
+import java.util.Set;
+
+import net.minecraft.block.Block;
+import net.minecraft.client.renderer.texture.IIconRegister;
+import net.minecraft.entity.Entity;
+import net.minecraft.entity.EntityLivingBase;
+import net.minecraft.entity.item.EntityItem;
+import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.init.Blocks;
+import net.minecraft.item.ItemStack;
+import net.minecraft.item.ItemTool;
+import net.minecraft.world.World;
+import net.minecraftforge.fluids.FluidRegistry;
+
+import com.google.common.collect.Sets;
 
 import exnihilo.ENBlocks;
 import exnihilo.ENItems;
 import exnihilo.compatibility.foresty.Forestry;
 import exnihilo.data.ItemData;
 import exnihilo.data.ModData;
-import net.minecraft.block.Block;
-import net.minecraft.client.renderer.texture.IconRegister;
-import net.minecraft.entity.Entity;
-import net.minecraft.entity.EntityLivingBase;
-import net.minecraft.entity.item.EntityItem;
-import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.item.EnumToolMaterial;
-import net.minecraft.item.Item;
-import net.minecraft.item.ItemStack;
-import net.minecraft.item.ItemTool;
-import net.minecraft.world.World;
-import net.minecraftforge.fluids.FluidRegistry;
 
 public class ItemCrook extends ItemTool{
 	public static final double pullingForce = 1.5d;
 	public static final double pushingForce = 1.5d;
 
-	public static final Block[] blocksEffectiveAgainst = new Block[]{};
+	@SuppressWarnings("rawtypes")
+	public static final Set blocksEffectiveAgainst = Sets.newHashSet(new Block[]{});
 
-	public ItemCrook(int id) 
+	public ItemCrook() 
 	{	
-		super(id, 0.0f, EnumToolMaterial.WOOD, blocksEffectiveAgainst);
+		super(0.0f, ToolMaterial.WOOD, blocksEffectiveAgainst);
 
 		this.setMaxDamage((int)(this.getMaxDamage() * 3));
 	}
 	
-	public ItemCrook(int id, EnumToolMaterial mat) 
+	public ItemCrook(ToolMaterial mat) 
 	{	
-		super(id, 0.0f, mat, blocksEffectiveAgainst);
+		super(0.0f, mat, blocksEffectiveAgainst);
 	}
 
 	@Override
-	public boolean canHarvestBlock(Block block)
+	public boolean func_150897_b(Block block)
 	{
 		if (block.isLeaves(null, 0, 0, 0))
 		{
@@ -51,7 +54,7 @@ public class ItemCrook extends ItemTool{
 	}
 
 	@Override
-	public float getStrVsBlock(ItemStack item, Block block)
+	public float func_150893_a(ItemStack item, Block block)
 	{
 		if (block.isLeaves(null, 0, 0, 0))
 		{
@@ -63,15 +66,14 @@ public class ItemCrook extends ItemTool{
 
 	//Break leaf block
 	@Override
+	@SuppressWarnings("rawtypes")
 	public boolean onBlockStartBreak(ItemStack item, int X, int Y, int Z, EntityPlayer player)
 	{
 		World world = player.worldObj;
-		int blockID = world.getBlockId(X,Y,Z);
+		Block block = world.getBlock(X,Y,Z);
 		int meta = world.getBlockMetadata(X, Y, Z);
 		boolean validTarget = false;
 		boolean extraDropped = false;
-
-		Block block = Block.blocksList[blockID];
 
 		if (block.isLeaves(null, 0, 0, 0))
 		{
@@ -119,7 +121,7 @@ public class ItemCrook extends ItemTool{
 			validTarget = true;
 		}
 
-		if (blockID == ENBlocks.LeavesInfested.blockID)
+		if (block == ENBlocks.LeavesInfested)
 		{
 			if (!world.isRemote)
 			{
@@ -200,7 +202,7 @@ public class ItemCrook extends ItemTool{
 	}
 
 	@Override
-	public void registerIcons(IconRegister register)
+	public void registerIcons(IIconRegister register)
 	{
 		this.itemIcon = register.registerIcon(ModData.TEXTURE_LOCATION + ":Crook");
 	}
@@ -213,13 +215,13 @@ public class ItemCrook extends ItemTool{
 	{
 		//TODO: Remove this during the 1.7 update?
 		// Fishing will allow the player to obtain Lilypads.
-		if (world.getBlockId(x, y, z) == Block.dirt.blockID && world.getBlockId(x, y + 1, z) == FluidRegistry.WATER.getBlockID() && y + 1 >= world.getTopSolidOrLiquidBlock(x, z) - 1)
+		if (world.getBlock(x, y, z) == Blocks.dirt && world.getBlock(x, y + 1, z) == FluidRegistry.WATER.getBlock() && y + 1 >= world.getTopSolidOrLiquidBlock(x, z) - 1)
 		{
 			if (!world.isRemote)
 			{
 				if (world.rand.nextInt(120) == 0)
 				{
-					ItemStack waterlily = new ItemStack(Block.waterlily.blockID, 1, 0);
+					ItemStack waterlily = new ItemStack(Blocks.waterlily, 1, 0);
 					EntityItem entity = new EntityItem(world, x + 0.5D, y + 1.5D, z + 0.5D, waterlily);
 
 					double distance = Math.sqrt(Math.pow(player.posX - entity.posX, 2) + Math.pow(player.posZ - entity.posZ, 2));

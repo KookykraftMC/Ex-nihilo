@@ -2,6 +2,7 @@ package exnihilo.blocks;
 
 import java.util.List;
 
+import net.minecraft.block.Block;
 import net.minecraft.block.BlockContainer;
 import net.minecraft.block.material.Material;
 import net.minecraft.client.renderer.texture.IIconRegister;
@@ -101,9 +102,9 @@ public class BlockSieve extends BlockContainer {
 		{
 			ItemStack held = player.getCurrentEquippedItem();
 			
-			if (SieveRegistry.Contains(Item.getIdFromItem(held.getItem()), held.getItemDamage()))
+			if (SieveRegistry.Contains(Block.getBlockFromItem(held.getItem()), held.getItemDamage()))
 			{
-				sieve.addSievable(Item.getIdFromItem(held.getItem()), held.getItemDamage());
+				sieve.addSievable(Block.getBlockFromItem(held.getItem()), held.getItemDamage());
 				removeCurrentItem(player);
 			}
 		}else

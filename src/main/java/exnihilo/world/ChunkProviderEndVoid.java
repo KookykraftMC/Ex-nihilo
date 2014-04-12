@@ -1,5 +1,6 @@
 package exnihilo.world;
 
+import net.minecraft.block.Block;
 import net.minecraft.world.World;
 import net.minecraft.world.biome.BiomeGenBase;
 import net.minecraft.world.gen.ChunkProviderEnd;
@@ -10,13 +11,13 @@ public class ChunkProviderEndVoid extends ChunkProviderEnd{
 	}
 
     @Override
-    public void generateTerrain(int par1, int par2, byte[] par3ArrayOfByte, BiomeGenBase[] par4ArrayOfBiomeGenBase)
+    public void func_147420_a(int par1, int par2, Block[] par3ArrayOfBlock, BiomeGenBase[] par4ArrayOfBiomeGenBase)
     {
     	//Do nothing.
     }
 
     @Override
-    public void replaceBlocksForBiome(int par1, int par2, byte[] par3ArrayOfByte, BiomeGenBase[] par4ArrayOfBiomeGenBase)
+    public void func_147421_b(int par1, int par2, Block[] par3ArrayOfBlock, BiomeGenBase[] par4ArrayOfBiomeGenBase)
     {
     	//Do nothing.
     }

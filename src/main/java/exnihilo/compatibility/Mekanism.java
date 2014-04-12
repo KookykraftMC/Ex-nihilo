@@ -1,12 +1,9 @@
 package exnihilo.compatibility;
 
-import java.util.ArrayList;
-
 import net.minecraft.block.Block;
-import net.minecraft.item.Item;
+import net.minecraft.init.Blocks;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.FurnaceRecipes;
-import net.minecraftforge.oredict.OreDictionary;
 import net.minecraftforge.oredict.ShapedOreRecipe;
 import cpw.mods.fml.common.Loader;
 import cpw.mods.fml.common.registry.GameRegistry;
@@ -23,18 +20,18 @@ public class Mekanism {
 
 	public static void loadCompatibility()
 	{
-		SieveRegistry.register(Block.gravel.blockID, 0, ENItems.OsmiumGravel.itemID, 0, 12);
-		SieveRegistry.register(Block.sand.blockID, 0, ENItems.OsmiumSand.itemID, 0, 12);
-		SieveRegistry.register(ENBlocks.Dust.blockID, 0, ENItems.OsmiumDust.itemID, 0, 12);
+		SieveRegistry.register(Blocks.gravel, 0, ENItems.OsmiumGravel, 0, 12);
+		SieveRegistry.register(Blocks.sand, 0, ENItems.OsmiumSand, 0, 12);
+		SieveRegistry.register(ENBlocks.Dust, 0, ENItems.OsmiumDust, 0, 12);
 
 		ItemStack ingotOsmium = mekanism.api.ItemRetriever.getItem("Ingot");
 		ingotOsmium.setItemDamage(1);
 
 		if (ingotOsmium != null)
 		{
-			FurnaceRecipes.smelting().addSmelting(ENBlocks.OsmiumOre.blockID, 0, ingotOsmium, 0.1f);
-			FurnaceRecipes.smelting().addSmelting(ENBlocks.OsmiumOre.blockID, 1, ingotOsmium, 0.1f);
-			FurnaceRecipes.smelting().addSmelting(ENBlocks.OsmiumOre.blockID, 2, ingotOsmium, 0.1f);
+			FurnaceRecipes.smelting().func_151393_a(ENBlocks.OsmiumOre, ingotOsmium, 0.1f);
+			FurnaceRecipes.smelting().func_151394_a(new ItemStack(ENBlocks.OsmiumOre, 1, 1), ingotOsmium, 0.1f);
+			FurnaceRecipes.smelting().func_151394_a(new ItemStack(ENBlocks.OsmiumOre, 1, 2), ingotOsmium, 0.1f);
 		}
 
 		GameRegistry.addRecipe(
@@ -71,11 +68,11 @@ public class Mekanism {
 
 		if (oreOsmium != null)
 		{
-			HammerRegistry.registerOre(oreOsmium.itemID, oreOsmium.getItemDamage(), ENItems.OsmiumGravel.itemID, 0);
+			HammerRegistry.registerOre(Block.getBlockFromItem(oreOsmium.getItem()), oreOsmium.getItemDamage(), ENItems.OsmiumGravel, 0);
 		}
 
-		HammerRegistry.registerOre(ENBlocks.OsmiumOre.blockID, 0, ENItems.OsmiumSand.itemID, 0);
-		HammerRegistry.registerOre(ENBlocks.OsmiumOre.blockID, 1, ENItems.OsmiumDust.itemID, 0);
+		HammerRegistry.registerOre(ENBlocks.OsmiumOre, 0, ENItems.OsmiumSand, 0);
+		HammerRegistry.registerOre(ENBlocks.OsmiumOre, 1, ENItems.OsmiumDust, 0);
 
 
 	}

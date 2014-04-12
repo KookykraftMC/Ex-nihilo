@@ -1,6 +1,6 @@
 package exnihilo.items.ores;
 
-import net.minecraft.client.renderer.texture.IconRegister;
+import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
@@ -9,8 +9,8 @@ import exnihilo.data.ModData;
 
 public class ItemIronSand extends Item{
 
-	public ItemIronSand(int id) {
-		super(id);
+	public ItemIronSand() {
+		super();
 		
 		setCreativeTab(CreativeTabs.tabMaterials);
 	}
@@ -28,7 +28,7 @@ public class ItemIronSand extends Item{
 	}
 	
 	@Override
-	public void registerIcons(IconRegister register)
+	public void registerIcons(IIconRegister register)
 	{
 		this.itemIcon = register.registerIcon(ModData.TEXTURE_LOCATION + ":ItemIronSand");
 	}

@@ -72,7 +72,7 @@ public class TileEntityBeeTrap extends TileEntity {
 				//If hive != null, replace this block with the returned hive.
 				if (hive != null && worldObj.rand.nextInt(HIVE_SPAWN_CHANCE - Math.min(30, hive.getSpawnChanceModifier(blocks))) == 0)
 				{
-					worldObj.setBlock(xCoord, yCoord, zCoord, hive.blockID, hive.meta, 3);
+					worldObj.setBlock(xCoord, yCoord, zCoord, Block.getBlockById(hive.blockID), hive.meta, 3);
 				}else
 				{
 					//Reset the scanner if spawning failed.

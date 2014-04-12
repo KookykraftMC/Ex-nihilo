@@ -3,40 +3,30 @@ package exnihilo.blocks.tileentities;
 import java.util.ArrayList;
 import java.util.Iterator;
 
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
-import exnihilo.ENBlocks;
-import exnihilo.blocks.tileentities.TileEntityBarrel.BarrelMode;
-import exnihilo.data.BlockData;
-import exnihilo.particles.ParticleSieve;
-import exnihilo.registries.ColorRegistry;
-import exnihilo.registries.SieveRegistry;
-import exnihilo.registries.helpers.Color;
-import exnihilo.registries.helpers.SiftReward;
-
 import net.minecraft.block.Block;
 import net.minecraft.client.Minecraft;
-import net.minecraft.client.particle.EntityBreakingFX;
-import net.minecraft.client.particle.EntityDiggingFX;
-import net.minecraft.client.particle.EntityFX;
 import net.minecraft.entity.item.EntityItem;
-import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
-import net.minecraft.network.INetworkManager;
-import net.minecraft.network.packet.Packet;
-import net.minecraft.network.packet.Packet132TileEntityData;
+import net.minecraft.network.NetworkManager;
+import net.minecraft.network.Packet;
+import net.minecraft.network.play.server.S35PacketUpdateTileEntity;
 import net.minecraft.tileentity.TileEntity;
-import net.minecraft.util.Icon;
+import net.minecraft.util.IIcon;
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
+import exnihilo.data.BlockData;
+import exnihilo.particles.ParticleSieve;
+import exnihilo.registries.SieveRegistry;
+import exnihilo.registries.helpers.SiftReward;
 
 public class TileEntitySieve extends TileEntity{
 	private static final float MIN_RENDER_CAPACITY = 0.70f;
 	private static final float MAX_RENDER_CAPACITY = 0.9f;
 	private static final float PROCESSING_INTERVAL = 0.075f;
 	private static final int UPDATE_INTERVAL = 20;
-	private Color color = new Color(1f,1f,1f,1f);
 
-	public int contentID = 0;
+	public Block content;
 	public int contentMeta = 0;
 
 	private float volume = 0;
@@ -55,12 +45,12 @@ public class TileEntitySieve extends TileEntity{
 
 	public TileEntitySieve()
 	{
-		mode = mode.EMPTY;
+		mode = SieveMode.EMPTY;
 	}
 
-	public void addSievable(int blockID, int blockMeta)
+	public void addSievable(Block block, int blockMeta)
 	{
-		this.contentID = blockID;
+		this.content = block;
 		this.contentMeta = blockMeta;
 
 		this.mode = SieveMode.FILLED;
@@ -74,7 +64,7 @@ public class TileEntitySieve extends TileEntity{
 	{
 		if(worldObj.isRemote && particleMode)
 		{
-			spawnFX(contentID, contentMeta);
+			spawnFX(content, contentMeta);
 		}
 
 		timer++;
@@ -108,11 +98,11 @@ public class TileEntitySieve extends TileEntity{
 
 		if (volume <= 0)
 		{
-			mode = mode.EMPTY;
+			mode = SieveMode.EMPTY;
 			//give rewards!
 			if (!worldObj.isRemote)
 			{
-				ArrayList<SiftReward> rewards = SieveRegistry.getRewards(contentID, contentMeta);
+				ArrayList<SiftReward> rewards = SieveRegistry.getRewards(content, contentMeta);
 				if (rewards.size() > 0)
 				{
 					Iterator<SiftReward> it = rewards.iterator();
@@ -122,7 +112,7 @@ public class TileEntitySieve extends TileEntity{
 
 						if (worldObj.rand.nextInt(reward.rarity) == 0)
 						{
-							EntityItem entityitem = new EntityItem(worldObj, (double)xCoord + 0.5D, (double)yCoord + 1.5D, (double)zCoord + 0.5D, new ItemStack(reward.id, 1, reward.meta));
+							EntityItem entityitem = new EntityItem(worldObj, (double)xCoord + 0.5D, (double)yCoord + 1.5D, (double)zCoord + 0.5D, new ItemStack(reward.item, 1, reward.meta));
 
 							double f3 = 0.05F;
 							entityitem.motionX = worldObj.rand.nextGaussian() * f3;
@@ -146,12 +136,11 @@ public class TileEntitySieve extends TileEntity{
 	}
 
 	@SideOnly(Side.CLIENT)
-	private void spawnFX(int blockID, int blockMeta)
+	private void spawnFX(Block block, int blockMeta)
 	{
-		Block block = Block.blocksList[blockID];
 		if (block != null)
 		{
-			Icon icon = block.getIcon(0, blockMeta);
+			IIcon icon = block.getIcon(0, blockMeta);
 
 			for (int x = 0; x < 4; x++)
 			{	
@@ -200,7 +189,7 @@ public class TileEntitySieve extends TileEntity{
 			mode = SieveMode.FILLED;
 			break;
 		}
-		contentID = compound.getInteger("contentID");
+		content = Block.getBlockById(compound.getInteger("contentID"));
 		contentMeta = compound.getInteger("contentMeta");
 		volume = compound.getFloat("volume");
 		particleMode = compound.getBoolean("particles");
@@ -211,7 +200,8 @@ public class TileEntitySieve extends TileEntity{
 	{
 		super.writeToNBT(compound);
 		compound.setInteger("mode", mode.value);
-		compound.setInteger("contentID", contentID);
+		//Should change later to not de dependent on DV, as Forge can now change them willy-nilly at startup
+		compound.setInteger("contentID", Block.getIdFromBlock(content));
 		compound.setInteger("contentMeta", contentMeta);
 		compound.setFloat("volume", volume);
 		compound.setBoolean("particles", particleMode);
@@ -223,13 +213,13 @@ public class TileEntitySieve extends TileEntity{
 		NBTTagCompound tag = new NBTTagCompound();
 		this.writeToNBT(tag);
 
-		return new Packet132TileEntityData(this.xCoord, this.yCoord, this.zCoord, BlockData.SIEVE_ID, tag);
+		return new S35PacketUpdateTileEntity(this.xCoord, this.yCoord, this.zCoord, BlockData.SIEVE_ID, tag);
 	}
 
 	@Override
-	public void onDataPacket(INetworkManager net, Packet132TileEntityData pkt)
+	public void onDataPacket(NetworkManager net, S35PacketUpdateTileEntity pkt)
 	{
-		NBTTagCompound tag = pkt.data;
+		NBTTagCompound tag = pkt.func_148857_g();
 		this.readFromNBT(tag);
 	}
 }

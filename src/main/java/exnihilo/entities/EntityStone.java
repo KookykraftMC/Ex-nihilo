@@ -2,7 +2,6 @@ package exnihilo.entities;
 
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.monster.EntitySilverfish;
-import net.minecraft.entity.passive.EntityMooshroom;
 import net.minecraft.entity.projectile.EntityThrowable;
 import net.minecraft.util.DamageSource;
 import net.minecraft.util.MovingObjectPosition;
@@ -42,7 +41,7 @@ public class EntityStone extends EntityThrowable
         
         worldObj.playSoundAtEntity(this, "dig.stone", 0.5F, 1.0F);
         
-        if (!this.worldObj.isRemote && worldObj.difficultySetting > 0)
+        if (!this.worldObj.isRemote && worldObj.difficultySetting.getDifficultyId() > 0)
         {
         	if (worldObj.rand.nextInt(64) == 0)
         	{

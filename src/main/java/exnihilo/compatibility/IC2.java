@@ -1,13 +1,10 @@
 package exnihilo.compatibility;
 
-import ic2.api.recipe.IRecipeInput;
-import ic2.api.recipe.RecipeInputItemStack;
-import ic2.api.recipe.RecipeOutput;
-
 import java.util.ArrayList;
 import java.util.Map;
 
 import net.minecraft.block.Block;
+import net.minecraft.init.Blocks;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.oredict.OreDictionary;
@@ -36,38 +33,27 @@ public class IC2 {
 		{
 			ItemStack sulfur = ores.toArray(new ItemStack[ores.size()])[0];
 
-			SieveRegistry.register(ENBlocks.Dust.blockID, 0, sulfur.itemID, sulfur.getItemDamage(), 32);
+			SieveRegistry.register(ENBlocks.Dust, 0, sulfur.getItem(), sulfur.getItemDamage(), 32);
 		}
 
 		Block rubberSapling = GameRegistry.findBlock("IC2", "blockRubSapling");
 		ItemSeedRubber.saplings.add(rubberSapling);
-		SieveRegistry.register(Block.dirt.blockID, 0, ENItems.SeedsRubber.itemID, 0, 45);
+		SieveRegistry.register(Blocks.dirt, 0, ENItems.SeedsRubber, 0, 45);
 
 		Item crushedUranium = GameRegistry.findItem("IC2", "itemCrushedOre");
 		if (crushedUranium != null)
 		{
-			SieveRegistry.register(Block.sand.blockID, 0, crushedUranium.itemID, 4, 48);
+			SieveRegistry.register(Blocks.sand, 0, crushedUranium, 4, 48);
 		}
 
-		Item plantBall = null;
-		for (Item i : Item.itemsList)
-		{
-			if (i != null)
-			{
-				if (i.getUnlocalizedName().contains("itemFuelPlantBall"))
-				{
-					plantBall = i;
-				}
-			}
-		}
-
+		Item plantBall = GameRegistry.findItem("IC2", "itemFuelPlantBall");
 		if (plantBall != null)
 		{
-			CompostRegistry.register(plantBall.itemID, 0, 0.5f, new Color("269900"));
+			CompostRegistry.register(plantBall, 0, 0.5f, new Color("269900"));
 		}
 
 		Item plantBallCompressed = null;
-		for (Item i : Item.itemsList)
+		for (Item i : Item.itemRegistry)
 		{
 			if (i != null)
 			{
@@ -80,7 +66,7 @@ public class IC2 {
 
 		if (plantBallCompressed != null)
 		{
-			CompostRegistry.register(plantBallCompressed.itemID, 0, 1.0f, new Color("269900"));
+			CompostRegistry.register(plantBallCompressed, 0, 1.0f, new Color("269900"));
 		}
 
 		//Remove the default IC2 cobblestone macerator recipe.
@@ -92,12 +78,12 @@ public class IC2 {
 
 			for (IRecipeInput i : recipes.keySet())
 			{
-				if(i.matches(new ItemStack(Block.cobblestone)))
+				if(i.matches(new ItemStack(Blocks.cobblestone)))
 				{
 					cobbleRecipe = i;
 				}
 
-				if(i.matches(new ItemStack(Block.gravel)))
+				if(i.matches(new ItemStack(Blocks.gravel)))
 				{
 					gravelRecipe = i;
 				}
@@ -119,11 +105,11 @@ public class IC2 {
 
 			//Add the hammer recipe sequence.
 			System.out.println("Ex Nihilo: Adding Hammer Sequence to IC2 Macerator");
-			ic2.api.recipe.Recipes.macerator.addRecipe(new RecipeInputItemStack(new ItemStack(Block.cobblestone)), null, new ItemStack(Block.gravel));
-			ic2.api.recipe.Recipes.macerator.addRecipe(new RecipeInputItemStack(new ItemStack(Block.gravel)), null, new ItemStack(Block.sand));
+			ic2.api.recipe.Recipes.macerator.addRecipe(new RecipeInputItemStack(new ItemStack(Blocks.cobblestone)), null, new ItemStack(Blocks.gravel));
+			ic2.api.recipe.Recipes.macerator.addRecipe(new RecipeInputItemStack(new ItemStack(Blocks.gravel)), null, new ItemStack(Blocks.sand));
 		}
 
-		ic2.api.recipe.Recipes.macerator.addRecipe(new RecipeInputItemStack(new ItemStack(Block.sand)), null, new ItemStack(ENBlocks.Dust));
+		ic2.api.recipe.Recipes.macerator.addRecipe(new RecipeInputItemStack(new ItemStack(Blocks.sand)), null, new ItemStack(ENBlocks.Dust));
 	}
 
 }

@@ -1,29 +1,22 @@
 package exnihilo.fluids.buckets;
 
+import net.minecraft.block.Block;
+import net.minecraft.client.renderer.texture.IIconRegister;
+import net.minecraft.creativetab.CreativeTabs;
+import net.minecraft.init.Items;
+import net.minecraft.item.ItemBucket;
+import net.minecraft.item.ItemStack;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import exnihilo.data.FluidData;
-import exnihilo.data.ItemData;
 import exnihilo.data.ModData;
-import net.minecraft.client.renderer.texture.IconRegister;
-import net.minecraft.creativetab.CreativeTabs;
-import net.minecraft.item.Item;
-import net.minecraft.item.ItemBucket;
-import net.minecraft.item.ItemStack;
 
 public class ItemBucketWitchWater extends ItemBucket {
 
-    private String iconName;
-
-    public ItemBucketWitchWater(int i, int blockId) {
-            super(i, blockId);
+    public ItemBucketWitchWater(Block block) {
+            super(block);
             setCreativeTab(CreativeTabs.tabMisc);
-            setContainerItem(Item.bucketEmpty);
-    }
-
-    @Override
-    public String getItemDisplayName(ItemStack itemstack) {
-            return FluidData.BUCKET_WITCHWATER_NAME;
+            setContainerItem(Items.bucket);
     }
 
 	@Override
@@ -40,7 +33,7 @@ public class ItemBucketWitchWater extends ItemBucket {
 
     @Override
     @SideOnly(Side.CLIENT)
-	public void registerIcons(IconRegister register)
+	public void registerIcons(IIconRegister register)
 	{
 		this.itemIcon = register.registerIcon(ModData.TEXTURE_LOCATION + ":ItemBucketWitchWater");
 	}

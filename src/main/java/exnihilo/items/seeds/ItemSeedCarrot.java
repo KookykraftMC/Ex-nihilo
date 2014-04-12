@@ -1,33 +1,35 @@
 package exnihilo.items.seeds;
 
 import net.minecraft.block.Block;
-import net.minecraft.client.renderer.texture.IconRegister;
+import net.minecraft.client.renderer.texture.IIconRegister;
+import net.minecraft.init.Blocks;
+import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
-import net.minecraft.world.World;
+import net.minecraft.world.IBlockAccess;
 import net.minecraftforge.common.EnumPlantType;
 import exnihilo.data.ItemData;
 import exnihilo.data.ModData;
 
 public class ItemSeedCarrot extends ItemSeedBase{
 
-	public ItemSeedCarrot(int id) {
-		super(id, Block.carrot.blockID, Block.dirt.blockID);
+	public ItemSeedCarrot() {
+		super(Block.getBlockFromItem(Items.carrot), Blocks.dirt);
 	}
 	
     @Override
-    public int getPlantID(World world, int x, int y, int z)
+    public Block getPlant(IBlockAccess world, int x, int y, int z)
     {
-        return Block.carrot.blockID;
+        return Block.getBlockFromItem(Items.carrot);
     }
 
     @Override
-    public int getPlantMetadata(World world, int x, int y, int z)
+    public int getPlantMetadata(IBlockAccess world, int x, int y, int z)
     {
         return 0;
     }
     
     @Override
-    public EnumPlantType getPlantType(World world, int x, int y, int z)
+    public EnumPlantType getPlantType(IBlockAccess world, int x, int y, int z)
     {
         return EnumPlantType.Crop;
     }
@@ -45,7 +47,7 @@ public class ItemSeedCarrot extends ItemSeedBase{
 	}
 	
 	@Override
-	public void registerIcons(IconRegister register)
+	public void registerIcons(IIconRegister register)
 	{
 		this.itemIcon = register.registerIcon(ModData.TEXTURE_LOCATION + ":ItemSeedCarrot");
 	}

@@ -1,9 +1,7 @@
 package exnihilo.fluids;
 
-import exnihilo.registries.ColorRegistry;
-import net.minecraft.block.Block;
-import net.minecraft.util.Icon;
 import net.minecraftforge.fluids.Fluid;
+import exnihilo.registries.ColorRegistry;
 
 public class FluidWitchWater extends Fluid{
 

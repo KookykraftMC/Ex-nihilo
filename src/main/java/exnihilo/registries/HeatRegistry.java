@@ -1,27 +1,25 @@
 package exnihilo.registries;
 
-import java.util.ArrayList;
 import java.util.Hashtable;
 
 import net.minecraft.block.Block;
-
-import exnihilo.registries.helpers.Compostable;
+import net.minecraft.init.Blocks;
 import exnihilo.registries.helpers.HeatSource;
 
 public class HeatRegistry {
 	public static Hashtable<String, HeatSource> entries = new Hashtable<String, HeatSource>();
 	
-	public static void register(int id, int meta, float value)
+	public static void register(Block block, int meta, float value)
 	{
-		HeatSource entry = new HeatSource(id, meta, value);
-		entries.put(id + ":" + meta, entry);
+		HeatSource entry = new HeatSource(block, meta, value);
+		entries.put(block + ":" + meta, entry);
 	}
 	
-	public static void register(int id, float value)
+	public static void register(Block block, float value)
 	{
 		for(int x = 0; x <= 15; x++)
 		{
-			register(id, x, value);
+			register(block, x, value);
 		}
 	}
 	
@@ -37,10 +35,10 @@ public class HeatRegistry {
 	
 	public static void registerVanillaHeatSources()
 	{
-		register(Block.torchWood.blockID, 0.1f);
-		register(Block.lavaStill.blockID, 0.2f);
-		register(Block.lavaMoving.blockID, 0.1f);
-		register(Block.furnaceBurning.blockID, 0.15f);
-		register(Block.fire.blockID, 0.3f);
+		register(Blocks.torch, 0.1f);
+		register(Blocks.lava, 0.2f);
+		register(Blocks.flowing_lava, 0.1f);
+		register(Blocks.lit_furnace, 0.15f);
+		register(Blocks.fire, 0.3f);
 	}
 }

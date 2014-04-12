@@ -1,11 +1,11 @@
 package exnihilo.proxies;
 
 import net.minecraft.client.renderer.entity.RenderSnowball;
-import net.minecraft.entity.item.EntityExpBottle;
 import net.minecraft.item.Item;
 import net.minecraftforge.client.MinecraftForgeClient;
 import cpw.mods.fml.client.registry.ClientRegistry;
 import cpw.mods.fml.client.registry.RenderingRegistry;
+import exnihilo.ENBlocks;
 import exnihilo.ENItems;
 import exnihilo.blocks.models.ModelBarrel;
 import exnihilo.blocks.models.ModelBlock;
@@ -28,10 +28,7 @@ import exnihilo.blocks.tileentities.TileEntityCrucible;
 import exnihilo.blocks.tileentities.TileEntityCrucibleUnfired;
 import exnihilo.blocks.tileentities.TileEntityLeavesInfested;
 import exnihilo.blocks.tileentities.TileEntitySieve;
-import exnihilo.data.BlockData;
-import exnihilo.data.ModData;
 import exnihilo.entities.EntityStone;
-import exnihilo.items.ItemStone;
 
 public class ClientProxy extends Proxy {
 
@@ -45,25 +42,25 @@ public class ClientProxy extends Proxy {
 
 		ModelBarrel barrel = new ModelBarrel();
 		ClientRegistry.bindTileEntitySpecialRenderer(TileEntityBarrel.class, new RenderBarrel(barrel));
-		MinecraftForgeClient.registerItemRenderer(BlockData.BARREL_ID, new ItemRenderBarrel(barrel));
-		MinecraftForgeClient.registerItemRenderer(BlockData.BARREL_STONE_ID, new ItemRenderBarrel(barrel));
+		MinecraftForgeClient.registerItemRenderer(Item.getItemFromBlock(ENBlocks.Barrel), new ItemRenderBarrel(barrel));
+		MinecraftForgeClient.registerItemRenderer(Item.getItemFromBlock(ENBlocks.BarrelStone), new ItemRenderBarrel(barrel));
 
 		ModelBlock block = new ModelBlock();
 		ClientRegistry.bindTileEntitySpecialRenderer(TileEntityLeavesInfested.class, new RenderLeaves(block));
-		MinecraftForgeClient.registerItemRenderer(BlockData.LEAVES_INFESTED_ID, new ItemRenderLeaves(block));
+		MinecraftForgeClient.registerItemRenderer(Item.getItemFromBlock(ENBlocks.LeavesInfested), new ItemRenderLeaves(block));
 
 		ModelSieve sieve = new ModelSieve();
 		ModelSieveMesh mesh = new ModelSieveMesh();
 		ClientRegistry.bindTileEntitySpecialRenderer(TileEntitySieve.class, new RenderSieve(sieve, mesh));
-		MinecraftForgeClient.registerItemRenderer(BlockData.SIEVE_ID, new ItemRenderSieve(sieve, mesh));
+		MinecraftForgeClient.registerItemRenderer(Item.getItemFromBlock(ENBlocks.Sieve), new ItemRenderSieve(sieve, mesh));
 
 		ModelCrucible crucible = new ModelCrucible();
 		ClientRegistry.bindTileEntitySpecialRenderer(TileEntityCrucible.class, new RenderCrucible(crucible));
-		MinecraftForgeClient.registerItemRenderer(BlockData.CRUCIBLE_ID, new ItemRenderCrucible(crucible));
+		MinecraftForgeClient.registerItemRenderer(Item.getItemFromBlock(ENBlocks.Crucible), new ItemRenderCrucible(crucible));
 
 		ModelCrucibleRaw crucibleRaw = new ModelCrucibleRaw();
 		ClientRegistry.bindTileEntitySpecialRenderer(TileEntityCrucibleUnfired.class, new RenderCrucibleUnfired(crucibleRaw));
-		MinecraftForgeClient.registerItemRenderer(BlockData.CRUCIBLE_UNFIRED_ID, new ItemRenderCrucibleUnfired(crucibleRaw));
+		MinecraftForgeClient.registerItemRenderer(Item.getItemFromBlock(ENBlocks.CrucibleUnfired), new ItemRenderCrucibleUnfired(crucibleRaw));
 
 		RenderingRegistry.registerEntityRenderingHandler(EntityStone.class, new RenderSnowball(ENItems.Stones));
 	}

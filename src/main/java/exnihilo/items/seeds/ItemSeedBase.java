@@ -3,28 +3,32 @@ package exnihilo.items.seeds;
 import net.minecraft.block.Block;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.init.Blocks;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import net.minecraftforge.common.EnumPlantType;
-import net.minecraftforge.common.ForgeDirection;
 import net.minecraftforge.common.IPlantable;
+import net.minecraftforge.common.util.ForgeDirection;
 
 public class ItemSeedBase extends Item implements IPlantable
 {
     /**
      * The type of block this seed turns into (wheat or pumpkin stems for instance)
      */
-    private int blockType;
+    private Block blockType;
 
     /** BlockID of the block the seeds can be planted on. */
-    private int soilBlockID;
+    //Apparently it's never used...remove?
+    @SuppressWarnings("unused")
+	private Block soilBlock;
 
-    public ItemSeedBase(int par1, int par2, int par3)
+    public ItemSeedBase(Block par2, Block par3)
     {
-        super(par1);
+        super();
         this.blockType = par2;
-        this.soilBlockID = par3;
+        this.soilBlock = par3;
         this.setCreativeTab(CreativeTabs.tabMaterials);
     }
 
@@ -40,12 +44,11 @@ public class ItemSeedBase extends Item implements IPlantable
         }
         else if (par2EntityPlayer.canPlayerEdit(par4, par5, par6, par7, par1ItemStack) && par2EntityPlayer.canPlayerEdit(par4, par5 + 1, par6, par7, par1ItemStack))
         {
-            int i1 = par3World.getBlockId(par4, par5, par6);
-            Block soil = Block.blocksList[i1];
+            Block soil = par3World.getBlock(par4, par5, par6);
 
-            if (soil != null && soil.canSustainPlant(par3World, par4, par5, par6, ForgeDirection.UP, this) && par3World.isAirBlock(par4, par5 + 1, par6) && Block.blocksList[this.getPlantID(par3World, par4, par5, par6)] != null && Block.blocksList[this.getPlantID(par3World, par4, par5, par6)].canBlockStay(par3World, par4, par5 + 1, par6))
+            if (soil != null && soil.canSustainPlant(par3World, par4, par5, par6, ForgeDirection.UP, this) && par3World.isAirBlock(par4, par5 + 1, par6) && this.getPlant(par3World, par4, par5, par6) != null && this.getPlant(par3World, par4, par5, par6).canBlockStay(par3World, par4, par5 + 1, par6))
             {
-                par3World.setBlock(par4, par5 + 1, par6, this.getPlantID(par3World, par4, par5, par6), this.getPlantMetadata(par3World, par4, par5, par6), 3);
+                par3World.setBlock(par4, par5 + 1, par6, this.getPlant(par3World, par4, par5, par6), this.getPlantMetadata(par3World, par4, par5, par6), 3);
                 --par1ItemStack.stackSize;
                 return true;
             }
@@ -61,19 +64,19 @@ public class ItemSeedBase extends Item implements IPlantable
     }
 
     @Override
-    public EnumPlantType getPlantType(World world, int x, int y, int z)
+    public EnumPlantType getPlantType(IBlockAccess world, int x, int y, int z)
     {
-        return (blockType == Block.netherStalk.blockID ? EnumPlantType.Nether : EnumPlantType.Crop);
+        return (blockType == Blocks.nether_wart ? EnumPlantType.Nether : EnumPlantType.Crop);
     }
 
     @Override
-    public int getPlantID(World world, int x, int y, int z)
+    public Block getPlant(IBlockAccess world, int x, int y, int z)
     {
         return blockType;
     }
 
     @Override
-    public int getPlantMetadata(World world, int x, int y, int z)
+    public int getPlantMetadata(IBlockAccess world, int x, int y, int z)
     {
         return 0;
     }

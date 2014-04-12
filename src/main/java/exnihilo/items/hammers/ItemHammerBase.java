@@ -2,40 +2,32 @@ package exnihilo.items.hammers;
 
 import java.util.ArrayList;
 import java.util.Iterator;
+import java.util.Set;
 
-import exnihilo.ENBlocks;
-import exnihilo.ENItems;
-import exnihilo.data.ItemData;
-import exnihilo.registries.HammerRegistry;
-import exnihilo.registries.SieveRegistry;
-import exnihilo.registries.helpers.SiftReward;
-import exnihilo.registries.helpers.Smashable;
 import net.minecraft.block.Block;
-import net.minecraft.block.material.Material;
-import net.minecraft.client.renderer.texture.IconRegister;
 import net.minecraft.enchantment.EnchantmentHelper;
-import net.minecraft.entity.Entity;
-import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.item.EnumToolMaterial;
-import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.ItemTool;
 import net.minecraft.world.World;
-import net.minecraftforge.oredict.OreDictionary;
+
+import com.google.common.collect.Sets;
+
+import exnihilo.registries.HammerRegistry;
+import exnihilo.registries.helpers.Smashable;
 
 public class ItemHammerBase extends ItemTool{
-	public static Block[] blocksEffectiveAgainst = new Block[]{};
+	@SuppressWarnings("rawtypes")
+	public static Set blocksEffectiveAgainst = Sets.newHashSet(new Block[]{});
 
-	public ItemHammerBase(int id, EnumToolMaterial material) 
+	public ItemHammerBase(ToolMaterial material) 
 	{
-		super(id, 0.0F, material, blocksEffectiveAgainst);
-		this.damageVsEntity += 3;
+		super(3.0F, material, blocksEffectiveAgainst);
 	}
 
 	@Override
-	public boolean canHarvestBlock(Block par1Block)
+	public boolean func_150897_b(Block par1Block)
 	{
 		Block[] blocks = HammerRegistry.getBlocks();
 
@@ -77,11 +69,11 @@ public class ItemHammerBase extends ItemTool{
 	public boolean onBlockStartBreak(ItemStack item, int X, int Y, int Z, EntityPlayer player)
 	{
 		World world = player.worldObj;
-		int blockID = world.getBlockId(X,Y,Z);
+		Block block = world.getBlock(X,Y,Z);
 		int blockMeta = world.getBlockMetadata(X,Y,Z);
 		int fortune = EnchantmentHelper.getFortuneModifier(player);
 
-		ArrayList<Smashable> rewards = HammerRegistry.getRewards(blockID, blockMeta);
+		ArrayList<Smashable> rewards = HammerRegistry.getRewards(block, blockMeta);
 		boolean validTarget = false;
 
 		if (rewards.size() > 0)
@@ -93,7 +85,7 @@ public class ItemHammerBase extends ItemTool{
 
 				if (!world.isRemote && world.rand.nextFloat() <= reward.chance + (reward.luckMultiplier * fortune))
 				{
-					EntityItem entityitem = new EntityItem(world, (double)X + 0.5D, (double)Y + 0.5D, (double)Z + 0.5D, new ItemStack(reward.id, 1, reward.meta));
+					EntityItem entityitem = new EntityItem(world, (double)X + 0.5D, (double)Y + 0.5D, (double)Z + 0.5D, new ItemStack(reward.item, 1, reward.meta));
 
 					double f3 = 0.05F;
 					entityitem.motionX = world.rand.nextGaussian() * f3;
@@ -117,7 +109,7 @@ public class ItemHammerBase extends ItemTool{
 				
 				if (!world.isRemote)
 				{
-					world.destroyBlock(X, Y, Z, false);
+					world.func_147480_a(X, Y, Z, false);
 				}
 			}
 

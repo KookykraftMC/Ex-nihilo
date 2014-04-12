@@ -1,10 +1,8 @@
 package exnihilo.items;
 
-import net.minecraft.client.renderer.texture.IconRegister;
+import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.entity.projectile.EntityEgg;
-import net.minecraft.entity.projectile.EntitySnowball;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
@@ -14,8 +12,8 @@ import exnihilo.entities.EntityStone;
 
 public class ItemStone extends Item {
 
-	public ItemStone(int id) {
-		super(id);
+	public ItemStone() {
+		super();
 		setCreativeTab(CreativeTabs.tabMaterials);
 	}
 	
@@ -50,7 +48,7 @@ public class ItemStone extends Item {
     }
 	
 	@Override
-	public void registerIcons(IconRegister register)
+	public void registerIcons(IIconRegister register)
 	{
 		this.itemIcon = register.registerIcon(ModData.TEXTURE_LOCATION + ":IconStone");
 	}

@@ -1,8 +1,7 @@
 package exnihilo.compatibility;
 
-import net.minecraft.block.Block;
+import net.minecraft.init.Blocks;
 import net.minecraft.item.Item;
-import net.minecraft.item.ItemStack;
 import cpw.mods.fml.common.Loader;
 import cpw.mods.fml.common.registry.GameRegistry;
 import exnihilo.registries.SieveRegistry;
@@ -12,25 +11,14 @@ public class Chococraft {
 	{
 		return Loader.isModLoaded("chococraft");
 	}
-	
+
 	public static void loadCompatibility()
 	{	
-		Item gysahlSeeds = null;
-		
-		for (Item i : Item.itemsList)
+		Item gysahlSeeds = GameRegistry.findItem("chococraft", "item.gysahl_seeds");
+
+		if (gysahlSeeds != null)
 		{
-			if (i != null)
-			{
-				if (i.getUnlocalizedName().equals("item.gysahl_seeds"))
-				{
-					gysahlSeeds = i;
-				}
-			}
+			SieveRegistry.register(Blocks.dirt, 0, gysahlSeeds, 0, 32);
 		}
-		
-    	if (gysahlSeeds != null)
-    	{
-    		SieveRegistry.register(Block.dirt.blockID, 0, gysahlSeeds.itemID, 0, 32);
-    	}
 	}
 }

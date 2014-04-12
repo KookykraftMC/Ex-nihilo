@@ -1,20 +1,10 @@
 package exnihilo.fluids;
 
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
-import exnihilo.data.BlockData;
-import exnihilo.data.FluidData;
-import exnihilo.data.ModData;
-import exnihilo.registries.ColorRegistry;
-import net.minecraft.block.Block;
 import net.minecraft.block.material.MapColor;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.material.MaterialLiquid;
-import net.minecraft.client.renderer.texture.IconRegister;
-import net.minecraft.creativetab.CreativeTabs;
+import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.entity.Entity;
-import net.minecraft.entity.EntityLivingBase;
-import net.minecraft.entity.EnumEntitySize;
 import net.minecraft.entity.monster.EntityCaveSpider;
 import net.minecraft.entity.monster.EntityCreeper;
 import net.minecraft.entity.monster.EntityGhast;
@@ -23,25 +13,29 @@ import net.minecraft.entity.monster.EntitySpider;
 import net.minecraft.entity.monster.EntityWitch;
 import net.minecraft.entity.monster.EntityZombie;
 import net.minecraft.entity.passive.EntityAnimal;
-import net.minecraft.entity.passive.EntityMooshroom;
 import net.minecraft.entity.passive.EntitySquid;
 import net.minecraft.entity.passive.EntityVillager;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.potion.Potion;
 import net.minecraft.potion.PotionEffect;
-import net.minecraft.util.Icon;
+import net.minecraft.util.IIcon;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import net.minecraftforge.fluids.BlockFluidClassic;
 import net.minecraftforge.fluids.Fluid;
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
+import exnihilo.data.FluidData;
+import exnihilo.data.ModData;
+import exnihilo.registries.ColorRegistry;
 
 public class BlockWitchWater extends BlockFluidClassic{
 	@SideOnly(Side.CLIENT)
-	protected Icon[] fluidIcons;
+	protected IIcon[] fluidIcons;
 	public static final Material witchwater = new MaterialLiquid(MapColor.ironColor);
 
-	public BlockWitchWater(int id, Fluid fluid, Material material) {
-		super(id, fluid, material);
+	public BlockWitchWater(Fluid fluid, Material material) {
+		super(fluid, material);
 	}
 
 	@Override
@@ -52,8 +46,8 @@ public class BlockWitchWater extends BlockFluidClassic{
 
 	@Override
 	@SideOnly(Side.CLIENT)
-	public void registerIcons(IconRegister register) {
-		this.fluidIcons = new Icon[] 
+	public void registerBlockIcons(IIconRegister register) {
+		this.fluidIcons = new IIcon[] 
 				{
 				register.registerIcon(ModData.TEXTURE_LOCATION + ":IconWitchWaterStill"), 
 				register.registerIcon(ModData.TEXTURE_LOCATION + ":IconWitchWaterFlow")
@@ -61,7 +55,7 @@ public class BlockWitchWater extends BlockFluidClassic{
 	}
 
 	@Override
-	public Icon getIcon(int side, int meta) {
+	public IIcon getIcon(int side, int meta) {
 		return side != 0 && side != 1 ? this.fluidIcons[1] : this.fluidIcons[0];
 	}
 
@@ -80,7 +74,7 @@ public class BlockWitchWater extends BlockFluidClassic{
 			{
 				EntityVillager villager = (EntityVillager)entity;
 				
-				if (world.difficultySetting > 0)
+				if (world.difficultySetting.getDifficultyId() > 0)
 				{
 					if (villager.getProfession() == 2 && !villager.isChild())
 					{

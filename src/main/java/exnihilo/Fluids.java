@@ -29,14 +29,14 @@ public class Fluids {
 		fluidWitchWater = new FluidWitchWater("witchwater");
 		FluidRegistry.registerFluid(fluidWitchWater);
 		
-		blockWitchWater = new BlockWitchWater(FluidData.WITCHWATER_ID, fluidWitchWater, Material.water);
+		blockWitchWater = new BlockWitchWater(fluidWitchWater, Material.water);
 		GameRegistry.registerBlock(blockWitchWater, FluidData.WITCHWATER_KEY);
 	}
 	
 	public static void registerBuckets()
 	{
 		//BUCKETS!
-		BucketWitchWater = new ItemBucketWitchWater(FluidData.BUCKET_WITCHWATER_ID, blockWitchWater.blockID);
+		BucketWitchWater = new ItemBucketWitchWater(blockWitchWater);
 		GameRegistry.registerItem(BucketWitchWater, FluidData.BUCKET_WITCHWATER_UNLOCALIZED_NAME);
 		FluidContainerRegistry.registerFluidContainer(FluidRegistry.getFluidStack("witchwater", FluidContainerRegistry.BUCKET_VOLUME), new ItemStack(BucketWitchWater), new ItemStack(Items.bucket));
 		BucketHandler.INSTANCE.buckets.put(blockWitchWater, BucketWitchWater);

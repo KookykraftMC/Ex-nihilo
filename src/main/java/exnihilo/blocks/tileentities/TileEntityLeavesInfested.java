@@ -1,6 +1,7 @@
 package exnihilo.blocks.tileentities;
 
 import net.minecraft.block.Block;
+import net.minecraft.init.Blocks;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.network.NetworkManager;
 import net.minecraft.network.Packet;
@@ -14,7 +15,7 @@ import exnihilo.registries.helpers.Color;
 
 public class TileEntityLeavesInfested extends TileEntity
 {
-	public int blockID = Block.leaves.blockID;
+	public Block block = Blocks.leaves;
 	public int meta = 0;
 	public Color color = ColorRegistry.color("white");
 
@@ -62,9 +63,7 @@ public class TileEntityLeavesInfested extends TileEntity
 
 	public Color getRenderColor()
 	{
-		Block mimic = Block.blocksList[blockID];
-
-		Color base = new Color(mimic.colorMultiplier(worldObj, xCoord, yCoord, zCoord));
+		Color base = new Color(block.colorMultiplier(worldObj, xCoord, yCoord, zCoord));
 		Color white = ColorRegistry.color("white");
 
 		return Color.average(base, white, progress);
@@ -72,8 +71,6 @@ public class TileEntityLeavesInfested extends TileEntity
 
 	public int getBrightness()
 	{
-		Block block = Block.blocksList[blockID];
-
 		return block.getMixedBrightnessForBlock(worldObj, xCoord, yCoord, zCoord);
 	}
 
@@ -88,22 +85,19 @@ public class TileEntityLeavesInfested extends TileEntity
 		int y = this.worldObj.rand.nextInt(3) - 1;
 		int z = this.worldObj.rand.nextInt(3) - 1;
 
-		Block block = worldObj.getBlock(xCoord + x, yCoord + y, zCoord + z);
 		int meta = worldObj.getBlockMetadata(xCoord + x, yCoord + y, zCoord + z);
 
-		Block target = Block.blocksList[blockID];
-
-		if(target != null && target.isLeaves(null, 0, 0, 0) && target.blockID != ENBlocks.LeavesInfested.blockID && !Forestry.addsThisLeaf(target))
+		if(block != null && block.isLeaves(null, 0, 0, 0) && block != ENBlocks.LeavesInfested && !Forestry.addsThisLeaf(block))
 		{
-			worldObj.setBlock(xCoord + x, yCoord + y, zCoord + z, ENBlocks.LeavesInfested.blockID, meta, 3);
-			TileEntityLeavesInfested te = (TileEntityLeavesInfested)worldObj.getBlockTileEntity(xCoord + x, yCoord + y, zCoord + z);
-			te.setMimicBlock(blockID, meta);
+			worldObj.setBlock(xCoord + x, yCoord + y, zCoord + z, ENBlocks.LeavesInfested, meta, 3);
+			TileEntityLeavesInfested te = (TileEntityLeavesInfested)worldObj.getTileEntity(xCoord + x, yCoord + y, zCoord + z);
+			te.setMimicBlock(block, meta);
 		}
 	}
 
-	public void setMimicBlock(int blockID, int meta)
+	public void setMimicBlock(Block block, int meta)
 	{
-		this.blockID = blockID;
+		this.block = block;
 		this.meta = meta;
 	}
 
@@ -115,7 +109,7 @@ public class TileEntityLeavesInfested extends TileEntity
 
 		int tempBlockID = compound.getInteger("blockID");
 		if (tempBlockID != 0)
-			blockID = tempBlockID;
+			block = Block.getBlockById(tempBlockID);
 
 		int tempMeta = compound.getInteger("meta");
 		if (tempMeta != 0)
@@ -127,7 +121,8 @@ public class TileEntityLeavesInfested extends TileEntity
 	{
 		super.writeToNBT(compound);
 		compound.setFloat("progress", progress);
-		compound.setInteger("blockID", blockID);
+		//Should find some other way to do this, as the data values could change with multiple world load ups, but this will do for now...
+		compound.setInteger("blockID", Block.getIdFromBlock(block));
 		compound.setInteger("meta", meta);
 	}
 

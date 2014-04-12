@@ -1,6 +1,6 @@
 package exnihilo.items;
 
-import net.minecraft.client.renderer.texture.IconRegister;
+import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
@@ -8,8 +8,8 @@ import exnihilo.data.ItemData;
 import exnihilo.data.ModData;
 
 public class ItemPorcelainBall extends Item{
-	public ItemPorcelainBall(int id) {
-		super(id);
+	public ItemPorcelainBall() {
+		super();
 		setCreativeTab(CreativeTabs.tabMaterials);
 	}
 
@@ -26,7 +26,7 @@ public class ItemPorcelainBall extends Item{
 	}
 
 	@Override
-	public void registerIcons(IconRegister register)
+	public void registerIcons(IIconRegister register)
 	{
 		this.itemIcon = register.registerIcon(ModData.TEXTURE_LOCATION + ":ItemPorcelainBall");
 	}

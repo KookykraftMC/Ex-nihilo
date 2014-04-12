@@ -1,29 +1,32 @@
 package exnihilo.registries.helpers;
 
+import net.minecraft.block.Block;
+import net.minecraft.item.Item;
+
 public class SiftReward {
-	public int sourceID;
+	public Block source;
 	public int sourceMeta;
 	public boolean ignoreMeta;
-	public int id;
+	public Item item;
 	public int meta;
 	public int rarity;
 	
-	public SiftReward(int sourceID, int sourceMeta, int id, int meta, int rarity)
+	public SiftReward(Block source, int sourceMeta, Item item, int meta, int rarity)
 	{
-		this.sourceID = sourceID;
+		this.source = source;
 		this.sourceMeta = sourceMeta;
 		this.ignoreMeta = false;
-		this.id = id;
+		this.item = item;
 		this.meta = meta;
 		this.rarity = rarity;
 	}
 	
-	public SiftReward(int sourceID, int id, int meta, int rarity)
+	public SiftReward(Block source, Item item, int meta, int rarity)
 	{
-		this.sourceID = sourceID;
+		this.source = source;
 		this.sourceMeta = 0;
 		this.ignoreMeta = true;
-		this.id = id;
+		this.item = item;
 		this.meta = meta;
 		this.rarity = rarity;
 	}

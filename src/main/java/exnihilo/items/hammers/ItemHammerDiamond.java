@@ -1,15 +1,14 @@
 package exnihilo.items.hammers;
 
+import net.minecraft.client.renderer.texture.IIconRegister;
+import net.minecraft.item.ItemStack;
 import exnihilo.data.ItemData;
 import exnihilo.data.ModData;
-import net.minecraft.client.renderer.texture.IconRegister;
-import net.minecraft.item.EnumToolMaterial;
-import net.minecraft.item.ItemStack;
 
 public class ItemHammerDiamond extends ItemHammerBase{
 
-	public ItemHammerDiamond(int id) {
-		super(id, EnumToolMaterial.EMERALD);
+	public ItemHammerDiamond() {
+		super(ToolMaterial.EMERALD);
 	}
 	
 	@Override
@@ -25,7 +24,7 @@ public class ItemHammerDiamond extends ItemHammerBase{
 	}
 	
 	@Override
-	public void registerIcons(IconRegister register)
+	public void registerIcons(IIconRegister register)
 	{
 		this.itemIcon = register.registerIcon(ModData.TEXTURE_LOCATION + ":HammerDiamond");
 	}

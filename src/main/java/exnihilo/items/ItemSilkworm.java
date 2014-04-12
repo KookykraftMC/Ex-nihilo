@@ -1,22 +1,22 @@
 package exnihilo.items;
 
-import exnihilo.ENBlocks;
-import exnihilo.blocks.tileentities.TileEntityLeavesInfested;
-import exnihilo.compatibility.foresty.Forestry;
-import exnihilo.data.ItemData;
-import exnihilo.data.ModData;
 import net.minecraft.block.Block;
-import net.minecraft.client.renderer.texture.IconRegister;
+import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
+import exnihilo.ENBlocks;
+import exnihilo.blocks.tileentities.TileEntityLeavesInfested;
+import exnihilo.compatibility.foresty.Forestry;
+import exnihilo.data.ItemData;
+import exnihilo.data.ModData;
 
 public class ItemSilkworm extends Item{
 
-	public ItemSilkworm(int par1) {
-		super(par1);
+	public ItemSilkworm() {
+		super();
 		setCreativeTab(CreativeTabs.tabMisc);
 	}
 
@@ -28,15 +28,15 @@ public class ItemSilkworm extends Item{
 	{
 		if (!world.isAirBlock(x, y, z))
 		{
-			Block block = Block.blocksList[world.getBlockId(x, y, z)];
-			if (block.isLeaves(null, 0, 0, 0) && !Forestry.addsThisLeaf(block) && block.blockID != ENBlocks.LeavesInfested.blockID)
+			Block block = world.getBlock(x, y, z);
+			if (block.isLeaves(null, 0, 0, 0) && !Forestry.addsThisLeaf(block) && block != ENBlocks.LeavesInfested)
 			{
-				int oldID = world.getBlockId(x, y, z);
+				Block oldBlock = world.getBlock(x, y, z);
 				int oldMeta = world.getBlockMetadata(x, y, z);
 
-				world.setBlock(x, y, z, ENBlocks.LeavesInfested.blockID, 0, 3);
-				TileEntityLeavesInfested te = (TileEntityLeavesInfested)world.getBlockTileEntity(x, y, z); 
-				te.setMimicBlock(oldID, oldMeta);
+				world.setBlock(x, y, z, ENBlocks.LeavesInfested, 0, 3);
+				TileEntityLeavesInfested te = (TileEntityLeavesInfested)world.getTileEntity(x, y, z); 
+				te.setMimicBlock(oldBlock, oldMeta);
 
 				item.stackSize -= 1;
 
@@ -72,7 +72,7 @@ public class ItemSilkworm extends Item{
 	}
 
 	@Override
-	public void registerIcons(IconRegister register)
+	public void registerIcons(IIconRegister register)
 	{
 		this.itemIcon = register.registerIcon(ModData.TEXTURE_LOCATION + ":Silkworm");
 	}

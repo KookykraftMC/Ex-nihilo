@@ -1,9 +1,8 @@
 package exnihilo.compatibility;
 
 import net.minecraft.block.Block;
-import net.minecraft.item.Item;
+import net.minecraft.init.Blocks;
 import cpw.mods.fml.common.Loader;
-import cpw.mods.fml.common.registry.GameRegistry;
 import exnihilo.ENItems;
 import exnihilo.items.seeds.ItemSeedRubber;
 import exnihilo.registries.SieveRegistry;
@@ -18,7 +17,7 @@ public class MineFactoryReloaded {
 	{
 		Block rubberSapling = null;
 		
-		for (Block b : Block.blocksList)
+		for (Block b : Block.blockRegistry)
 		{
 			if (b != null)
 			{
@@ -35,6 +34,6 @@ public class MineFactoryReloaded {
 			ItemSeedRubber.saplings.add(rubberSapling);
 		}
 		
-		SieveRegistry.register(Block.dirt.blockID, 0, ENItems.SeedsRubber.itemID, 0, 45);
+		SieveRegistry.register(Blocks.dirt, 0, ENItems.SeedsRubber, 0, 45);
 	}
 }

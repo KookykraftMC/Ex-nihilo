@@ -2,17 +2,10 @@ package exnihilo.compatibility;
 
 import java.lang.reflect.Method;
 
-import net.minecraft.block.Block;
-import net.minecraft.item.Item;
+import net.minecraft.init.Blocks;
 import net.minecraft.item.ItemStack;
-import net.minecraft.nbt.NBTTagCompound;
-import net.minecraft.world.World;
-import cpw.mods.fml.common.FMLCommonHandler;
 import cpw.mods.fml.common.Loader;
-import cpw.mods.fml.common.ModContainer;
-import cpw.mods.fml.common.event.FMLInterModComms;
 import exnihilo.ENBlocks;
-import exnihilo.ExNihilo;
 import exnihilo.data.ModData;
 
 public class ThermalExpansion {
@@ -25,13 +18,14 @@ public class ThermalExpansion {
 	{	
 		if (ModData.OVERWRITE_DEFAULT_PULVERIZER_RECIPES)
 		{
-			addPulverizerRecipe(3200, new ItemStack(Block.cobblestone), new ItemStack(Block.gravel), new ItemStack(Block.sand), 10, true);
-			addPulverizerRecipe(3200, new ItemStack(Block.gravel), new ItemStack(Block.sand), new ItemStack(ENBlocks.Dust), 10, true);
+			addPulverizerRecipe(3200, new ItemStack(Blocks.cobblestone), new ItemStack(Blocks.gravel), new ItemStack(Blocks.sand), 10, true);
+			addPulverizerRecipe(3200, new ItemStack(Blocks.gravel), new ItemStack(Blocks.sand), new ItemStack(ENBlocks.Dust), 10, true);
 		}
 		
-		addPulverizerRecipe(3200, new ItemStack(Block.sand), new ItemStack(ENBlocks.Dust), null, 0, true);
+		addPulverizerRecipe(3200, new ItemStack(Blocks.sand), new ItemStack(ENBlocks.Dust), null, 0, true);
 	}
 	
+	@SuppressWarnings({ "unchecked", "rawtypes" })
 	public static void addPulverizerRecipe(int energy, ItemStack input, ItemStack primaryOutput, ItemStack secondaryOutput, int secondaryChance, boolean overwrite)
 	{
 		Class pulverizer = null;
