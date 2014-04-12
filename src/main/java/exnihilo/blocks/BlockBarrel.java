@@ -104,9 +104,9 @@ public class BlockBarrel extends BlockContainer
 				{
 					if (barrel.mode == BarrelMode.EMPTY || barrel.mode == BarrelMode.COMPOST && !barrel.isFull())
 					{
-						if (CompostRegistry.containsItem(Item.getIdFromItem(item.getItem()), item.getItemDamage()))
+						if (CompostRegistry.containsItem(item.getItem(), item.getItemDamage()))
 						{
-							barrel.addCompostItem(CompostRegistry.getItem(Item.getIdFromItem(item.getItem()), item.getItemDamage()));
+							barrel.addCompostItem(CompostRegistry.getItem(item.getItem(), item.getItemDamage()));
 
 							if (!player.capabilities.isCreativeMode)
 							{

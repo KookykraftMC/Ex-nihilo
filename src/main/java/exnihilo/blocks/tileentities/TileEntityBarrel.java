@@ -9,7 +9,6 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.inventory.ISidedInventory;
-import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.network.NetworkManager;
@@ -1003,9 +1002,9 @@ public class TileEntityBarrel extends TileEntity implements IFluidHandler, ISide
 		{
 			if (mode == BarrelMode.COMPOST || mode == BarrelMode.EMPTY)
 			{
-				if(CompostRegistry.containsItem(Item.getIdFromItem(item.getItem()), item.getItemDamage()))
+				if(CompostRegistry.containsItem(item.getItem(), item.getItemDamage()))
 				{
-					this.addCompostItem(CompostRegistry.getItem(Item.getIdFromItem(item.getItem()), item.getItemDamage()));
+					this.addCompostItem(CompostRegistry.getItem(item.getItem(), item.getItemDamage()));
 				}
 			}
 
@@ -1144,7 +1143,7 @@ public class TileEntityBarrel extends TileEntity implements IFluidHandler, ISide
 		///XXX isItemValid
 		if (!this.isFull() && mode == BarrelMode.COMPOST || mode == BarrelMode.EMPTY)
 		{
-			if(ModData.ALLOW_BARREL_RECIPE_DIRT && CompostRegistry.containsItem(Item.getIdFromItem(item.getItem()), item.getItemDamage()))
+			if(ModData.ALLOW_BARREL_RECIPE_DIRT && CompostRegistry.containsItem(item.getItem(), item.getItemDamage()))
 			{
 				return true;
 			}

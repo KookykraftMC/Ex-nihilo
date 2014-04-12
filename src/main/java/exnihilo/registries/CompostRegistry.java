@@ -21,15 +21,15 @@ public class CompostRegistry {
 		entries.put(item + ":" + meta, entry);
 	}
 	
-	public static boolean containsItem(int id, int meta)
+	public static boolean containsItem(Item item, int meta)
 	{
-		return entries.containsKey(id + ":" + meta);
+		return entries.containsKey(item + ":" + meta);
 	}
 	
 	
-	public static Compostable getItem(int id, int meta)
+	public static Compostable getItem(Item item, int meta)
 	{
-		return entries.get(id + ":" + meta);
+		return entries.get(item + ":" + meta);
 	}
 	
 	public static void load(Configuration config)
