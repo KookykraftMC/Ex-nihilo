@@ -117,7 +117,7 @@ public class ExNihilo
 //			IC2.loadCompatibility();
 //		}
 
-		//No 1.7 API out yet
+		//1.7 API not stable yet
 //		if (Forestry.isLoaded())
 //		{
 //			System.out.println(ModData.NAME + ": Found Forestry!");
@@ -133,7 +133,7 @@ public class ExNihilo
 //			ThermalExpansion.loadCompatibility();
 //		}
 
-		//AE is done, AE2 is in Alpha (not-stable)
+		//AE is done, AE2 API is not stable
 //		if (AppliedEnergistics.isLoaded())
 //		{
 //			System.out.println(ModData.NAME + ": Found Applied Energistics!");
