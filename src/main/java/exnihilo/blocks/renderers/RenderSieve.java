@@ -61,7 +61,7 @@ public class RenderSieve extends TileEntitySpecialRenderer{
 
 	private void renderContents(TileEntity tileentity, double x, double y, double z, float f)
 	{
-		TileEntitySieve sieve = (TileEntitySieve) tileentity;
+		TileEntitySieve sieve = (TileEntitySieve)tileentity;
 		IIcon icon = null;
 		
 		switch (sieve.mode)

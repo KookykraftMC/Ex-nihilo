@@ -200,7 +200,7 @@ public class TileEntitySieve extends TileEntity{
 	{
 		super.writeToNBT(compound);
 		compound.setInteger("mode", mode.value);
-		//Should change later to not de dependent on DV, as Forge can now change them willy-nilly at startup
+		//Should change later to not be dependent on DV, as Forge can now change them willy-nilly at startup
 		compound.setInteger("contentID", Block.getIdFromBlock(content));
 		compound.setInteger("contentMeta", contentMeta);
 		compound.setFloat("volume", volume);

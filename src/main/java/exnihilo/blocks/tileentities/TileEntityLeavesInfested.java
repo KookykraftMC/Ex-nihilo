@@ -86,7 +86,8 @@ public class TileEntityLeavesInfested extends TileEntity
 
 		int meta = worldObj.getBlockMetadata(xCoord + x, yCoord + y, zCoord + z);
 
-		if(block != null && block.isLeaves(null, 0, 0, 0) && block != ENBlocks.LeavesInfested) // && !Forestry.addsThisLeaf(block))
+		//You would think that "isLeaves" would be enough to NOT have them spawn in the air around the tree. Apparently not...
+		if(block != null && !worldObj.isAirBlock(xCoord + x, yCoord + y, zCoord + z) && block.isLeaves(worldObj, xCoord + x, yCoord + y, zCoord + z) && block != ENBlocks.LeavesInfested) // && !Forestry.addsThisLeaf(block))
 		{
 			worldObj.setBlock(xCoord + x, yCoord + y, zCoord + z, ENBlocks.LeavesInfested, meta, 3);
 			TileEntityLeavesInfested te = (TileEntityLeavesInfested)worldObj.getTileEntity(xCoord + x, yCoord + y, zCoord + z);
