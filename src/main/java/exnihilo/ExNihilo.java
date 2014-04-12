@@ -1,9 +1,9 @@
 package exnihilo;
 
+import net.minecraft.init.Blocks;
 import net.minecraftforge.client.event.TextureStitchEvent;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.common.config.Configuration;
-import cpw.mods.fml.common.Loader;
 import cpw.mods.fml.common.Mod;
 import cpw.mods.fml.common.Mod.EventHandler;
 import cpw.mods.fml.common.Mod.Instance;
@@ -14,14 +14,8 @@ import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 import cpw.mods.fml.common.eventhandler.SubscribeEvent;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
-import exnihilo.compatibility.AppliedEnergistics;
 import exnihilo.compatibility.Chococraft;
 import exnihilo.compatibility.CommonOre;
-import exnihilo.compatibility.IC2;
-import exnihilo.compatibility.Mekanism;
-import exnihilo.compatibility.MineFactoryReloaded;
-import exnihilo.compatibility.ThermalExpansion;
-import exnihilo.compatibility.foresty.Forestry;
 import exnihilo.data.ModData;
 import exnihilo.data.WorldData;
 import exnihilo.proxies.Proxy;
@@ -84,6 +78,9 @@ public class ExNihilo
 	@EventHandler
 	public void Initialize(FMLInitializationEvent event)
 	{
+		Blocks.fire.setFireInfo(ENBlocks.Barrel, 5, 150);
+		Blocks.fire.setFireInfo(ENBlocks.LeavesInfested, 5, 150);
+		Blocks.fire.setFireInfo(ENBlocks.Sieve, 5, 150);
 //		ENBlocks.registerNames();
 //		Fluids.registerNames();
 //		ENItems.registerNames();
@@ -109,40 +106,45 @@ public class ExNihilo
 	{
 		CommonOre.registerRecipes();
 
-		if (Loader.isModLoaded("IC2"))
-		{
-			System.out.println(ModData.NAME + ": Found IC2!");
+		//Not Working in Dev Environment
+//		if (Loader.isModLoaded("IC2"))
+//		{
+//			System.out.println(ModData.NAME + ": Found IC2!");
+//
+//			IC2.loadCompatibility();
+//		}
 
-			IC2.loadCompatibility();
-		}
-
-		if (Forestry.isLoaded())
-		{
-			System.out.println(ModData.NAME + ": Found Forestry!");
-
-			Forestry.loadCompatibility();
-		}
+		//No 1.7 API out yet
+//		if (Forestry.isLoaded())
+//		{
+//			System.out.println(ModData.NAME + ": Found Forestry!");
+//
+//			Forestry.loadCompatibility();
+//		}
 		
-		if (ThermalExpansion.isLoaded())
-		{
-			System.out.println(ModData.NAME + ": Found ThermalExpansion!");
+		//No 1.7 API out yet
+//		if (ThermalExpansion.isLoaded())
+//		{
+//			System.out.println(ModData.NAME + ": Found ThermalExpansion!");
+//
+//			ThermalExpansion.loadCompatibility();
+//		}
 
-			ThermalExpansion.loadCompatibility();
-		}
+		//AE is done, AE2 is in Alpha (not-stable)
+//		if (AppliedEnergistics.isLoaded())
+//		{
+//			System.out.println(ModData.NAME + ": Found Applied Energistics!");
+//
+//			AppliedEnergistics.loadCompatibility();
+//		}
 
-		if (AppliedEnergistics.isLoaded())
-		{
-			System.out.println(ModData.NAME + ": Found Applied Energistics!");
-
-			AppliedEnergistics.loadCompatibility();
-		}
-
-		if (Mekanism.isLoaded())
-		{
-			System.out.println(ModData.NAME + ": Found Mekanism!");
-
-			Mekanism.loadCompatibility();
-		}
+		//No 1.7 API out yet
+//		if (Mekanism.isLoaded())
+//		{
+//			System.out.println(ModData.NAME + ": Found Mekanism!");
+//
+//			Mekanism.loadCompatibility();
+//		}
 
 		if (Chococraft.isLoaded())
 		{
@@ -151,12 +153,13 @@ public class ExNihilo
 			Chococraft.loadCompatibility();
 		}
 		
-		if (MineFactoryReloaded.isLoaded())
-		{
-			System.out.println(ModData.NAME + ": Found MineFactory Reloaded!");
-			
-			MineFactoryReloaded.loadCompatibility();
-		}
+		//No 1.7 API out yet
+//		if (MineFactoryReloaded.isLoaded())
+//		{
+//			System.out.println(ModData.NAME + ": Found MineFactory Reloaded!");
+//			
+//			MineFactoryReloaded.loadCompatibility();
+//		}
 	}
 
 	@SubscribeEvent

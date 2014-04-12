@@ -11,7 +11,7 @@ public class ModData {
 	//Metadata
 	public static final String ID = "crowley.skyblock";
 	public static final String NAME = "Ex Nihilo";
-	public static final String VERSION = "1.28-1.7.2";
+	public static final String VERSION = "MC1.7.2 build 1";
 	
 	public static void setMetadata(ModMetadata data)
 	{

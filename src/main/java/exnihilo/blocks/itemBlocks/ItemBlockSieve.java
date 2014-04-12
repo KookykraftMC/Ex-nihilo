@@ -1,15 +1,15 @@
 package exnihilo.blocks.itemBlocks;
 
-import exnihilo.ENBlocks;
-import exnihilo.data.BlockData;
-import exnihilo.data.ModData;
+import net.minecraft.block.Block;
 import net.minecraft.item.ItemBlock;
 import net.minecraft.item.ItemStack;
+import exnihilo.data.BlockData;
+import exnihilo.data.ModData;
 
 public class ItemBlockSieve extends ItemBlock {
 
-	public ItemBlockSieve() {
-		super(ENBlocks.Sieve);
+	public ItemBlockSieve(Block block) {
+		super(block);
 		setHasSubtypes(true);
 	}
 	

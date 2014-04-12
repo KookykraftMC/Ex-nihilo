@@ -31,7 +31,6 @@ public class BlockSieve extends BlockContainer {
 		super(Material.wood);
 		setCreativeTab(CreativeTabs.tabDecorations);
 		setHardness(2.0f);
-		Blocks.fire.setFireInfo(this, 5, 150);
 
 		setBlockName(ModData.ID + "." + BlockData.SIEVE_KEY);
 		GameRegistry.registerTileEntity(TileEntitySieve.class, ModData.ID + "." + BlockData.SIEVE_KEY);

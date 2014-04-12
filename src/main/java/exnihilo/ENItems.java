@@ -163,7 +163,7 @@ public class ENItems {
 		GameRegistry.registerItem(HammerWood, ItemData.HAMMER_UNLOCALIZED_NAMES[0]);
 
 		HammerStone = new ItemHammerStone();
-		GameRegistry.registerItem(HammerWood, ItemData.HAMMER_UNLOCALIZED_NAMES[1]);
+		GameRegistry.registerItem(HammerStone, ItemData.HAMMER_UNLOCALIZED_NAMES[1]);
 
 		HammerIron = new ItemHammerIron();
 		GameRegistry.registerItem(HammerIron, ItemData.HAMMER_UNLOCALIZED_NAMES[2]);

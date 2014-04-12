@@ -9,7 +9,6 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
 import exnihilo.ENBlocks;
 import exnihilo.blocks.tileentities.TileEntityLeavesInfested;
-import exnihilo.compatibility.foresty.Forestry;
 import exnihilo.data.ItemData;
 import exnihilo.data.ModData;
 
@@ -29,7 +28,7 @@ public class ItemSilkworm extends Item{
 		if (!world.isAirBlock(x, y, z))
 		{
 			Block block = world.getBlock(x, y, z);
-			if (block.isLeaves(null, 0, 0, 0) && !Forestry.addsThisLeaf(block) && block != ENBlocks.LeavesInfested)
+			if (block.isLeaves(null, 0, 0, 0) && block != ENBlocks.LeavesInfested) //&& !Forestry.addsThisLeaf(block) 
 			{
 				Block oldBlock = world.getBlock(x, y, z);
 				int oldMeta = world.getBlockMetadata(x, y, z);

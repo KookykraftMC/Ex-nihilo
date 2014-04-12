@@ -1,6 +1,5 @@
 package exnihilo.items;
 
-import java.lang.reflect.Method;
 import java.util.Set;
 
 import net.minecraft.block.Block;
@@ -19,7 +18,6 @@ import com.google.common.collect.Sets;
 
 import exnihilo.ENBlocks;
 import exnihilo.ENItems;
-import exnihilo.compatibility.foresty.Forestry;
 import exnihilo.data.ItemData;
 import exnihilo.data.ModData;
 
@@ -66,7 +64,6 @@ public class ItemCrook extends ItemTool{
 
 	//Break leaf block
 	@Override
-	@SuppressWarnings("rawtypes")
 	public boolean onBlockStartBreak(ItemStack item, int X, int Y, int Z, EntityPlayer player)
 	{
 		World world = player.worldObj;
@@ -79,29 +76,29 @@ public class ItemCrook extends ItemTool{
 		{
 			if (!world.isRemote)
 			{
-				if (Forestry.isLoaded())
-				{
-					//Forestry, why? Why did you make me have to do this? We could have been friends...
-					Class forestryLeafBlock = null;
-					try {
-						forestryLeafBlock = Class.forName("forestry.arboriculture.gadgets.BlockLeaves");
-
-						Method dropStuff = null;
-						if (forestryLeafBlock != null)
-						{	
-							dropStuff = forestryLeafBlock.cast(block).getClass().getDeclaredMethod("spawnLeafDrops", World.class, int.class, int.class, int.class, int.class, float.class, boolean.class);
-							dropStuff.setAccessible(true);
-						}
-
-						if (dropStuff != null)
-						{
-							//This gets called once here, and then it drops stuff again when it breaks.
-							dropStuff.invoke(forestryLeafBlock.cast(block), world, X, Y, Z, meta, 1.0F, true);
-							extraDropped = true;
-						}
-					}
-					catch (Exception ex){}
-				}
+//				if (Forestry.isLoaded())
+//				{
+//					//Forestry, why? Why did you make me have to do this? We could have been friends...
+//					Class forestryLeafBlock = null;
+//					try {
+//						forestryLeafBlock = Class.forName("forestry.arboriculture.gadgets.BlockLeaves");
+//
+//						Method dropStuff = null;
+//						if (forestryLeafBlock != null)
+//						{	
+//							dropStuff = forestryLeafBlock.cast(block).getClass().getDeclaredMethod("spawnLeafDrops", World.class, int.class, int.class, int.class, int.class, float.class, boolean.class);
+//							dropStuff.setAccessible(true);
+//						}
+//
+//						if (dropStuff != null)
+//						{
+//							//This gets called once here, and then it drops stuff again when it breaks.
+//							dropStuff.invoke(forestryLeafBlock.cast(block), world, X, Y, Z, meta, 1.0F, true);
+//							extraDropped = true;
+//						}
+//					}
+//					catch (Exception ex){}
+//				}
 
 				//If the Forestry method didn't work, try the vanilla way.
 				if (!extraDropped)

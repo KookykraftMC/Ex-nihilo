@@ -8,7 +8,6 @@ import net.minecraft.network.Packet;
 import net.minecraft.network.play.server.S35PacketUpdateTileEntity;
 import net.minecraft.tileentity.TileEntity;
 import exnihilo.ENBlocks;
-import exnihilo.compatibility.foresty.Forestry;
 import exnihilo.data.BlockData;
 import exnihilo.registries.ColorRegistry;
 import exnihilo.registries.helpers.Color;
@@ -87,7 +86,7 @@ public class TileEntityLeavesInfested extends TileEntity
 
 		int meta = worldObj.getBlockMetadata(xCoord + x, yCoord + y, zCoord + z);
 
-		if(block != null && block.isLeaves(null, 0, 0, 0) && block != ENBlocks.LeavesInfested && !Forestry.addsThisLeaf(block))
+		if(block != null && block.isLeaves(null, 0, 0, 0) && block != ENBlocks.LeavesInfested) // && !Forestry.addsThisLeaf(block))
 		{
 			worldObj.setBlock(xCoord + x, yCoord + y, zCoord + z, ENBlocks.LeavesInfested, meta, 3);
 			TileEntityLeavesInfested te = (TileEntityLeavesInfested)worldObj.getTileEntity(xCoord + x, yCoord + y, zCoord + z);

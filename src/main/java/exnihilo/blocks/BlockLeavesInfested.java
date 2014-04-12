@@ -29,7 +29,6 @@ public class BlockLeavesInfested extends BlockLeaves implements ITileEntityProvi
 		setHardness(0.4f);
 		setLightOpacity(1);
 		setStepSound(soundTypeGrass);
-		Blocks.fire.setFireInfo(this, 5,150);
 
 		setBlockName(ModData.ID + "." + BlockData.LEAVES_INFESTED_KEY);
 		GameRegistry.registerTileEntity(TileEntityLeavesInfested.class, this.getUnlocalizedName());

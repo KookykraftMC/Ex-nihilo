@@ -2,7 +2,6 @@ package exnihilo.blocks;
 
 import java.util.List;
 
-import net.minecraft.block.Block;
 import net.minecraft.block.BlockContainer;
 import net.minecraft.block.material.Material;
 import net.minecraft.client.renderer.texture.IIconRegister;
@@ -24,8 +23,8 @@ import cpw.mods.fml.common.registry.GameRegistry;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import exnihilo.ENBlocks;
-import exnihilo.Fluids;
 import exnihilo.ENItems;
+import exnihilo.Fluids;
 import exnihilo.blocks.tileentities.TileEntityBarrel;
 import exnihilo.blocks.tileentities.TileEntityBarrel.BarrelMode;
 import exnihilo.blocks.tileentities.TileEntityBarrel.ExtractMode;
@@ -43,7 +42,6 @@ public class BlockBarrel extends BlockContainer
 		super(Material.wood);
 		setCreativeTab(CreativeTabs.tabDecorations);
 		setHardness(2.0f);
-		Blocks.fire.setFireInfo((Block)this, 5,150);
 
 		setBlockName(ModData.ID + "." + BlockData.BARREL_KEY);
 		GameRegistry.registerTileEntity(TileEntityBarrel.class, this.getUnlocalizedName());
