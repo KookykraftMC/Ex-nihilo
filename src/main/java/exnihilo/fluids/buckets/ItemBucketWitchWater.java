@@ -22,13 +22,13 @@ public class ItemBucketWitchWater extends ItemBucket {
 	@Override
 	public String getUnlocalizedName()
 	{
-		return FluidData.BUCKET_WITCHWATER_UNLOCALIZED_NAME;
+		return ModData.ID + "." + FluidData.BUCKET_WITCHWATER_UNLOCALIZED_NAME;
 	}
 	
 	@Override
 	public String getUnlocalizedName(ItemStack item)
 	{
-		return FluidData.BUCKET_WITCHWATER_UNLOCALIZED_NAME;
+		return ModData.ID + "." + FluidData.BUCKET_WITCHWATER_UNLOCALIZED_NAME;
 	}
 
     @Override

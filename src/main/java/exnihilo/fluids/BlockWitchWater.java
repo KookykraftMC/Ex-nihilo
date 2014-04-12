@@ -41,7 +41,7 @@ public class BlockWitchWater extends BlockFluidClassic{
 	@Override
 	public String getUnlocalizedName()
 	{
-		return FluidData.WITCHWATER_UNLOCALIZED_NAME;
+		return ModData.ID + "." + FluidData.WITCHWATER_UNLOCALIZED_NAME;
 	}
 
 	@Override
