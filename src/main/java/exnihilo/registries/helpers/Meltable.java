@@ -5,16 +5,16 @@ import net.minecraft.util.IIcon;
 import net.minecraftforge.fluids.Fluid;
 
 public class Meltable {
-	public int id;
+	public Block block;
 	public int meta;
 	public float solidVolume;
 	public Fluid fluid;
 	public float fluidVolume;
 	public Block appearance;
 	
-	public Meltable(int id, int meta, float solidAmount, Fluid fluid, float fluidAmount, Block appearance)
+	public Meltable(Block block, int meta, float solidAmount, Fluid fluid, float fluidAmount, Block appearance)
 	{
-		this.id = id;
+		this.block = block;
 		this.meta = meta;
 		this.solidVolume = solidAmount;
 		this.fluid = fluid;
