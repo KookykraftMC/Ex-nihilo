@@ -7,7 +7,6 @@ import net.minecraft.util.IIcon;
 
 import org.lwjgl.opengl.GL11;
 
-import exnihilo.ENBlocks;
 import exnihilo.blocks.BlockSieve;
 import exnihilo.blocks.models.ModelSieve;
 import exnihilo.blocks.models.ModelSieveContents;
@@ -67,7 +66,7 @@ public class RenderSieve extends TileEntitySpecialRenderer{
 		switch (sieve.mode)
 		{
 		case FILLED:
-			icon = ENBlocks.Sieve.getIcon(0, sieve.contentMeta);
+			icon = sieve.content.getIcon(0, sieve.contentMeta);
 			break;
 		default:
 			break;
