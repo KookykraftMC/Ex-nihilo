@@ -1,5 +1,7 @@
 package exnihilo;
 
+import java.io.File;
+
 import net.minecraft.init.Blocks;
 import net.minecraftforge.client.event.TextureStitchEvent;
 import net.minecraftforge.common.MinecraftForge;
@@ -28,11 +30,12 @@ import exnihilo.registries.SieveRegistry;
 @Mod(modid = ModData.ID, name = ModData.NAME, version = ModData.VERSION)
 public class ExNihilo 
 {
-	@Instance
+	@Instance(ModData.ID)
 	public static ExNihilo instance;
 
 	@SidedProxy(clientSide = "exnihilo.proxies.ClientProxy", serverSide = "exnihilo.proxies.ServerProxy")
 	public static Proxy proxy;
+	
 	public static Configuration config;
 
 	@EventHandler
@@ -42,7 +45,7 @@ public class ExNihilo
 		ModData.setMetadata(event.getModMetadata());
 
 		//Item and Block IDs!
-		config = new Configuration(event.getSuggestedConfigurationFile());
+		config = new Configuration(new File(event.getModConfigurationDirectory(), "/ExNihilo.cfg"));
 		config.load();
 		
 		ModData.load(config);
@@ -66,7 +69,8 @@ public class ExNihilo
 		CrucibleRegistry.load(config);
 		HammerRegistry.load(config);
 
-		config.save();
+		if(config.hasChanged())
+			config.save();
 
 		proxy.initializeSounds();
 		proxy.initializeRenderers();
