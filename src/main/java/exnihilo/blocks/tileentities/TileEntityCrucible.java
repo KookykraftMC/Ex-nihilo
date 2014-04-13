@@ -97,7 +97,11 @@ public class TileEntityCrucible extends TileEntity implements IFluidHandler, ISi
 		solidVolume = compound.getFloat("solidVolume");
 		fluidVolume = compound.getFloat("fluidVolume");
 		airVolume = compound.getFloat("airVolume");
-		content = Block.getBlockById(compound.getInteger("contentID"));
+		if(!compound.getString("content").equals("")) {
+			content = (Block)Block.blockRegistry.getObject(compound.getString("content"));
+		}else{
+			content = null;
+		}
 		contentMeta = compound.getInteger("contentMeta");
 		fluid = new FluidStack(FluidRegistry.getFluid(compound.getShort("fluid")), Math.round(fluidVolume));
 	}
@@ -110,7 +114,11 @@ public class TileEntityCrucible extends TileEntity implements IFluidHandler, ISi
 		compound.setFloat("solidVolume", solidVolume);
 		compound.setFloat("fluidVolume", fluidVolume);
 		compound.setFloat("airVolume", airVolume);
-		compound.setInteger("contentID", Block.getIdFromBlock(content));
+		if(content == null) {
+			compound.setString("content", "");
+		}else{
+			compound.setString("content", Block.blockRegistry.getNameForObject(content));
+		}
 		compound.setInteger("contentMeta", contentMeta);
 		compound.setShort("fluid", (short)fluid.fluidID);
 	}
@@ -223,9 +231,9 @@ public class TileEntityCrucible extends TileEntity implements IFluidHandler, ISi
 		Block targetBlock = worldObj.getBlock(xCoord, yCoord - 1, zCoord);
 		int targetMeta = worldObj.getBlockMetadata(xCoord, yCoord - 1, zCoord);
 		
-		if (HeatRegistry.containsItem(Block.getIdFromBlock(targetBlock), targetMeta))
+		if (HeatRegistry.containsItem(targetBlock, targetMeta))
 		{
-			return HeatRegistry.getItem(Block.getIdFromBlock(targetBlock), targetMeta).value;
+			return HeatRegistry.getItem(targetBlock, targetMeta).value;
 		}
 
 		return 0.0f;

@@ -189,7 +189,11 @@ public class TileEntitySieve extends TileEntity{
 			mode = SieveMode.FILLED;
 			break;
 		}
-		content = Block.getBlockById(compound.getInteger("contentID"));
+		if(!compound.getString("content").equals("")) {
+			content = (Block)Block.blockRegistry.getObject(compound.getString("content"));
+		}else{
+			content = null;
+		}
 		contentMeta = compound.getInteger("contentMeta");
 		volume = compound.getFloat("volume");
 		particleMode = compound.getBoolean("particles");
@@ -201,7 +205,11 @@ public class TileEntitySieve extends TileEntity{
 		super.writeToNBT(compound);
 		compound.setInteger("mode", mode.value);
 		//Should change later to not be dependent on DV, as Forge can now change them willy-nilly at startup
-		compound.setInteger("contentID", Block.getIdFromBlock(content));
+		if(content == null) {
+			compound.setString("content", "");
+		}else{
+			compound.setString("content", Block.blockRegistry.getNameForObject(content));
+		}
 		compound.setInteger("contentMeta", contentMeta);
 		compound.setFloat("volume", volume);
 		compound.setBoolean("particles", particleMode);

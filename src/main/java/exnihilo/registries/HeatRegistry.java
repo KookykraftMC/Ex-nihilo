@@ -23,14 +23,14 @@ public class HeatRegistry {
 		}
 	}
 	
-	public static boolean containsItem(int id, int meta)
+	public static boolean containsItem(Block block, int meta)
 	{
-		return entries.containsKey(id + ":" + meta);
+		return entries.containsKey(block + ":" + meta);
 	}
 	
-	public static HeatSource getItem(int id, int meta)
+	public static HeatSource getItem(Block block, int meta)
 	{
-		return entries.get(id + ":" + meta);
+		return entries.get(block + ":" + meta);
 	}
 	
 	public static void registerVanillaHeatSources()

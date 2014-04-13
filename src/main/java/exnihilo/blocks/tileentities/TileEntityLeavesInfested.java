@@ -107,9 +107,11 @@ public class TileEntityLeavesInfested extends TileEntity
 		super.readFromNBT(compound);
 		progress = compound.getFloat("progress");
 
-		int tempBlockID = compound.getInteger("blockID");
-		if (tempBlockID != 0)
-			block = Block.getBlockById(tempBlockID);
+		if(!compound.getString("block").equals("")) {
+			block = (Block)Block.blockRegistry.getObject(compound.getString("block"));
+		}else{
+			block = null;
+		}
 
 		int tempMeta = compound.getInteger("meta");
 		if (tempMeta != 0)
@@ -122,7 +124,11 @@ public class TileEntityLeavesInfested extends TileEntity
 		super.writeToNBT(compound);
 		compound.setFloat("progress", progress);
 		//Should find some other way to do this, as the data values could change with multiple world load ups, but this will do for now...
-		compound.setInteger("blockID", Block.getIdFromBlock(block));
+		if(block == null) {
+			compound.setString("block", "");
+		}else{
+			compound.setString("block", Block.blockRegistry.getNameForObject(block));
+		}
 		compound.setInteger("meta", meta);
 	}
 
