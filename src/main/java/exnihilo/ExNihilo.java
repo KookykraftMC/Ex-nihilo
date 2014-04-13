@@ -51,14 +51,11 @@ public class ExNihilo
 		ModData.load(config);
 		WorldData.load(config);
 
-//		BlockData.load(config);
 		ENBlocks.registerBlocks();
 
-//		FluidData.load(config);
 		Fluids.registerFluids();
 		Fluids.registerBuckets();
 
-//		ItemData.load(config);
 		ENItems.registerItems();
 
 		Entities.registerEntities();
@@ -84,9 +81,6 @@ public class ExNihilo
 		Blocks.fire.setFireInfo(ENBlocks.Barrel, 5, 150);
 		Blocks.fire.setFireInfo(ENBlocks.LeavesInfested, 5, 150);
 		Blocks.fire.setFireInfo(ENBlocks.Sieve, 5, 150);
-//		ENBlocks.registerNames();
-//		Fluids.registerNames();
-//		ENItems.registerNames();
 
 		SieveRegistry.registerRewards();
 		HammerRegistry.registerSmashables();

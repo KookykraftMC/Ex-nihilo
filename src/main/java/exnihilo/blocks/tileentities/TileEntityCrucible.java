@@ -17,7 +17,6 @@ import net.minecraftforge.fluids.FluidRegistry;
 import net.minecraftforge.fluids.FluidStack;
 import net.minecraftforge.fluids.FluidTankInfo;
 import net.minecraftforge.fluids.IFluidHandler;
-import exnihilo.data.BlockData;
 import exnihilo.registries.CrucibleRegistry;
 import exnihilo.registries.HeatRegistry;
 import exnihilo.registries.helpers.Meltable;
@@ -129,7 +128,7 @@ public class TileEntityCrucible extends TileEntity implements IFluidHandler, ISi
 		NBTTagCompound tag = new NBTTagCompound();
 		this.writeToNBT(tag);
 
-		return new S35PacketUpdateTileEntity(this.xCoord, this.yCoord, this.zCoord, BlockData.SIEVE_ID, tag);
+		return new S35PacketUpdateTileEntity(this.xCoord, this.yCoord, this.zCoord, this.blockMetadata, tag);
 	}
 
 	@Override

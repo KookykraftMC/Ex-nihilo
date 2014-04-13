@@ -15,7 +15,6 @@ import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.IIcon;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
-import exnihilo.data.BlockData;
 import exnihilo.particles.ParticleSieve;
 import exnihilo.registries.SieveRegistry;
 import exnihilo.registries.helpers.SiftReward;
@@ -221,7 +220,7 @@ public class TileEntitySieve extends TileEntity{
 		NBTTagCompound tag = new NBTTagCompound();
 		this.writeToNBT(tag);
 
-		return new S35PacketUpdateTileEntity(this.xCoord, this.yCoord, this.zCoord, BlockData.SIEVE_ID, tag);
+		return new S35PacketUpdateTileEntity(this.xCoord, this.yCoord, this.zCoord, this.blockMetadata, tag);
 	}
 
 	@Override

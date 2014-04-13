@@ -8,7 +8,6 @@ import net.minecraft.network.Packet;
 import net.minecraft.network.play.server.S35PacketUpdateTileEntity;
 import net.minecraft.tileentity.TileEntity;
 import exnihilo.ENBlocks;
-import exnihilo.data.BlockData;
 import exnihilo.registries.ColorRegistry;
 import exnihilo.registries.helpers.Color;
 
@@ -138,7 +137,7 @@ public class TileEntityLeavesInfested extends TileEntity
 		NBTTagCompound tag = new NBTTagCompound();
 		this.writeToNBT(tag);
 
-		return new S35PacketUpdateTileEntity(this.xCoord, this.yCoord, this.zCoord, BlockData.LEAVES_INFESTED_ID, tag);
+		return new S35PacketUpdateTileEntity(this.xCoord, this.yCoord, this.zCoord, this.blockMetadata, tag);
 	}
 
 	@Override

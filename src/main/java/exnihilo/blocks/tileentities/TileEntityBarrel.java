@@ -25,7 +25,6 @@ import net.minecraftforge.fluids.IFluidHandler;
 import exnihilo.ENBlocks;
 import exnihilo.ENItems;
 import exnihilo.Fluids;
-import exnihilo.data.BlockData;
 import exnihilo.data.ModData;
 import exnihilo.registries.ColorRegistry;
 import exnihilo.registries.CompostRegistry;
@@ -736,7 +735,7 @@ public class TileEntityBarrel extends TileEntity implements IFluidHandler, ISide
 		NBTTagCompound tag = new NBTTagCompound();
 		this.writeToNBT(tag);
 
-		return new S35PacketUpdateTileEntity(this.xCoord, this.yCoord, this.zCoord, BlockData.BARREL_ID, tag);
+		return new S35PacketUpdateTileEntity(this.xCoord, this.yCoord, this.zCoord, this.blockMetadata, tag);
 	}
 
 	@Override
