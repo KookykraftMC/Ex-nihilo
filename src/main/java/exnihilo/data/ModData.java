@@ -5,11 +5,8 @@ import cpw.mods.fml.common.ModMetadata;
 
 public class ModData {
 	
-	//Paths
-	public static final String TEXTURE_LOCATION = "exnihilo";
-	
 	//Metadata
-	public static final String ID = "crowley.skyblock";
+	public static final String ID = "exnihilo";
 	public static final String NAME = "Ex Nihilo";
 	public static final String VERSION = "MC1.7.2 build 3";
 	
@@ -24,6 +21,9 @@ public class ModData {
 		data.updateUrl = "";
 		data.parent = "";
 	}
+	
+	//Paths
+	public static final String TEXTURE_LOCATION = ID;
 	
 	//Options
 	public static String CATEGORY_OPTIONS = "options";

@@ -10,6 +10,7 @@ import cpw.mods.fml.relauncher.SideOnly;
 import exnihilo.data.BlockData;
 import exnihilo.data.ModData;
 
+//Forestry doesn't have a stable 1.7 API, which is why stuff is commented out, to stop errors. Just highlight it and Ctrl / to uncomment.
 public class BlockBeeTrapTreated extends Block { //extends BlockContainer
 	public static IIcon topIcon;
 	public static IIcon sideIcon;
@@ -27,7 +28,7 @@ public class BlockBeeTrapTreated extends Block { //extends BlockContainer
 	@Override
 	public String getUnlocalizedName()
 	{
-		return BlockData.BEE_TRAP_TREATED_UNLOCALIZED_NAME;
+		return ModData.ID + "." + BlockData.BEE_TRAP_TREATED_UNLOCALIZED_NAME;
 	}
 	
 	@Override

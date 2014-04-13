@@ -262,7 +262,8 @@ public class BlockData {
 		"aluminum_dust"
 		};
 
-	//Load it all!
+	//Data Value loading has been removed.
+//Load it all!
 //	public static void load(Configuration config)
 //	{
 //		BARREL_ID = config.getBlock(CATEGORY, BARREL_KEY, BARREL_ID).getInt();
@@ -285,6 +286,4 @@ public class BlockData {
 //		NICKEL_ORE_ID = config.getBlock(ORE_CATEGORY, NICKEL_ORE_KEY, NICKEL_ORE_ID).getInt();
 //		ALUMINUM_ORE_ID = config.getBlock(ORE_CATEGORY, ALUMINUM_ORE_KEY, ALUMINUM_ORE_ID).getInt();
 //	}
-
-
 }

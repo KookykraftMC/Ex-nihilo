@@ -25,7 +25,7 @@ public class BlockBeeTrap extends Block{
 	@Override
 	public String getUnlocalizedName()
 	{
-		return BlockData.BEE_TRAP_UNLOCALIZED_NAME;
+		return ModData.ID + "." + BlockData.BEE_TRAP_UNLOCALIZED_NAME;
 	}
 	
 	@Override

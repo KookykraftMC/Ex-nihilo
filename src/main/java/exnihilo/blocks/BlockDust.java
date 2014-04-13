@@ -16,7 +16,7 @@ public class BlockDust extends BlockSand {
 	@Override
 	public String getUnlocalizedName()
 	{
-		return BlockData.DUST_UNLOCALIZED_NAME;
+		return ModData.ID + "." + BlockData.DUST_UNLOCALIZED_NAME;
 	}
 	
 	@Override
