@@ -8,7 +8,7 @@ public class ModData {
 	//Metadata
 	public static final String ID = "exnihilo";
 	public static final String NAME = "Ex Nihilo";
-	public static final String VERSION = "MC1.7.2 build 4";
+	public static final String VERSION = "MC1.7.2 build 5";
 	
 	public static void setMetadata(ModMetadata data)
 	{
