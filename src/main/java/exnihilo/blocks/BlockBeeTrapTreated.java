@@ -1,0 +1,57 @@
+package exnihilo.blocks;
+
+import net.minecraft.block.Block;
+import net.minecraft.block.material.Material;
+import net.minecraft.client.renderer.texture.IIconRegister;
+import net.minecraft.creativetab.CreativeTabs;
+import net.minecraft.util.IIcon;
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
+import exnihilo.data.BlockData;
+import exnihilo.data.ModData;
+
+//Forestry doesn't have a stable 1.7 API, which is why stuff is commented out, to stop errors. Just highlight it and Ctrl / to uncomment.
+public class BlockBeeTrapTreated extends Block { //extends BlockContainer
+	public static IIcon topIcon;
+	public static IIcon sideIcon;
+	
+	public BlockBeeTrapTreated() {
+		super(Material.ground);
+		
+		setHardness(1.0f);
+		setStepSound(soundTypeGrass);
+		setCreativeTab(CreativeTabs.tabBlock);
+		
+//		GameRegistry.registerTileEntity(TileEntityBeeTrap.class, this.getUnlocalizedName());
+	}
+
+	@Override
+	public String getUnlocalizedName()
+	{
+		return ModData.ID + "." + BlockData.BEE_TRAP_TREATED_UNLOCALIZED_NAME;
+	}
+	
+	@Override
+	public void registerBlockIcons(IIconRegister register)
+	{
+		topIcon = register.registerIcon(ModData.TEXTURE_LOCATION + ":IconBeeTrapTopTreated");
+		sideIcon = register.registerIcon(ModData.TEXTURE_LOCATION + ":IconBeeTrapSideTreated");
+		blockIcon = sideIcon;
+	}
+	
+	@Override
+	@SideOnly(Side.CLIENT)
+	public IIcon getIcon(int side, int meta)
+    {
+		if (side == 0 || side == 1)
+		{
+			return topIcon;
+		}
+		return sideIcon;
+    }
+
+//	@Override
+//	public TileEntity createNewTileEntity(World world, int meta) {
+//		return new TileEntityBeeTrap();
+//	}
+}
