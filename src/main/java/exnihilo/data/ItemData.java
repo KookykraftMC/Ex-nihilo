@@ -1,12 +1,6 @@
 package exnihilo.data;
 
-@SuppressWarnings("unused")
 public class ItemData {
-	private static final String CATEGORY = "Items";
-	private static final int ITEM_ID_BASE = 18000;
-	private static int next_ID = 0;
-
-
 	//HAMMER
 	public static final String HAMMER_KEY = "hammer";
 	public static final String[] HAMMER_NAMES = 
