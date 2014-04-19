@@ -261,7 +261,7 @@ public class HiveList {
 	//MAGIC BEES!
 	public static void generateCuriousHive()
 	{
-		curious = new Hive(magicBeesHives.itemID, 6);
+		curious = new Hive(magicBeesHives.itemID, 0);
 		
 		curious.requiredCanSeeSky = true;
 		curious.biomeTypes.add(Type.FOREST);
