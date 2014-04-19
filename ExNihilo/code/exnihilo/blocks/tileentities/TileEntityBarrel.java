@@ -86,7 +86,7 @@ public class TileEntityBarrel extends TileEntity implements IFluidHandler, ISide
 	public FluidStack fluid;
 	private float volume;
 	private int timer;
-	public BarrelMode mode;
+	private BarrelMode mode;
 	public Color color;
 	private Color colorBase;
 	public Icon icon;
@@ -94,16 +94,27 @@ public class TileEntityBarrel extends TileEntity implements IFluidHandler, ISide
 	private boolean needsUpdate = false;
 	private int updateTimer = 0;
 
+	public BarrelMode getMode() {
+		return mode;
+	}
+
+	public void setMode(BarrelMode mode) {
+		this.mode = mode;
+		this.needsUpdate = true;
+	}
+
+
+
 	public TileEntityBarrel()
 	{
 		color = ColorRegistry.color("white");
 		colorBase = color;
-		mode = BarrelMode.EMPTY;
+		setMode(BarrelMode.EMPTY);
 		volume = 0;
 		timer = 0;
 		fluid = new FluidStack(FluidRegistry.WATER, 0);
 	}
-
+	
 	@Override
 	public void updateEntity()
 	{	
@@ -122,14 +133,14 @@ public class TileEntityBarrel extends TileEntity implements IFluidHandler, ISide
 			updateTimer++;
 		}
 
-		switch(this.mode)
+		switch(this.getMode())
 		{
 		case EMPTY:
 			//Handle Rain
 			if (!worldObj.isRemote && worldObj.isRaining() && yCoord >= worldObj.getTopSolidOrLiquidBlock(xCoord, zCoord) - 1 && worldObj.getBiomeGenForCoords(xCoord, zCoord).rainfall > 0.0f)
 			{
 				fluid = new FluidStack(FluidRegistry.WATER, 0);
-				mode = BarrelMode.FLUID;
+				setMode(BarrelMode.FLUID);
 			}
 			break;
 
@@ -155,14 +166,14 @@ public class TileEntityBarrel extends TileEntity implements IFluidHandler, ISide
 				if(!worldObj.isRemote && isFull() && ModData.ALLOW_BARREL_RECIPE_SOULSAND && getNearbyBlocks(Block.mycelium.blockID, 0) > 0)
 				{
 					colorBase = new Color(fluid.getFluid().getColor());
-					mode = BarrelMode.SPORED;
+					setMode(BarrelMode.SPORED);
 					needsUpdate = true;
 				}
 
 				//Turn into cobblestone?
 				if (isFull() && worldObj.getBlockId(xCoord, yCoord + 1, zCoord) == FluidRegistry.LAVA.getBlockID())
 				{
-					mode = BarrelMode.COBBLESTONE;
+					setMode(BarrelMode.COBBLESTONE);
 				}
 
 				//Spread moss.
@@ -231,7 +242,7 @@ public class TileEntityBarrel extends TileEntity implements IFluidHandler, ISide
 				//Turn into obsidian
 				if (isFull() && worldObj.getBlockId(xCoord, yCoord + 1, zCoord) == FluidRegistry.WATER.getBlockID())
 				{
-					mode = BarrelMode.OBSIDIAN;
+					setMode(BarrelMode.OBSIDIAN);
 				}
 			}
 			break;
@@ -248,7 +259,7 @@ public class TileEntityBarrel extends TileEntity implements IFluidHandler, ISide
 				//Are we done yet?
 				if(timer >= this.MAX_COMPOSTING_TIME)
 				{
-					mode = BarrelMode.DIRT;
+					setMode(BarrelMode.DIRT);
 					timer = 0;
 					color = ColorRegistry.color("white");
 					worldObj.markBlockForUpdate(xCoord, yCoord, zCoord);
@@ -265,7 +276,7 @@ public class TileEntityBarrel extends TileEntity implements IFluidHandler, ISide
 			if (isDone())
 			{
 				timer = 0;
-				mode = BarrelMode.SLIME;
+				setMode(BarrelMode.SLIME);
 				worldObj.markBlockForUpdate(xCoord, yCoord, zCoord);
 			}
 			break;
@@ -329,7 +340,7 @@ public class TileEntityBarrel extends TileEntity implements IFluidHandler, ISide
 			{
 				timer = 0;
 				fluid = FluidRegistry.getFluidStack("witchwater", fluid.amount);
-				mode = BarrelMode.FLUID;
+				setMode(BarrelMode.FLUID);
 
 				worldObj.markBlockForUpdate(xCoord, yCoord, zCoord);
 			}
@@ -360,7 +371,7 @@ public class TileEntityBarrel extends TileEntity implements IFluidHandler, ISide
 
 			if(isDone())
 			{
-				this.mode = BarrelMode.BLAZE;
+				this.setMode(BarrelMode.BLAZE);
 				timer = 0;
 			}
 			break;
@@ -426,7 +437,7 @@ public class TileEntityBarrel extends TileEntity implements IFluidHandler, ISide
 
 			if(isDone())
 			{
-				this.mode = BarrelMode.ENDER;
+				this.setMode(BarrelMode.ENDER);
 				timer = 0;
 			}
 			break;
@@ -484,13 +495,13 @@ public class TileEntityBarrel extends TileEntity implements IFluidHandler, ISide
 
 	public boolean addCompostItem(Compostable item)
 	{
-		if (mode == BarrelMode.EMPTY)
+		if (getMode() == BarrelMode.EMPTY)
 		{
-			mode = BarrelMode.COMPOST;
+			setMode(BarrelMode.COMPOST);
 			timer = 0;
 		}
 
-		if (mode == BarrelMode.COMPOST && volume < 1.0f)
+		if (getMode() == BarrelMode.COMPOST && volume < 1.0f)
 		{
 			volume += item.value;
 
@@ -575,7 +586,7 @@ public class TileEntityBarrel extends TileEntity implements IFluidHandler, ISide
 	private ItemStack getExtractItem()
 	{
 		//XXX getExtractItem
-		switch (mode)
+		switch (getMode())
 		{
 		case CLAY:
 			return new ItemStack(Block.blockClay, 1, 0);
@@ -629,7 +640,7 @@ public class TileEntityBarrel extends TileEntity implements IFluidHandler, ISide
 		volume = 0;
 		color = ColorRegistry.color("white");
 		colorBase = ColorRegistry.color("white");
-		mode = BarrelMode.EMPTY;
+		setMode(BarrelMode.EMPTY);
 		needsUpdate = true;
 	}
 
@@ -641,75 +652,75 @@ public class TileEntityBarrel extends TileEntity implements IFluidHandler, ISide
 		switch (compound.getInteger("mode"))
 		{
 		case 0:
-			mode = BarrelMode.EMPTY;
+			setMode(BarrelMode.EMPTY);
 			break;
 
 		case 1:
-			mode = BarrelMode.FLUID;
+			setMode(BarrelMode.FLUID);
 			break;
 
 		case 2:
-			mode = BarrelMode.COMPOST;
+			setMode(BarrelMode.COMPOST);
 			break;
 
 		case 3:
-			mode = BarrelMode.DIRT;
+			setMode(BarrelMode.DIRT);
 			break;	
 
 		case 4:
-			mode = BarrelMode.CLAY;
+			setMode(BarrelMode.CLAY);
 			break;
 
 		case 5:
-			mode = BarrelMode.SPORED;
+			setMode(BarrelMode.SPORED);
 			break;
 
 		case 6:
-			mode = BarrelMode.SLIME;
+			setMode(BarrelMode.SLIME);
 			break;
 
 		case 7:
-			mode = BarrelMode.NETHERRACK;
+			setMode(BarrelMode.NETHERRACK);
 			break;	
 
 		case 8:
-			mode = BarrelMode.ENDSTONE;
+			setMode(BarrelMode.ENDSTONE);
 			break;	
 
 		case 9:
-			mode = BarrelMode.MILKED;
+			setMode(BarrelMode.MILKED);
 			break;	
 
 		case 10:
-			mode = BarrelMode.SOULSAND;
+			setMode(BarrelMode.SOULSAND);
 			break;	
 
 		case 11:
-			mode = BarrelMode.BEETRAP;
+			setMode(BarrelMode.BEETRAP);
 			break;
 
 		case 12:
-			mode = BarrelMode.OBSIDIAN;
+			setMode(BarrelMode.OBSIDIAN);
 			break;
 
 		case 13:
-			mode = BarrelMode.COBBLESTONE;
+			setMode(BarrelMode.COBBLESTONE);
 			break;
 
 		case 14:
-			mode = BarrelMode.BLAZE_COOKING;
+			setMode(BarrelMode.BLAZE_COOKING);
 			break;
 
 		case 15:
-			mode = BarrelMode.BLAZE;
+			setMode(BarrelMode.BLAZE);
 			break;
 
 		case 16:
-			mode = BarrelMode.ENDER_COOKING;
+			setMode(BarrelMode.ENDER_COOKING);
 			break;
 
 		case 17:
-			mode = BarrelMode.ENDER;
+			setMode(BarrelMode.ENDER);
 			break;
 		}
 
@@ -726,7 +737,7 @@ public class TileEntityBarrel extends TileEntity implements IFluidHandler, ISide
 	public void writeToNBT(NBTTagCompound compound)
 	{
 		super.writeToNBT(compound);
-		compound.setInteger("mode", mode.value);
+		compound.setInteger("mode", getMode().value);
 		compound.setFloat("volume", volume);
 		compound.setInteger("timer", timer);
 		compound.setInteger("color", color.toInt());
@@ -760,12 +771,12 @@ public class TileEntityBarrel extends TileEntity implements IFluidHandler, ISide
 
 		if (!doFill)
 		{
-			if (mode == BarrelMode.EMPTY)
+			if (getMode() == BarrelMode.EMPTY)
 			{
 				return resource.amount;
 			}
 
-			if (mode == BarrelMode.FLUID && resource.fluidID == fluid.fluidID)
+			if (getMode() == BarrelMode.FLUID && resource.fluidID == fluid.fluidID)
 			{
 				if (capacity >= resource.amount)
 				{
@@ -778,7 +789,7 @@ public class TileEntityBarrel extends TileEntity implements IFluidHandler, ISide
 		}else
 			//Really fill the barrel.
 		{
-			if (mode == BarrelMode.EMPTY)
+			if (getMode() == BarrelMode.EMPTY)
 			{
 				if (resource.fluidID != fluid.fluidID)
 				{
@@ -787,14 +798,14 @@ public class TileEntityBarrel extends TileEntity implements IFluidHandler, ISide
 				{
 					fluid.amount = resource.amount;
 				}
-				mode = BarrelMode.FLUID;
+				setMode(BarrelMode.FLUID);
 				volume = (float)fluid.amount / (float)MAX_FLUID;
 				worldObj.markBlockForUpdate(xCoord, yCoord, zCoord);
 				//needsUpdate = true;
 				return resource.amount;
 			}
 
-			if (mode == BarrelMode.FLUID && resource.fluidID == fluid.fluidID)
+			if (getMode() == BarrelMode.FLUID && resource.fluidID == fluid.fluidID)
 			{
 				if (capacity >= resource.amount)
 				{
@@ -819,7 +830,7 @@ public class TileEntityBarrel extends TileEntity implements IFluidHandler, ISide
 
 	@Override
 	public FluidStack drain(ForgeDirection from, FluidStack resource, boolean doDrain) {
-		if (resource == null || mode != BarrelMode.FLUID || !resource.isFluidEqual(fluid))
+		if (resource == null || getMode() != BarrelMode.FLUID || !resource.isFluidEqual(fluid))
 			return null;
 
 		if (!doDrain)
@@ -849,7 +860,7 @@ public class TileEntityBarrel extends TileEntity implements IFluidHandler, ISide
 				FluidStack drained = new FluidStack(FluidRegistry.getFluid(resource.fluidID),fluid.amount);
 				fluid.amount = 0;
 				volume = 0;
-				mode = BarrelMode.EMPTY;
+				setMode(BarrelMode.EMPTY);
 				timer = 0;
 				//worldObj.markBlockForUpdate(xCoord, yCoord, zCoord);
 				needsUpdate = true;
@@ -861,7 +872,7 @@ public class TileEntityBarrel extends TileEntity implements IFluidHandler, ISide
 
 	@Override
 	public FluidStack drain(ForgeDirection from, int maxDrain, boolean doDrain) {
-		if (mode != BarrelMode.FLUID)
+		if (getMode() != BarrelMode.FLUID)
 			return null;
 
 		if (!doDrain)
@@ -891,7 +902,7 @@ public class TileEntityBarrel extends TileEntity implements IFluidHandler, ISide
 				FluidStack drained = new FluidStack(FluidRegistry.getFluid(fluid.fluidID),fluid.amount);
 				fluid.amount = 0;
 				volume = 0;
-				mode = BarrelMode.EMPTY;
+				setMode(BarrelMode.EMPTY);
 				timer = 0;
 				//worldObj.markBlockForUpdate(xCoord, yCoord, zCoord);
 				needsUpdate = true;
@@ -942,12 +953,12 @@ public class TileEntityBarrel extends TileEntity implements IFluidHandler, ISide
 
 	public int getLightLevel()
 	{
-		if (mode == BarrelMode.FLUID)
+		if (getMode() == BarrelMode.FLUID)
 		{
 			return fluid.getFluid().getLuminosity();
 		}
 
-		if(mode == BarrelMode.BLAZE || mode == BarrelMode.BLAZE_COOKING)
+		if(getMode() == BarrelMode.BLAZE || getMode() == BarrelMode.BLAZE_COOKING)
 		{
 			return 15;
 		}
@@ -1004,7 +1015,7 @@ public class TileEntityBarrel extends TileEntity implements IFluidHandler, ISide
 
 		if (slot == 1)
 		{
-			if (mode == BarrelMode.COMPOST || mode == BarrelMode.EMPTY)
+			if (getMode() == BarrelMode.COMPOST || getMode() == BarrelMode.EMPTY)
 			{
 				if(CompostRegistry.containsItem(item.itemID, item.getItemDamage()))
 				{
@@ -1012,13 +1023,13 @@ public class TileEntityBarrel extends TileEntity implements IFluidHandler, ISide
 				}
 			}
 
-			if(mode == BarrelMode.FLUID && this.isFull())
+			if(getMode() == BarrelMode.FLUID && this.isFull())
 			{
 				if(fluid.fluidID == FluidRegistry.WATER.getID())
 				{
 					if (ModData.ALLOW_BARREL_RECIPE_CLAY && item.itemID == Blocks.Dust.blockID)
 					{
-						this.mode = BarrelMode.CLAY;
+						this.setMode(BarrelMode.CLAY);
 					}
 				}
 
@@ -1026,17 +1037,17 @@ public class TileEntityBarrel extends TileEntity implements IFluidHandler, ISide
 				{
 					if (ModData.ALLOW_BARREL_RECIPE_NETHERRACK && item.itemID == Item.redstone.itemID)
 					{
-						this.mode = BarrelMode.NETHERRACK;
+						this.setMode(BarrelMode.NETHERRACK);
 					}
 
 					if (ModData.ALLOW_BARREL_RECIPE_ENDSTONE && item.itemID == Item.glowstone.itemID)
 					{
-						this.mode = BarrelMode.ENDSTONE;
+						this.setMode(BarrelMode.ENDSTONE);
 					}
 
 					if(ModData.ALLOW_BARREL_RECIPE_BLAZE_RODS && item.itemID == Items.DollAngry.itemID)
 					{
-						mode = BarrelMode.BLAZE_COOKING;
+						setMode(BarrelMode.BLAZE_COOKING);
 					}
 				}
 
@@ -1045,19 +1056,19 @@ public class TileEntityBarrel extends TileEntity implements IFluidHandler, ISide
 					if(ModData.ALLOW_BARREL_RECIPE_SOULSAND && item.itemID == Block.sand.blockID)
 					{
 						resetColor();
-						mode = BarrelMode.SOULSAND;
+						setMode(BarrelMode.SOULSAND);
 					}
 
 					if(ModData.ALLOW_BARREL_RECIPE_ENDER_PEARLS && item.itemID == Items.DollCreepy.itemID)
 					{
-						mode = BarrelMode.ENDER_COOKING;
+						setMode(BarrelMode.ENDER_COOKING);
 					}
 				}
 				
 				Fluid seedOil = FluidRegistry.getFluid("seedoil");
 				if (seedOil != null && fluid.fluidID == seedOil.getID())
 				{
-					mode = BarrelMode.BEETRAP;
+					setMode(BarrelMode.BEETRAP);
 				}
 			}
 		}
@@ -1128,12 +1139,12 @@ public class TileEntityBarrel extends TileEntity implements IFluidHandler, ISide
 	public boolean canExtractItem(int slot, ItemStack item, int side) {
 		if (side == 0 && slot == 0)
 		{
-			if (mode.canExtract == ExtractMode.Always)
+			if (getMode().canExtract == ExtractMode.Always)
 			{
 				return true;
 			}
 
-			if (worldObj.difficultySetting == 0 && mode.canExtract == ExtractMode.PeacefulOnly)
+			if (worldObj.difficultySetting == 0 && getMode().canExtract == ExtractMode.PeacefulOnly)
 			{
 				return true;
 			}
@@ -1145,7 +1156,7 @@ public class TileEntityBarrel extends TileEntity implements IFluidHandler, ISide
 	public boolean isItemValid(ItemStack item)
 	{
 		///XXX isItemValid
-		if (!this.isFull() && mode == BarrelMode.COMPOST || mode == BarrelMode.EMPTY)
+		if (!this.isFull() && getMode() == BarrelMode.COMPOST || getMode() == BarrelMode.EMPTY)
 		{
 			if(ModData.ALLOW_BARREL_RECIPE_DIRT && CompostRegistry.containsItem(item.itemID, item.getItemDamage()))
 			{
@@ -1153,7 +1164,7 @@ public class TileEntityBarrel extends TileEntity implements IFluidHandler, ISide
 			}
 		}
 
-		if(mode == BarrelMode.FLUID && this.isFull())
+		if(getMode() == BarrelMode.FLUID && this.isFull())
 		{
 			if(fluid.fluidID == FluidRegistry.WATER.getID())
 			{
