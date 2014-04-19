@@ -106,7 +106,7 @@ public class TileEntityLeavesInfested extends TileEntity
 
 		Block target = Block.blocksList[blockID];
 
-		if(target != null && target.isLeaves(null, 0, 0, 0) && target.blockID != Blocks.LeavesInfested.blockID && !Forestry.addsThisLeaf(target))
+		if(target != null && target.isLeaves(this.worldObj, x, y, z) && target.blockID != Blocks.LeavesInfested.blockID && !Forestry.addsThisLeaf(target))
 		{
 			worldObj.setBlock(xCoord + x, yCoord + y, zCoord + z, Blocks.LeavesInfested.blockID, meta, 3);
 			TileEntityLeavesInfested te = (TileEntityLeavesInfested)worldObj.getBlockTileEntity(xCoord + x, yCoord + y, zCoord + z);
