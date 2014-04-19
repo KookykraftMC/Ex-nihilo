@@ -9,6 +9,7 @@ import exnihilo.compatibility.foresty.Forestry;
 import exnihilo.data.ItemData;
 import exnihilo.data.ModData;
 import net.minecraft.block.Block;
+import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.texture.IconRegister;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
@@ -18,6 +19,7 @@ import net.minecraft.item.EnumToolMaterial;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.ItemTool;
+import net.minecraft.server.MinecraftServer;
 import net.minecraft.world.World;
 import net.minecraftforge.fluids.FluidRegistry;
 
@@ -42,7 +44,9 @@ public class ItemCrook extends ItemTool{
 	@Override
 	public boolean canHarvestBlock(Block block)
 	{
-		if (block.isLeaves(null, 0, 0, 0))
+		World world = MinecraftServer.getServer().worldServers[0];
+		
+		if (block.isLeaves(world, 0, 0, 0))
 		{
 			return true;
 		}
@@ -53,7 +57,9 @@ public class ItemCrook extends ItemTool{
 	@Override
 	public float getStrVsBlock(ItemStack item, Block block)
 	{
-		if (block.isLeaves(null, 0, 0, 0))
+		World world = MinecraftServer.getServer().worldServers[0];
+		
+		if (block.isLeaves(world, 0, 0, 0))
 		{
 			return efficiencyOnProperMaterial + 1;
 		}
@@ -73,7 +79,7 @@ public class ItemCrook extends ItemTool{
 
 		Block block = Block.blocksList[blockID];
 
-		if (block.isLeaves(null, 0, 0, 0))
+		if (block.isLeaves(world, X, Y, Z))
 		{
 			if (!world.isRemote)
 			{
