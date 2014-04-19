@@ -30,6 +30,8 @@ public class TileEntityLeavesInfested extends TileEntity
 	public int blockID = Block.leaves.blockID;
 	public int meta = 0;
 	public Color color = ColorRegistry.color("white");
+	public boolean dying = false;
+	public boolean permanent = false;
 
 	private static final int SPREAD_INTERVAL = 100;
 	private int spreadTimer = 0;
@@ -39,11 +41,11 @@ public class TileEntityLeavesInfested extends TileEntity
 
 	@Override
 	public void updateEntity()
-	{
+	{		
 		if (progress < 1.0f)
 		{
 			progress += PROGRESS_INTERVAL;
-
+			
 			if (progress > 1.0f)
 			{
 				progress = 1.0f;
@@ -133,6 +135,9 @@ public class TileEntityLeavesInfested extends TileEntity
 		int tempMeta = compound.getInteger("meta");
 		if (tempMeta != 0)
 			meta = tempMeta;
+		
+		permanent = compound.getBoolean("permanent");
+		dying = compound.getBoolean("dying");
 	}
 
 	@Override
@@ -142,6 +147,8 @@ public class TileEntityLeavesInfested extends TileEntity
 		compound.setFloat("progress", progress);
 		compound.setInteger("blockID", blockID);
 		compound.setInteger("meta", meta);
+		compound.setBoolean("permanent", permanent);
+		compound.setBoolean("dying", dying);
 	}
 
 	@Override
