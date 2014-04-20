@@ -14,11 +14,14 @@ import cpw.mods.fml.common.event.FMLInitializationEvent;
 import cpw.mods.fml.common.event.FMLPostInitializationEvent;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 import cpw.mods.fml.common.eventhandler.SubscribeEvent;
+import cpw.mods.fml.common.network.NetworkRegistry;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import exnihilo.compatibility.CommonOre;
 import exnihilo.data.ModData;
 import exnihilo.data.WorldData;
+import exnihilo.network.ChannelHandler;
+import exnihilo.network.ENNetwork;
 import exnihilo.proxies.Proxy;
 import exnihilo.registries.ColorRegistry;
 import exnihilo.registries.CompostRegistry;
@@ -28,7 +31,7 @@ import exnihilo.registries.HeatRegistry;
 import exnihilo.registries.SieveRegistry;
 
 @Mod(modid = ModData.ID, name = ModData.NAME, version = ModData.VERSION)
-public class ExNihilo 
+public class ExNihilo extends ENNetwork 
 {
 	@Instance(ModData.ID)
 	public static ExNihilo instance;
@@ -78,6 +81,7 @@ public class ExNihilo
 	@EventHandler
 	public void Initialize(FMLInitializationEvent event)
 	{
+		channels = NetworkRegistry.INSTANCE.newChannel("ExNihilo", new ChannelHandler());
 		Blocks.fire.setFireInfo(ENBlocks.Barrel, 5, 150);
 		Blocks.fire.setFireInfo(ENBlocks.LeavesInfested, 5, 150);
 		Blocks.fire.setFireInfo(ENBlocks.Sieve, 5, 150);
