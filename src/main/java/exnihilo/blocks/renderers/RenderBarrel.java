@@ -54,7 +54,7 @@ public class RenderBarrel extends TileEntitySpecialRenderer{
 	{
 		TileEntityBarrel barrel = (TileEntityBarrel)tileentity;
 
-		if (barrel.mode != BarrelMode.EMPTY)
+		if (barrel.getMode() != BarrelMode.EMPTY)
 		{
 			GL11.glPushMatrix();
 			GL11.glTranslatef((float)x + 0.5F,(float)y + barrel.getAdjustedVolume(),(float)z + 0.5F);
@@ -69,7 +69,7 @@ public class RenderBarrel extends TileEntitySpecialRenderer{
 			boolean clouds = false;
 			boolean trap = false;
 
-			switch (barrel.mode)
+			switch (barrel.getMode())
 			{
 			case COMPOST:
 				icon = BlockBarrel.iconCompost;

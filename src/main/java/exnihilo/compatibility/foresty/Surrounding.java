@@ -4,6 +4,7 @@
 //import java.util.Map;
 //
 //import net.minecraft.block.Block;
+//import net.minecraft.server.MinecraftServer;
 //
 //public class Surrounding {
 //	public Map<String, Integer> blocks = new HashMap<String, Integer>();
@@ -14,7 +15,7 @@
 //	{
 //		Block block = par1Block;
 //		
-//		if (block != null && block.isLeaves(null, 0, 0, 0))
+//		if (block != null && block.isLeaves(MinecraftServer.getServer().worldServers[0], 0, 0, 0))
 //		{
 //			leafCount++;
 //		}

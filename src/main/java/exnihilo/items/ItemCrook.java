@@ -11,6 +11,7 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.ItemTool;
+import net.minecraft.server.MinecraftServer;
 import net.minecraft.world.World;
 import net.minecraftforge.fluids.FluidRegistry;
 
@@ -43,7 +44,9 @@ public class ItemCrook extends ItemTool{
 	@Override
 	public boolean func_150897_b(Block block)
 	{
-		if (block.isLeaves(null, 0, 0, 0))
+		World world = MinecraftServer.getServer().worldServers[0];
+		
+		if (block.isLeaves(world, 0, 0, 0))
 		{
 			return true;
 		}
@@ -54,7 +57,9 @@ public class ItemCrook extends ItemTool{
 	@Override
 	public float func_150893_a(ItemStack item, Block block)
 	{
-		if (block.isLeaves(null, 0, 0, 0))
+		World world = MinecraftServer.getServer().worldServers[0];
+		
+		if (block.isLeaves(world, 0, 0, 0))
 		{
 			return efficiencyOnProperMaterial + 1;
 		}
@@ -72,7 +77,7 @@ public class ItemCrook extends ItemTool{
 		boolean validTarget = false;
 		boolean extraDropped = false;
 
-		if (block.isLeaves(null, 0, 0, 0))
+		if (block.isLeaves(world, 0, 0, 0))
 		{
 			if (!world.isRemote)
 			{
