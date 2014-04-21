@@ -32,42 +32,55 @@ public class IC2 {
 
 	public static void loadCompatibility()
 	{
+		ExNihilo.log.info("Beginning IC2 Integration...");
 		ArrayList<ItemStack> ores;
 
 		ores = OreDictionary.getOres("dustSulfur");
-		if (ores.size() > 0)
-		{
+		if (ores.size() > 0){
 			ItemStack sulfur = ores.toArray(new ItemStack[ores.size()])[0];
-
 			SieveRegistry.register(ENBlocks.Dust, 0, sulfur.getItem(), sulfur.getItemDamage(), 32);
+			ExNihilo.log.info("Sulfur was successfully integrated");
+		}else{
+			ExNihilo.log.error("SULFUR WAS NOT INTEGRATED");
 		}
 
 		Block rubberSapling = GameRegistry.findBlock("IC2", "blockRubSapling");
-		ItemSeedRubber.saplings.add(rubberSapling);
-		SieveRegistry.register(Blocks.dirt, 0, ENItems.SeedsRubber, 0, 45);
+		if(rubberSapling != null) {
+			ItemSeedRubber.saplings.add(rubberSapling);
+			SieveRegistry.register(Blocks.dirt, 0, ENItems.SeedsRubber, 0, 45);
+			ExNihilo.log.info("Rubber was successfully integrated");
+		}else{
+			ExNihilo.log.error("RUBBER WAS NOT INTEGRATED");
+		}
 
-		Item crushedUranium = GameRegistry.findItem("IC2", "itemCrushedOre");
-		if (crushedUranium != null)
-		{
-			SieveRegistry.register(Blocks.sand, 0, crushedUranium, 4, 48);
+		Item crushedOres = GameRegistry.findItem("IC2", "itemCrushedOre");
+		if (crushedOres != null) {
+			SieveRegistry.register(Blocks.sand, 0, crushedOres, 4, 48);
+			ExNihilo.log.info("Crushed Ores were successfully integrated");
+		}else{
+			ExNihilo.log.error("CRUSHED ORES WERE NOT INTEGRATED");
 		}
 
 		Item plantBall = GameRegistry.findItem("IC2", "itemFuelPlantBall");
-		if (plantBall != null)
-		{
+		if (plantBall != null) {
 			CompostRegistry.register(plantBall, 0, 0.5f, new Color("269900"));
+			ExNihilo.log.info("Plantball was successfully integrated");
+		}else{
+			ExNihilo.log.error("PLANTBALL WAS NOT INTEGRATED");
 		}
 
 		Item plantBallCompressed = GameRegistry.findItem("IC2", "itemFuelPlantCmpr");
-		if (plantBallCompressed != null)
-		{
+		if (plantBallCompressed != null) {
 			CompostRegistry.register(plantBallCompressed, 0, 1.0f, new Color("269900"));
+			ExNihilo.log.info("Compressed Plants were successfully integrated");
+		}else{
+			ExNihilo.log.error("COMPRESSED PLANTS WERE NOT INTEGRATED");
 		}
 
 		//Remove the default IC2 cobblestone macerator recipe.
 		if (ModData.OVERWRITE_DEFAULT_MACERATOR_RECIPES)
 		{
-			Map<IRecipeInput, RecipeOutput> recipes = ic2.api.recipe.Recipes.macerator.getRecipes();
+			Map<IRecipeInput, RecipeOutput> recipes = Recipes.macerator.getRecipes();
 			IRecipeInput cobbleRecipe = null;
 			IRecipeInput gravelRecipe = null;
 
@@ -84,27 +97,28 @@ public class IC2 {
 				}
 			}
 
-			if (cobbleRecipe != null)
-			{
-				ExNihilo.log.info("Removing default IC2 Cobble->Sand macerator recipe.");
-
+			if (cobbleRecipe != null) {
 				recipes.remove(cobbleRecipe);
+				ExNihilo.log.info("Successfully removed default Cobble to Sand Macerator recipe");
+			}else{
+				ExNihilo.log.error("DEFAULT COBBLE TO SAND MACERATOR RECIPE WASN'T REMOVED");
 			}
 
-			if (gravelRecipe != null)
-			{
-				ExNihilo.log.info("Removing default IC2 Gravel->Flint macerator recipe.");
-
+			if (gravelRecipe != null) {
 				recipes.remove(gravelRecipe);
+				ExNihilo.log.info("Successfully removed default Gravel to Flint Macerator recipe");
+			}else{
+				ExNihilo.log.error("DEFAULT GRAVEL TO FLINT MACERATOR RECIPE WASN'T REMOVED");
 			}
 
 			//Add the hammer recipe sequence.
-			ExNihilo.log.info("Adding Hammer Sequence to IC2 Macerator.");
 			Recipes.macerator.addRecipe(new RecipeInputItemStack(new ItemStack(Blocks.cobblestone)), null, new ItemStack(Blocks.gravel));
 			Recipes.macerator.addRecipe(new RecipeInputItemStack(new ItemStack(Blocks.gravel)), null, new ItemStack(Blocks.sand));
+			ExNihilo.log.info("Successfully added Hammer sequence to Macerator");
 		}
 
 		Recipes.macerator.addRecipe(new RecipeInputItemStack(new ItemStack(Blocks.sand)), null, new ItemStack(ENBlocks.Dust));
+		ExNihilo.log.info("IC2 Integration Complete!");
 	}
 
 }

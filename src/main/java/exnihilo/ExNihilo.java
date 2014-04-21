@@ -9,7 +9,6 @@ import net.minecraftforge.common.config.Configuration;
 
 import org.apache.logging.log4j.Logger;
 
-import cpw.mods.fml.common.Loader;
 import cpw.mods.fml.common.Mod;
 import cpw.mods.fml.common.Mod.EventHandler;
 import cpw.mods.fml.common.Mod.Instance;
@@ -21,6 +20,7 @@ import cpw.mods.fml.common.eventhandler.SubscribeEvent;
 import cpw.mods.fml.common.network.NetworkRegistry;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
+import exnihilo.compatibility.AE2;
 import exnihilo.compatibility.CommonOre;
 import exnihilo.compatibility.IC2;
 import exnihilo.compatibility.foresty.Forestry;
@@ -115,7 +115,7 @@ public class ExNihilo extends ENNetwork
 	{
 		CommonOre.registerRecipes();
 
-		if (Loader.isModLoaded("IC2"))
+		if (IC2.isLoaded())
 		{
 			log.info("Found IC2!");
 
@@ -137,13 +137,12 @@ public class ExNihilo extends ENNetwork
 //			ThermalExpansion.loadCompatibility();
 //		}
 
-		//AE is done, AE2 API is not stable
-//		if (AppliedEnergistics.isLoaded())
-//		{
-//			System.out.println(ModData.NAME + ": Found Applied Energistics!");
-//
-//			AppliedEnergistics.loadCompatibility();
-//		}
+		if (AE2.isLoaded())
+		{
+			log.info("Found AE2!");
+
+			AE2.loadCompatibility();
+		}
 
 		//No 1.7 API out yet
 //		if (Mekanism.isLoaded())

@@ -11,7 +11,6 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.server.MinecraftServer;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
-import net.minecraft.world.WorldServer;
 import net.minecraftforge.common.EnumPlantType;
 import exnihilo.data.ItemData;
 import exnihilo.data.ModData;
@@ -28,13 +27,7 @@ public class ItemSeedRubber extends ItemSeedBase{
     @Override
     public Block getPlant(IBlockAccess world, int x, int y, int z)
     {
-    	World worldRand = null;
-		WorldServer[] list = MinecraftServer.getServer().worldServers;
-		for(WorldServer ins : list)
-		{
-			if(ins.provider.dimensionId==entity.worldObj.provider.dimensionId)
-				worldRand = ins;
-		}
+    	World worldRand = MinecraftServer.getServer().worldServers[0];
     	if (saplings.size() > 0)
     	{
     		int rand = worldRand.rand.nextInt(saplings.size());

@@ -7,6 +7,7 @@ import net.minecraft.init.Blocks;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.common.BiomeDictionary.Type;
 import net.minecraftforge.fluids.FluidRegistry;
+import exnihilo.ExNihilo;
 import forestry.api.apiculture.FlowerManager;
 import forestry.core.config.ForestryBlock;
 
@@ -41,8 +42,7 @@ public class HiveList {
 	{
 		beehives = new ItemStack(ForestryBlock.beehives);
 
-		if (beehives != null)
-		{
+		if (beehives != null){
 			generateForestHive();
 			generateMeadowHive();
 			generateDesertHive();
@@ -52,9 +52,10 @@ public class HiveList {
 			generateSwampHive();
 
 			return true;
+		}else{
+			ExNihilo.log.info("COULD NOT RETREIVE FORESTRY HIVES! THEY HAVE NOT BEEN INSTANTIATED");
+			return false;
 		}
-		return false;
-
 	}
 
 	//Not updated to 1.7 yet
