@@ -6,6 +6,10 @@ import net.minecraft.init.Blocks;
 import net.minecraftforge.client.event.TextureStitchEvent;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.common.config.Configuration;
+
+import org.apache.logging.log4j.Logger;
+
+import cpw.mods.fml.common.Loader;
 import cpw.mods.fml.common.Mod;
 import cpw.mods.fml.common.Mod.EventHandler;
 import cpw.mods.fml.common.Mod.Instance;
@@ -18,6 +22,8 @@ import cpw.mods.fml.common.network.NetworkRegistry;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import exnihilo.compatibility.CommonOre;
+import exnihilo.compatibility.IC2;
+import exnihilo.compatibility.foresty.Forestry;
 import exnihilo.data.ModData;
 import exnihilo.data.WorldData;
 import exnihilo.network.ChannelHandler;
@@ -40,10 +46,12 @@ public class ExNihilo extends ENNetwork
 	public static Proxy proxy;
 	
 	public static Configuration config;
+	public static Logger log;
 
 	@EventHandler
 	public void PreInitialize(FMLPreInitializationEvent event)
 	{
+		log = event.getModLog();
 		//Metadata!
 		ModData.setMetadata(event.getModMetadata());
 
@@ -107,21 +115,19 @@ public class ExNihilo extends ENNetwork
 	{
 		CommonOre.registerRecipes();
 
-		//For Later Forge Versions
-//		if (Loader.isModLoaded("IC2"))
-//		{
-//			System.out.println(ModData.NAME + ": Found IC2!");
-//
-//			IC2.loadCompatibility();
-//		}
+		if (Loader.isModLoaded("IC2"))
+		{
+			log.info("Found IC2!");
 
-		//1.7 API not stable yet
-//		if (Forestry.isLoaded())
-//		{
-//			System.out.println(ModData.NAME + ": Found Forestry!");
-//
-//			Forestry.loadCompatibility();
-//		}
+			IC2.loadCompatibility();
+		}
+
+		if (Forestry.isLoaded())
+		{
+			log.info("Found Forestry!");
+
+			Forestry.loadCompatibility();
+		}
 		
 		//No 1.7 API out yet
 //		if (ThermalExpansion.isLoaded())

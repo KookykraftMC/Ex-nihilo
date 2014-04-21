@@ -1,17 +1,20 @@
 package exnihilo.blocks;
 
-import net.minecraft.block.Block;
+import net.minecraft.block.BlockContainer;
 import net.minecraft.block.material.Material;
 import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.creativetab.CreativeTabs;
+import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.IIcon;
+import net.minecraft.world.World;
+import cpw.mods.fml.common.registry.GameRegistry;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
+import exnihilo.blocks.tileentities.TileEntityBeeTrap;
 import exnihilo.data.BlockData;
 import exnihilo.data.ModData;
 
-//Forestry doesn't have a stable 1.7 API, which is why stuff is commented out, to stop errors. Just highlight it and Ctrl / to uncomment.
-public class BlockBeeTrapTreated extends Block { //extends BlockContainer
+public class BlockBeeTrapTreated extends BlockContainer {
 	public static IIcon topIcon;
 	public static IIcon sideIcon;
 	
@@ -22,7 +25,7 @@ public class BlockBeeTrapTreated extends Block { //extends BlockContainer
 		setStepSound(soundTypeGrass);
 		setCreativeTab(CreativeTabs.tabBlock);
 		
-//		GameRegistry.registerTileEntity(TileEntityBeeTrap.class, this.getUnlocalizedName());
+		GameRegistry.registerTileEntity(TileEntityBeeTrap.class, this.getUnlocalizedName());
 	}
 
 	@Override
@@ -50,8 +53,8 @@ public class BlockBeeTrapTreated extends Block { //extends BlockContainer
 		return sideIcon;
     }
 
-//	@Override
-//	public TileEntity createNewTileEntity(World world, int meta) {
-//		return new TileEntityBeeTrap();
-//	}
+	@Override
+	public TileEntity createNewTileEntity(World world, int meta) {
+		return new TileEntityBeeTrap();
+	}
 }
