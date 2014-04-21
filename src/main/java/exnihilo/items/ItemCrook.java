@@ -1,5 +1,6 @@
 package exnihilo.items;
 
+import java.lang.reflect.Method;
 import java.util.Set;
 
 import net.minecraft.block.Block;
@@ -11,6 +12,7 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.ItemTool;
+import net.minecraft.server.MinecraftServer;
 import net.minecraft.world.World;
 import net.minecraftforge.fluids.FluidRegistry;
 
@@ -18,6 +20,7 @@ import com.google.common.collect.Sets;
 
 import exnihilo.ENBlocks;
 import exnihilo.ENItems;
+import exnihilo.compatibility.foresty.Forestry;
 import exnihilo.data.ItemData;
 import exnihilo.data.ModData;
 
@@ -43,7 +46,9 @@ public class ItemCrook extends ItemTool{
 	@Override
 	public boolean func_150897_b(Block block)
 	{
-		if (block.isLeaves(null, 0, 0, 0))
+		World world = MinecraftServer.getServer().worldServers[0];
+		
+		if (block.isLeaves(world, 0, 0, 0))
 		{
 			return true;
 		}
@@ -54,7 +59,9 @@ public class ItemCrook extends ItemTool{
 	@Override
 	public float func_150893_a(ItemStack item, Block block)
 	{
-		if (block.isLeaves(null, 0, 0, 0))
+		World world = MinecraftServer.getServer().worldServers[0];
+		
+		if (block.isLeaves(world, 0, 0, 0))
 		{
 			return efficiencyOnProperMaterial + 1;
 		}
@@ -63,6 +70,7 @@ public class ItemCrook extends ItemTool{
 	}
 
 	//Break leaf block
+	@SuppressWarnings("rawtypes")
 	@Override
 	public boolean onBlockStartBreak(ItemStack item, int X, int Y, int Z, EntityPlayer player)
 	{
@@ -72,33 +80,33 @@ public class ItemCrook extends ItemTool{
 		boolean validTarget = false;
 		boolean extraDropped = false;
 
-		if (block.isLeaves(null, 0, 0, 0))
+		if (block.isLeaves(world, 0, 0, 0))
 		{
 			if (!world.isRemote)
 			{
-//				if (Forestry.isLoaded())
-//				{
-//					//Forestry, why? Why did you make me have to do this? We could have been friends...
-//					Class forestryLeafBlock = null;
-//					try {
-//						forestryLeafBlock = Class.forName("forestry.arboriculture.gadgets.BlockLeaves");
-//
-//						Method dropStuff = null;
-//						if (forestryLeafBlock != null)
-//						{	
-//							dropStuff = forestryLeafBlock.cast(block).getClass().getDeclaredMethod("spawnLeafDrops", World.class, int.class, int.class, int.class, int.class, float.class, boolean.class);
-//							dropStuff.setAccessible(true);
-//						}
-//
-//						if (dropStuff != null)
-//						{
-//							//This gets called once here, and then it drops stuff again when it breaks.
-//							dropStuff.invoke(forestryLeafBlock.cast(block), world, X, Y, Z, meta, 1.0F, true);
-//							extraDropped = true;
-//						}
-//					}
-//					catch (Exception ex){}
-//				}
+				if (Forestry.isLoaded())
+				{
+					//Forestry, why? Why did you make me have to do this? We could have been friends...
+					Class forestryLeafBlock = null;
+					try {
+						forestryLeafBlock = Class.forName("forestry.arboriculture.gadgets.BlockLeaves");
+
+						Method dropStuff = null;
+						if (forestryLeafBlock != null)
+						{	
+							dropStuff = forestryLeafBlock.cast(block).getClass().getDeclaredMethod("spawnLeafDrops", World.class, int.class, int.class, int.class, int.class, float.class, boolean.class);
+							dropStuff.setAccessible(true);
+						}
+
+						if (dropStuff != null)
+						{
+							//This gets called once here, and then it drops stuff again when it breaks.
+							dropStuff.invoke(forestryLeafBlock.cast(block), world, X, Y, Z, meta, 1.0F, true);
+							extraDropped = true;
+						}
+					}
+					catch (Exception ex){}
+				}
 
 				//If the Forestry method didn't work, try the vanilla way.
 				if (!extraDropped)

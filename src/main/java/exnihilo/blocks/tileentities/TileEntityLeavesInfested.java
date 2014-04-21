@@ -8,6 +8,7 @@ import net.minecraft.network.Packet;
 import net.minecraft.network.play.server.S35PacketUpdateTileEntity;
 import net.minecraft.tileentity.TileEntity;
 import exnihilo.ENBlocks;
+import exnihilo.compatibility.foresty.Forestry;
 import exnihilo.registries.ColorRegistry;
 import exnihilo.registries.helpers.Color;
 
@@ -16,6 +17,8 @@ public class TileEntityLeavesInfested extends TileEntity
 	public Block block = Blocks.leaves;
 	public int meta = 0;
 	public Color color = ColorRegistry.color("white");
+	public boolean dying = false;
+	public boolean permanent = false;
 
 	private static final int SPREAD_INTERVAL = 100;
 	private int spreadTimer = 0;
@@ -86,7 +89,7 @@ public class TileEntityLeavesInfested extends TileEntity
 		int meta = worldObj.getBlockMetadata(xCoord + x, yCoord + y, zCoord + z);
 
 		//You would think that "isLeaves" would be enough to NOT have them spawn in the air around the tree. Apparently not...
-		if(block != null && !worldObj.isAirBlock(xCoord + x, yCoord + y, zCoord + z) && block.isLeaves(worldObj, xCoord + x, yCoord + y, zCoord + z) && block != ENBlocks.LeavesInfested) // && !Forestry.addsThisLeaf(block))
+		if(block != null && !worldObj.isAirBlock(x, y, z) && block.isLeaves(worldObj, x, y, z) && block != ENBlocks.LeavesInfested && !Forestry.addsThisLeaf(block))
 		{
 			worldObj.setBlock(xCoord + x, yCoord + y, zCoord + z, ENBlocks.LeavesInfested, meta, 3);
 			TileEntityLeavesInfested te = (TileEntityLeavesInfested)worldObj.getTileEntity(xCoord + x, yCoord + y, zCoord + z);
@@ -115,6 +118,9 @@ public class TileEntityLeavesInfested extends TileEntity
 		int tempMeta = compound.getInteger("meta");
 		if (tempMeta != 0)
 			meta = tempMeta;
+		
+		permanent = compound.getBoolean("permanent");
+		dying = compound.getBoolean("dying");
 	}
 
 	@Override
@@ -122,13 +128,14 @@ public class TileEntityLeavesInfested extends TileEntity
 	{
 		super.writeToNBT(compound);
 		compound.setFloat("progress", progress);
-		//Should find some other way to do this, as the data values could change with multiple world load ups, but this will do for now...
 		if(block == null) {
 			compound.setString("block", "");
 		}else{
 			compound.setString("block", Block.blockRegistry.getNameForObject(block));
 		}
 		compound.setInteger("meta", meta);
+		compound.setBoolean("permanent", permanent);
+		compound.setBoolean("dying", dying);
 	}
 
 	@Override

@@ -89,7 +89,7 @@ public class BlockBarrel extends BlockContainer
 
 		TileEntityBarrel barrel = (TileEntityBarrel) world.getTileEntity(x, y, z);
 
-		if (barrel.mode.canExtract == ExtractMode.Always || (world.difficultySetting.equals(0) && barrel.mode.canExtract == ExtractMode.PeacefulOnly))
+		if (barrel.getMode().canExtract == ExtractMode.Always || (world.difficultySetting.getDifficultyId() == 0 && barrel.getMode().canExtract == ExtractMode.PeacefulOnly))
 		{
 			barrel.giveAppropriateItem();
 		}
@@ -102,7 +102,7 @@ public class BlockBarrel extends BlockContainer
 				//COMPOST!
 				if (ModData.ALLOW_BARREL_RECIPE_DIRT)
 				{
-					if (barrel.mode == BarrelMode.EMPTY || barrel.mode == BarrelMode.COMPOST && !barrel.isFull())
+					if (barrel.getMode() == BarrelMode.EMPTY || barrel.getMode() == BarrelMode.COMPOST && !barrel.isFull())
 					{
 						if (CompostRegistry.containsItem(item.getItem(), item.getItemDamage()))
 						{
@@ -127,7 +127,7 @@ public class BlockBarrel extends BlockContainer
 
 
 				//FLUIDS!
-				if (barrel.mode == BarrelMode.EMPTY || barrel.mode == BarrelMode.FLUID)
+				if (barrel.getMode() == BarrelMode.EMPTY || barrel.getMode() == BarrelMode.FLUID)
 				{
 					FluidStack fluid = FluidContainerRegistry.getFluidForFilledItem(item);
 					//FILL
@@ -182,28 +182,28 @@ public class BlockBarrel extends BlockContainer
 				//XXX BARREL RECIPES!
 				if (item!= null)
 				{
-					if (barrel.mode == BarrelMode.FLUID && barrel.isFull())
+					if (barrel.getMode() == BarrelMode.FLUID && barrel.isFull())
 					{
 						if (barrel.fluid.fluidID == FluidRegistry.WATER.getID())
 						{
 							//Dust turns water into clay!
 							if(ModData.ALLOW_BARREL_RECIPE_CLAY && item.getItem() == Item.getItemFromBlock(ENBlocks.Dust))
 							{
-								barrel.mode = BarrelMode.CLAY;
+								barrel.setMode(BarrelMode.CLAY);
 								useItem(player);
 							}
 
 							//Milk + Water = Slime!
 							if(ModData.ALLOW_BARREL_RECIPE_SLIME && item.getItem() == net.minecraft.init.Items.milk_bucket)
 							{
-								barrel.mode = BarrelMode.MILKED;
+								barrel.setMode(BarrelMode.MILKED);
 								useItem(player);
 							}
 
 							//Mushroom stew + Water = Witch Water!
 							if(ModData.ALLOW_BARREL_RECIPE_SOULSAND && (item.getItem() == net.minecraft.init.Items.mushroom_stew || item.getItem() == ENItems.Spores))
 							{
-								barrel.mode = BarrelMode.SPORED;
+								barrel.setMode(BarrelMode.SPORED);
 								useItem(player);
 							}
 
@@ -214,21 +214,21 @@ public class BlockBarrel extends BlockContainer
 							//Redstone + Lava = Netherrack
 							if(ModData.ALLOW_BARREL_RECIPE_NETHERRACK && item.getItem() == net.minecraft.init.Items.redstone)
 							{
-								barrel.mode = BarrelMode.NETHERRACK;
+								barrel.setMode(BarrelMode.NETHERRACK);
 								useItem(player);
 							}
 
 							//Glowstone + Lava = End Stone
 							if(ModData.ALLOW_BARREL_RECIPE_ENDSTONE && item.getItem() == net.minecraft.init.Items.glowstone_dust)
 							{
-								barrel.mode = BarrelMode.ENDSTONE;
+								barrel.setMode(BarrelMode.ENDSTONE);
 								useItem(player);
 							}
 							
 							//Angry doll + Lava = Blaze!
 							if(ModData.ALLOW_BARREL_RECIPE_BLAZE_RODS && item.getItem() == ENItems.DollAngry)
 							{
-								barrel.mode = BarrelMode.BLAZE_COOKING;
+								barrel.setMode(BarrelMode.BLAZE_COOKING);
 								useItem(player);
 							}
 						}
@@ -238,14 +238,14 @@ public class BlockBarrel extends BlockContainer
 							//Witch water + Sand = Soul Sand
 							if(ModData.ALLOW_BARREL_RECIPE_SOULSAND && item.getItem() == Item.getItemFromBlock(Blocks.sand))
 							{
-								barrel.mode = BarrelMode.SOULSAND;
+								barrel.setMode(BarrelMode.SOULSAND);
 								barrel.resetColor();
 								useItem(player);
 							}
 							
 							if(ModData.ALLOW_BARREL_RECIPE_ENDER_PEARLS && item.getItem() == ENItems.DollCreepy)
 							{
-								barrel.mode = BarrelMode.ENDER_COOKING;
+								barrel.setMode(BarrelMode.ENDER_COOKING);
 								useItem(player);
 							}
 						}
@@ -253,7 +253,7 @@ public class BlockBarrel extends BlockContainer
 						Fluid seedOil = FluidRegistry.getFluid("seedoil");
 						if (seedOil != null && barrel.fluid.fluidID == seedOil.getID() && item.getItem() == Item.getItemFromBlock(ENBlocks.BeeTrap))
 						{
-							barrel.mode = BarrelMode.BEETRAP;
+							barrel.setMode(BarrelMode.BEETRAP);
 							useItem(player);
 						}
 					}

@@ -1,77 +1,67 @@
-//package exnihilo.compatibility.foresty;
-//
-//import java.lang.reflect.Method;
-//import java.util.ArrayList;
-//import java.util.Iterator;
-//
-//import net.minecraft.block.Block;
-//import net.minecraft.item.Item;
-//import net.minecraft.item.ItemStack;
-//import net.minecraft.item.crafting.ShapelessRecipes;
-//import net.minecraft.world.World;
-//import net.minecraftforge.common.BiomeDictionary.Type;
-//import net.minecraftforge.oredict.OreDictionary;
-//import net.minecraftforge.oredict.ShapelessOreRecipe;
-//import cpw.mods.fml.common.Loader;
-//import cpw.mods.fml.common.registry.GameRegistry;
-//import exnihilo.ENBlocks;
-//import exnihilo.ENItems;
-//import exnihilo.registries.SieveRegistry;
-//import forestry.api.apiculture.FlowerManager;
-//import forestry.api.arboriculture.ITreeRoot;
-//import forestry.api.core.BlockInterface;
-//import forestry.api.core.ForestryAPI;
-//import forestry.api.genetics.AlleleManager;
-//
-//public class Forestry {
-//	//public static ITreeRoot trees = (ITreeRoot) AlleleManager.alleleRegistry.getSpeciesRoot("rootTrees");
-//
-//	public static boolean isLoaded()
-//	{
-//		return Loader.isModLoaded("Forestry");
-//	}
-//
-//	public static void loadCompatibility()
-//	{	
-//		ItemStack apatite = forestry.api.core.ItemInterface.getItem("apatite");
-//
-//		if (apatite != null)
-//		{
-//			SieveRegistry.register(Block.gravel.blockID, 0, apatite.itemID, apatite.getItemDamage(), 16);
-//		}
-//		
-//		HiveRegistry.registerHives();
-//		registerRecipes();
-//	}
-//
-//	public static boolean addsThisLeaf(Block block)
-//	{
-//		if (Forestry.isLoaded())
-//		{
-//			Class forestryLeafBlock = null;
-//			try {
-//				forestryLeafBlock = Class.forName("forestry.arboriculture.gadgets.BlockLeaves");
-//
-//				Method dropStuff = null;
-//				if (forestryLeafBlock != null)
-//				{	
-//					if (forestryLeafBlock.cast(block) != null);
-//					return true;
-//				}
-//			}
-//			catch (Exception ex){}
-//		}
-//		return false;
-//	}
-//	
-//	private static void registerRecipes()
-//	{
-//		GameRegistry.addShapelessRecipe(
-//						new ItemStack(ENBlocks.BeeTrap, 1, 0),
-//						new Object[]
-//								{ 
-//							new ItemStack(Block.hay, 1, 0),
-//							new ItemStack(ENItems.Mesh, 1, 0)
-//								});
-//	}
-//}
+package exnihilo.compatibility.foresty;
+
+import java.lang.reflect.Method;
+
+import net.minecraft.block.Block;
+import net.minecraft.init.Blocks;
+import net.minecraft.item.ItemStack;
+import cpw.mods.fml.common.Loader;
+import cpw.mods.fml.common.registry.GameRegistry;
+import exnihilo.ENBlocks;
+import exnihilo.ENItems;
+import exnihilo.registries.SieveRegistry;
+import forestry.core.config.ForestryItem;
+
+public class Forestry {
+	//public static ITreeRoot trees = (ITreeRoot) AlleleManager.alleleRegistry.getSpeciesRoot("rootTrees");
+
+	public static boolean isLoaded()
+	{
+		return Loader.isModLoaded("Forestry");
+	}
+
+	public static void loadCompatibility()
+	{	
+		ItemStack apatite = ForestryItem.apatite.getItemStack();
+
+		if (apatite != null)
+		{
+			SieveRegistry.register(Blocks.gravel, 0, apatite.getItem(), apatite.getItemDamage(), 16);
+		}
+		
+		HiveRegistry.registerHives();
+		registerRecipes();
+	}
+
+	@SuppressWarnings({ "rawtypes", "unused" })
+	public static boolean addsThisLeaf(Block block)
+	{
+		if (Forestry.isLoaded())
+		{
+			Class forestryLeafBlock = null;
+			try {
+				forestryLeafBlock = Class.forName("forestry.arboriculture.gadgets.BlockLeaves");
+
+				Method dropStuff = null;
+				if (forestryLeafBlock != null)
+				{	
+					if (forestryLeafBlock.cast(block) != null);
+					return true;
+				}
+			}
+			catch (Exception ex){}
+		}
+		return false;
+	}
+	
+	private static void registerRecipes()
+	{
+		GameRegistry.addShapelessRecipe(
+						new ItemStack(ENBlocks.BeeTrap, 1, 0),
+						new Object[]
+								{ 
+							new ItemStack(Blocks.hay_block, 1, 0),
+							new ItemStack(ENItems.Mesh, 1, 0)
+								});
+	}
+}
