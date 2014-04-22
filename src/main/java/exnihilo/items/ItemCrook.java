@@ -19,6 +19,7 @@ import com.google.common.collect.Sets;
 
 import exnihilo.ENBlocks;
 import exnihilo.ENItems;
+import exnihilo.ExNihilo;
 import exnihilo.compatibility.foresty.Forestry;
 import exnihilo.data.ItemData;
 import exnihilo.data.ModData;
@@ -101,7 +102,9 @@ public class ItemCrook extends ItemTool{
 							extraDropped = true;
 						}
 					}
-					catch (Exception ex){}
+					catch (Exception ex){
+						ExNihilo.log.error("Failed to get spawnLeafDrops from Forestry BlockLeaves class");
+					}
 				}
 
 				//If the Forestry method didn't work, try the vanilla way.
