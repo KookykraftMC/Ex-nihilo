@@ -12,7 +12,6 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.ItemTool;
-import net.minecraft.server.MinecraftServer;
 import net.minecraft.world.World;
 import net.minecraftforge.fluids.FluidRegistry;
 
@@ -23,6 +22,7 @@ import exnihilo.ENItems;
 import exnihilo.compatibility.foresty.Forestry;
 import exnihilo.data.ItemData;
 import exnihilo.data.ModData;
+import exnihilo.proxies.Proxy;
 
 public class ItemCrook extends ItemTool{
 	public static final double pullingForce = 1.5d;
@@ -45,10 +45,8 @@ public class ItemCrook extends ItemTool{
 
 	@Override
 	public boolean func_150897_b(Block block)
-	{
-		World world = MinecraftServer.getServer().worldServers[0];
-		
-		if (block.isLeaves(world, 0, 0, 0))
+	{	
+		if (block.isLeaves(Proxy.getProxy().getWorld(), 0, 0, 0))
 		{
 			return true;
 		}
@@ -58,10 +56,8 @@ public class ItemCrook extends ItemTool{
 
 	@Override
 	public float func_150893_a(ItemStack item, Block block)
-	{
-		World world = MinecraftServer.getServer().worldServers[0];
-		
-		if (block.isLeaves(world, 0, 0, 0))
+	{	
+		if (block.isLeaves(Proxy.getProxy().getWorld(), 0, 0, 0))
 		{
 			return efficiencyOnProperMaterial + 1;
 		}
