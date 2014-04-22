@@ -54,7 +54,7 @@ public class ExNihilo
 	public static ExNihilo instance;
 
 	@SidedProxy(clientSide = "exnihilo.proxies.ClientProxy", serverSide = "exnihilo.proxies.ServerProxy")
-	public static Proxy proxy;
+	public static Proxy proxy = Proxy.getProxy();
 	public static Configuration config;
 
 	@EventHandler

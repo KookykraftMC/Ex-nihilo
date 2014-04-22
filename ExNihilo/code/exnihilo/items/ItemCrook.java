@@ -8,6 +8,7 @@ import exnihilo.Items;
 import exnihilo.compatibility.foresty.Forestry;
 import exnihilo.data.ItemData;
 import exnihilo.data.ModData;
+import exnihilo.proxies.Proxy;
 import net.minecraft.block.Block;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.texture.IconRegister;
@@ -44,9 +45,7 @@ public class ItemCrook extends ItemTool{
 	@Override
 	public boolean canHarvestBlock(Block block)
 	{
-		World world = MinecraftServer.getServer().worldServers[0];
-		
-		if (block.isLeaves(world, 0, 0, 0))
+		if (block.isLeaves(Proxy.getProxy().getWorld(), 0, 0, 0))
 		{
 			return true;
 		}
@@ -57,9 +56,7 @@ public class ItemCrook extends ItemTool{
 	@Override
 	public float getStrVsBlock(ItemStack item, Block block)
 	{
-		World world = MinecraftServer.getServer().worldServers[0];
-		
-		if (block.isLeaves(world, 0, 0, 0))
+		if (block.isLeaves(Proxy.getProxy().getWorld(), 0, 0, 0))
 		{
 			return efficiencyOnProperMaterial + 1;
 		}
