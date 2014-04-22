@@ -8,12 +8,12 @@ import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
 import net.minecraft.item.ItemStack;
-import net.minecraft.server.MinecraftServer;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import net.minecraftforge.common.EnumPlantType;
 import exnihilo.data.ItemData;
 import exnihilo.data.ModData;
+import exnihilo.proxies.Proxy;
 
 public class ItemSeedRubber extends ItemSeedBase{
 
@@ -27,7 +27,7 @@ public class ItemSeedRubber extends ItemSeedBase{
     @Override
     public Block getPlant(IBlockAccess world, int x, int y, int z)
     {
-    	World worldRand = MinecraftServer.getServer().worldServers[0];
+    	World worldRand = Proxy.getProxy().getWorld();
     	if (saplings.size() > 0)
     	{
     		int rand = worldRand.rand.nextInt(saplings.size());
