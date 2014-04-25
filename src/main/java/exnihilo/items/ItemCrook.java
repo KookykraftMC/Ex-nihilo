@@ -17,10 +17,11 @@ import net.minecraftforge.fluids.FluidRegistry;
 
 import com.google.common.collect.Sets;
 
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
 import exnihilo.ENBlocks;
 import exnihilo.ENItems;
 import exnihilo.ExNihilo;
-import exnihilo.compatibility.foresty.Forestry;
 import exnihilo.data.ItemData;
 import exnihilo.data.ModData;
 import exnihilo.proxies.Proxy;
@@ -67,7 +68,7 @@ public class ItemCrook extends ItemTool{
 	}
 
 	//Break leaf block
-	@SuppressWarnings("rawtypes")
+	@SuppressWarnings({ "rawtypes", "unchecked", "unused" })
 	@Override
 	public boolean onBlockStartBreak(ItemStack item, int X, int Y, int Z, EntityPlayer player)
 	{
@@ -81,7 +82,7 @@ public class ItemCrook extends ItemTool{
 		{
 			if (!world.isRemote)
 			{
-				if (Forestry.isLoaded())
+				if (false)
 				{
 					//Forestry, why? Why did you make me have to do this? We could have been friends...
 					Class forestryLeafBlock = null;
@@ -90,20 +91,21 @@ public class ItemCrook extends ItemTool{
 
 						Method dropStuff = null;
 						if (forestryLeafBlock != null)
-						{	
-							dropStuff = forestryLeafBlock.cast(block).getClass().getDeclaredMethod("spawnLeafDrops", World.class, int.class, int.class, int.class, int.class, float.class, boolean.class);
+						{
+							dropStuff = forestryLeafBlock.getDeclaredMethod("spawnLeafDrops", World.class, int.class, int.class, int.class, int.class, float.class, boolean.class);
 							dropStuff.setAccessible(true);
 						}
 
 						if (dropStuff != null)
 						{
 							//This gets called once here, and then it drops stuff again when it breaks.
-							dropStuff.invoke(forestryLeafBlock.cast(block), world, X, Y, Z, meta, 1.0F, true);
+							dropStuff.invoke(forestryLeafBlock.newInstance(), world, X, Y, Z, meta, 1.0F, true);
 							extraDropped = true;
 						}
 					}
 					catch (Exception ex){
 						ExNihilo.log.error("Failed to get spawnLeafDrops from Forestry BlockLeaves class");
+						ex.printStackTrace();
 					}
 				}
 
@@ -206,15 +208,16 @@ public class ItemCrook extends ItemTool{
 	}
 
 	@Override
+	@SideOnly(Side.CLIENT)
 	public void registerIcons(IIconRegister register)
 	{
 		this.itemIcon = register.registerIcon(ModData.TEXTURE_LOCATION + ":Crook");
 	}
 
 	/**
-	 * Callback for item usage. If the item does something special on right clicking, he will have one of those. Return
-	 * True if something happen and false if it don't. This is for ITEMS, not BLOCKS
-	 */
+     * Callback for item usage. If the item does something special on right clicking, he will have one of those. Return
+     * True if something happen and false if it don't. This is for ITEMS, not BLOCKS
+     */
 	public boolean onItemUse(ItemStack item, EntityPlayer player, World world, int x, int y, int z, int par7, float par8, float par9, float par10)
 	{
 		//TODO: Remove this during the 1.7 update?
