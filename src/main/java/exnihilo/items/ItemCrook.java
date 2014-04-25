@@ -22,6 +22,7 @@ import cpw.mods.fml.relauncher.SideOnly;
 import exnihilo.ENBlocks;
 import exnihilo.ENItems;
 import exnihilo.ExNihilo;
+import exnihilo.compatibility.foresty.Forestry;
 import exnihilo.data.ItemData;
 import exnihilo.data.ModData;
 import exnihilo.proxies.Proxy;
@@ -68,7 +69,7 @@ public class ItemCrook extends ItemTool{
 	}
 
 	//Break leaf block
-	@SuppressWarnings({ "rawtypes", "unchecked", "unused" })
+	@SuppressWarnings({ "rawtypes", "unchecked" })
 	@Override
 	public boolean onBlockStartBreak(ItemStack item, int X, int Y, int Z, EntityPlayer player)
 	{
@@ -82,7 +83,7 @@ public class ItemCrook extends ItemTool{
 		{
 			if (!world.isRemote)
 			{
-				if (false)
+				if (Forestry.isLoaded())
 				{
 					//Forestry, why? Why did you make me have to do this? We could have been friends...
 					Class forestryLeafBlock = null;
@@ -94,6 +95,8 @@ public class ItemCrook extends ItemTool{
 						{
 							dropStuff = forestryLeafBlock.getDeclaredMethod("spawnLeafDrops", World.class, int.class, int.class, int.class, int.class, float.class, boolean.class);
 							dropStuff.setAccessible(true);
+						}else{
+							ExNihilo.log.error("forestryLeafBlock == null");
 						}
 
 						if (dropStuff != null)
@@ -101,6 +104,8 @@ public class ItemCrook extends ItemTool{
 							//This gets called once here, and then it drops stuff again when it breaks.
 							dropStuff.invoke(forestryLeafBlock.newInstance(), world, X, Y, Z, meta, 1.0F, true);
 							extraDropped = true;
+						}else{
+							ExNihilo.log.error("dropStuff == null");
 						}
 					}
 					catch (Exception ex){
