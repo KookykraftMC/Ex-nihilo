@@ -237,6 +237,10 @@ public class TileEntityCrucible extends TileEntity implements IFluidHandler, ISi
 
 		return 0.0f;
 	}
+	
+	public float getFluidVolume() {
+		return fluidVolume;
+	}
 
 	public boolean hasSolids()
 	{

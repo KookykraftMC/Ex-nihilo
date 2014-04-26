@@ -8,6 +8,7 @@ import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
+import net.minecraft.init.Items;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
@@ -42,6 +43,7 @@ public class BlockBarrel extends BlockContainer
 		super(Material.wood);
 		setCreativeTab(CreativeTabs.tabDecorations);
 		setHardness(2.0f);
+		setBlockBounds(0.1F, 0.0F, 0.1F, 0.9F, 1.0F, 0.9F);
 
 		setBlockName(ModData.ID + "." + BlockData.BARREL_KEY);
 		GameRegistry.registerTileEntity(TileEntityBarrel.class, this.getUnlocalizedName());
@@ -142,9 +144,9 @@ public class BlockBarrel extends BlockContainer
 
 							if (!player.capabilities.isCreativeMode)
 							{
-								if (item.getItem() == net.minecraft.init.Items.potionitem && item.getItemDamage() == 0)
+								if (item.getItem() == Items.potionitem && item.getItemDamage() == 0)
 								{
-									player.inventory.setInventorySlotContents(player.inventory.currentItem, new ItemStack(net.minecraft.init.Items.glass_bottle, 1, 0));
+									player.inventory.setInventorySlotContents(player.inventory.currentItem, new ItemStack(Items.glass_bottle, 1, 0));
 								}else
 								{
 									player.inventory.setInventorySlotContents(player.inventory.currentItem, getContainer(item));
@@ -194,14 +196,14 @@ public class BlockBarrel extends BlockContainer
 							}
 
 							//Milk + Water = Slime!
-							if(ModData.ALLOW_BARREL_RECIPE_SLIME && item.getItem() == net.minecraft.init.Items.milk_bucket)
+							if(ModData.ALLOW_BARREL_RECIPE_SLIME && item.getItem() == Items.milk_bucket)
 							{
 								barrel.setMode(BarrelMode.MILKED);
 								useItem(player);
 							}
 
 							//Mushroom stew + Water = Witch Water!
-							if(ModData.ALLOW_BARREL_RECIPE_SOULSAND && (item.getItem() == net.minecraft.init.Items.mushroom_stew || item.getItem() == ENItems.Spores))
+							if(ModData.ALLOW_BARREL_RECIPE_SOULSAND && (item.getItem() == Items.mushroom_stew || item.getItem() == ENItems.Spores))
 							{
 								barrel.setMode(BarrelMode.SPORED);
 								useItem(player);
@@ -212,14 +214,14 @@ public class BlockBarrel extends BlockContainer
 						if (barrel.fluid.fluidID == FluidRegistry.LAVA.getID())
 						{
 							//Redstone + Lava = Netherrack
-							if(ModData.ALLOW_BARREL_RECIPE_NETHERRACK && item.getItem() == net.minecraft.init.Items.redstone)
+							if(ModData.ALLOW_BARREL_RECIPE_NETHERRACK && item.getItem() == Items.redstone)
 							{
 								barrel.setMode(BarrelMode.NETHERRACK);
 								useItem(player);
 							}
 
 							//Glowstone + Lava = End Stone
-							if(ModData.ALLOW_BARREL_RECIPE_ENDSTONE && item.getItem() == net.minecraft.init.Items.glowstone_dust)
+							if(ModData.ALLOW_BARREL_RECIPE_ENDSTONE && item.getItem() == Items.glowstone_dust)
 							{
 								barrel.setMode(BarrelMode.ENDSTONE);
 								useItem(player);
@@ -271,13 +273,13 @@ public class BlockBarrel extends BlockContainer
 
 			ItemStack item = player.inventory.mainInventory[player.inventory.currentItem];
 			//Special cases
-			if (item.getItem() == net.minecraft.init.Items.milk_bucket)
+			if (item.getItem() == Items.milk_bucket)
 			{
-				player.inventory.mainInventory[player.inventory.currentItem] = new ItemStack(net.minecraft.init.Items.bucket, 1);
+				player.inventory.mainInventory[player.inventory.currentItem] = new ItemStack(Items.bucket, 1);
 			}
-			else if (item.getItem() == net.minecraft.init.Items.mushroom_stew)
+			else if (item.getItem() == Items.mushroom_stew)
 			{
-				player.inventory.mainInventory[player.inventory.currentItem] = new ItemStack(net.minecraft.init.Items.bowl, 1);
+				player.inventory.mainInventory[player.inventory.currentItem] = new ItemStack(Items.bowl, 1);
 			}
 			//Generic case
 			else

@@ -7,8 +7,8 @@ import java.util.List;
 import java.util.Map;
 import java.util.Random;
 
-import exnihilo.ExNihilo;
 import net.minecraft.world.biome.BiomeGenBase;
+import exnihilo.ExNihilo;
 
 public class HiveRegistry {
 	public static Map<String, Hive> hives = new HashMap<String, Hive>();

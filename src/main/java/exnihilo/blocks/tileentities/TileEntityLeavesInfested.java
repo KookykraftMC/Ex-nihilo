@@ -85,14 +85,18 @@ public class TileEntityLeavesInfested extends TileEntity
 		int x = this.worldObj.rand.nextInt(3) - 1;
 		int y = this.worldObj.rand.nextInt(3) - 1;
 		int z = this.worldObj.rand.nextInt(3) - 1;
+		
+		int placeX = xCoord + x;
+		int placeY = yCoord + y;
+		int placeZ = zCoord + z;
 
-		int meta = worldObj.getBlockMetadata(xCoord + x, yCoord + y, zCoord + z);
+		Block target = worldObj.getBlock(placeX, placeY, placeZ);
+		int meta = worldObj.getBlockMetadata(placeX, placeY, placeZ);
 
-		//You would think that "isLeaves" would be enough to NOT have them spawn in the air around the tree. Apparently not...
-		if(block != null && !worldObj.isAirBlock(x, y, z) && block.isLeaves(worldObj, x, y, z) && block != ENBlocks.LeavesInfested && !Forestry.addsThisLeaf(block))
+		if(target != null && target.isLeaves(worldObj, x, y, z) && target != ENBlocks.LeavesInfested && !Forestry.addsThisLeaf(target))
 		{
-			worldObj.setBlock(xCoord + x, yCoord + y, zCoord + z, ENBlocks.LeavesInfested, meta, 3);
-			TileEntityLeavesInfested te = (TileEntityLeavesInfested)worldObj.getTileEntity(xCoord + x, yCoord + y, zCoord + z);
+			worldObj.setBlock(placeX, placeY, placeZ, ENBlocks.LeavesInfested, meta, 2);
+			TileEntityLeavesInfested te = (TileEntityLeavesInfested)worldObj.getTileEntity(placeX, placeY, placeZ);
 			te.setMimicBlock(block, meta);
 		}
 	}

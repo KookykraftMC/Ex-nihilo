@@ -14,6 +14,7 @@ import cpw.mods.fml.common.Mod.EventHandler;
 import cpw.mods.fml.common.Mod.Instance;
 import cpw.mods.fml.common.SidedProxy;
 import cpw.mods.fml.common.event.FMLInitializationEvent;
+import cpw.mods.fml.common.event.FMLInterModComms;
 import cpw.mods.fml.common.event.FMLPostInitializationEvent;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 import cpw.mods.fml.common.eventhandler.SubscribeEvent;
@@ -106,9 +107,9 @@ public class ExNihilo extends ENNetwork
 		Recipes.registerFurnaceRecipes();
 
 		World.registerWorldProviders();
+		
+		FMLInterModComms.sendMessage("Waila", "register", "exnihilo.compatibility.Waila.callbackRegister");
 	}
-
-
 
 	@EventHandler
 	public void PostInitialize(FMLPostInitializationEvent event)
@@ -166,7 +167,7 @@ public class ExNihilo extends ENNetwork
 //			System.out.println(ModData.NAME + ": Found MineFactory Reloaded!");
 //			
 //			MineFactoryReloaded.loadCompatibility();
-//		}
+//		}		
 	}
 
 	@SubscribeEvent

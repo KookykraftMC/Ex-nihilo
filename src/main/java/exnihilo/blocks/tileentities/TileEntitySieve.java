@@ -153,6 +153,10 @@ public class TileEntitySieve extends TileEntity{
 			}
 		}
 	}
+	
+	public float getVolume() {
+		return volume;
+	}
 
 	public float getAdjustedVolume()
 	{
