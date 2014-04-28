@@ -1,0 +1,12 @@
+How to use the APIs with Ex Nihilo:
+
+The following APIs needed to be added to this folder, then added to the Eclipse Build Path:
+* IC2 Experimental: found at http://ic2api.player.to:8080/job/IC2_experimental/. Last tested version: #470.
+* Forestry: found at http://player.to/forestry/. Last tested version: #711.
+* AE2: found at http://ae2.ae-mod.info/Downloads/. Last tested version: #97.(1)
+* Waila: found at http://minecraft.curseforge.com/mc-mods/waila/. Last tested version: 1.5.2_1.7.2_rc2.
+
+The following mods need to be placed in the mods folder in your run directory (defaulted to outside your ex-nihilo folder):
+* CCC(rc1) and NEI(rc2): found at http://www.chickenbones.craftsaddle.org/Files/New_Versions/links.php.
+
+(1) = The following line needs to be added to your VM arguments for your run configurations: -Dfml.coreMods.load=appeng.transformer.AppEngCore
