@@ -1,7 +1,9 @@
 package exnihilo.proxies;
 
+import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.entity.RenderSnowball;
 import net.minecraft.item.Item;
+import net.minecraft.world.World;
 import net.minecraftforge.client.MinecraftForgeClient;
 import cpw.mods.fml.client.registry.ClientRegistry;
 import cpw.mods.fml.client.registry.RenderingRegistry;
@@ -63,6 +65,17 @@ public class ClientProxy extends Proxy {
 		MinecraftForgeClient.registerItemRenderer(Item.getItemFromBlock(ENBlocks.CrucibleUnfired), new ItemRenderCrucibleUnfired(crucibleRaw));
 
 		RenderingRegistry.registerEntityRenderingHandler(EntityStone.class, new RenderSnowball(ENItems.Stones));
+	}
+	
+	public World getWorld()
+	{
+		World world = null;
+		try
+		{
+			world = Minecraft.getMinecraft().theWorld;
+		}
+		catch (Exception ex) {}
+		return world;
 	}
 
 }

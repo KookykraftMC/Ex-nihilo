@@ -21,6 +21,7 @@ public class BlockBarrelStone extends BlockBarrel{
 		super(Material.rock);
 		setCreativeTab(CreativeTabs.tabDecorations);
 		setHardness(4.0f);
+		setBlockBounds(0.1F, 0.0F, 0.1F, 0.9F, 1.0F, 0.9F);
 
 		setBlockName(ModData.ID + "." + BlockData.BARREL_STONE_KEY);
 		GameRegistry.registerTileEntity(TileEntityBarrel.class, this.getUnlocalizedName());

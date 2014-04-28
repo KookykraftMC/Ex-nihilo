@@ -8,6 +8,7 @@ import java.util.Map;
 import java.util.Random;
 
 import net.minecraft.world.biome.BiomeGenBase;
+import exnihilo.ExNihilo;
 
 public class HiveRegistry {
 	public static Map<String, Hive> hives = new HashMap<String, Hive>();
@@ -53,6 +54,7 @@ public class HiveRegistry {
 	
 	public static void registerHives()
 	{
+		ExNihilo.log.info("Beginning Hive Registry...");
 		if (HiveList.generateForestryHives())
 		{
 			registerHive(HiveList.forest);
@@ -62,6 +64,7 @@ public class HiveRegistry {
 			registerHive(HiveList.end);
 			registerHive(HiveList.snow);
 			registerHive(HiveList.swamp);
+			ExNihilo.log.info("Sucessfully added Forestry Hives");
 		}
 		
 //		if(HiveList.generateExtreBeesHives())
@@ -85,5 +88,6 @@ public class HiveRegistry {
 //			System.out.println("Ex Nihilo: Found Magic Bees!");
 //		}
 		//CommonOre.dumpUnlocalizedNames("hive");
+		ExNihilo.log.info("Hive Registry Completed!");
 	}
 }

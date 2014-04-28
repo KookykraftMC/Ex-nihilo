@@ -16,6 +16,7 @@ import net.minecraft.network.Packet;
 import net.minecraft.network.play.server.S35PacketUpdateTileEntity;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.IIcon;
+import net.minecraft.world.EnumDifficulty;
 import net.minecraftforge.common.util.ForgeDirection;
 import net.minecraftforge.fluids.Fluid;
 import net.minecraftforge.fluids.FluidRegistry;
@@ -274,10 +275,9 @@ public class TileEntityBarrel extends TileEntity implements IFluidHandler, ISide
 			break;
 
 		case SLIME:
-			if(worldObj.difficultySetting.getDifficultyId() > 0)
+			if(worldObj.difficultySetting != EnumDifficulty.PEACEFUL)
 			{
 				timer++;
-
 
 				if(isDone())
 				{
@@ -290,7 +290,6 @@ public class TileEntityBarrel extends TileEntity implements IFluidHandler, ISide
 
 						worldObj.spawnEntityInWorld(slime);
 					}
-
 					resetBarrel();
 				}
 			}
@@ -379,7 +378,7 @@ public class TileEntityBarrel extends TileEntity implements IFluidHandler, ISide
 				}
 			}
 
-			if (!worldObj.isRemote && worldObj.difficultySetting.getDifficultyId() > 0)
+			if (!worldObj.isRemote && worldObj.difficultySetting != EnumDifficulty.PEACEFUL)
 			{
 				if(isDone())
 				{
@@ -616,6 +615,14 @@ public class TileEntityBarrel extends TileEntity implements IFluidHandler, ISide
 		default:
 			return null;
 		}
+	}
+	
+	public float getVolume() {
+		return volume;
+	}
+	
+	public int getTimer() {
+		return timer;
 	}
 
 	public float getAdjustedVolume()

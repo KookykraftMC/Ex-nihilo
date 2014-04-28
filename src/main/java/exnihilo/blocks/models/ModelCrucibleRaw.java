@@ -6,11 +6,11 @@
 
 package exnihilo.blocks.models;
 
-import exnihilo.data.ModData;
 import net.minecraft.client.model.ModelBase;
 import net.minecraft.client.model.ModelRenderer;
 import net.minecraft.entity.Entity;
 import net.minecraft.util.ResourceLocation;
+import exnihilo.data.ModData;
 
 public class ModelCrucibleRaw extends ModelBase
 {
