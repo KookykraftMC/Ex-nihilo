@@ -17,26 +17,34 @@ buildscript {
 
 apply plugin: 'forge'
 
-version = "1.29"
+// Define properties file
+ext.configFile = file "build.properties"
+
+configFile.withReader {
+	// Load config.  It shall from now be referenced as simply config or project.config
+	def prop = new Properties()
+	prop.load(it)
+	project.ext.config = new ConfigSlurper().parse prop
+}
+
+version = "${config.mod_version}"
 group= "exnihilo"
 archivesBaseName = "Ex-Nihilo"
 
 minecraft {
-    version = "1.7.2-10.12.1.1060"
+    version = "${config.mc_version}-${config.forge_version}"
     assetDir = "../run/assets"
+	
+	//replace version number in code, so that you only have to change it here
+	replace "@EN_VERSION@", project.version
+	replaceIn "ModData.java"
 }
-processResources
-{
-    // replace stuff in mcmod.info, nothing else
-    from(sourceSets.main.resources.srcDirs) {
-        include 'mcmod.info'
-                
-        // replace version and mcversion
-        expand 'version':project.version, 'mcversion':project.minecraft.version
-    }
-        
-    // copy everything else, thats not the mcmod.info
-    from(sourceSets.main.resources.srcDirs) {
-        exclude 'mcmod.info'
-    }
+
+dependencies {
+	compile files (
+		"APIs/industrialcraft-2-${config.ic2_version}-experimental-dev.jar",
+		"APIs/forestry-${config.forestry_version}-dev.jar",
+		"APIs/appliedenergistics2-deobf-${config.ae2_version}.jar",
+		"APIs/Waila-${config.waila_version}.jar"
+		)
 }
