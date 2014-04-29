@@ -124,7 +124,7 @@ public class ExNihilo extends ENNetwork
 			IC2.loadCompatibility();
 		}
 
-		if (Forestry.isLoaded())
+		if (Loader.isModLoaded("Forestry"))
 		{
 			log.info("Found Forestry!");
 
@@ -139,7 +139,7 @@ public class ExNihilo extends ENNetwork
 //			ThermalExpansion.loadCompatibility();
 //		}
 
-		if (AE2.isLoaded())
+		if (Loader.isModLoaded("appliedenergistics2"))
 		{
 			log.info("Found AE2!");
 
