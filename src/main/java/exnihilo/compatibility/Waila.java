@@ -61,20 +61,20 @@ public class Waila implements IWailaDataProvider {
 				return "Empty";
 			case FLUID:
 				if(barrel.isFull())
-					return "Full";
+					return barrel.fluid.getFluid().getLocalizedName();
 				else
-					return "Collecting Rain: " + format.format(barrel.getVolume() * 100) + "%";
+					return barrel.fluid.getFluid().getLocalizedName() + " " + format.format(barrel.getVolume() * 100) + "%";
 			case COMPOST:
 				if(barrel.isFull())
 					return "Composting: " + Math.round(getBarrelTimeRemaining(barrel)) + "%";
 				else
-					return "Collecting Compost: " + format.format(barrel.getVolume() * 100) + "%";
+					return "Collecting Material: " + format.format(barrel.getVolume() * 100) + "%";
 			case DIRT:
-				return "Composted";
+				return "Dirt";
 			case MILKED:
 				return "Sliming: " + Math.round(getBarrelTimeRemaining(barrel)) + "%";
 			case SLIME:
-				return "Slimed";
+				return "Slime";
 			case SPORED:
 				return "Transforming: " + Math.round(getBarrelTimeRemaining(barrel)) + "%";
 			case ENDER_COOKING:

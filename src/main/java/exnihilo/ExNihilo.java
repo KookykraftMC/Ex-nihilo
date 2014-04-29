@@ -9,6 +9,7 @@ import net.minecraftforge.common.config.Configuration;
 
 import org.apache.logging.log4j.Logger;
 
+import cpw.mods.fml.common.Loader;
 import cpw.mods.fml.common.Mod;
 import cpw.mods.fml.common.Mod.EventHandler;
 import cpw.mods.fml.common.Mod.Instance;
@@ -116,14 +117,14 @@ public class ExNihilo extends ENNetwork
 	{
 		CommonOre.registerRecipes();
 
-		if (IC2.isLoaded())
+		if (Loader.isModLoaded("IC2"))
 		{
 			log.info("Found IC2!");
 
 			IC2.loadCompatibility();
 		}
 
-		if (Forestry.isLoaded())
+		if (Loader.isModLoaded("Forestry"))
 		{
 			log.info("Found Forestry!");
 
@@ -138,7 +139,7 @@ public class ExNihilo extends ENNetwork
 //			ThermalExpansion.loadCompatibility();
 //		}
 
-		if (AE2.isLoaded())
+		if (Loader.isModLoaded("appliedenergistics2"))
 		{
 			log.info("Found AE2!");
 

@@ -16,6 +16,12 @@ public class ChunkProviderDefaultVoid extends ChunkProviderGenerate
     {
     	//Do nothing.
     }
+    
+    @Override
+    public void populate(net.minecraft.world.chunk.IChunkProvider par1IChunkProvider, int par2, int par3)
+    {
+    	//Do nothing.
+    }
 
     @Override
     public void replaceBlocksForBiome(int par1, int par2, Block[] par3ArrayOfBlock, byte[] par4ArrayofBytes, BiomeGenBase[] par4ArrayOfBiomeGenBase)
