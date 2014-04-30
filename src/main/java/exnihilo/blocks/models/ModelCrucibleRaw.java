@@ -21,8 +21,8 @@ public class ModelCrucibleRaw extends ModelBase
 
 	//fields
 	ModelRenderer Bottom3;
-    ModelRenderer Bottom2;
-    ModelRenderer Bottom1;
+//    ModelRenderer Bottom2;
+//    ModelRenderer Bottom1;
     ModelRenderer Side1;
     ModelRenderer Side2;
     ModelRenderer Side3;
@@ -43,18 +43,18 @@ public class ModelCrucibleRaw extends ModelBase
 	      Bottom3.setTextureSize(64, 32);
 	      Bottom3.mirror = true;
 	      setRotation(Bottom3, 0F, 0F, 0F);
-	      Bottom2 = new ModelRenderer(this, 0, 90);
-	      Bottom2.addBox(0F, 0F, 0F, 12, 1, 12);
-	      Bottom2.setRotationPoint(-6F, 22F, -6F);
-	      Bottom2.setTextureSize(64, 32);
-	      Bottom2.mirror = true;
-	      setRotation(Bottom2, 0F, 0F, 0F);
-	      Bottom1 = new ModelRenderer(this, 0, 110);
-	      Bottom1.addBox(0F, 0F, 0F, 10, 1, 10);
-	      Bottom1.setRotationPoint(-5F, 23F, -5F);
-	      Bottom1.setTextureSize(64, 32);
-	      Bottom1.mirror = true;
-	      setRotation(Bottom1, 0F, 0F, 0F);
+//	      Bottom2 = new ModelRenderer(this, 0, 90);
+//	      Bottom2.addBox(0F, 0F, 0F, 12, 1, 12);
+//	      Bottom2.setRotationPoint(-6F, 22F, -6F);
+//	      Bottom2.setTextureSize(64, 32);
+//	      Bottom2.mirror = true;
+//	      setRotation(Bottom2, 0F, 0F, 0F);
+//	      Bottom1 = new ModelRenderer(this, 0, 110);
+//	      Bottom1.addBox(0F, 0F, 0F, 10, 1, 10);
+//	      Bottom1.setRotationPoint(-5F, 23F, -5F);
+//	      Bottom1.setTextureSize(64, 32);
+//	      Bottom1.mirror = true;
+//	      setRotation(Bottom1, 0F, 0F, 0F);
 	      Side1 = new ModelRenderer(this, 0, 0);
 	      Side1.addBox(0F, 0F, 0F, 16, 13, 1);
 	      Side1.setRotationPoint(-8F, 8F, -8F);
@@ -110,8 +110,8 @@ public class ModelCrucibleRaw extends ModelBase
 		super.render(entity, f, f1, f2, f3, f4, f5);
 	    setRotationAngles(f, f1, f2, f3, f4, f5);
 	    Bottom3.render(f5);
-	    Bottom2.render(f5);
-	    Bottom1.render(f5);
+//	    Bottom2.render(f5);
+//	    Bottom1.render(f5);
 	    Side1.render(f5);
 	    Side2.render(f5);
 	    Side3.render(f5);
@@ -125,8 +125,8 @@ public class ModelCrucibleRaw extends ModelBase
 	public void simpleRender(float scale)
 	{
 		Bottom3.render(scale);
-	    Bottom2.render(scale);
-	    Bottom1.render(scale);
+//	    Bottom2.render(scale);
+//	    Bottom1.render(scale);
 	    Side1.render(scale);
 	    Side2.render(scale);
 	    Side3.render(scale);
