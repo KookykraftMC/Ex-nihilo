@@ -40,6 +40,9 @@ public class ColorRegistry {
 		register("birch", new Color(config.get(CATEGORY_COLORS, "birch", "6CC449").getString()));
 		register("spruce", new Color(config.get(CATEGORY_COLORS, "spruce", "2E8042").getString()));
 		register("jungle", new Color(config.get(CATEGORY_COLORS, "jungle", "22A116").getString()));
+		register("dark_oak", new Color(config.get(CATEGORY_COLORS, "dark_oak", "378030").getString()));
+		register("acacia", new Color(config.get(CATEGORY_COLORS, "acacia", "B8C754").getString()));
+		register("acacia_leaves", new Color(config.get(CATEGORY_COLORS, "acacia_leaves", "83CC47").getString()));
 		
 		//Meats
 		register("pork_raw", new Color(config.get(CATEGORY_COLORS, "pork_raw", "FFA091").getString()));

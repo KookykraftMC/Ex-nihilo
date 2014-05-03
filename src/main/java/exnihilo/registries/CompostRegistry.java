@@ -39,12 +39,16 @@ public class CompostRegistry {
 		register(Item.getItemFromBlock(Blocks.sapling), 1, 0.125f, ColorRegistry.color("spruce"));
 		register(Item.getItemFromBlock(Blocks.sapling), 2, 0.125f, ColorRegistry.color("birch"));
 		register(Item.getItemFromBlock(Blocks.sapling), 3, 0.125f,  ColorRegistry.color("jungle")); 
+		register(Item.getItemFromBlock(Blocks.sapling), 4, 0.125f,  ColorRegistry.color("acacia")); 
+		register(Item.getItemFromBlock(Blocks.sapling), 5, 0.125f,  ColorRegistry.color("dark_oak")); 
 		
 		//leaves
 		register(Item.getItemFromBlock(Blocks.leaves), 0, 0.125f, ColorRegistry.color("oak"));
 		register(Item.getItemFromBlock(Blocks.leaves), 1, 0.125f, ColorRegistry.color("spruce"));
 		register(Item.getItemFromBlock(Blocks.leaves), 2, 0.125f, ColorRegistry.color("birch"));
 		register(Item.getItemFromBlock(Blocks.leaves), 3, 0.125f,  ColorRegistry.color("jungle"));
+		register(Item.getItemFromBlock(Blocks.leaves2), 0, 0.125f,  ColorRegistry.color("acacia_leaves")); 
+		register(Item.getItemFromBlock(Blocks.leaves2), 1, 0.125f,  ColorRegistry.color("dark_oak")); 
 		
 		//rotten flesh
 		register(Items.rotten_flesh, 0, 0.10f, ColorRegistry.color("rotten_flesh"));
