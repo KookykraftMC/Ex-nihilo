@@ -70,8 +70,7 @@ public class ColorRegistry {
 		register("wheat", new Color(config.get(CATEGORY_COLORS, "wheat", "E3E162").getString()));
 		register("bread", new Color(config.get(CATEGORY_COLORS, "bread", "D1AF60").getString()));
 		register("pumpkin_pie", new Color(config.get(CATEGORY_COLORS, "pumpkin_pie", "E39A6D").getString()));
-		register("dandelion", new Color(config.get(CATEGORY_COLORS, "dandelion", "FFF461").getString()));
-		register("rose", new Color(config.get(CATEGORY_COLORS, "rose", "FF1212").getString()));
+		
 		register("mushroom_brown", new Color(config.get(CATEGORY_COLORS, "mushroom_brown", "CFBFB6").getString()));
 		register("mushroom_red", new Color(config.get(CATEGORY_COLORS, "mushroom_red", "D6A8A5").getString()));
 		register("cactus", new Color(config.get(CATEGORY_COLORS, "cactus", "DEFFB5").getString()));
@@ -84,11 +83,22 @@ public class ColorRegistry {
 		
 		register("water_slime_offset", new Color("33ff22"));
 		register("witchwater", new Color("990066"));
-		//register("water_witchy_offset", new Color("5C0019"));
-		//register("water_witchy_offset", new Color("851E3A"));
-		//register("water_witchy_offset", new Color("912140"));
-		//register("water_witchy_offset", new Color("a72040"));
 		register("water_witchy_offset", new Color("bb1535"));
-		//register("water_witchy_offset", new Color("dd2255"));
+		
+		register("dandelion", new Color(config.get(CATEGORY_COLORS, "dandelion", "FFF461").getString()));
+		register("rose", new Color(config.get(CATEGORY_COLORS, "rose", "FF1212").getString()));
+		register("poppy", new Color(config.get(CATEGORY_COLORS, "poppy", "FF1212").getString()));
+		register("blue_orchid", new Color(config.get(CATEGORY_COLORS, "blue_orchid", "33CFFF").getString()));
+		register("allium", new Color(config.get(CATEGORY_COLORS, "allium", "F59DFA").getString()));
+		register("azure_bluet", new Color(config.get(CATEGORY_COLORS, "azure_bluet", "E3E3E3").getString()));
+		register("red_tulip", new Color(config.get(CATEGORY_COLORS, "red_tulip", "FF3D12").getString()));
+		register("orange_tulip", new Color(config.get(CATEGORY_COLORS, "orange_tulip", "FF7E29").getString()));
+		register("white_tulip", new Color(config.get(CATEGORY_COLORS, "white_tulip", "FFFFFF").getString()));
+		register("pink_tulip", new Color(config.get(CATEGORY_COLORS, "pink_tulip", "F5C4FF").getString()));
+		register("oxeye_daisy", new Color(config.get(CATEGORY_COLORS, "oxeye_daisy", "E9E9E9").getString()));
+		
+		register("sunflower", new Color(config.get(CATEGORY_COLORS, "sunflower", "FFDD00").getString()));
+		register("lilac", new Color(config.get(CATEGORY_COLORS, "lilac", "FCC7F0").getString()));
+		register("peony", new Color(config.get(CATEGORY_COLORS, "peony", "F3D2FC").getString()));
 	}
 }

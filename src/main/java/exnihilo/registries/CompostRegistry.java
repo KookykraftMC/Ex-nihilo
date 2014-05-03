@@ -59,7 +59,32 @@ public class CompostRegistry {
 		//dandelion
 		register(Item.getItemFromBlock(Blocks.yellow_flower), 0, 0.10f, ColorRegistry.color("dandelion"));
 		//poppy
-		register(Item.getItemFromBlock(Blocks.red_flower), 0, 0.10f, ColorRegistry.color("rose"));
+		register(Item.getItemFromBlock(Blocks.red_flower), 0, 0.10f, ColorRegistry.color("poppy"));
+		//blue orchid
+		register(Item.getItemFromBlock(Blocks.red_flower), 1, 0.10f, ColorRegistry.color("blue_orchid"));
+		//allium
+		register(Item.getItemFromBlock(Blocks.red_flower), 2, 0.10f, ColorRegistry.color("allium"));
+		//azure bluet
+		register(Item.getItemFromBlock(Blocks.red_flower), 3, 0.10f, ColorRegistry.color("azure_bluet"));
+		//red_tulip
+		register(Item.getItemFromBlock(Blocks.red_flower), 4, 0.10f, ColorRegistry.color("red_tulip"));
+		//orange tulip
+		register(Item.getItemFromBlock(Blocks.red_flower), 5, 0.10f, ColorRegistry.color("orange_tulip"));
+		//white tulip
+		register(Item.getItemFromBlock(Blocks.red_flower), 6, 0.10f, ColorRegistry.color("white_tulip"));
+		//pink tulip
+		register(Item.getItemFromBlock(Blocks.red_flower), 7, 0.10f, ColorRegistry.color("pink_tulip"));
+		//oxeye daisy
+		register(Item.getItemFromBlock(Blocks.red_flower), 8, 0.10f, ColorRegistry.color("oxeye_daisy"));
+		
+		//sunflower
+		register(Item.getItemFromBlock(Blocks.double_plant), 0, 0.10f, ColorRegistry.color("sunflower"));
+		//lilac
+		register(Item.getItemFromBlock(Blocks.double_plant), 1, 0.10f, ColorRegistry.color("lilac"));
+		//rose buse
+		register(Item.getItemFromBlock(Blocks.double_plant), 4, 0.10f, ColorRegistry.color("rose"));
+		//peony
+		register(Item.getItemFromBlock(Blocks.double_plant), 5, 0.10f, ColorRegistry.color("peony"));
 		
 		//mushroom_brown
 		register(Item.getItemFromBlock(Blocks.brown_mushroom), 0, 0.10f, ColorRegistry.color("mushroom_brown"));
