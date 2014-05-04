@@ -3,9 +3,7 @@ package exnihilo.items.seeds;
 import java.util.ArrayList;
 
 import net.minecraft.block.Block;
-import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.texture.IIconRegister;
-import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
 import net.minecraft.item.ItemStack;
 import net.minecraft.world.IBlockAccess;
@@ -18,7 +16,6 @@ import exnihilo.proxies.Proxy;
 public class ItemSeedRubber extends ItemSeedBase{
 
 	public static ArrayList<Block> saplings = new ArrayList<Block>();
-	EntityPlayer entity = Minecraft.getMinecraft().thePlayer;
 	
 	public ItemSeedRubber() {
 		super(Blocks.sapling, Blocks.dirt);

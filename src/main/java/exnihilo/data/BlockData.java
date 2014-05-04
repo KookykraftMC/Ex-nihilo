@@ -75,14 +75,18 @@ public class BlockData {
 		"Oak Sieve",
 		"Spruce Sieve",
 		"Birch Sieve",
-		"Jungle Sieve"
+		"Jungle Sieve",
+		"Acacia Sieve",
+		"Dark Oak Sieve"
 		}; 
 	public static final String[] SIEVE_UNLOCALIZED_NAMES = 
 		{
 		"sieve.oak",
 		"sieve.spruce",
 		"sieve.birch",
-		"sieve.jungle"
+		"sieve.jungle",
+		"sieve.acacia",
+		"sieve.dark_oak"
 		}; 
 
 	//*****

@@ -30,7 +30,9 @@ public class ModelSieve extends ModelBase
 		new ResourceLocation(ModData.TEXTURE_LOCATION, "textures/blocks/ModelSieveOak.png"), 
 		new ResourceLocation(ModData.TEXTURE_LOCATION, "textures/blocks/ModelSieveSpruce.png"), 
 		new ResourceLocation(ModData.TEXTURE_LOCATION, "textures/blocks/ModelSieveBirch.png"), 
-		new ResourceLocation(ModData.TEXTURE_LOCATION, "textures/blocks/ModelSieveJungle.png")
+		new ResourceLocation(ModData.TEXTURE_LOCATION, "textures/blocks/ModelSieveJungle.png"),
+		new ResourceLocation(ModData.TEXTURE_LOCATION, "textures/blocks/ModelSieveAcacia.png"),
+		new ResourceLocation(ModData.TEXTURE_LOCATION, "textures/blocks/ModelSieveDarkOak.png")
 		};
     
   public ModelSieve()

@@ -47,7 +47,7 @@ public class BlockSieve extends BlockContainer {
 	@SuppressWarnings({ "rawtypes", "unchecked" })
 	@SideOnly(Side.CLIENT)
 	public void getSubBlocks(Item item, CreativeTabs tabs, List subItems) {
-		for (int i = 0; i < 4; i++) {
+		for (int i = 0; i < 6; i++) {
 			subItems.add(new ItemStack(item, 1, i));
 		}
 	}
