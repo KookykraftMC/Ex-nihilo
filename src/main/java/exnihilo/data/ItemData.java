@@ -134,6 +134,11 @@ public class ItemData {
 	public static final String SEED_BIRCH_NAME = "Birch Seed";
 	public static final String SEED_BIRCH_UNLOCALIZED_NAME = "seed_birch";
 
+	//ACACIA SEEDS!
+	public static final String SEED_ACACIA_KEY = "seed_acacia";
+	public static final String SEED_ACACIA_NAME = "Acacia Seed";
+	public static final String SEED_ACACIA_UNLOCALIZED_NAME = "seed_acacia";
+	
 	//SPRUCE SEEDS!
 	public static final String SEED_SPRUCE_KEY = "seed_spruce";
 	public static final String SEED_SPRUCE_NAME = "Spruce Seed";

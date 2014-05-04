@@ -57,6 +57,7 @@ import exnihilo.items.ores.ItemTinDust;
 import exnihilo.items.ores.ItemTinGravel;
 import exnihilo.items.ores.ItemTinIngot;
 import exnihilo.items.ores.ItemTinSand;
+import exnihilo.items.seeds.ItemSeedAcacia;
 import exnihilo.items.seeds.ItemSeedBirch;
 import exnihilo.items.seeds.ItemSeedCactus;
 import exnihilo.items.seeds.ItemSeedCarrot;
@@ -89,6 +90,7 @@ public class ENItems {
 	public static Item Spores;
 	public static Item GrassSeeds;
 	public static Item SeedsOak;
+	public static Item SeedsAcacia;
 	public static Item SeedsSpruce;
 	public static Item SeedsBirch;
 	public static Item SeedsJungle;
@@ -209,6 +211,8 @@ public class ENItems {
 
 		SeedsOak = new ItemSeedOak();
 		GameRegistry.registerItem(SeedsOak, ItemData.SEED_OAK_UNLOCALIZED_NAME);
+		SeedsAcacia = new ItemSeedAcacia();
+		GameRegistry.registerItem(SeedsAcacia, ItemData.SEED_ACACIA_UNLOCALIZED_NAME);
 		SeedsSpruce = new ItemSeedSpruce();
 		GameRegistry.registerItem(SeedsSpruce, ItemData.SEED_SPRUCE_UNLOCALIZED_NAME);
 		SeedsBirch = new ItemSeedBirch();
