@@ -43,7 +43,7 @@ minecraft {
 dependencies {
 	compile files (
 		"APIs/industrialcraft-2-${config.ic2_version}-experimental-dev.jar",
-		"APIs/forestry-${config.forestry_version}-dev.jar",
+		"APIs/forestry_${config.forestry_version}-dev.jar",
 		"APIs/appliedenergistics2-deobf-${config.ae2_version}.jar",
 		"APIs/Waila-${config.waila_version}.jar"
 		)
