@@ -17,7 +17,7 @@ public class Recipes {
 		if (ModData.ALLOW_BARRELS)
 		{
 			//Barrels!
-			for(int i = 0; i < 4; i++)
+			for(int i = 0; i < 6; i++)
 			{
 				GameRegistry.addRecipe(new ItemStack(ENBlocks.Barrel, 1, i),
 						"x x",

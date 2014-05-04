@@ -24,6 +24,8 @@ public class ModelBarrel extends ModelBase
 		new ResourceLocation(ModData.TEXTURE_LOCATION, "textures/blocks/ModelBarrelSpruce.png"), 
 		new ResourceLocation(ModData.TEXTURE_LOCATION, "textures/blocks/ModelBarrelBirch.png"),
 		new ResourceLocation(ModData.TEXTURE_LOCATION, "textures/blocks/ModelBarrelJungle.png"),
+		new ResourceLocation(ModData.TEXTURE_LOCATION, "textures/blocks/ModelBarrelAcacia.png"),
+		new ResourceLocation(ModData.TEXTURE_LOCATION, "textures/blocks/ModelBarrelDarkOak.png"),
 		new ResourceLocation(ModData.TEXTURE_LOCATION, "textures/blocks/ModelBarrelStone.png")
 		};
 	
@@ -41,7 +43,7 @@ public class ModelBarrel extends ModelBase
     		return textures[meta];
     	}else if(block == ENBlocks.BarrelStone)
     	{
-    		return textures[4];
+    		return textures[6];
     	}
     	return null;
     }
