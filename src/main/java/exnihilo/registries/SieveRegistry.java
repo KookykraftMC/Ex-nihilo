@@ -132,6 +132,7 @@ public class SieveRegistry {
 		register(Blocks.dirt, 0, ENItems.SeedsCarrot, 0, 64);
 		register(Blocks.dirt, 0, ENItems.SeedsPotato, 0, 64);
 		register(Blocks.dirt, 0, ENItems.SeedsOak, 0, 64);
+		register(Blocks.dirt, 0, ENItems.SeedsAcacia, 0, 90);
 		register(Blocks.dirt, 0, ENItems.SeedsSpruce, 0, 90);
 		register(Blocks.dirt, 0, ENItems.SeedsBirch, 0, 90);
 
