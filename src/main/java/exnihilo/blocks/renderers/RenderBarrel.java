@@ -148,6 +148,11 @@ public class RenderBarrel extends TileEntitySpecialRenderer{
 				transparency = true;
 				break;
 				
+			case DARKOAK:
+				color = new Color(content.getColor());
+				transparency = false;
+				break;
+				
 			default:
 				break;
 			}

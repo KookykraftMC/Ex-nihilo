@@ -9,6 +9,7 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.inventory.ISidedInventory;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.network.NetworkManager;
@@ -65,7 +66,8 @@ public class TileEntityBarrel extends TileEntity implements IFluidHandler, ISide
 		BLAZE_COOKING(14, ExtractMode.None),
 		BLAZE(15, ExtractMode.PeacefulOnly),
 		ENDER_COOKING(16, ExtractMode.None),
-		ENDER(17, ExtractMode.PeacefulOnly);
+		ENDER(17, ExtractMode.PeacefulOnly),
+		DARKOAK(18, ExtractMode.Always);
 
 		private BarrelMode(int v, ExtractMode extract){this.value = v; this.canExtract = extract;}
 		public int value;
@@ -611,6 +613,9 @@ public class TileEntityBarrel extends TileEntity implements IFluidHandler, ISide
 			
 		case BEETRAP:
 			return new ItemStack(ENBlocks.BeeTrapTreated, 1, 0);
+			
+		case DARKOAK:
+			return new ItemStack(Blocks.sapling, 1, 5);
 
 		default:
 			return null;
@@ -720,6 +725,10 @@ public class TileEntityBarrel extends TileEntity implements IFluidHandler, ISide
 
 		case 17:
 			setMode(BarrelMode.ENDER);
+			break;
+			
+		case 18:
+			setMode(BarrelMode.DARKOAK);
 			break;
 		}
 
@@ -1002,8 +1011,11 @@ public class TileEntityBarrel extends TileEntity implements IFluidHandler, ISide
 	}
 
 	@Override
-	public void setInventorySlotContents(int slot, ItemStack item) {
+	public void setInventorySlotContents(int slot, ItemStack stack) {
 		//XXX addItemFromPipe
+		Item item = stack.getItem();
+		int meta = stack.getItemDamage();
+		
 		if (slot == 0)
 		{
 			if (item == null)
@@ -1016,9 +1028,9 @@ public class TileEntityBarrel extends TileEntity implements IFluidHandler, ISide
 		{
 			if (getMode() == BarrelMode.COMPOST || getMode() == BarrelMode.EMPTY)
 			{
-				if(CompostRegistry.containsItem(item.getItem(), item.getItemDamage()))
+				if(CompostRegistry.containsItem(item, meta))
 				{
-					this.addCompostItem(CompostRegistry.getItem(item.getItem(), item.getItemDamage()));
+					this.addCompostItem(CompostRegistry.getItem(item, meta));
 				}
 			}
 
@@ -1026,7 +1038,7 @@ public class TileEntityBarrel extends TileEntity implements IFluidHandler, ISide
 			{
 				if(fluid.fluidID == FluidRegistry.WATER.getID())
 				{
-					if (ModData.ALLOW_BARREL_RECIPE_CLAY && Block.getBlockFromItem(item.getItem()) == ENBlocks.Dust)
+					if (ModData.ALLOW_BARREL_RECIPE_CLAY && Block.getBlockFromItem(item) == ENBlocks.Dust)
 					{
 						setMode(BarrelMode.CLAY);
 					}
@@ -1034,17 +1046,17 @@ public class TileEntityBarrel extends TileEntity implements IFluidHandler, ISide
 
 				if(fluid.fluidID == FluidRegistry.LAVA.getID())
 				{
-					if (ModData.ALLOW_BARREL_RECIPE_NETHERRACK && item.getItem() == Items.redstone)
+					if (ModData.ALLOW_BARREL_RECIPE_NETHERRACK && item == Items.redstone)
 					{
 						setMode(BarrelMode.NETHERRACK);
 					}
 
-					if (ModData.ALLOW_BARREL_RECIPE_ENDSTONE && item.getItem() == Items.glowstone_dust)
+					if (ModData.ALLOW_BARREL_RECIPE_ENDSTONE && item == Items.glowstone_dust)
 					{
 						setMode(BarrelMode.ENDSTONE);
 					}
 
-					if(ModData.ALLOW_BARREL_RECIPE_BLAZE_RODS && item.getItem() == ENItems.DollAngry)
+					if(ModData.ALLOW_BARREL_RECIPE_BLAZE_RODS && item == ENItems.DollAngry)
 					{
 						setMode(BarrelMode.BLAZE_COOKING);
 					}
@@ -1052,15 +1064,20 @@ public class TileEntityBarrel extends TileEntity implements IFluidHandler, ISide
 
 				if (fluid.fluidID == Fluids.fluidWitchWater.getID())
 				{
-					if(ModData.ALLOW_BARREL_RECIPE_SOULSAND && Block.getBlockFromItem(item.getItem()) == Blocks.sand)
+					if(ModData.ALLOW_BARREL_RECIPE_SOULSAND && Block.getBlockFromItem(item) == Blocks.sand)
 					{
 						resetColor();
 						setMode(BarrelMode.SOULSAND);
 					}
 
-					if(ModData.ALLOW_BARREL_RECIPE_ENDER_PEARLS && item.getItem() == ENItems.DollCreepy)
+					if(ModData.ALLOW_BARREL_RECIPE_ENDER_PEARLS && item == ENItems.DollCreepy)
 					{
 						setMode(BarrelMode.ENDER_COOKING);
+					}
+					
+					if(ModData.ALLOW_BARREL_RECIPE_DARK_OAK && Block.getBlockFromItem(item) == Blocks.sapling && meta == 0)
+					{
+						setMode(BarrelMode.DARKOAK);
 					}
 				}
 				
@@ -1152,12 +1169,15 @@ public class TileEntityBarrel extends TileEntity implements IFluidHandler, ISide
 		return false;
 	}
 
-	public boolean isItemValid(ItemStack item)
+	public boolean isItemValid(ItemStack stack)
 	{
 		///XXX isItemValid
+		Item item = stack.getItem();
+		int meta = stack.getItemDamage();
+		
 		if (!this.isFull() && getMode() == BarrelMode.COMPOST || getMode() == BarrelMode.EMPTY)
 		{
-			if(ModData.ALLOW_BARREL_RECIPE_DIRT && CompostRegistry.containsItem(item.getItem(), item.getItemDamage()))
+			if(ModData.ALLOW_BARREL_RECIPE_DIRT && CompostRegistry.containsItem(item, meta))
 			{
 				return true;
 			}
@@ -1167,7 +1187,7 @@ public class TileEntityBarrel extends TileEntity implements IFluidHandler, ISide
 		{
 			if(fluid.fluidID == FluidRegistry.WATER.getID())
 			{
-				if (ModData.ALLOW_BARREL_RECIPE_CLAY && Block.getBlockFromItem(item.getItem()) == ENBlocks.Dust)
+				if (ModData.ALLOW_BARREL_RECIPE_CLAY && Block.getBlockFromItem(item) == ENBlocks.Dust)
 				{
 					return true;
 				}
@@ -1176,17 +1196,17 @@ public class TileEntityBarrel extends TileEntity implements IFluidHandler, ISide
 
 			if(fluid.fluidID == FluidRegistry.LAVA.getID())
 			{
-				if (ModData.ALLOW_BARREL_RECIPE_NETHERRACK && item.getItem() == Items.redstone)
+				if (ModData.ALLOW_BARREL_RECIPE_NETHERRACK && item == Items.redstone)
 				{
 					return true;
 				}
 
-				if (ModData.ALLOW_BARREL_RECIPE_ENDSTONE && item.getItem() == Items.glowstone_dust)
+				if (ModData.ALLOW_BARREL_RECIPE_ENDSTONE && item == Items.glowstone_dust)
 				{
 					return true;
 				}
 
-				if(ModData.ALLOW_BARREL_RECIPE_BLAZE_RODS && item.getItem() == ENItems.DollAngry)
+				if(ModData.ALLOW_BARREL_RECIPE_BLAZE_RODS && item == ENItems.DollAngry)
 				{
 					return true;
 				}
@@ -1195,19 +1215,24 @@ public class TileEntityBarrel extends TileEntity implements IFluidHandler, ISide
 
 			if (fluid.fluidID == Fluids.fluidWitchWater.getID())
 			{
-				if(ModData.ALLOW_BARREL_RECIPE_SOULSAND && Block.getBlockFromItem(item.getItem()) == Blocks.sand)
+				if(ModData.ALLOW_BARREL_RECIPE_SOULSAND && Block.getBlockFromItem(item) == Blocks.sand)
 				{
 					return true;
 				}
 
-				if(ModData.ALLOW_BARREL_RECIPE_ENDER_PEARLS && item.getItem() == ENItems.DollCreepy)
+				if(ModData.ALLOW_BARREL_RECIPE_ENDER_PEARLS && item == ENItems.DollCreepy)
+				{
+					return true;
+				}
+				
+				if(ModData.ALLOW_BARREL_RECIPE_DARK_OAK && Block.getBlockFromItem(item) == Blocks.sapling && meta == 0)
 				{
 					return true;
 				}
 			}
 			
 			Fluid seedOil = FluidRegistry.getFluid("seedoil");
-			if (seedOil != null && fluid.fluidID == seedOil.getID() && Block.getBlockFromItem(item.getItem()) == ENBlocks.BeeTrap)
+			if (seedOil != null && fluid.fluidID == seedOil.getID() && Block.getBlockFromItem(item) == ENBlocks.BeeTrap)
 			{
 				return true;
 			}
