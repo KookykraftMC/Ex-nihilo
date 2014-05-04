@@ -16,7 +16,12 @@ public class ColorRegistry {
 	
 	public static Color color(String name)
 	{
-		return entries.get(name);	
+		if (entries.containsKey(name))
+		{
+			return entries.get(name);
+		}
+		
+		return entries.get("white");
 	}
 	
 	
@@ -53,6 +58,11 @@ public class ColorRegistry {
 		register("chicken_cooked", new Color(config.get(CATEGORY_COLORS, "chicken_cooked", "FA955F").getString()));
 		register("fish_raw", new Color(config.get(CATEGORY_COLORS, "fish_raw", "6DCFB3").getString()));
 		register("fish_cooked", new Color(config.get(CATEGORY_COLORS, "fish_cooked", "D8EBE5").getString()));
+		register("salmon_raw", new Color(config.get(CATEGORY_COLORS, "fish_cooked", "FF2E4A").getString()));
+		register("salmon_cooked", new Color(config.get(CATEGORY_COLORS, "fish_cooked", "E87A3F").getString()));
+		register("clownfish", new Color(config.get(CATEGORY_COLORS, "fish_cooked", "FF771C").getString()));
+		register("pufferfish", new Color(config.get(CATEGORY_COLORS, "fish_cooked", "DBFAFF").getString()));
+		
 		register("silkworm_raw", new Color(config.get(CATEGORY_COLORS, "silkworm_raw", "FFFDC9").getString()));	
 		register("silkworm_cooked", new Color(config.get(CATEGORY_COLORS, "silkworm_cooked", "EDA17B").getString()));	
 		

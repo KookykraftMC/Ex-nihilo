@@ -118,6 +118,16 @@ public class CompostRegistry {
 		//cooked fish
 		register(Items.cooked_fished, 0, 0.15f, ColorRegistry.color("fish_cooked"));
 		
+		//salmon
+		register(Items.fish, 1, 0.15f, ColorRegistry.color("salmon_raw"));
+		//cooked salmon
+		register(Items.cooked_fished, 1, 0.15f, ColorRegistry.color("salmon_cooked"));
+		
+		//clownfish
+		register(Items.fish, 2, 0.15f, ColorRegistry.color("clownfish"));
+		//blowfish
+		register(Items.fish, 3, 0.15f, ColorRegistry.color("pufferfish"));
+		
 		//cooked silkworms
 		register(ENItems.Silkworm, 0, 0.04f, ColorRegistry.color("silkworm_raw"));
 		//cooked silkworms
