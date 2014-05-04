@@ -8,14 +8,18 @@ public class BlockData {
 		"Oak Barrel",
 		"Spruce Barrel",
 		"Birch Barrel",
-		"Jungle Barrel"
+		"Jungle Barrel",
+		"Acacia Barrel",
+		"Dark Oak Barrel"
 		}; 
 	public static final String[] BARREL_UNLOCALIZED_NAMES = 
 		{
 		"barrel.oak",
 		"barrel.spruce",
 		"barrel.birch",
-		"barrel.jungle"
+		"barrel.jungle",
+		"barrel.acacia",
+		"barrel.dark_oak"
 		}; 
 
 
