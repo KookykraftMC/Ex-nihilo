@@ -2,6 +2,7 @@ package exnihilo.blocks;
 
 import java.util.List;
 
+import net.minecraft.block.Block;
 import net.minecraft.block.BlockContainer;
 import net.minecraft.block.material.Material;
 import net.minecraft.client.renderer.texture.IIconRegister;
@@ -248,6 +249,12 @@ public class BlockBarrel extends BlockContainer
 							if(ModData.ALLOW_BARREL_RECIPE_ENDER_PEARLS && item.getItem() == ENItems.DollCreepy)
 							{
 								barrel.setMode(BarrelMode.ENDER_COOKING);
+								useItem(player);
+							}
+							
+							if(ModData.ALLOW_BARREL_RECIPE_DARK_OAK && Block.getBlockFromItem(item.getItem()) == Blocks.sapling && item.getItemDamage() == 0)
+							{
+								barrel.setMode(BarrelMode.DARKOAK);
 								useItem(player);
 							}
 						}
