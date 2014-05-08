@@ -23,6 +23,8 @@ import exnihilo.blocks.ores.BlockGoldOre;
 import exnihilo.blocks.ores.BlockIronOre;
 import exnihilo.blocks.ores.BlockLeadOre;
 import exnihilo.blocks.ores.BlockNickelOre;
+import exnihilo.blocks.ores.BlockOre;
+import exnihilo.blocks.ores.BlockOreFactory;
 import exnihilo.blocks.ores.BlockOsmiumOre;
 import exnihilo.blocks.ores.BlockPlatinumOre;
 import exnihilo.blocks.ores.BlockSilverOre;
@@ -38,6 +40,7 @@ import exnihilo.blocks.ores.itemBlocks.ItemBlockPlatinumOre;
 import exnihilo.blocks.ores.itemBlocks.ItemBlockSilverOre;
 import exnihilo.blocks.ores.itemBlocks.ItemBlockTinOre;
 import exnihilo.data.BlockData;
+import exnihilo.registries.helpers.Color;
 
 public class ENBlocks {
 	public static Block Barrel;
@@ -63,6 +66,9 @@ public class ENBlocks {
 
 	public static void registerBlocks()
 	{
+	  //Testing Ore Generation;
+	  CreateOreBlocks("Testium", new Color("669950"));
+	  
 		Barrel = new BlockBarrel();
 		GameRegistry.registerBlock(Barrel, ItemBlockBarrel.class, BlockData.BARREL_KEY);
 
@@ -118,5 +124,17 @@ public class ENBlocks {
 
 		AluminumOre = new BlockAluminumOre();
 		GameRegistry.registerBlock(AluminumOre, ItemBlockAluminumOre.class, BlockData.ALUMINUM_ORE_KEY);
+	}
+	
+	public static void CreateOreBlocks(String name, Color color)
+	{
+	//TODO Create a key,value pair registry that maps ore names to blocks;
+    BlockOre[] TestOre = BlockOreFactory.MakeOverworldOres(name, color);
+    
+    for (BlockOre b : TestOre)
+    {
+      //TODO Don't create the same ore block twice!
+      GameRegistry.registerBlock(b, b.getName());
+    }
 	}
 }
