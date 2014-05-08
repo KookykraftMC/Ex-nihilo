@@ -41,24 +41,17 @@ public class ItemHammerBase extends ItemTool{
 		return false;
 	}
 
-	public float getStrVsBlock(ItemStack item, Block block)
+	@Override
+	public float getDigSpeed(ItemStack item, Block block, int meta)
 	{
 		Block[] blocks = HammerRegistry.getBlocks();
+		System.out.println("blocks: " + blocks.length);
 
 		for (int i = 0; i < blocks.length; ++i)
 		{
 			if (blocks[i] == block)
 			{
 				return efficiencyOnProperMaterial * 0.75f;
-				
-//				if (block.blockID == block.cobblestone.blockID)
-//				{
-//					return (1.0f + efficiencyOnProperMaterial) / 2;
-//				}
-//				else
-//				{
-//					return (float) (1.0d + Math.pow((double)efficiencyOnProperMaterial, 2.0d) / 6);
-//				}
 			}
 		}
 
