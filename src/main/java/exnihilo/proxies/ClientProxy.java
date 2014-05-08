@@ -33,7 +33,11 @@ import exnihilo.blocks.tileentities.TileEntitySieve;
 import exnihilo.entities.EntityStone;
 
 public class ClientProxy extends Proxy {
-
+  public ClientProxy()
+  {
+    Proxy.setInstance((Proxy)this);
+  }
+  
 	@Override
 	public void initializeSounds() {
 		// TODO Initialize sounds!
