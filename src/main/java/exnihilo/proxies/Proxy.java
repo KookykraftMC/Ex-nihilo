@@ -4,7 +4,7 @@ import net.minecraft.world.World;
 
 public class Proxy {
 
-	private static Proxy proxyInstance = null;
+	protected static Proxy proxyInstance = null;
 
 	public static void setInstance(Proxy newProxy)
 	{
@@ -17,8 +17,10 @@ public class Proxy {
 		{
 			proxyInstance = new Proxy();
 		}
+		
 		return proxyInstance;
 	}
+	
 	public void initializeSounds(){}
 	public void initializeRenderers(){}
 	
