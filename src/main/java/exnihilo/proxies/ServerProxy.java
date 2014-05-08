@@ -5,8 +5,10 @@ import net.minecraft.server.MinecraftServer;
 import net.minecraft.world.World;
 
 public class ServerProxy extends Proxy {
-  //TODO
-  //Apparently the server side proxy isn't properly loading. The getWorld command is returning null all the time. This is bad.
+  public ServerProxy()
+  {
+    Proxy.setInstance((Proxy)this);
+  }
   
 	public World getWorld()
 	{
