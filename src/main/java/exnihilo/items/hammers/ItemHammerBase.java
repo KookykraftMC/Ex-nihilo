@@ -45,7 +45,6 @@ public class ItemHammerBase extends ItemTool{
 	public float getDigSpeed(ItemStack item, Block block, int meta)
 	{
 		Block[] blocks = HammerRegistry.getBlocks();
-		System.out.println("blocks: " + blocks.length);
 
 		for (int i = 0; i < blocks.length; ++i)
 		{
