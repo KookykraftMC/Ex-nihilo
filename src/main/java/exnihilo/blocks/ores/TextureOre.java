@@ -37,7 +37,7 @@ public class TextureOre extends TextureAtlasSprite {
     {
       manager.getResource(location);
     } 
-    catch (IOException e) 
+    catch (Exception e) 
     {
       return true;
     }
