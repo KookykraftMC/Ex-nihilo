@@ -49,4 +49,28 @@ public class Color {
 		
 		return new Color(avgR, avgG, avgB, avgA);
 	}
+	
+	public static Color fromImage(int color)
+	{
+	  Color output = new Color(0);
+	  
+	  output.a = ((-color) >> 24 & 255) / 255;
+	  output.r = ((-color) >> 16 & 255) / 255;
+		output.g = ((-color) >> 8 & 255) / 255;
+		output.b = ((-color) & 255) / 255;
+	  
+	  return output;
+	}
+	
+	public int toImage()
+  {
+    int color = 0;
+    
+    color |= (int)(this.a * 255) << 24;
+    color |= (int)(this.r * 255) << 16;
+    color |= (int)(this.g * 255) << 8;
+    color |= (int)(this.b * 255);
+    
+    return -color;
+  }
 }

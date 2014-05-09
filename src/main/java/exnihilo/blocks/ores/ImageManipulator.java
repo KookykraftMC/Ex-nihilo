@@ -1,76 +1,67 @@
 package exnihilo.blocks.ores;
 
+import java.awt.Color;
 import java.awt.image.BufferedImage;
 
-import exnihilo.registries.helpers.Color;
 
 public class ImageManipulator
 {
   //Recolors an image based on the input color
-  public static BufferedImage Recolor(BufferedImage template, Color color)
+  public static BufferedImage Recolor(BufferedImage template, exnihilo.registries.helpers.Color color)
   {
-    
-    
-    return null;
+    //TODO
+    //Actually perform the color blending. Probably using HSV color model.
+    //For now, just pass the unmolested template on for further processing.
+    return template;
   }
   
   //Combines two images and returns the composite.
-  public static BufferedImage Composite(BufferedImage layer0, BufferedImage layer1)
+  public static BufferedImage Composite(BufferedImage imgBackground, BufferedImage imgForeground)
   {
-    int w = layer0.getWidth();
+    int w = imgBackground.getWidth();
+    int h = imgBackground.getHeight();
 
     // create an output image that we will use to override
-    BufferedImage imgOutput = new BufferedImage(w, w, layer0.getType());
+    BufferedImage imgOutput = new BufferedImage(w, h, imgBackground.getType());
 
-    int[] layer0Data = new int[w * w];
-    int[] layer1Data = new int[w * w];
-    int[] outputData = new int[w * w];
+    int[] backgroundData = new int[w * h];
+    int[] foregroundData = new int[w * h];
+    int[] outputData = new int[w * h];
 
     // read the rgb color data into our array
-    layer0.getRGB(0, 0, w, w, layer0Data, 0, layer0.getWidth());
-    layer1.getRGB(0, 0, imgOutput.getWidth(), imgOutput.getWidth(), layer1Data, 0, imgOutput.getWidth());
+    imgBackground.getRGB(0, 0, w, h, backgroundData, 0, w);
+    imgForeground.getRGB(0, 0, w, h, foregroundData, 0, w);
+    
+    // 'over' blend each pixel
+    for (int i = 0; i < backgroundData.length; i++) {
+      Color colorBackground = new Color(backgroundData[i]);
+      Color colorForeground = new Color(foregroundData[i], true);
+      
+      //Debug code!
+      //System.out.println("Background pixel r:" + colorBackground.getRed() + ", g:" +  colorBackground.getGreen() + ", b:" + colorBackground.getBlue() + ", a:" +  colorBackground.getAlpha());
+      //System.out.println("Foreground pixel r:" + colorForeground.getRed() + ", g:" +  colorForeground.getGreen() + ", b:" + colorForeground.getBlue() + ", a:" +  colorForeground.getAlpha());
 
-    // check to see which pixels are different
-    boolean[] same = new boolean[w * w];
-    for (int i = 0; i < layer1Data.length; i += 1) {
-      same[i] = layer1Data[i] == layer0Data[i];
-      outputData[i] = layer1Data[i];
-    }
-
-    int dx[] = new int[] { -1, 2, 3 };
-    int dy[] = new int[] { -1, 0, 1 };
-
-    // where the magic happens
-    for (int i = 0; i < layer1Data.length; i += 1) {
-      int x = (i % w);
-      int y = (i - x) / w;
-
-      // if a pixel is part of the stone texture it should change if
-      // possible
-      boolean shouldChange = same[i];
-
-      // compare the pixel to its shifted counterparts and change it
-      // if the rotated pixel
-      // is 'different' from the stone texture and is either brighter
-      // or the original pixel
-      // was marked as 'shouldChange'.
-
-      for (int j = 0; j < dx.length; j++) {
-        if ((x + dx[j]) >= 0 && (x + dx[j]) < w && (y + dy[j]) >= 0 && (y + dy[j]) < w)
-          if (!same[(x + dx[j]) + (y + dy[j]) * w] && (shouldChange
-              // || lum(new_data[i]) > lum(ore_data[(x +
-              // dx[j]) + (y +
-              // dy[j]) * w])
-              )) {
-            shouldChange = false;
-            outputData[i] = layer1Data[(x + dx[j]) + (y + dy[j]) * w];
-          }
+      outputData[i] = backgroundData[i];
+      
+      if (colorForeground.getAlpha() < 255)
+      {
+        float alpha = (colorForeground.getAlpha() / 255);
+        
+        float a = colorBackground.getAlpha() / 255;
+        float r = ((float)(colorForeground.getRed()) / 255 * alpha) + ((float)(colorBackground.getRed()) / 255 * (1.0f - alpha));
+        float g = ((float)(colorForeground.getBlue()) / 255 * alpha) + ((float)(colorBackground.getBlue()) / 255 * (1.0f - alpha));
+        float b = ((float)(colorForeground.getGreen()) / 255 * alpha) + ((float)(colorBackground.getGreen()) / 255 * (1.0f - alpha));
+        
+        //System.out.println("Blended pixel r:" + r + ", g:" +  g + ", b:" + b + ", a:" +  a);
+        outputData[i] = (new Color(r, g, b, a).getRGB());
+      }else
+      {
+        outputData[i] = backgroundData[i];
       }
-
     }
 
     // write the new image data to the output image buffer
-    imgOutput.setRGB(0, 0, imgOutput.getWidth(), imgOutput.getHeight(), outputData, 0, imgOutput.getWidth());
+    imgOutput.setRGB(0, 0, w, h, outputData, 0, w);
     
     return imgOutput;
   }

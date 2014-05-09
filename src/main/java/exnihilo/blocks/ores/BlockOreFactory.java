@@ -7,6 +7,7 @@ import java.util.List;
 import exnihilo.data.ModData;
 import exnihilo.registries.helpers.Color;
 import net.minecraft.block.Block;
+import net.minecraft.util.ResourceLocation;
 
 public class BlockOreFactory
 {
@@ -35,9 +36,11 @@ public class BlockOreFactory
   private static BlockOre MakeOverworldGravel(String name, Color color)
   {
     String gravel_name = "ore_gravel_" + name.toLowerCase();
-    TextureOre gravel_texture = null; //TODO Generate texture.
     
-    BlockOre gravel = new BlockOre(gravel_name, gravel_texture);
+    ResourceLocation baseTexture = TextureOre.getTextureLocation("minecraft", "gravel");
+    ResourceLocation templateTexture = TextureOre.getTextureLocation("ExNihilo", "testtemplate");
+    
+    BlockOre gravel = new BlockOre(gravel_name, baseTexture, templateTexture, color);
     
     gravel
       .setHardness(0.8f)
@@ -50,8 +53,11 @@ public class BlockOreFactory
   private static BlockOre MakeSand(String name, Color color)
   {
     String sand_name = "ore_sand_" + name.toLowerCase();
-    TextureOre sand_texture = null; //TODO Generate texture.
-    BlockOre sand = new BlockOre(sand_name, sand_texture);
+    
+    ResourceLocation baseTexture = TextureOre.getTextureLocation("minecraft", "sand");
+    ResourceLocation templateTexture = TextureOre.getTextureLocation("ExNihilo", "testtemplate");
+    
+    BlockOre sand = new BlockOre(sand_name, baseTexture, templateTexture, color);
     
     sand
       .setHardness(0.6f)
@@ -65,8 +71,11 @@ public class BlockOreFactory
   private static BlockOre MakeDust(String name, Color color)
   {
     String dust_name = "ore_dust_" + name.toLowerCase();
-    TextureOre dust_texture = null; //TODO Generate texture.
-    BlockOre dust = new BlockOre(dust_name, dust_texture);
+    
+    ResourceLocation baseTexture = TextureOre.getTextureLocation("ExNihilo", "IconBlockDust");
+    ResourceLocation templateTexture = TextureOre.getTextureLocation("ExNihilo", "testtemplate");
+    
+    BlockOre dust = new BlockOre(dust_name, baseTexture, templateTexture, color);
     
     dust
       .setHardness(0.4f)

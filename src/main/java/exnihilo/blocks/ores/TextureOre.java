@@ -1,7 +1,6 @@
 package exnihilo.blocks.ores;
 
 import java.awt.image.BufferedImage;
-import java.io.IOException;
 
 import javax.imageio.ImageIO;
 
@@ -19,24 +18,26 @@ import net.minecraft.util.ResourceLocation;
 /// Refactoring to commence ASAP. - Crowley
 public class TextureOre extends TextureAtlasSprite {
 
-  private String template;
-  private String base;
+  private ResourceLocation template;
+  private ResourceLocation base;
   private Color color;
 
-  public TextureOre(String template, String base, Color color) {
-    super(getTextureName(template));
+  public TextureOre(String name, ResourceLocation base, ResourceLocation template, Color color) {
+    super(name);
     
     this.template = template;
     this.base = base;
     this.color = color;
   }
   
-  public static String getTextureName(String blockName) {
-    return ModData.ID + ":" + blockName + "_texture";
+  public static String getTextureName(String name) {
+    return ModData.ID + ":" + name;
   }
 
   @Override
   public boolean hasCustomLoader(IResourceManager manager, ResourceLocation location) {
+    ExNihilo.log.info("Attempt to load: " + location);
+    
     try 
     {
       manager.getResource(location);
@@ -51,26 +52,25 @@ public class TextureOre extends TextureAtlasSprite {
   }
 
   // converts texture name to resource location
-  public ResourceLocation getTextureLocation(String s2) {
-    String s1 = "minecraft";
-
-    int ind = s2.indexOf(58);
+  public static ResourceLocation getTextureLocation(String source, String name) 
+  {
+    int ind = name.indexOf(58);
 
     if (ind >= 0) {
       if (ind > 1) {
-        s1 = s2.substring(0, ind);
+        source = name.substring(0, ind);
       }
 
-      s2 = s2.substring(ind + 1, s2.length());
+      name = name.substring(ind + 1, name.length());
     }
 
-    s1 = s1.toLowerCase();
-    s2 = "textures/blocks/" + s2 + ".png";
+    source = source.toLowerCase();
+    name = "textures/blocks/" + name + ".png";
     
-    return new ResourceLocation(s1, s2);
+    return new ResourceLocation(source, name);
   }
 
-  // loads the textures
+  // creates the textures
   // originally based on code from DenseOres, but refactored down to what you see here.
   @Override
   public boolean load(IResourceManager manager, ResourceLocation location) {
@@ -78,17 +78,17 @@ public class TextureOre extends TextureAtlasSprite {
     int mipmapLevels = Minecraft.getMinecraft().gameSettings.mipmapLevels;
 
     try {
-      IResource resTemplate = manager.getResource(getTextureLocation(template));
-
       BufferedImage[] imgFinal = new BufferedImage[1 + mipmapLevels];
-      BufferedImage imgTemplate = ImageIO.read(resTemplate.getInputStream());
+      imgFinal[0] = tryLoadImage(manager, template);
       
-      imgFinal[0] = ImageManipulator.Recolor(imgTemplate, color);
+      if (color != null)
+      {
+        imgFinal[0] = ImageManipulator.Recolor(imgFinal[0], color);
+      }
       
       if (this.base != null)
       {
-        IResource resBase = manager.getResource(getTextureLocation(base));
-        BufferedImage imgBase = ImageIO.read(resBase.getInputStream());
+        BufferedImage imgBase = tryLoadImage(manager, base);
         
         if (imgBase != null)
         {
@@ -97,15 +97,32 @@ public class TextureOre extends TextureAtlasSprite {
       }
 
       // load the texture (note the null is where animation data would normally go)
-      this.loadSprite(imgFinal, null, (float) Minecraft.getMinecraft().gameSettings.anisotropicFiltering > 1.0F);
+      this.loadSprite(imgFinal, null, (float)Minecraft.getMinecraft().gameSettings.anisotropicFiltering > 1.0F);
     } 
-    catch (IOException e) 
+    catch (Exception e) 
     {
       e.printStackTrace();
       return true;
     }
 
-    ExNihilo.log.info("ExNihilo: Succesfully generated ore texture for '" + template + "' with background '" + base + "'. Place " + template + "_texture.png in the assets folder to override.");
+    ExNihilo.log.info("ExNihilo: Succesfully generated ore texture for '" + this.getIconName() + "' with background '" + base + "'. Place " + this.getIconName() + ".png in the assets folder to override.");
     return false;
+  }
+  
+  //Loads an image into memory.
+  private BufferedImage tryLoadImage(IResourceManager manager, ResourceLocation location)
+  {
+    try
+    {
+      IResource res = manager.getResource(location);
+      BufferedImage imgOutput = ImageIO.read(res.getInputStream());
+      
+      return imgOutput;
+    }
+    catch (Exception e)
+    {
+      ExNihilo.log.error("Failed to load image: " + location.toString());
+      return null;
+    }
   }
 }
