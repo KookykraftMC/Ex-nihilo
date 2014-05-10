@@ -1,7 +1,8 @@
 package exnihilo.blocks.ores;
 
-import java.awt.Color;
 import java.awt.image.BufferedImage;
+
+import exnihilo.registries.helpers.Color;
 
 
 public class ImageManipulator
@@ -35,25 +36,25 @@ public class ImageManipulator
     // 'over' blend each pixel
     for (int i = 0; i < backgroundData.length; i++) {
       Color colorBackground = new Color(backgroundData[i]);
-      Color colorForeground = new Color(foregroundData[i], true);
+      Color colorForeground = new Color(foregroundData[i], false);
       
       //Debug code!
-      //System.out.println("Background pixel r:" + colorBackground.getRed() + ", g:" +  colorBackground.getGreen() + ", b:" + colorBackground.getBlue() + ", a:" +  colorBackground.getAlpha());
-      //System.out.println("Foreground pixel r:" + colorForeground.getRed() + ", g:" +  colorForeground.getGreen() + ", b:" + colorForeground.getBlue() + ", a:" +  colorForeground.getAlpha());
+      System.out.println("Background pixel r:" + colorBackground.r + ", g:" +  colorBackground.g + ", b:" + colorBackground.b + ", a:" +  colorBackground.a);
+      System.out.println("Foreground pixel r:" + colorForeground.r + ", g:" +  colorForeground.g + ", b:" + colorForeground.b + ", a:" +  colorForeground.a);
 
       outputData[i] = backgroundData[i];
       
-      if (colorForeground.getAlpha() < 255)
+      if (colorForeground.a > 0)
       {
-        float alpha = (colorForeground.getAlpha() / 255);
+        float alpha = colorForeground.a;
         
-        float a = colorBackground.getAlpha() / 255;
-        float r = ((float)(colorForeground.getRed()) / 255 * alpha) + ((float)(colorBackground.getRed()) / 255 * (1.0f - alpha));
-        float g = ((float)(colorForeground.getBlue()) / 255 * alpha) + ((float)(colorBackground.getBlue()) / 255 * (1.0f - alpha));
-        float b = ((float)(colorForeground.getGreen()) / 255 * alpha) + ((float)(colorBackground.getGreen()) / 255 * (1.0f - alpha));
+        float a = colorBackground.a;
+        float r = (colorForeground.r * alpha) + (colorBackground.r) * (1.0f - alpha);
+        float g = (colorForeground.g * alpha) + (colorBackground.g) * (1.0f - alpha);
+        float b = (colorForeground.b * alpha) + (colorBackground.b) * (1.0f - alpha);
         
         //System.out.println("Blended pixel r:" + r + ", g:" +  g + ", b:" + b + ", a:" +  a);
-        outputData[i] = (new Color(r, g, b, a).getRGB());
+        outputData[i] = (new Color(r, g, b, a).toInt());
       }else
       {
         outputData[i] = backgroundData[i];
