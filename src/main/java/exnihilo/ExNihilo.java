@@ -7,6 +7,7 @@ import net.minecraftforge.client.event.TextureStitchEvent;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.common.config.Configuration;
 
+import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import cpw.mods.fml.common.Loader;
@@ -53,7 +54,7 @@ public class ExNihilo extends ENNetwork
 	@EventHandler
 	public void PreInitialize(FMLPreInitializationEvent event)
 	{
-		log = event.getModLog();
+		log = LogManager.getLogger(ModData.NAME);
 		//Metadata!
 		ModData.setMetadata(event.getModMetadata());
 
