@@ -10,6 +10,7 @@ import net.minecraft.item.Item;
 import net.minecraftforge.common.config.Configuration;
 import exnihilo.ENBlocks;
 import exnihilo.ENItems;
+import exnihilo.ExNihilo;
 import exnihilo.registries.helpers.SiftReward;
 
 public class SieveRegistry {
@@ -34,7 +35,7 @@ public class SieveRegistry {
 			rewards.add(entry);
 		}else
 		{
-			System.out.println("Ex Nihilo: An item was added to the SieveRegistry which was not a block");
+			ExNihilo.log.error("An item was added to the SieveRegistry which was not a block");
 		}
 	}
 	
@@ -47,7 +48,7 @@ public class SieveRegistry {
 			rewards.add(entry);
 		}else
 		{
-			System.out.println("Ex Nihilo: An item was added to the SieveRegistry which was not a block");
+			ExNihilo.log.error("An item was added to the SieveRegistry which was not a block");
 		}
 	}
 	
