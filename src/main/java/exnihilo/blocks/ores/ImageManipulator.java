@@ -39,8 +39,8 @@ public class ImageManipulator
       Color colorForeground = new Color(foregroundData[i], false);
       
       //Debug code!
-      System.out.println("Background pixel r:" + colorBackground.r + ", g:" +  colorBackground.g + ", b:" + colorBackground.b + ", a:" +  colorBackground.a);
-      System.out.println("Foreground pixel r:" + colorForeground.r + ", g:" +  colorForeground.g + ", b:" + colorForeground.b + ", a:" +  colorForeground.a);
+      //System.out.println("Background pixel r:" + colorBackground.r + ", g:" +  colorBackground.g + ", b:" + colorBackground.b + ", a:" +  colorBackground.a);
+      //System.out.println("Foreground pixel r:" + colorForeground.r + ", g:" +  colorForeground.g + ", b:" + colorForeground.b + ", a:" +  colorForeground.a);
 
       outputData[i] = backgroundData[i];
       
