@@ -19,10 +19,25 @@ public class Color {
 		//stupid minecraft color is RGB not ARGB.
 		//need to simulate the Alpha value.
 		//this.a = (float) (color >> 24 & 255) / 255.0F;
-		this.a = 1.0f;
-		this.r = (float) (color >> 16 & 255) / 255.0F;
-		this.g = (float) (color >> 8 & 255) / 255.0F;
-		this.b = (float) (color & 255) / 255.0F;
+		this(color, true);
+	}
+	
+	public Color (int color, boolean ignoreAlpha)
+	{
+		if (ignoreAlpha)
+		{
+			this.a = 1.0f;
+			this.r = (float) (color >> 16 & 255) / 255.0F;
+			this.g = (float) (color >> 8 & 255) / 255.0F;
+			this.b = (float) (color & 255) / 255.0F;
+		}
+		else
+		{
+			this.a = (float) (color >> 24 & 255) / 255.0F;
+			this.r = (float) (color >> 16 & 255) / 255.0F;
+			this.g = (float) (color >> 8 & 255) / 255.0F;
+			this.b = (float) (color & 255) / 255.0F;
+		}
 	}
 	
 	public Color (String hex)
