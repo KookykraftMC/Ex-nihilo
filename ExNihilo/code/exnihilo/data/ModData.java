@@ -28,6 +28,9 @@ public class ModData {
 	//Options
 	public static String CATEGORY_OPTIONS = "options";
 	
+	public static String SIEVE_PAIN_MULTIPLIER_KEY = "sieve - frustration multiplier";
+	public static int SIEVE_PAIN_MULTIPLIER = 0;
+	
 	public static String ALLOW_BARRELS_KEY = "barrels allowed";
 	public static boolean ALLOW_BARRELS = true;
 	
@@ -94,6 +97,8 @@ public class ModData {
 	public static void load(Configuration config)
 	{
 		//Options
+		SIEVE_PAIN_MULTIPLIER = config.get(CATEGORY_OPTIONS, SIEVE_PAIN_MULTIPLIER_KEY, SIEVE_PAIN_MULTIPLIER).getInt(SIEVE_PAIN_MULTIPLIER);
+		
 		ALLOW_BARRELS = config.get(CATEGORY_OPTIONS, ALLOW_BARRELS_KEY, ALLOW_BARRELS).getBoolean(ALLOW_BARRELS);
 		ALLOW_SIEVES = config.get(CATEGORY_OPTIONS, ALLOW_SIEVES_KEY, ALLOW_SIEVES).getBoolean(ALLOW_SIEVES);
 		ALLOW_SIEVE_AUTOMATION  = config.get(CATEGORY_OPTIONS, ALLOW_SIEVE_AUTOMATION_KEY, ALLOW_SIEVE_AUTOMATION).getBoolean(ALLOW_SIEVE_AUTOMATION);

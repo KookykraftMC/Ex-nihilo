@@ -1,5 +1,7 @@
 package exnihilo.registries.helpers;
 
+import exnihilo.data.ModData;
+
 public class SiftReward {
 	public int sourceID;
 	public int sourceMeta;
@@ -15,7 +17,7 @@ public class SiftReward {
 		this.ignoreMeta = false;
 		this.id = id;
 		this.meta = meta;
-		this.rarity = rarity;
+		this.rarity = calculateRarity(rarity);
 	}
 	
 	public SiftReward(int sourceID, int id, int meta, int rarity)
@@ -25,6 +27,14 @@ public class SiftReward {
 		this.ignoreMeta = true;
 		this.id = id;
 		this.meta = meta;
-		this.rarity = rarity;
+		this.rarity = calculateRarity(rarity);
+	}
+	
+	private static int calculateRarity(int base)
+	{
+		int multiplier = ModData.SIEVE_PAIN_MULTIPLIER + 1;
+		int rarity = (base * multiplier) + (int)((float)multiplier / 2.0f);
+		
+		return rarity;
 	}
 }
