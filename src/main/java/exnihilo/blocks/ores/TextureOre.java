@@ -13,9 +13,6 @@ import net.minecraft.client.resources.IResource;
 import net.minecraft.client.resources.IResourceManager;
 import net.minecraft.util.ResourceLocation;
 
-///This class has been copied from DenseOres which in turn was mostly copied from the 
-/// vanilla class TextureAtlasSprite. Thats why there are all these incredibly short variable names.
-/// Refactoring to commence ASAP. - Crowley
 public class TextureOre extends TextureAtlasSprite {
 
   private ResourceLocation template;
@@ -105,7 +102,7 @@ public class TextureOre extends TextureAtlasSprite {
       return true;
     }
 
-    ExNihilo.log.info("ExNihilo: Succesfully generated ore texture for '" + this.getIconName() + "' with background '" + base + "'. Place " + this.getIconName() + ".png in the assets folder to override.");
+    ExNihilo.log.info("ExNihilo: Succesfully generated ore texture for '" + this.getIconName() + "'. Place " + this.getIconName() + ".png in the assets folder to override.");
     return false;
   }
   
