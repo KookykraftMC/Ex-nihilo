@@ -33,7 +33,7 @@ public class TextureOre extends TextureAtlasSprite {
 
   @Override
   public boolean hasCustomLoader(IResourceManager manager, ResourceLocation location) {
-    ExNihilo.log.info("Attempt to load: " + location);
+    //ExNihilo.log.info("Attempt to load: " + location);
     
     try 
     {
@@ -44,7 +44,7 @@ public class TextureOre extends TextureAtlasSprite {
       return true;
     }
 
-    ExNihilo.log.info("Ore icon: " + template + " was overwritten by a texturepack or embedded resource.");
+    ExNihilo.log.info("Icon: " + template + " was overwritten by a texturepack or embedded resource.");
     return false;
   }
 
