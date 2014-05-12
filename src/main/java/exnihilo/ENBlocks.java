@@ -70,6 +70,8 @@ public class ENBlocks {
 	  CreateOreBlocks("Testium", new Color("3423CC"));
 	  CreateOreBlocks("Reversium", new Color("FFB940"));
 	  CreateOreBlocks("Teslasium", new Color("40FF66"));
+	  CreateOreBlocks("Redrium", new Color("FF5050"));
+	  CreateOreBlocks("Pinkium", new Color("FF9999"));
 	  
 		Barrel = new BlockBarrel();
 		GameRegistry.registerBlock(Barrel, ItemBlockBarrel.class, BlockData.BARREL_KEY);
