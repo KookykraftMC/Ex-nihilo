@@ -2,23 +2,62 @@ package exnihilo.blocks.ores;
 
 import java.awt.image.BufferedImage;
 
+import exnihilo.ExNihilo;
 import exnihilo.registries.helpers.Color;
 
 
 public class ImageManipulator
 {
   //Recolors an image based on the input color
-  public static BufferedImage Recolor(BufferedImage template, exnihilo.registries.helpers.Color color)
+  public static BufferedImage Recolor(BufferedImage template, Color colorNew)
   {
-    //TODO
-    //Actually perform the color blending. Probably using HSV color model.
-    //For now, just pass the unmolested template on for further processing.
-    return template;
+    int w = template.getWidth();
+    int h = template.getHeight();
+
+    // create an output image that we will use to override
+    BufferedImage imgOutput = new BufferedImage(w, h, template.getType());
+
+    int[] templateData = new int[w * h];
+    int[] outputData = new int[w * h];
+
+    // read the rgb color data into our array
+    template.getRGB(0, 0, w, h, templateData, 0, w);
+    
+    // blend each pixel where alpha > 0
+    for (int i = 0; i < templateData.length; i++) {
+      Color colorRaw = new Color(templateData[i], false);
+      
+      if (colorRaw.a > 0)
+      {
+        float a = colorRaw.a;     
+        float r = (colorNew.r);
+        float g = (colorNew.g);
+        float b = (colorNew.b);
+        
+        //System.out.println("Blended pixel r:" + r + ", g:" +  g + ", b:" + b + ", a:" +  a);
+        outputData[i] = (new Color(r, g, b, a).toInt());
+      }else
+      {
+        //System.out.println("Raw pixel r:" + colorRaw.r + ", g:" +  colorRaw.g + ", b:" + colorRaw.b + ", a:" +  colorRaw.a);
+        outputData[i] = templateData[i];
+      }
+    }
+
+    // write the new image data to the output image buffer
+    imgOutput.setRGB(0, 0, w, h, outputData, 0, w);
+    
+    return imgOutput;
   }
   
   //Combines two images and returns the composite.
   public static BufferedImage Composite(BufferedImage imgBackground, BufferedImage imgForeground)
   {
+    if (!normalCompositePossible(imgBackground, imgForeground))
+    {
+      ExNihilo.log.error("Images with different sizes can't be composited.");
+      return null;
+    }
+    
     int w = imgBackground.getWidth();
     int h = imgBackground.getHeight();
 
@@ -66,4 +105,17 @@ public class ImageManipulator
     
     return imgOutput;
   }
+  
+  private static boolean normalCompositePossible(BufferedImage imgBackground, BufferedImage imgForeground)
+  {
+    //if the size is identical, then compositing in normal mode is possible. 
+    return (imgBackground.getWidth() == imgForeground.getWidth()) && (imgBackground.getHeight() == imgForeground.getHeight());
+  }
+  
+//  private static boolean animatedCompositePossible(BufferedImage imgBackground, BufferedImage imgForeground)
+//  {
+//  //if the width is identical and the height of one image is a multiple of the height of the other, compositing in animation mode is possible.
+//    return (imgBackground.getHeight() % imgForeground.getHeight() == 0 || imgForeground.getHeight() % imgBackground.getHeight() == 0);
+//  }
+
 }

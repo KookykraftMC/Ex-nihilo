@@ -38,6 +38,7 @@ public class BlockOre
 
     this.base = base;
     this.template = template;
+    this.color = color;
   }
 
   @SuppressWarnings({
