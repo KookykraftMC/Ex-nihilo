@@ -72,8 +72,8 @@ public class BlockOreFactory
   {
     String dust_name = "ore_dust_" + name.toLowerCase();
     
-    ResourceLocation baseTexture = TextureOre.getTextureLocation("exnihilo", "IconBlockDust");
-    ResourceLocation templateTexture = TextureOre.getTextureLocation("exnihilo", "testtemplate");
+    ResourceLocation baseTexture = TextureOre.getTextureLocation("exnihilo", "IconDustBase");
+    ResourceLocation templateTexture = TextureOre.getTextureLocation("exnihilo", "IconDustTemplate");
     
     BlockOre dust = new BlockOre(dust_name, baseTexture, templateTexture, color);
     
