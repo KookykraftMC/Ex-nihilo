@@ -37,8 +37,8 @@ public class BlockOreFactory
   {
     String gravel_name = "ore_gravel_" + name.toLowerCase();
     
-    ResourceLocation baseTexture = TextureOre.getTextureLocation("minecraft", "gravel");
-    ResourceLocation templateTexture = TextureOre.getTextureLocation("ExNihilo", "testtemplate");
+    ResourceLocation baseTexture = TextureOre.getTextureLocation("exnihilo", "IconGravelBase");
+    ResourceLocation templateTexture = TextureOre.getTextureLocation("exnihilo", "IconGravelTemplate");
     
     BlockOre gravel = new BlockOre(gravel_name, baseTexture, templateTexture, color);
     
@@ -54,8 +54,8 @@ public class BlockOreFactory
   {
     String sand_name = "ore_sand_" + name.toLowerCase();
     
-    ResourceLocation baseTexture = TextureOre.getTextureLocation("minecraft", "sand");
-    ResourceLocation templateTexture = TextureOre.getTextureLocation("ExNihilo", "testtemplate");
+    ResourceLocation baseTexture = TextureOre.getTextureLocation("exnihilo", "IconSandBase");
+    ResourceLocation templateTexture = TextureOre.getTextureLocation("exnihilo", "IconSandTemplate");
     
     BlockOre sand = new BlockOre(sand_name, baseTexture, templateTexture, color);
     
@@ -72,8 +72,8 @@ public class BlockOreFactory
   {
     String dust_name = "ore_dust_" + name.toLowerCase();
     
-    ResourceLocation baseTexture = TextureOre.getTextureLocation("ExNihilo", "IconBlockDust");
-    ResourceLocation templateTexture = TextureOre.getTextureLocation("ExNihilo", "testtemplate");
+    ResourceLocation baseTexture = TextureOre.getTextureLocation("exnihilo", "IconBlockDust");
+    ResourceLocation templateTexture = TextureOre.getTextureLocation("exnihilo", "testtemplate");
     
     BlockOre dust = new BlockOre(dust_name, baseTexture, templateTexture, color);
     
