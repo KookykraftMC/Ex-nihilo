@@ -67,7 +67,9 @@ public class ENBlocks {
 	public static void registerBlocks()
 	{
 	  //Testing Ore Generation;
-	  CreateOreBlocks("Testium", new Color("669950"));
+	  CreateOreBlocks("Testium", new Color("3423CC"));
+	  CreateOreBlocks("Reversium", new Color("FFB940"));
+	  CreateOreBlocks("Teslasium", new Color("40FF66"));
 	  
 		Barrel = new BlockBarrel();
 		GameRegistry.registerBlock(Barrel, ItemBlockBarrel.class, BlockData.BARREL_KEY);
