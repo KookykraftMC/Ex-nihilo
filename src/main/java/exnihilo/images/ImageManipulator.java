@@ -1,4 +1,4 @@
-package exnihilo.blocks.ores;
+package exnihilo.images;
 
 import java.awt.image.BufferedImage;
 

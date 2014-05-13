@@ -6,6 +6,7 @@ import javax.imageio.ImageIO;
 
 import exnihilo.ExNihilo;
 import exnihilo.data.ModData;
+import exnihilo.images.ImageManipulator;
 import exnihilo.registries.helpers.Color;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.texture.TextureAtlasSprite;
