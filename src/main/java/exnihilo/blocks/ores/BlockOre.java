@@ -26,17 +26,10 @@ public class BlockOre
   private ResourceLocation template;
   private Color color;
 
-  public BlockOre(String name, TextureDynamic texture)
-  {
-    super();
-    this.name = name;
-  }
-
   public BlockOre(String name, ResourceLocation base, ResourceLocation template, Color color)
   {
     super();
     this.name = name;
-
     this.base = base;
     this.template = template;
     this.color = color;
