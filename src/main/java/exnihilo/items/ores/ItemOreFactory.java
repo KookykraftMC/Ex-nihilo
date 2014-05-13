@@ -40,8 +40,8 @@ public class ItemOreFactory
     String texture_name = "ItemBroken" + formatName(name);
     String item_name = "ore_broken_" + name.toLowerCase();
     
-    ResourceLocation baseTexture = TextureDynamic.getItemTextureLocation("minecraft", "coal");
-    ResourceLocation templateTexture = TextureDynamic.getBlockTextureLocation("exnihilo", "testtemplate");
+    ResourceLocation baseTexture = TextureDynamic.getItemTextureLocation("exnihilo", "ItemBrokenBase");
+    ResourceLocation templateTexture = TextureDynamic.getItemTextureLocation("exnihilo", "ItemBrokenTemplate");
     
     TextureDynamic texture = new TextureDynamic(texture_name, baseTexture, templateTexture, color);
     ItemOre broken = new ItemOre(item_name, texture);

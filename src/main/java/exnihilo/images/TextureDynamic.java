@@ -121,7 +121,7 @@ public class TextureDynamic extends TextureAtlasSprite {
       return true;
     }
 
-    ExNihilo.log.info("Succesfully generated texture for '" + this.getIconName() + "'. Place " + this.getIconName() + ".png in the assets folder to override.");
+    //ExNihilo.log.info("Succesfully generated texture for '" + this.getIconName() + "'. Place " + this.getIconName() + ".png in the assets folder to override.");
     return false;
   }
   
