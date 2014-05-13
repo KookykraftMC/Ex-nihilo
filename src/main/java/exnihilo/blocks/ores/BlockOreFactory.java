@@ -36,7 +36,7 @@ public class BlockOreFactory
   
   private static BlockOre MakeOverworldGravel(String name, Color color)
   {
-    String gravel_name = "ore_gravel_" + name.toLowerCase();
+    String gravel_name = "IconGravel" + formatName(name);
     
     ResourceLocation baseTexture = TextureDynamic.getTextureLocation("exnihilo", "IconGravelBase");
     ResourceLocation templateTexture = TextureDynamic.getTextureLocation("exnihilo", "IconGravelTemplate");
@@ -53,7 +53,7 @@ public class BlockOreFactory
   
   private static BlockOre MakeSand(String name, Color color)
   {
-    String sand_name = "ore_sand_" + name.toLowerCase();
+    String sand_name = "IconSand" + formatName(name);
     
     ResourceLocation baseTexture = TextureDynamic.getTextureLocation("exnihilo", "IconSandBase");
     ResourceLocation templateTexture = TextureDynamic.getTextureLocation("exnihilo", "IconSandTemplate");
@@ -71,7 +71,7 @@ public class BlockOreFactory
   
   private static BlockOre MakeDust(String name, Color color)
   {
-    String dust_name = "ore_dust_" + name.toLowerCase();
+    String dust_name = "IconDust" + formatName(name);
     
     ResourceLocation baseTexture = TextureDynamic.getTextureLocation("exnihilo", "IconDustBase");
     ResourceLocation templateTexture = TextureDynamic.getTextureLocation("exnihilo", "IconDustTemplate");
@@ -84,5 +84,14 @@ public class BlockOreFactory
       .setBlockName(ModData.ID + "." + dust_name);
     
     return dust;
+  }
+  
+  private static String formatName(String input)
+  {
+    String lcase = input.toLowerCase();
+    
+    String output = lcase.substring(0, 1).toUpperCase() + lcase.substring(1);
+    
+    return output;
   }
 }
