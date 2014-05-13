@@ -2,8 +2,6 @@ package exnihilo;
 
 import net.minecraft.item.Item;
 import cpw.mods.fml.common.registry.GameRegistry;
-import exnihilo.blocks.ores.BlockOre;
-import exnihilo.blocks.ores.BlockOreFactory;
 import exnihilo.data.ItemData;
 import exnihilo.items.ItemCrook;
 import exnihilo.items.ItemCrookBone;
