@@ -68,7 +68,7 @@ public class BlockOre
           boolean success = map.setTextureEntry(name, texture);
           if (success)
           {
-            System.out.println("Registered icon successfully: " + name);
+            //System.out.println("Registered icon successfully: " + name);
             this.icon = map.getTextureExtry(name);
           }
         }
