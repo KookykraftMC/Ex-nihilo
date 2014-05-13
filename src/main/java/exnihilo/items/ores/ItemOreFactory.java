@@ -25,7 +25,7 @@ public class ItemOreFactory
     ItemOre pulverized = MakePulverizedOre(name, color);
     items.add(pulverized);
     
-  //Make dust;
+    //Make dust;
     ItemOre ingot = MakeIngot(name, color);
     items.add(ingot);
     

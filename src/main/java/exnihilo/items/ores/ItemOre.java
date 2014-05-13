@@ -1,7 +1,6 @@
 package exnihilo.items.ores;
 
 import exnihilo.data.ModData;
-import exnihilo.registries.helpers.Color;
 import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.client.renderer.texture.TextureAtlasSprite;
 import net.minecraft.client.renderer.texture.TextureMap;
@@ -9,7 +8,6 @@ import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.init.Items;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
-import net.minecraft.util.ResourceLocation;
 
 public class ItemOre extends Item
 {
