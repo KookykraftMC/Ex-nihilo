@@ -4,6 +4,7 @@ import java.util.List;
 
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
+import exnihilo.images.TextureDynamic;
 import exnihilo.registries.helpers.Color;
 import net.minecraft.block.BlockSand;
 import net.minecraft.client.renderer.texture.IIconRegister;
@@ -25,7 +26,7 @@ public class BlockOre
   private ResourceLocation template;
   private Color color;
 
-  public BlockOre(String name, TextureOre texture)
+  public BlockOre(String name, TextureDynamic texture)
   {
     super();
     this.name = name;
@@ -62,7 +63,7 @@ public class BlockOre
         TextureAtlasSprite existing = map.getTextureExtry(name);
         if (existing == null)
         {
-          TextureOre texture = new TextureOre(name, base, template, color);
+          TextureDynamic texture = new TextureDynamic(name, base, template, color);
           
           boolean success = map.setTextureEntry(name, texture);
           if (success)

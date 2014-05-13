@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import exnihilo.data.ModData;
+import exnihilo.images.TextureDynamic;
 import exnihilo.registries.helpers.Color;
 import net.minecraft.block.Block;
 import net.minecraft.util.ResourceLocation;
@@ -37,8 +38,8 @@ public class BlockOreFactory
   {
     String gravel_name = "ore_gravel_" + name.toLowerCase();
     
-    ResourceLocation baseTexture = TextureOre.getTextureLocation("exnihilo", "IconGravelBase");
-    ResourceLocation templateTexture = TextureOre.getTextureLocation("exnihilo", "IconGravelTemplate");
+    ResourceLocation baseTexture = TextureDynamic.getTextureLocation("exnihilo", "IconGravelBase");
+    ResourceLocation templateTexture = TextureDynamic.getTextureLocation("exnihilo", "IconGravelTemplate");
     
     BlockOre gravel = new BlockOre(gravel_name, baseTexture, templateTexture, color);
     
@@ -54,8 +55,8 @@ public class BlockOreFactory
   {
     String sand_name = "ore_sand_" + name.toLowerCase();
     
-    ResourceLocation baseTexture = TextureOre.getTextureLocation("exnihilo", "IconSandBase");
-    ResourceLocation templateTexture = TextureOre.getTextureLocation("exnihilo", "IconSandTemplate");
+    ResourceLocation baseTexture = TextureDynamic.getTextureLocation("exnihilo", "IconSandBase");
+    ResourceLocation templateTexture = TextureDynamic.getTextureLocation("exnihilo", "IconSandTemplate");
     
     BlockOre sand = new BlockOre(sand_name, baseTexture, templateTexture, color);
     
@@ -72,8 +73,8 @@ public class BlockOreFactory
   {
     String dust_name = "ore_dust_" + name.toLowerCase();
     
-    ResourceLocation baseTexture = TextureOre.getTextureLocation("exnihilo", "IconDustBase");
-    ResourceLocation templateTexture = TextureOre.getTextureLocation("exnihilo", "IconDustTemplate");
+    ResourceLocation baseTexture = TextureDynamic.getTextureLocation("exnihilo", "IconDustBase");
+    ResourceLocation templateTexture = TextureDynamic.getTextureLocation("exnihilo", "IconDustTemplate");
     
     BlockOre dust = new BlockOre(dust_name, baseTexture, templateTexture, color);
     

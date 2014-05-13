@@ -1,4 +1,4 @@
-package exnihilo.blocks.ores;
+package exnihilo.images;
 
 import java.awt.image.BufferedImage;
 
@@ -6,7 +6,6 @@ import javax.imageio.ImageIO;
 
 import exnihilo.ExNihilo;
 import exnihilo.data.ModData;
-import exnihilo.images.ImageManipulator;
 import exnihilo.registries.helpers.Color;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.texture.TextureAtlasSprite;
@@ -14,13 +13,13 @@ import net.minecraft.client.resources.IResource;
 import net.minecraft.client.resources.IResourceManager;
 import net.minecraft.util.ResourceLocation;
 
-public class TextureOre extends TextureAtlasSprite {
+public class TextureDynamic extends TextureAtlasSprite {
 
   private ResourceLocation template;
   private ResourceLocation base;
   private Color color;
 
-  public TextureOre(String name, ResourceLocation base, ResourceLocation template, Color color) {
+  public TextureDynamic(String name, ResourceLocation base, ResourceLocation template, Color color) {
     super(name);
     
     this.template = template;
@@ -103,7 +102,7 @@ public class TextureOre extends TextureAtlasSprite {
       return true;
     }
 
-    ExNihilo.log.info("ExNihilo: Succesfully generated ore texture for '" + this.getIconName() + "'. Place " + this.getIconName() + ".png in the assets folder to override.");
+    ExNihilo.log.info("Succesfully generated texture for '" + this.getIconName() + "'. Place " + this.getIconName() + ".png in the assets folder to override.");
     return false;
   }
   
