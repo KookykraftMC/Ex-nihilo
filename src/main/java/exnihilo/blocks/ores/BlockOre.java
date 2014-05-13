@@ -4,8 +4,6 @@ import java.util.List;
 
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
-import exnihilo.images.TextureDynamic;
-import exnihilo.registries.helpers.Color;
 import net.minecraft.block.BlockSand;
 import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.client.renderer.texture.TextureAtlasSprite;
@@ -15,24 +13,19 @@ import net.minecraft.init.Blocks;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.IIcon;
-import net.minecraft.util.ResourceLocation;
 
 public class BlockOre
     extends BlockSand
 {
   private String name;
   private IIcon icon;
-  private ResourceLocation base;
-  private ResourceLocation template;
-  private Color color;
-
-  public BlockOre(String name, ResourceLocation base, ResourceLocation template, Color color)
+  private TextureAtlasSprite texture;
+  
+  public BlockOre(String name, TextureAtlasSprite texture)
   {
     super();
     this.name = name;
-    this.base = base;
-    this.template = template;
-    this.color = color;
+    this.texture = texture;
   }
 
   @SuppressWarnings({
@@ -49,22 +42,20 @@ public class BlockOre
   @Override
   public void registerBlockIcons(IIconRegister register)
   {
-    if (this.base != null && this.template != null)
+    if(this.texture != null)
     {
-        TextureMap map = (TextureMap) register;
+      TextureMap map = (TextureMap) register;
 
-        TextureAtlasSprite existing = map.getTextureExtry(name);
-        if (existing == null)
+      TextureAtlasSprite existing = map.getTextureExtry(texture.getIconName());
+      if (existing == null)
+      {
+        boolean success = map.setTextureEntry(texture.getIconName(), texture);
+        if (success)
         {
-          TextureDynamic texture = new TextureDynamic(name, base, template, color);
-          
-          boolean success = map.setTextureEntry(name, texture);
-          if (success)
-          {
-            //System.out.println("Registered icon successfully: " + name);
-            this.icon = map.getTextureExtry(name);
-          }
+          //System.out.println("Registered icon successfully: " + texture.getIconName());
+          this.icon = map.getTextureExtry(texture.getIconName());
         }
+      }
     }
   }
 

@@ -1,7 +1,6 @@
 package exnihilo.items.ores;
 
 import exnihilo.data.ModData;
-import exnihilo.images.TextureDynamic;
 import exnihilo.registries.helpers.Color;
 import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.client.renderer.texture.TextureAtlasSprite;
@@ -15,16 +14,12 @@ import net.minecraft.util.ResourceLocation;
 public class ItemOre extends Item
 {
   private String name;
-  private ResourceLocation base;
-  private ResourceLocation template;
-  private Color color;
+  private TextureAtlasSprite texture;
   
-  public ItemOre(String name, ResourceLocation base, ResourceLocation template, Color color) {
+  public ItemOre(String name, TextureAtlasSprite texture) {
     super();
     this.name = name;
-    this.base = base;
-    this.template = template;
-    this.color = color;
+    this.texture = texture;
     
     setCreativeTab(CreativeTabs.tabMaterials);
   }
@@ -44,25 +39,23 @@ public class ItemOre extends Item
   @Override
   public void registerIcons(IIconRegister register)
   {
-    if (this.base != null && this.template != null)
+    if(this.texture != null)
     {
-        TextureMap map = (TextureMap) register;
+      TextureMap map = (TextureMap) register;
 
-        TextureAtlasSprite existing = map.getTextureExtry(name);
-        if (existing == null)
+      TextureAtlasSprite existing = map.getTextureExtry(texture.getIconName());
+      if (existing == null)
+      {
+        boolean success = map.setTextureEntry(texture.getIconName(), texture);
+        if (success)
         {
-          TextureDynamic texture = new TextureDynamic(name, base, template, color);
-          
-          boolean success = map.setTextureEntry(name, texture);
-          if (success)
-          {
-            //System.out.println("Registered icon successfully: " + name);
-            this.itemIcon = map.getTextureExtry(name);
-          }
+          //System.out.println("Registered icon successfully: " + texture.getIconName());
+          this.itemIcon = map.getTextureExtry(texture.getIconName());
+        }else
+        {
+          this.itemIcon = Items.coal.getIconFromDamage(0);
         }
-    }else
-    {
-      this.itemIcon = Items.coal.getIconFromDamage(0);
+      }
     }
   }
 }

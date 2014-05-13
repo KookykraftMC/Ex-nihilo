@@ -36,34 +36,38 @@ public class BlockOreFactory
   
   private static BlockOre MakeOverworldGravel(String name, Color color)
   {
-    String gravel_name = "IconGravel" + formatName(name);
+    String texture_name = "IconGravel" + formatName(name);
+    String block_name = "ore_gravel_" + name.toLowerCase();
     
-    ResourceLocation baseTexture = TextureDynamic.getTextureLocation("exnihilo", "IconGravelBase");
-    ResourceLocation templateTexture = TextureDynamic.getTextureLocation("exnihilo", "IconGravelTemplate");
+    ResourceLocation baseTexture = TextureDynamic.getBlockTextureLocation("exnihilo", "IconGravelBase");
+    ResourceLocation templateTexture = TextureDynamic.getBlockTextureLocation("exnihilo", "IconGravelTemplate");
     
-    BlockOre gravel = new BlockOre(gravel_name, baseTexture, templateTexture, color);
+    TextureDynamic texture = new TextureDynamic(texture_name, baseTexture, templateTexture, color);
+    BlockOre gravel = new BlockOre(block_name, texture);
     
     gravel
       .setHardness(0.8f)
       .setStepSound(Block.soundTypeGravel)
-      .setBlockName(ModData.ID + "." + gravel_name);
+      .setBlockName(ModData.ID + "." + block_name);
     
     return gravel;
   }
   
   private static BlockOre MakeSand(String name, Color color)
   {
-    String sand_name = "IconSand" + formatName(name);
+    String texture_name = "IconSand" + formatName(name);
+    String block_name = "ore_sand_" + name.toLowerCase();
     
-    ResourceLocation baseTexture = TextureDynamic.getTextureLocation("exnihilo", "IconSandBase");
-    ResourceLocation templateTexture = TextureDynamic.getTextureLocation("exnihilo", "IconSandTemplate");
+    ResourceLocation baseTexture = TextureDynamic.getBlockTextureLocation("exnihilo", "IconSandBase");
+    ResourceLocation templateTexture = TextureDynamic.getBlockTextureLocation("exnihilo", "IconSandTemplate");
     
-    BlockOre sand = new BlockOre(sand_name, baseTexture, templateTexture, color);
+    TextureDynamic texture = new TextureDynamic(texture_name, baseTexture, templateTexture, color);
+    BlockOre sand = new BlockOre(block_name, texture);
     
     sand
       .setHardness(0.6f)
       .setStepSound(Block.soundTypeSand)
-      .setBlockName(ModData.ID + "." + sand_name);
+      .setBlockName(ModData.ID + "." + block_name);
     
     return sand;
   }
@@ -71,17 +75,19 @@ public class BlockOreFactory
   
   private static BlockOre MakeDust(String name, Color color)
   {
-    String dust_name = "IconDust" + formatName(name);
+    String texture_name = "IconDust" + formatName(name);
+    String block_name = "ore_dust_" + name.toLowerCase();
     
-    ResourceLocation baseTexture = TextureDynamic.getTextureLocation("exnihilo", "IconDustBase");
-    ResourceLocation templateTexture = TextureDynamic.getTextureLocation("exnihilo", "IconDustTemplate");
+    ResourceLocation baseTexture = TextureDynamic.getBlockTextureLocation("exnihilo", "IconDustBase");
+    ResourceLocation templateTexture = TextureDynamic.getBlockTextureLocation("exnihilo", "IconDustTemplate");
     
-    BlockOre dust = new BlockOre(dust_name, baseTexture, templateTexture, color);
+    TextureDynamic texture = new TextureDynamic(texture_name, baseTexture, templateTexture, color);
+    BlockOre dust = new BlockOre(block_name, texture);
     
     dust
       .setHardness(0.4f)
       .setStepSound(Block.soundTypeSnow)
-      .setBlockName(ModData.ID + "." + dust_name);
+      .setBlockName(ModData.ID + "." + block_name);
     
     return dust;
   }

@@ -2,6 +2,8 @@ package exnihilo;
 
 import net.minecraft.item.Item;
 import cpw.mods.fml.common.registry.GameRegistry;
+import exnihilo.blocks.ores.BlockOre;
+import exnihilo.blocks.ores.BlockOreFactory;
 import exnihilo.data.ItemData;
 import exnihilo.items.ItemCrook;
 import exnihilo.items.ItemCrookBone;
@@ -42,6 +44,8 @@ import exnihilo.items.ores.ItemNickelDust;
 import exnihilo.items.ores.ItemNickelGravel;
 import exnihilo.items.ores.ItemNickelIngot;
 import exnihilo.items.ores.ItemNickelSand;
+import exnihilo.items.ores.ItemOre;
+import exnihilo.items.ores.ItemOreFactory;
 import exnihilo.items.ores.ItemOsmiumDust;
 import exnihilo.items.ores.ItemOsmiumGravel;
 import exnihilo.items.ores.ItemOsmiumSand;
@@ -67,6 +71,7 @@ import exnihilo.items.seeds.ItemSeedPotato;
 import exnihilo.items.seeds.ItemSeedRubber;
 import exnihilo.items.seeds.ItemSeedSpruce;
 import exnihilo.items.seeds.ItemSeedSugarcane;
+import exnihilo.registries.helpers.Color;
 
 public class ENItems {
 	public static Item HammerWood;
@@ -161,6 +166,9 @@ public class ENItems {
 
 	public static void registerItems()
 	{
+	  //Testing Ore Generation;
+    CreateOreItems("Testium", new Color("3423CC"));
+	  
 		HammerWood = new ItemHammerWood();
 		GameRegistry.registerItem(HammerWood, ItemData.HAMMER_UNLOCALIZED_NAMES[0]);
 
@@ -325,4 +333,16 @@ public class ENItems {
 		AluminumIngot = new ItemAluminumIngot();
 		GameRegistry.registerItem(AluminumIngot, ItemData.ALUMINUM_ORE_UNLOCALIZED_NAMES[3]);
 	}
+	
+	public static void CreateOreItems(String name, Color color)
+  {
+  //TODO Create a key,value pair registry that maps ore names to items;
+    ItemOre[] TestOre = ItemOreFactory.MakeOverworldOreItems(name, color);
+    
+    for (ItemOre b : TestOre)
+    {
+      //TODO Don't create the same ore item twice!
+      GameRegistry.registerItem(b, b.getUnlocalizedName());
+    }
+  }
 }
