@@ -9,7 +9,9 @@ import exnihilo.blocks.BlockBeeTrapTreated;
 import exnihilo.blocks.BlockCrucible;
 import exnihilo.blocks.BlockCrucibleUnfired;
 import exnihilo.blocks.BlockDust;
+import exnihilo.blocks.BlockEnderGravel;
 import exnihilo.blocks.BlockLeavesInfested;
+import exnihilo.blocks.BlockNetherGravel;
 import exnihilo.blocks.BlockSieve;
 import exnihilo.blocks.itemBlocks.ItemBlockBarrel;
 import exnihilo.blocks.itemBlocks.ItemBlockBarrelStone;
@@ -29,6 +31,8 @@ public class ENBlocks {
 	public static Block Sieve;
 	public static Block BeeTrap;
 	public static Block BeeTrapTreated;
+	public static Block NetherGravel;
+	public static Block EnderGravel;
 
 	public static void registerBlocks()
 	{
@@ -57,5 +61,11 @@ public class ENBlocks {
 		GameRegistry.registerBlock(BeeTrap, BlockData.BEE_TRAP_KEY);
 		BeeTrapTreated = new BlockBeeTrapTreated();
 		GameRegistry.registerBlock(BeeTrapTreated, BlockData.BEE_TRAP_TREATED_KEY);
+		
+		NetherGravel = new BlockNetherGravel();
+		GameRegistry.registerBlock(NetherGravel, NetherGravel.getUnlocalizedName());
+		
+		EnderGravel = new BlockEnderGravel();
+		GameRegistry.registerBlock(EnderGravel, EnderGravel.getUnlocalizedName());
 	}
 }
