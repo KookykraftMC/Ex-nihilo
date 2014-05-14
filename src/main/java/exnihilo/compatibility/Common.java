@@ -18,6 +18,6 @@ public class Common{
 		{
 			//registerHammerRecipes(ores, ENItems.CopperGravel, 0);
 		}
-		OreRegistry.createOverworldOre("copper", new Color("FF330A"));
+		OreRegistry.createOverworldOre("copper", new Color("FF330A"), 7);
 	}
 }

@@ -5,11 +5,13 @@ import java.util.Hashtable;
 import java.util.List;
 
 import net.minecraft.block.Block;
+import net.minecraft.init.Blocks;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.FurnaceRecipes;
 import net.minecraftforge.oredict.OreDictionary;
 import net.minecraftforge.oredict.ShapedOreRecipe;
 import cpw.mods.fml.common.registry.GameRegistry;
+import exnihilo.ENBlocks;
 import exnihilo.blocks.ores.BlockOre;
 import exnihilo.blocks.ores.BlockOreFactory;
 import exnihilo.items.ores.ItemOre;
@@ -59,7 +61,7 @@ public class OreRegistry {
 		return items.get(name);
 	}
 	
-	public static void createOverworldOre(String name, Color color)
+	public static void createOverworldOre(String name, Color color, int rarity)
 	{
 		if (ores.contains(name))
 		{
@@ -115,6 +117,11 @@ public class OreRegistry {
 		
 		//register ore dictionary names.
 		registerOreDict(name, ingot);
+		
+		//register sieve recipes
+		registerSieveRecipe(Blocks.gravel, broken, rarity);
+		registerSieveRecipe(Blocks.sand, crushed, rarity);
+		registerSieveRecipe(ENBlocks.Dust, powdered, rarity);
 	}
 	
 	private static void registerOreDict(String name, ItemOre ingot)
@@ -143,6 +150,11 @@ public class OreRegistry {
 	private static void registerFurnaceRecipe(BlockOre ore, ItemOre ingot)
 	{
 		FurnaceRecipes.smelting().func_151393_a(ore, new ItemStack(ingot, 1, 0), 0.1f);
+	}
+	
+	private static void registerSieveRecipe(Block block, ItemOre item, int rarity)
+	{
+	  SieveRegistry.register(block, item, 0, rarity);
 	}
 	
 	private static String formatOreName(String input)
