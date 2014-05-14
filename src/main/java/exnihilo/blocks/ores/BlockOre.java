@@ -21,10 +21,15 @@ public class BlockOre
   private IIcon icon;
   private TextureAtlasSprite texture;
   
-  public BlockOre(String name, TextureAtlasSprite texture)
+  public BlockOre(String name)
   {
     super();
     this.name = name;
+  }
+  
+  @SideOnly(Side.CLIENT)
+  public void setTexture(TextureAtlasSprite texture)
+  {
     this.texture = texture;
   }
 
@@ -32,7 +37,6 @@ public class BlockOre
       "unchecked", "rawtypes"
   })
   @Override
-  @SideOnly(Side.CLIENT)
   public void getSubBlocks(Item item, CreativeTabs tabs, List items)
   {
     items.add(new ItemStack(item, 1, 0));

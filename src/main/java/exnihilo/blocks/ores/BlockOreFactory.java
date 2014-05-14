@@ -1,11 +1,14 @@
 package exnihilo.blocks.ores;
 
-
 import java.util.ArrayList;
 import java.util.List;
 
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
 import exnihilo.data.ModData;
-import exnihilo.images.TextureDynamic;
+import exnihilo.images.Resource;
+import exnihilo.images.TextureFactory;
+import exnihilo.proxies.Proxy;
 import exnihilo.registries.helpers.Color;
 import net.minecraft.block.Block;
 import net.minecraft.util.ResourceLocation;
@@ -39,11 +42,15 @@ public class BlockOreFactory
     String texture_name = "IconGravel" + formatName(name);
     String block_name = "ore_gravel_" + name.toLowerCase();
     
-    ResourceLocation baseTexture = TextureDynamic.getBlockTextureLocation("exnihilo", "IconGravelBase");
-    ResourceLocation templateTexture = TextureDynamic.getBlockTextureLocation("exnihilo", "IconGravelTemplate");
+    BlockOre gravel = new BlockOre(block_name);
     
-    TextureDynamic texture = new TextureDynamic(texture_name, baseTexture, templateTexture, color);
-    BlockOre gravel = new BlockOre(block_name, texture);
+    ResourceLocation baseTexture = Resource.getBlockTextureLocation("exnihilo", "IconGravelBase");
+    ResourceLocation templateTexture = Resource.getBlockTextureLocation("exnihilo", "IconGravelTemplate"); 
+    
+    if (!Proxy.runningOnServer())
+    {
+      attachTexture(gravel, texture_name, baseTexture, templateTexture, color);
+    }
     
     gravel
       .setHardness(0.8f)
@@ -57,13 +64,16 @@ public class BlockOreFactory
   {
     String texture_name = "IconSand" + formatName(name);
     String block_name = "ore_sand_" + name.toLowerCase();
+
+    BlockOre sand = new BlockOre(block_name);
     
-    ResourceLocation baseTexture = TextureDynamic.getBlockTextureLocation("exnihilo", "IconSandBase");
-    ResourceLocation templateTexture = TextureDynamic.getBlockTextureLocation("exnihilo", "IconSandTemplate");
+    ResourceLocation baseTexture = Resource.getBlockTextureLocation("exnihilo", "IconSandBase");
+    ResourceLocation templateTexture = Resource.getBlockTextureLocation("exnihilo", "IconSandTemplate");
     
-    TextureDynamic texture = new TextureDynamic(texture_name, baseTexture, templateTexture, color);
-    BlockOre sand = new BlockOre(block_name, texture);
-    
+    if (!Proxy.runningOnServer())
+    {
+      attachTexture(sand, texture_name, baseTexture, templateTexture, color);
+    }
     sand
       .setHardness(0.6f)
       .setStepSound(Block.soundTypeSand)
@@ -77,11 +87,15 @@ public class BlockOreFactory
     String texture_name = "IconDust" + formatName(name);
     String block_name = "ore_dust_" + name.toLowerCase();
     
-    ResourceLocation baseTexture = TextureDynamic.getBlockTextureLocation("exnihilo", "IconDustBase");
-    ResourceLocation templateTexture = TextureDynamic.getBlockTextureLocation("exnihilo", "IconDustTemplate");
+    BlockOre dust = new BlockOre(block_name);
+
+    ResourceLocation baseTexture = Resource.getBlockTextureLocation("exnihilo", "IconDustBase");
+    ResourceLocation templateTexture = Resource.getBlockTextureLocation("exnihilo", "IconDustTemplate");
     
-    TextureDynamic texture = new TextureDynamic(texture_name, baseTexture, templateTexture, color);
-    BlockOre dust = new BlockOre(block_name, texture);
+    if (!Proxy.runningOnServer())
+    {
+      attachTexture(dust, texture_name, baseTexture, templateTexture, color);
+    }
     
     dust
       .setHardness(0.4f)
@@ -89,6 +103,12 @@ public class BlockOreFactory
       .setBlockName(ModData.ID + "." + block_name);
     
     return dust;
+  }
+  
+  @SideOnly(Side.CLIENT)
+  private static void attachTexture(BlockOre block, String name, ResourceLocation base, ResourceLocation template, Color color)
+  {
+    TextureFactory.makeTexture(block, name, base, template, color);
   }
   
   private static String formatName(String input)

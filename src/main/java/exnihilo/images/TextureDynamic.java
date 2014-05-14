@@ -48,44 +48,6 @@ public class TextureDynamic extends TextureAtlasSprite {
     return false;
   }
 
-  // converts texture name to resource location
-  public static ResourceLocation getBlockTextureLocation(String source, String name) 
-  {
-    int ind = name.indexOf(58);
-
-    if (ind >= 0) {
-      if (ind > 1) {
-        source = name.substring(0, ind);
-      }
-
-      name = name.substring(ind + 1, name.length());
-    }
-
-    source = source.toLowerCase();
-    name = "textures/blocks/" + name + ".png";
-    
-    return new ResourceLocation(source, name);
-  }
-  
-//converts texture name to resource location
- public static ResourceLocation getItemTextureLocation(String source, String name) 
- {
-   int ind = name.indexOf(58);
-
-   if (ind >= 0) {
-     if (ind > 1) {
-       source = name.substring(0, ind);
-     }
-
-     name = name.substring(ind + 1, name.length());
-   }
-
-   source = source.toLowerCase();
-   name = "textures/items/" + name + ".png";
-   
-   return new ResourceLocation(source, name);
- }
-
   // creates the textures
   // originally based on code from DenseOres, but refactored down to what you see here.
   @Override

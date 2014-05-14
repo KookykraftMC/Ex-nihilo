@@ -3,8 +3,12 @@ package exnihilo.items.ores;
 import java.util.ArrayList;
 import java.util.List;
 
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.util.ResourceLocation;
-import exnihilo.images.TextureDynamic;
+import exnihilo.images.Resource;
+import exnihilo.images.TextureFactory;
+import exnihilo.proxies.Proxy;
 import exnihilo.registries.helpers.Color;
 
 public class ItemOreFactory
@@ -40,11 +44,14 @@ public class ItemOreFactory
     String texture_name = "ItemBroken" + formatName(name);
     String item_name = "ore_broken_" + name.toLowerCase();
     
-    ResourceLocation baseTexture = TextureDynamic.getItemTextureLocation("exnihilo", "ItemBrokenBase");
-    ResourceLocation templateTexture = TextureDynamic.getItemTextureLocation("exnihilo", "ItemBrokenTemplate");
+    ItemOre broken = new ItemOre(item_name);
     
-    TextureDynamic texture = new TextureDynamic(texture_name, baseTexture, templateTexture, color);
-    ItemOre broken = new ItemOre(item_name, texture);
+    ResourceLocation baseTexture = Resource.getItemTextureLocation("exnihilo", "ItemBrokenBase");
+    ResourceLocation templateTexture = Resource.getItemTextureLocation("exnihilo", "ItemBrokenTemplate");
+    if (!Proxy.runningOnServer())
+    {
+      attachTexture(broken, texture_name, baseTexture, templateTexture, color);
+    }
     
     return broken;
   }
@@ -54,11 +61,14 @@ public class ItemOreFactory
     String texture_name = "ItemCrushed" + formatName(name);
     String item_name = "ore_crushed_" + name.toLowerCase();
     
-    ResourceLocation baseTexture = TextureDynamic.getItemTextureLocation("exnihilo", "ItemCrushedBase");
-    ResourceLocation templateTexture = TextureDynamic.getItemTextureLocation("exnihilo", "ItemCrushedTemplate");
+    ItemOre crushed = new ItemOre(item_name);
     
-    TextureDynamic texture = new TextureDynamic(texture_name, baseTexture, templateTexture, color);
-    ItemOre crushed = new ItemOre(item_name, texture);
+    ResourceLocation baseTexture = Resource.getItemTextureLocation("exnihilo", "ItemCrushedBase");
+    ResourceLocation templateTexture = Resource.getItemTextureLocation("exnihilo", "ItemCrushedTemplate");
+    if (!Proxy.runningOnServer())
+    {
+      attachTexture(crushed, texture_name, baseTexture, templateTexture, color);
+    }
     
     return crushed;
   }
@@ -68,11 +78,14 @@ public class ItemOreFactory
     String texture_name = "ItemPowdered" + formatName(name);
     String item_name = "ore_powdered_" + name.toLowerCase();
     
-    ResourceLocation baseTexture = TextureDynamic.getItemTextureLocation("exnihilo", "ItemPowderedBase");
-    ResourceLocation templateTexture = TextureDynamic.getItemTextureLocation("exnihilo", "ItemPowderedTemplate");
+    ItemOre pulverized = new ItemOre(item_name);
     
-    TextureDynamic texture = new TextureDynamic(texture_name, baseTexture, templateTexture, color);
-    ItemOre pulverized = new ItemOre(item_name, texture);
+    ResourceLocation baseTexture = Resource.getItemTextureLocation("exnihilo", "ItemPowderedBase");
+    ResourceLocation templateTexture = Resource.getItemTextureLocation("exnihilo", "ItemPowderedTemplate");
+    if (!Proxy.runningOnServer())
+    { 
+      attachTexture(pulverized, texture_name, baseTexture, templateTexture, color);
+    }
     
     return pulverized;
   }
@@ -82,11 +95,14 @@ public class ItemOreFactory
     String texture_name = "ItemIngot" + formatName(name);
     String item_name = "ore_ingot_" + name.toLowerCase();
     
-    ResourceLocation baseTexture = TextureDynamic.getItemTextureLocation("exnihilo", "ItemIngotBase");
-    ResourceLocation templateTexture = TextureDynamic.getItemTextureLocation("exnihilo", "ItemIngotTemplate");
+    ItemOre ingot = new ItemOre(item_name);
     
-    TextureDynamic texture = new TextureDynamic(texture_name, baseTexture, templateTexture, color);
-    ItemOre ingot = new ItemOre(item_name, texture);
+    ResourceLocation baseTexture = Resource.getItemTextureLocation("exnihilo", "ItemIngotBase");
+    ResourceLocation templateTexture = Resource.getItemTextureLocation("exnihilo", "ItemIngotTemplate");
+    if (!Proxy.runningOnServer())
+    {
+      attachTexture(ingot, texture_name, baseTexture, templateTexture, color);
+    }
     
     return ingot;
   }
@@ -98,5 +114,11 @@ public class ItemOreFactory
     String output = lcase.substring(0, 1).toUpperCase() + lcase.substring(1);
     
     return output;
+  }
+  
+  @SideOnly(Side.CLIENT)
+  private static void attachTexture(ItemOre item, String name, ResourceLocation base, ResourceLocation template, Color color)
+  {
+    TextureFactory.makeTexture(item, name, base, template, color);
   }
 }

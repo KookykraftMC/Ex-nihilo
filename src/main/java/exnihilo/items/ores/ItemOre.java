@@ -1,5 +1,7 @@
 package exnihilo.items.ores;
 
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
 import exnihilo.data.ModData;
 import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.client.renderer.texture.TextureAtlasSprite;
@@ -14,12 +16,17 @@ public class ItemOre extends Item
   private String name;
   private TextureAtlasSprite texture;
   
-  public ItemOre(String name, TextureAtlasSprite texture) {
+  public ItemOre(String name) {
     super();
     this.name = name;
-    this.texture = texture;
     
     setCreativeTab(CreativeTabs.tabMaterials);
+  }
+  
+  @SideOnly(Side.CLIENT)
+  public void setTexture(TextureAtlasSprite texture)
+  {
+    this.texture = texture;
   }
   
   @Override
