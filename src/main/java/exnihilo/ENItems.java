@@ -115,10 +115,10 @@ public class ENItems {
 	public static Item GoldDust;
 
 	//Copper Ore
-	public static Item CopperGravel;
-	public static Item CopperSand;
-	public static Item CopperDust;
-	public static Item CopperIngot;
+//	public static Item CopperGravel;
+//	public static Item CopperSand;
+//	public static Item CopperDust;
+//	public static Item CopperIngot;
 
 	//Tin Ore
 	public static Item TinGravel;
@@ -258,14 +258,14 @@ public class ENItems {
 		GameRegistry.registerItem(GoldDust, ItemData.GOLD_ORE_UNLOCALIZED_NAMES[2]);
 
 		//Copper Ore
-		CopperGravel = new ItemCopperGravel();
-		GameRegistry.registerItem(CopperGravel, ItemData.COPPER_ORE_UNLOCALIZED_NAMES[0]);
-		CopperSand = new ItemCopperSand();
-		GameRegistry.registerItem(CopperSand, ItemData.COPPER_ORE_UNLOCALIZED_NAMES[1]);
-		CopperDust = new ItemCopperDust();
-		GameRegistry.registerItem(CopperDust, ItemData.COPPER_ORE_UNLOCALIZED_NAMES[2]);
-		CopperIngot = new ItemCopperIngot();
-		GameRegistry.registerItem(CopperIngot, ItemData.COPPER_ORE_UNLOCALIZED_NAMES[3]);
+//		CopperGravel = new ItemCopperGravel();
+//		GameRegistry.registerItem(CopperGravel, ItemData.COPPER_ORE_UNLOCALIZED_NAMES[0]);
+//		CopperSand = new ItemCopperSand();
+//		GameRegistry.registerItem(CopperSand, ItemData.COPPER_ORE_UNLOCALIZED_NAMES[1]);
+//		CopperDust = new ItemCopperDust();
+//		GameRegistry.registerItem(CopperDust, ItemData.COPPER_ORE_UNLOCALIZED_NAMES[2]);
+//		CopperIngot = new ItemCopperIngot();
+//		GameRegistry.registerItem(CopperIngot, ItemData.COPPER_ORE_UNLOCALIZED_NAMES[3]);
 
 		//Tin Ore
 		TinGravel = new ItemTinGravel();

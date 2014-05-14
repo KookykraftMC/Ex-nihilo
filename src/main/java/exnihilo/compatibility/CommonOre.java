@@ -40,7 +40,7 @@ public class CommonOre {
 		ores = OreDictionary.getOres("oreCopper");
 		if (ores.size() > 0)
 		{
-			registerHammerRecipes(ores, ENItems.CopperGravel, 0);
+			//registerHammerRecipes(ores, ENItems.CopperGravel, 0);
 		}
 
 		ores = OreDictionary.getOres("ingotTin");
@@ -122,35 +122,35 @@ public class CommonOre {
 
 	private static void registerOreRecipes() {
 		//Copper
-		GameRegistry.addRecipe(
-				new ShapedOreRecipe(
-						new ItemStack(ENBlocks.CopperOre, 1, 0),
-						new Object[]
-								{
-							"xx",
-							"xx",
-							'x', ENItems.CopperGravel
-								}));
-
-		GameRegistry.addRecipe(
-				new ShapedOreRecipe(
-						new ItemStack(ENBlocks.CopperOre, 1, 1),
-						new Object[]
-								{
-							"xx",
-							"xx",
-							'x', ENItems.CopperSand
-								}));
-
-		GameRegistry.addRecipe(
-				new ShapedOreRecipe(
-						new ItemStack(ENBlocks.CopperOre, 1, 2),
-						new Object[]
-								{
-							"xx",
-							"xx",
-							'x', ENItems.CopperDust
-								}));
+//		GameRegistry.addRecipe(
+//				new ShapedOreRecipe(
+//						new ItemStack(ENBlocks.CopperOre, 1, 0),
+//						new Object[]
+//								{
+//							"xx",
+//							"xx",
+//							'x', ENItems.CopperGravel
+//								}));
+//
+//		GameRegistry.addRecipe(
+//				new ShapedOreRecipe(
+//						new ItemStack(ENBlocks.CopperOre, 1, 1),
+//						new Object[]
+//								{
+//							"xx",
+//							"xx",
+//							'x', ENItems.CopperSand
+//								}));
+//
+//		GameRegistry.addRecipe(
+//				new ShapedOreRecipe(
+//						new ItemStack(ENBlocks.CopperOre, 1, 2),
+//						new Object[]
+//								{
+//							"xx",
+//							"xx",
+//							'x', ENItems.CopperDust
+//								}));
 
 		//Tin
 		GameRegistry.addRecipe(
@@ -342,9 +342,9 @@ public class CommonOre {
 
 	private static void registerFurnaceRecipes()
 	{
-		FurnaceRecipes.smelting().func_151393_a(ENBlocks.CopperOre, new ItemStack(ENItems.CopperIngot, 1, 0), 0.1f);
-		FurnaceRecipes.smelting().func_151394_a(new ItemStack(ENBlocks.CopperOre, 1, 1), new ItemStack(ENItems.CopperIngot, 1, 0), 0.1f);
-		FurnaceRecipes.smelting().func_151394_a(new ItemStack(ENBlocks.CopperOre, 1, 2), new ItemStack(ENItems.CopperIngot, 1, 0), 0.1f);
+//		FurnaceRecipes.smelting().func_151393_a(ENBlocks.CopperOre, new ItemStack(ENItems.CopperIngot, 1, 0), 0.1f);
+//		FurnaceRecipes.smelting().func_151394_a(new ItemStack(ENBlocks.CopperOre, 1, 1), new ItemStack(ENItems.CopperIngot, 1, 0), 0.1f);
+//		FurnaceRecipes.smelting().func_151394_a(new ItemStack(ENBlocks.CopperOre, 1, 2), new ItemStack(ENItems.CopperIngot, 1, 0), 0.1f);
 
 		FurnaceRecipes.smelting().func_151393_a(ENBlocks.TinOre, new ItemStack(ENItems.TinIngot, 1, 0), 0.1f);
 		FurnaceRecipes.smelting().func_151394_a(new ItemStack(ENBlocks.TinOre, 1, 1), new ItemStack(ENItems.TinIngot, 1, 0), 0.1f);
@@ -384,7 +384,7 @@ public class CommonOre {
 
 	public static void registerIngots()
 	{
-		OreDictionary.registerOre("ingotCopper", ENItems.CopperIngot);
+		//OreDictionary.registerOre("ingotCopper", ENItems.CopperIngot);
 		OreDictionary.registerOre("ingotTin", ENItems.TinIngot);
 		OreDictionary.registerOre("ingotSilver", ENItems.SilverIngot);
 		OreDictionary.registerOre("ingotLead", ENItems.LeadIngot);
@@ -395,8 +395,8 @@ public class CommonOre {
 
 	private static void registerCopperOres()
 	{
-		HammerRegistry.registerOre(ENBlocks.CopperOre, 0, ENItems.CopperSand, 0);
-		HammerRegistry.registerOre(ENBlocks.CopperOre, 1, ENItems.CopperDust, 0);
+//		HammerRegistry.registerOre(ENBlocks.CopperOre, 0, ENItems.CopperSand, 0);
+//		HammerRegistry.registerOre(ENBlocks.CopperOre, 1, ENItems.CopperDust, 0);
 	}
 
 	private static void registerTinOres()

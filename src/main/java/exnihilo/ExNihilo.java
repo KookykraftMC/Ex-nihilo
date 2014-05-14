@@ -24,6 +24,7 @@ import cpw.mods.fml.common.network.NetworkRegistry;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import exnihilo.compatibility.AE2;
+import exnihilo.compatibility.Common;
 import exnihilo.compatibility.CommonOre;
 import exnihilo.compatibility.IC2;
 import exnihilo.compatibility.foresty.Forestry;
@@ -79,6 +80,8 @@ public class ExNihilo extends ENNetwork
 		SieveRegistry.load(config);
 		CrucibleRegistry.load(config);
 		HammerRegistry.load(config);
+		
+		Common.registerOres();
 
 		if(config.hasChanged())
 			config.save();

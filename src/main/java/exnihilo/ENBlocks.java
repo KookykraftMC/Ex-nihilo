@@ -55,7 +55,7 @@ public class ENBlocks {
 
 	public static Block IronOre;
 	public static Block GoldOre;
-	public static Block CopperOre;
+	//public static Block CopperOre;
 	public static Block TinOre;
 	public static Block SilverOre;
 	public static Block LeadOre;
@@ -67,11 +67,11 @@ public class ENBlocks {
 	public static void registerBlocks()
 	{
 	  //Testing Ore Generation;
-	  CreateOreBlocks("Testium", new Color("3423CC"));
-	  CreateOreBlocks("Reversium", new Color("FFB940"));
-	  CreateOreBlocks("Teslasium", new Color("40FF66"));
-	  CreateOreBlocks("Redrium", new Color("FF5050"));
-	  CreateOreBlocks("Pinkium", new Color("FF9999"));
+	  //CreateOreBlocks("Testium", new Color("3423CC"));
+	  //CreateOreBlocks("Reversium", new Color("FFB940"));
+	  //CreateOreBlocks("Teslasium", new Color("40FF66"));
+	  //CreateOreBlocks("Redrium", new Color("FF5050"));
+	  //CreateOreBlocks("Pinkium", new Color("FF9999"));
 	  
 		Barrel = new BlockBarrel();
 		GameRegistry.registerBlock(Barrel, ItemBlockBarrel.class, BlockData.BARREL_KEY);
@@ -105,8 +105,8 @@ public class ENBlocks {
 		GoldOre = new BlockGoldOre();
 		GameRegistry.registerBlock(GoldOre, ItemBlockGoldOre.class, BlockData.GOLD_ORE_KEY);
 
-		CopperOre = new BlockCopperOre();
-		GameRegistry.registerBlock(CopperOre, ItemBlockCopperOre.class, BlockData.COPPER_ORE_KEY);
+		//CopperOre = new BlockCopperOre();
+		//GameRegistry.registerBlock(CopperOre, ItemBlockCopperOre.class, BlockData.COPPER_ORE_KEY);
 
 		TinOre = new BlockTinOre();
 		GameRegistry.registerBlock(TinOre, ItemBlockTinOre.class, BlockData.TIN_ORE_KEY);

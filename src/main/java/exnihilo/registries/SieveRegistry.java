@@ -172,12 +172,12 @@ public class SieveRegistry {
 	
 	public static void RegisterOptionalOres()
 	{
-		if (dropCopper)
-		{
-			register(Blocks.gravel, 0, ENItems.CopperGravel, 0, 7);
-			register(Blocks.sand, 0, ENItems.CopperSand, 0, 7);
-			register(ENBlocks.Dust, 0, ENItems.CopperDust, 0, 7);
-		}
+//		if (dropCopper)
+//		{
+//			register(Blocks.gravel, 0, ENItems.CopperGravel, 0, 7);
+//			register(Blocks.sand, 0, ENItems.CopperSand, 0, 7);
+//			register(ENBlocks.Dust, 0, ENItems.CopperDust, 0, 7);
+//		}
 		
 		if (dropTin)
 		{
