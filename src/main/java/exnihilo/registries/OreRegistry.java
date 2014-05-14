@@ -6,6 +6,7 @@ import java.util.List;
 
 import net.minecraft.block.Block;
 import net.minecraft.init.Blocks;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.FurnaceRecipes;
 import net.minecraftforge.oredict.OreDictionary;
@@ -61,15 +62,20 @@ public class OreRegistry {
 		return items.get(name);
 	}
 	
-	public static void createOverworldOre(String name, Color color, int rarity)
+	public static Item createOverworldOre(String name, Color color, int rarity)
+  {
+	  return createOverworldOre(name, color, rarity, null);
+  }
+	
+	public static Item createOverworldOre(String name, Color color, int rarity, Item existingIngot)
 	{
-		if (ores.contains(name))
+		if (ores.contains(name.toLowerCase()))
 		{
 			//This ore has already been generated. Swift exit required.
-			return;
+			return null;
 		}else
 		{
-			ores.add(name);
+			ores.add(name.toLowerCase());
 		}
 		
 		//Create ore blocks.
@@ -85,15 +91,26 @@ public class OreRegistry {
 		ItemOre broken = ItemOreFactory.MakeOverworldBrokenOre(name, color);
 		ItemOre crushed = ItemOreFactory.MakeCrushedOre(name, color);
 		ItemOre powdered = ItemOreFactory.MakePulverizedOre(name, color);
-		ItemOre ingot = ItemOreFactory.MakeIngot(name, color);
 		
 		registerOreItem(broken.getUnlocalizedName(), broken);
 		registerOreItem(crushed.getUnlocalizedName(), crushed);
 		registerOreItem(powdered.getUnlocalizedName(), powdered);
-		registerOreItem(ingot.getUnlocalizedName(), ingot);
+		
+		//Use an existing ingot if it's specified.
+		Item ingot;
+		if (existingIngot != null)
+		{
+		  ingot = existingIngot;
+		}else
+		{
+		  ItemOre newIngot = ItemOreFactory.MakeIngot(name, color);
+		  registerOreItem(newIngot.getUnlocalizedName(), newIngot);
+		  
+		  ingot = (Item)newIngot;
+		}
 		
 		//Register hammer recipes.
-		ArrayList<ItemStack> ores = OreDictionary.getOres("ingot" + formatOreName(name));
+		ArrayList<ItemStack> ores = OreDictionary.getOres("ingdot" + formatOreName(name));
 		if (ores.size() > 1)
 		{
 			for (ItemStack i : ores)
@@ -122,9 +139,11 @@ public class OreRegistry {
 		registerSieveRecipe(Blocks.gravel, broken, rarity);
 		registerSieveRecipe(Blocks.sand, crushed, rarity);
 		registerSieveRecipe(ENBlocks.Dust, powdered, rarity);
+		
+		return ingot;
 	}
 	
-	private static void registerOreDict(String name, ItemOre ingot)
+	public static void registerOreDict(String name, Item ingot)
 	{
 		OreDictionary.registerOre("ingot" + formatOreName(name), ingot);
 	}
@@ -147,7 +166,7 @@ public class OreRegistry {
 								}));
 	}
 	
-	private static void registerFurnaceRecipe(BlockOre ore, ItemOre ingot)
+	private static void registerFurnaceRecipe(BlockOre ore, Item ingot)
 	{
 		FurnaceRecipes.smelting().func_151393_a(ore, new ItemStack(ingot, 1, 0), 0.1f);
 	}
