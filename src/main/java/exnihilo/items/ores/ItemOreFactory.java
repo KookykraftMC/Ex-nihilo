@@ -68,8 +68,8 @@ public class ItemOreFactory
     String texture_name = "ItemPowdered" + formatName(name);
     String item_name = "ore_powdered_" + name.toLowerCase();
     
-    ResourceLocation baseTexture = TextureDynamic.getItemTextureLocation("minecraft", "coal");
-    ResourceLocation templateTexture = TextureDynamic.getBlockTextureLocation("exnihilo", "testtemplate");
+    ResourceLocation baseTexture = TextureDynamic.getItemTextureLocation("exnihilo", "ItemPowderedBase");
+    ResourceLocation templateTexture = TextureDynamic.getItemTextureLocation("exnihilo", "ItemPowderedTemplate");
     
     TextureDynamic texture = new TextureDynamic(texture_name, baseTexture, templateTexture, color);
     ItemOre pulverized = new ItemOre(item_name, texture);
@@ -82,8 +82,8 @@ public class ItemOreFactory
     String texture_name = "ItemIngot" + formatName(name);
     String item_name = "ore_ingot_" + name.toLowerCase();
     
-    ResourceLocation baseTexture = TextureDynamic.getItemTextureLocation("minecraft", "brick");
-    ResourceLocation templateTexture = TextureDynamic.getBlockTextureLocation("exnihilo", "testtemplate");
+    ResourceLocation baseTexture = TextureDynamic.getItemTextureLocation("exnihilo", "ItemIngotBase");
+    ResourceLocation templateTexture = TextureDynamic.getItemTextureLocation("exnihilo", "ItemIngotTemplate");
     
     TextureDynamic texture = new TextureDynamic(texture_name, baseTexture, templateTexture, color);
     ItemOre ingot = new ItemOre(item_name, texture);
