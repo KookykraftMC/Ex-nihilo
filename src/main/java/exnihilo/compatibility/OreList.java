@@ -23,12 +23,12 @@ public class OreList{
 		
     if (OreDictionary.getOres("oreTin").size() > 0 || ignoreOreDict || SieveRegistry.dropTin)
     {
-      OreRegistry.createOverworldOre("tin", new Color("ABC9B6"), 7);
+      OreRegistry.createOverworldOre("tin", new Color("85D6A3"), 7);//ABC9B6
     }
     
     if (OreDictionary.getOres("oreSilver").size() > 0 || ignoreOreDict || SieveRegistry.dropSilver)
     {
-      OreRegistry.createOverworldOre("silver", new Color("ADC6DB"), 11);
+      OreRegistry.createOverworldOre("silver", new Color("8CC9FF"), 11);//ADC6DB
     }
 		
     if (OreDictionary.getOres("oreLead").size() > 0 || ignoreOreDict || SieveRegistry.dropLead)
