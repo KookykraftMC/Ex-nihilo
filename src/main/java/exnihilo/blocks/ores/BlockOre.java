@@ -4,6 +4,8 @@ import java.util.List;
 
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
+import exnihilo.data.BlockData;
+import exnihilo.data.ModData;
 import net.minecraft.block.BlockSand;
 import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.client.renderer.texture.TextureAtlasSprite;
@@ -73,6 +75,12 @@ public class BlockOre
     }
 
     return Blocks.stone.getIcon(id, meta);
+  }
+  
+  @Override
+  public String getUnlocalizedName()
+  {
+    return ModData.ID + "." + name;
   }
 
   public String getName()

@@ -40,7 +40,7 @@ public class BlockOreFactory
   public static BlockOre MakeOverworldGravel(String name, Color color)
   {
     String texture_name = "IconGravel" + formatName(name);
-    String block_name = "ore_gravel_" + name.toLowerCase();
+    String block_name = name.toLowerCase() + "_gravel";
     
     BlockOre gravel = new BlockOre(block_name);
     
@@ -63,7 +63,7 @@ public class BlockOreFactory
   public static BlockOre MakeSand(String name, Color color)
   {
     String texture_name = "IconSand" + formatName(name);
-    String block_name = "ore_sand_" + name.toLowerCase();
+    String block_name = name.toLowerCase() + "_sand";
 
     BlockOre sand = new BlockOre(block_name);
     
@@ -85,7 +85,7 @@ public class BlockOreFactory
   public static BlockOre MakeDust(String name, Color color)
   {
     String texture_name = "IconDust" + formatName(name);
-    String block_name = "ore_dust_" + name.toLowerCase();
+    String block_name = name.toLowerCase() + "_dust";
     
     BlockOre dust = new BlockOre(block_name);
 

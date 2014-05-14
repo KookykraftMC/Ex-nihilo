@@ -42,7 +42,7 @@ public class ItemOreFactory
   public static ItemOre MakeOverworldBrokenOre(String name, Color color)
   {
     String texture_name = "ItemBroken" + formatName(name);
-    String item_name = "ore_broken_" + name.toLowerCase();
+    String item_name = name.toLowerCase() + "_broken";
     
     ItemOre broken = new ItemOre(item_name);
     
@@ -59,7 +59,7 @@ public class ItemOreFactory
   public static ItemOre MakeCrushedOre(String name, Color color)
   {
     String texture_name = "ItemCrushed" + formatName(name);
-    String item_name = "ore_crushed_" + name.toLowerCase();
+    String item_name = name.toLowerCase() + "_crushed";
     
     ItemOre crushed = new ItemOre(item_name);
     
@@ -76,7 +76,7 @@ public class ItemOreFactory
   public static ItemOre MakePulverizedOre(String name, Color color)
   {
     String texture_name = "ItemPowdered" + formatName(name);
-    String item_name = "ore_powdered_" + name.toLowerCase();
+    String item_name = name.toLowerCase() + "_powdered";
     
     ItemOre pulverized = new ItemOre(item_name);
     
@@ -93,7 +93,7 @@ public class ItemOreFactory
   public static ItemOre MakeIngot(String name, Color color)
   {
     String texture_name = "ItemIngot" + formatName(name);
-    String item_name = "ore_ingot_" + name.toLowerCase();
+    String item_name = name.toLowerCase() + "_ingot";
     
     ItemOre ingot = new ItemOre(item_name);
     

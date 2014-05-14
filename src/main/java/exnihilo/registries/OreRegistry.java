@@ -21,7 +21,7 @@ public class OreRegistry {
 	public static Hashtable<String, BlockOre> blocks = new Hashtable<String, BlockOre>();
 	public static Hashtable<String, ItemOre> items = new Hashtable<String, ItemOre>();
 	
-	public static void registerOreBlock(String name, BlockOre block)
+	private static void registerOreBlock(String name, BlockOre block)
 	{
 		if (!blocks.containsValue(block))
 		{
@@ -40,7 +40,7 @@ public class OreRegistry {
 		return blocks.get(name);
 	}
 	
-	public static void registerOreItem(String name, ItemOre item)
+	private static void registerOreItem(String name, ItemOre item)
 	{
 		if (!items.containsValue(item))
 		{
@@ -117,17 +117,17 @@ public class OreRegistry {
 		registerOreDict(name, ingot);
 	}
 	
-	public static void registerOreDict(String name, ItemOre ingot)
+	private static void registerOreDict(String name, ItemOre ingot)
 	{
 		OreDictionary.registerOre("ingot" + formatOreName(name), ingot);
 	}
 	
-	public static void registerHammerRecipe(Block block, ItemOre reward)
+	private static void registerHammerRecipe(Block block, ItemOre reward)
 	{
 		HammerRegistry.registerOre(block, 0, reward, 0);
 	}
 	
-	public static void registerCraftingRecipe(ItemOre ingredient, BlockOre result)
+	private static void registerCraftingRecipe(ItemOre ingredient, BlockOre result)
 	{
 		GameRegistry.addRecipe(
 				new ShapedOreRecipe(
@@ -140,17 +140,17 @@ public class OreRegistry {
 								}));
 	}
 	
-	public static void registerFurnaceRecipe(BlockOre ore, ItemOre ingot)
+	private static void registerFurnaceRecipe(BlockOre ore, ItemOre ingot)
 	{
 		FurnaceRecipes.smelting().func_151393_a(ore, new ItemStack(ingot, 1, 0), 0.1f);
 	}
 	
-	public static String formatOreName(String input)
-	  {
-	    String lcase = input.toLowerCase();
-	    
-	    String output = lcase.substring(0, 1).toUpperCase() + lcase.substring(1);
-	    
-	    return output;
-	  }
+	private static String formatOreName(String input)
+	{
+	  String lcase = input.toLowerCase();
+
+	  String output = lcase.substring(0, 1).toUpperCase() + lcase.substring(1);
+
+	  return output;
+	}
 }
