@@ -15,15 +15,6 @@ import exnihilo.registries.helpers.SiftReward;
 
 public class SieveRegistry {
 	public static ArrayList<SiftReward> rewards = new ArrayList<SiftReward>();
-	
-	public static boolean dropCopper = false;
-	public static boolean dropTin = false;
-	public static boolean dropSilver = false;
-	public static boolean dropLead = false;
-	public static boolean dropNickel = false;
-	public static boolean dropPlatinum = false;
-	public static boolean dropAluminum = false;
-	
 	public static boolean dropRubberSeeds = false;
 	
 	public static void register(Block source, int sourceMeta, Item output, int outputMeta, int rarity)
@@ -105,15 +96,7 @@ public class SieveRegistry {
 	
 	public static void load(Configuration config)
 	{
-		String CATEGORY_SIEVE_OPTIONS = "sieve options";
-		
-		dropCopper = config.get(CATEGORY_SIEVE_OPTIONS, "give copper", false, "Forces the sieve to give copper even if no mods are detected which require it.").getBoolean(false);
-		dropTin = config.get(CATEGORY_SIEVE_OPTIONS, "give tin", false, "Forces the sieve to give tin even if no mods are detected which require it.").getBoolean(false);
-		dropLead = config.get(CATEGORY_SIEVE_OPTIONS, "give lead", false, "Forces the sieve to give lead even if no mods are detected which require it.").getBoolean(false);
-		dropSilver = config.get(CATEGORY_SIEVE_OPTIONS, "give silver", false, "Forces the sieve to give silver even if no mods are detected which require it.").getBoolean(false);
-		dropNickel = config.get(CATEGORY_SIEVE_OPTIONS, "give nickel", false, "Forces the sieve to give nickel even if no mods are detected which require it.").getBoolean(false);
-		dropPlatinum = config.get(CATEGORY_SIEVE_OPTIONS, "give platinum", false, "Forces the sieve to give platinum even if no mods are detected which require it.").getBoolean(false);
-		dropAluminum = config.get(CATEGORY_SIEVE_OPTIONS, "give aluminum", false, "Forces the sieve to give aluminum even if no mods are detected which require it.").getBoolean(false);
+			//Load things...
 	}
 	
 	public static void registerRewards()

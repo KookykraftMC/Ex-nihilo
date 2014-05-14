@@ -79,8 +79,7 @@ public class ExNihilo extends ENNetwork
 		SieveRegistry.load(config);
 		CrucibleRegistry.load(config);
 		HammerRegistry.load(config);
-		
-		
+		OreList.load(config);
 
 		if(config.hasChanged())
 			config.save();
