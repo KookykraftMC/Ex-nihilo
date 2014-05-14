@@ -24,7 +24,7 @@ import cpw.mods.fml.common.network.NetworkRegistry;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import exnihilo.compatibility.AE2;
-import exnihilo.compatibility.Common;
+import exnihilo.compatibility.OreList;
 import exnihilo.compatibility.CommonOre;
 import exnihilo.compatibility.IC2;
 import exnihilo.compatibility.foresty.Forestry;
@@ -120,7 +120,7 @@ public class ExNihilo extends ENNetwork
 	public void PostInitialize(FMLPostInitializationEvent event)
 	{
 		CommonOre.registerRecipes();
-		Common.registerOres();
+		OreList.registerOres();
 
 		if (Loader.isModLoaded("IC2"))
 		{

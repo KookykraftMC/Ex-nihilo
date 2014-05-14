@@ -7,7 +7,7 @@ import net.minecraftforge.oredict.OreDictionary;
 import exnihilo.registries.OreRegistry;
 import exnihilo.registries.helpers.Color;
 
-public class Common{
+public class OreList{
 
 	public static void registerOres()
 	{
@@ -16,8 +16,9 @@ public class Common{
 		ores = OreDictionary.getOres("oreCopper");
 		if (ores.size() > 0)
 		{
-			//registerHammerRecipes(ores, ENItems.CopperGravel, 0);
+		  OreRegistry.createOverworldOre("copper", new Color("FF330A"), 7);
 		}
-		OreRegistry.createOverworldOre("copper", new Color("FF330A"), 7);
+		
+		OreRegistry.createOverworldOre("tin", new Color("DBFFE8"), 7);
 	}
 }
