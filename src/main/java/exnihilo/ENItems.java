@@ -165,11 +165,11 @@ public class ENItems {
 	public static void registerItems()
 	{
 	  //Testing Ore Generation;
-    CreateOreItems("Testium", new Color("3423CC"));
-    CreateOreItems("Reversium", new Color("FFB940"));
-    CreateOreItems("Teslasium", new Color("40FF66"));
-    CreateOreItems("Redrium", new Color("FF5050"));
-    CreateOreItems("Pinkium", new Color("FF9999"));
+//    CreateOreItems("Testium", new Color("3423CC"));
+//    CreateOreItems("Reversium", new Color("FFB940"));
+//    CreateOreItems("Teslasium", new Color("40FF66"));
+//    CreateOreItems("Redrium", new Color("FF5050"));
+//    CreateOreItems("Pinkium", new Color("FF9999"));
 	  
 		HammerWood = new ItemHammerWood();
 		GameRegistry.registerItem(HammerWood, ItemData.HAMMER_UNLOCALIZED_NAMES[0]);

@@ -81,7 +81,7 @@ public class ExNihilo extends ENNetwork
 		CrucibleRegistry.load(config);
 		HammerRegistry.load(config);
 		
-		Common.registerOres();
+		
 
 		if(config.hasChanged())
 			config.save();
@@ -120,6 +120,7 @@ public class ExNihilo extends ENNetwork
 	public void PostInitialize(FMLPostInitializationEvent event)
 	{
 		CommonOre.registerRecipes();
+		Common.registerOres();
 
 		if (Loader.isModLoaded("IC2"))
 		{
