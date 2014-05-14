@@ -88,10 +88,6 @@ public static ArrayList<Smashable> rewards = new ArrayList<Smashable>();
 		register(Blocks.stonebrick, 2, ENItems.Stones, 0, 0.50f, 0.1f);
 		register(Blocks.stonebrick, 2, ENItems.Stones, 0, 0.25f, 0.1f);
 		register(Blocks.stonebrick, 2, ENItems.Stones, 0, 0.05f, 0.1f);
-		
-		registerIronOres();
-		registerGoldOres();
-		
 	}
 	
 	
@@ -104,19 +100,5 @@ public static ArrayList<Smashable> rewards = new ArrayList<Smashable>();
 		register(ore, oreMeta, reward, rewardMeta, 0.5f, 0.1f);
 		register(ore, oreMeta, reward, rewardMeta, 0.05f, 0.1f);
 		register(ore, oreMeta, reward, rewardMeta, 0.0f, 0.05f);
-	}
-	
-	private static void registerIronOres()
-	{
-		registerOre(Blocks.iron_ore, 0, ENItems.IronGravel, 0);
-		registerOre(ENBlocks.IronOre, 0, ENItems.IronSand, 0);
-		registerOre(ENBlocks.IronOre, 1, ENItems.IronDust, 0);
-	}
-	
-	private static void registerGoldOres()
-	{
-		registerOre(Blocks.gold_ore, 0, ENItems.GoldGravel, 0);
-		registerOre(ENBlocks.GoldOre, 0, ENItems.GoldSand, 0);
-		registerOre(ENBlocks.GoldOre, 1, ENItems.GoldDust, 0);
 	}
 }
