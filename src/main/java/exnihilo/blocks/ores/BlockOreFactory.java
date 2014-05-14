@@ -34,7 +34,7 @@ public class BlockOreFactory
     return blocks.toArray(blockArray);
   }
   
-  private static BlockOre MakeOverworldGravel(String name, Color color)
+  public static BlockOre MakeOverworldGravel(String name, Color color)
   {
     String texture_name = "IconGravel" + formatName(name);
     String block_name = "ore_gravel_" + name.toLowerCase();
@@ -53,7 +53,7 @@ public class BlockOreFactory
     return gravel;
   }
   
-  private static BlockOre MakeSand(String name, Color color)
+  public static BlockOre MakeSand(String name, Color color)
   {
     String texture_name = "IconSand" + formatName(name);
     String block_name = "ore_sand_" + name.toLowerCase();
@@ -72,8 +72,7 @@ public class BlockOreFactory
     return sand;
   }
   
-  
-  private static BlockOre MakeDust(String name, Color color)
+  public static BlockOre MakeDust(String name, Color color)
   {
     String texture_name = "IconDust" + formatName(name);
     String block_name = "ore_dust_" + name.toLowerCase();
