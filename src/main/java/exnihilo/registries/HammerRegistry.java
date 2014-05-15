@@ -88,6 +88,9 @@ public static ArrayList<Smashable> rewards = new ArrayList<Smashable>();
 		register(Blocks.stonebrick, 2, ENItems.Stones, 0, 0.50f, 0.1f);
 		register(Blocks.stonebrick, 2, ENItems.Stones, 0, 0.25f, 0.1f);
 		register(Blocks.stonebrick, 2, ENItems.Stones, 0, 0.05f, 0.1f);
+		
+		register(Blocks.end_stone, 0, Item.getItemFromBlock(ENBlocks.EnderGravel), 0, 1.0f, 0.0f);
+		register(Blocks.netherrack, 0, Item.getItemFromBlock(ENBlocks.NetherGravel), 0, 1.0f, 0.0f);
 	}
 	
 	
