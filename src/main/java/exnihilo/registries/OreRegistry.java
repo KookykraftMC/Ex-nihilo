@@ -21,58 +21,56 @@ import exnihilo.registries.helpers.Color;
 
 public class OreRegistry {
 	public static List<String> ores = new ArrayList<String>();
-	public static Hashtable<String, BlockOre> blocks = new Hashtable<String, BlockOre>();
-	public static Hashtable<String, ItemOre> items = new Hashtable<String, ItemOre>();
+	public static Hashtable<String, BlockOre> gravelTable = new Hashtable<String, BlockOre>();
+	public static Hashtable<String, BlockOre> sandTable = new Hashtable<String, BlockOre>();
+	public static Hashtable<String, BlockOre> dustTable = new Hashtable<String, BlockOre>();
 	
-	private static void registerOreBlock(String name, BlockOre block)
+	public static Hashtable<String, ItemOre> brokenTable = new Hashtable<String, ItemOre>();
+	public static Hashtable<String, ItemOre> crushedTable = new Hashtable<String, ItemOre>();
+	public static Hashtable<String, ItemOre> powderedTable = new Hashtable<String, ItemOre>();
+	public static Hashtable<String, ItemOre> ingotTable = new Hashtable<String, ItemOre>();
+	
+	private static void registerOreBlock(String name, BlockOre block, Hashtable<String, BlockOre> table)
 	{
-		if (!blocks.containsValue(block))
+		if (!table.containsValue(block))
 		{
-			blocks.put(block.getUnlocalizedName(), block);
+			table.put(name.toLowerCase(), block);
 			GameRegistry.registerBlock(block, block.getName());
 		}
 		
-		if (!ores.contains(name))
+		if (!ores.contains(name.toLowerCase()))
 		{
-			ores.add(name);
+			ores.add(name.toLowerCase());
 		}
 	}
 	
-	public static BlockOre getOreBlock(String name)
+	private static void registerOreItem(String name, ItemOre item, Hashtable<String, ItemOre> table)
 	{
-		return blocks.get(name);
-	}
-	
-	private static void registerOreItem(String name, ItemOre item)
-	{
-		if (!items.containsValue(item))
+	  String lname = name.toLowerCase();
+	  
+		if (!table.containsValue(item))
 		{
-			items.put(item.getUnlocalizedName(), item);
+			table.put(lname, item);
 			GameRegistry.registerItem(item, item.getUnlocalizedName());
 		}
 		
-		if (!ores.contains(name))
+		if (!ores.contains(lname))
 		{
-			ores.add(name);
+			ores.add(lname);
 		}
 	}
 	
-	public static ItemOre getOreItem(String name)
-	{
-		return items.get(name);
-	}
-	
-	public static Item createOverworldOre(String name, Color color, int rarity)
+	public static void createOverworldOre(String name, Color color, int rarity)
   {
-	  return createOverworldOre(name, color, rarity, null);
+	  createOverworldOre(name, color, rarity, null);
   }
 	
-	public static Item createOverworldOre(String name, Color color, int rarity, Item existingIngot)
+	public static void createOverworldOre(String name, Color color, int rarity, Item existingIngot)
 	{
 		if (ores.contains(name.toLowerCase()))
 		{
 			//This ore has already been generated. Swift exit required.
-			return null;
+			return;
 		}else
 		{
 			ores.add(name.toLowerCase());
@@ -83,18 +81,18 @@ public class OreRegistry {
 		BlockOre sand = BlockOreFactory.MakeSand(name, color);
 		BlockOre dust = BlockOreFactory.MakeDust(name, color);
 		
-		registerOreBlock(gravel.getUnlocalizedName(), gravel);
-		registerOreBlock(sand.getUnlocalizedName(), sand);
-		registerOreBlock(dust.getUnlocalizedName(), dust);
+		registerOreBlock(gravel.getUnlocalizedName(), gravel, gravelTable);
+		registerOreBlock(sand.getUnlocalizedName(), sand, sandTable);
+		registerOreBlock(dust.getUnlocalizedName(), dust, dustTable);
 		
 		//Create ore items.
 		ItemOre broken = ItemOreFactory.MakeOverworldBrokenOre(name, color);
 		ItemOre crushed = ItemOreFactory.MakeCrushedOre(name, color);
 		ItemOre powdered = ItemOreFactory.MakePulverizedOre(name, color);
 		
-		registerOreItem(broken.getUnlocalizedName(), broken);
-		registerOreItem(crushed.getUnlocalizedName(), crushed);
-		registerOreItem(powdered.getUnlocalizedName(), powdered);
+		registerOreItem(broken.getUnlocalizedName(), broken, brokenTable);
+		registerOreItem(crushed.getUnlocalizedName(), crushed, crushedTable);
+		registerOreItem(powdered.getUnlocalizedName(), powdered, powderedTable);
 		
 		//Use an existing ingot if it's specified.
 		Item ingot;
@@ -104,7 +102,7 @@ public class OreRegistry {
 		}else
 		{
 		  ItemOre newIngot = ItemOreFactory.MakeIngot(name, color);
-		  registerOreItem(newIngot.getUnlocalizedName(), newIngot);
+		  registerOreItem(newIngot.getUnlocalizedName(), newIngot, ingotTable);
 		  
 		  ingot = (Item)newIngot;
 		}
@@ -139,8 +137,6 @@ public class OreRegistry {
 		registerSieveRecipe(Blocks.gravel, broken, rarity);
 		registerSieveRecipe(Blocks.sand, crushed, rarity);
 		registerSieveRecipe(ENBlocks.Dust, powdered, rarity);
-		
-		return ingot;
 	}
 	
 	public static void registerOreDict(String name, Item ingot)
@@ -183,5 +179,44 @@ public class OreRegistry {
 	  String output = lcase.substring(0, 1).toUpperCase() + lcase.substring(1);
 
 	  return output;
+	}
+	
+	
+	
+	
+	//IO
+  public static Block getGravel(String name)
+	{
+	  return gravelTable.get(name.toLowerCase()); 
+	}
+	
+	public static Block getSand(String name)
+  {
+    return sandTable.get(name.toLowerCase()); 
+  }
+	
+	public static Block getDust(String name)
+  {
+    return dustTable.get(name.toLowerCase()); 
+  }
+	
+	public static Item getBroken(String name)
+  {
+    return brokenTable.get(name.toLowerCase());
+  }
+	
+	public static Item getCrushed(String name)
+  {
+    return crushedTable.get(name.toLowerCase());
+  }
+	
+	public static Item getPowdered(String name)
+  {
+    return powderedTable.get(name.toLowerCase());
+  }
+	
+	public static Item getIngot(String name)
+	{
+	  return ingotTable.get(name.toLowerCase());
 	}
 }

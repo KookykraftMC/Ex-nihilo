@@ -71,8 +71,13 @@ public class OreList{
     
     if (OreDictionary.getOres("oreAluminum").size() > 0 || OreDictionary.getOres("oreAluminium").size() > 0 || ignoreOreDict  || dropAluminum)
     {
-      Item aluminumIngot = OreRegistry.createOverworldOre("aluminum", new Color("FFC7C7"), 10);
-      OreRegistry.registerOreDict("aluminium", aluminumIngot);
+      OreRegistry.createOverworldOre("aluminum", new Color("FFC7C7"), 10);
+      
+      Item ingot = OreRegistry.getIngot("aluminum");
+      if (ingot != null)
+      {
+        OreRegistry.registerOreDict("aluminium", ingot);
+      }
     }
     
     if (OreDictionary.getOres("oreOsmium").size() > 0 || ignoreOreDict || dropPlatinum)
