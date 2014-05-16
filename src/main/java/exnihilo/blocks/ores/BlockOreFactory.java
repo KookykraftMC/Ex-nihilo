@@ -35,6 +35,52 @@ public class BlockOreFactory
     return gravel;
   }
   
+  public static BlockOre MakeNetherGravel(String name, Color color)
+  {
+    String texture_name = "IconGravel" + formatName(name);
+    String block_name = name.toLowerCase() + "_gravel";
+    
+    BlockOre gravel = new BlockOre(block_name);
+    
+    ResourceLocation baseTexture = Resource.getBlockTextureLocation("exnihilo", "IconGravelBaseNether");
+    ResourceLocation templateTexture = Resource.getBlockTextureLocation("exnihilo", "IconGravelTemplate"); 
+    
+    if (!Proxy.runningOnServer())
+    {
+      attachTexture(gravel, texture_name, baseTexture, templateTexture, color);
+    }
+    
+    gravel
+      .setHardness(0.8f)
+      .setStepSound(Block.soundTypeGravel)
+      .setBlockName(ModData.ID + "." + block_name);
+    
+    return gravel;
+  }
+  
+  public static BlockOre MakeEnderGravel(String name, Color color)
+  {
+    String texture_name = "IconGravel" + formatName(name);
+    String block_name = name.toLowerCase() + "_gravel";
+    
+    BlockOre gravel = new BlockOre(block_name);
+    
+    ResourceLocation baseTexture = Resource.getBlockTextureLocation("exnihilo", "IconGravelBaseEnder");
+    ResourceLocation templateTexture = Resource.getBlockTextureLocation("exnihilo", "IconGravelTemplate"); 
+    
+    if (!Proxy.runningOnServer())
+    {
+      attachTexture(gravel, texture_name, baseTexture, templateTexture, color);
+    }
+    
+    gravel
+      .setHardness(0.8f)
+      .setStepSound(Block.soundTypeGravel)
+      .setBlockName(ModData.ID + "." + block_name);
+    
+    return gravel;
+  }
+  
   public static BlockOre MakeSand(String name, Color color)
   {
     String texture_name = "IconSand" + formatName(name);

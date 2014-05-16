@@ -27,6 +27,40 @@ public class ItemOreFactory
     return broken;
   }
   
+  public static ItemOre MakeNetherBrokenOre(String name, Color color)
+  {
+    String texture_name = "ItemBroken" + formatName(name);
+    String item_name = name.toLowerCase() + "_broken";
+    
+    ItemOre broken = new ItemOre(item_name);
+    
+    ResourceLocation baseTexture = Resource.getItemTextureLocation("exnihilo", "ItemBrokenBaseNether");
+    ResourceLocation templateTexture = Resource.getItemTextureLocation("exnihilo", "ItemBrokenTemplate");
+    if (!Proxy.runningOnServer())
+    {
+      attachTexture(broken, texture_name, baseTexture, templateTexture, color);
+    }
+    
+    return broken;
+  }
+  
+  public static ItemOre MakeEnderBrokenOre(String name, Color color)
+  {
+    String texture_name = "ItemBroken" + formatName(name);
+    String item_name = name.toLowerCase() + "_broken";
+    
+    ItemOre broken = new ItemOre(item_name);
+    
+    ResourceLocation baseTexture = Resource.getItemTextureLocation("exnihilo", "ItemBrokenBaseEnder");
+    ResourceLocation templateTexture = Resource.getItemTextureLocation("exnihilo", "ItemBrokenTemplate");
+    if (!Proxy.runningOnServer())
+    {
+      attachTexture(broken, texture_name, baseTexture, templateTexture, color);
+    }
+    
+    return broken;
+  }
+  
   public static ItemOre MakeCrushedOre(String name, Color color)
   {
     String texture_name = "ItemCrushed" + formatName(name);

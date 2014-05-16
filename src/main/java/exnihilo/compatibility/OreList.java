@@ -84,5 +84,8 @@ public class OreList{
 		{
 			OreRegistry.createOverworldOre("osmium", new Color("608FC4"), 10);
 		}
+		
+		OreRegistry.createNetherOre("teslasium", new Color("FF00BB"), 1);
+		OreRegistry.createEnderOre("testifium", new Color("00FF15"), 1);
 	}
 }
