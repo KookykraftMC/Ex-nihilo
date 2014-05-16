@@ -1,8 +1,5 @@
 package exnihilo.items.ores;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.util.ResourceLocation;
@@ -13,32 +10,6 @@ import exnihilo.registries.helpers.Color;
 
 public class ItemOreFactory
 {
-  public static ItemOre[] MakeOverworldOreItems(String name, Color color)
-  {
-    List<ItemOre> items = new ArrayList<ItemOre>();
-    
-    //Make gravel;
-    ItemOre broken = MakeOverworldBrokenOre(name, color);
-    items.add(broken);
-    
-    //Make sand;
-    ItemOre crushed = MakeCrushedOre(name, color);
-    items.add(crushed);
-    
-    //Make dust;
-    ItemOre pulverized = MakePulverizedOre(name, color);
-    items.add(pulverized);
-    
-    //Make dust;
-    ItemOre ingot = MakeIngot(name, color);
-    items.add(ingot);
-    
-    ItemOre[] itemArray = new ItemOre[items.size()];
-    items.toArray(itemArray);
-    
-    return items.toArray(itemArray);
-  }
-  
   public static ItemOre MakeOverworldBrokenOre(String name, Color color)
   {
     String texture_name = "ItemBroken" + formatName(name);

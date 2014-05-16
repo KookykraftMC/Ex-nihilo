@@ -1,8 +1,5 @@
 package exnihilo.blocks.ores;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import exnihilo.data.ModData;
@@ -15,28 +12,6 @@ import net.minecraft.util.ResourceLocation;
 
 public class BlockOreFactory
 {
-  public static BlockOre[] MakeOverworldOres(String name, Color color)
-  {
-    List<BlockOre> blocks = new ArrayList<BlockOre>();
-    
-    //Make gravel;
-    BlockOre gravel = MakeOverworldGravel(name, color);
-    blocks.add(gravel);
-    
-    //Make sand;
-    BlockOre sand = MakeSand(name, color);
-    blocks.add(sand);
-    
-    //Make dust;
-    BlockOre dust = MakeDust(name, color);
-    blocks.add(dust);
-    
-    BlockOre[] blockArray = new BlockOre[blocks.size()];
-    blocks.toArray(blockArray);
-    
-    return blocks.toArray(blockArray);
-  }
-  
   public static BlockOre MakeOverworldGravel(String name, Color color)
   {
     String texture_name = "IconGravel" + formatName(name);
