@@ -62,10 +62,15 @@ public class OreRegistry {
 
 	public static void createOverworldOre(String name, Color color, int rarity)
 	{
-		createOverworldOre(name, color, rarity, null);
+		createOverworldOre(name, color, rarity, null, false);
+	}
+	
+	public static void createOverworldOre(String name, Color color, int rarity, Item ingot)
+	{
+		createOverworldOre(name, color, rarity, ingot, false);
 	}
 
-	public static void createOverworldOre(String name, Color color, int rarity, Item existingIngot)
+	public static void createOverworldOre(String name, Color color, int rarity, Item existingIngot, boolean skipFurnaceRecipes)
 	{
 		if (ores.contains(name.toLowerCase()))
 		{
@@ -126,9 +131,12 @@ public class OreRegistry {
 		registerCraftingRecipe(powdered, dust);
 
 		//Register furnace recipes.
-		registerFurnaceRecipe(gravel, ingot);
-		registerFurnaceRecipe(sand, ingot);
-		registerFurnaceRecipe(dust, ingot);
+		if (!skipFurnaceRecipes)
+		{
+			registerFurnaceRecipe(gravel, ingot);
+			registerFurnaceRecipe(sand, ingot);
+			registerFurnaceRecipe(dust, ingot);
+		}
 
 		//register ore dictionary names.
 		registerOreDict(name, ingot);
