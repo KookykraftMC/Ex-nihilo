@@ -60,6 +60,11 @@ public class OreRegistry {
 	{
 		createOverworldOre(name, color, rarity, ingot, false);
 	}
+	
+	public static void createOverworldOre(String name, Color color, int rarity, boolean skipFurnaceRecipes)
+	{
+		createOverworldOre(name, color, rarity, null, skipFurnaceRecipes);
+	}
 
 	public static void createOverworldOre(String name, Color color, int rarity, Item existingIngot, boolean skipFurnaceRecipes)
 	{
@@ -76,6 +81,11 @@ public class OreRegistry {
 	{
 		createNetherOre(name, color, rarity, ingot, false);
 	}
+	
+	public static void createNetherOre(String name, Color color, int rarity, boolean skipFurnaceRecipes)
+	{
+		createNetherOre(name, color, rarity, null, skipFurnaceRecipes);
+	}
 
 	public static void createNetherOre(String name, Color color, int rarity, Item existingIngot, boolean skipFurnaceRecipes)
 	{
@@ -91,6 +101,11 @@ public class OreRegistry {
 	public static void createEnderOre(String name, Color color, int rarity, Item ingot)
 	{
 		createEnderOre(name, color, rarity, ingot, false);
+	}
+	
+	public static void createEnderOre(String name, Color color, int rarity, boolean skipFurnaceRecipes)
+	{
+		createEnderOre(name, color, rarity, null, skipFurnaceRecipes);
 	}
 
 	public static void createEnderOre(String name, Color color, int rarity, Item existingIngot, boolean skipFurnaceRecipes)
