@@ -34,7 +34,7 @@ public class OreList{
 	public static void registerOres()
 	{
 		//Debug code. Change this to true to make all the ores generate.
-		boolean ignoreOreDict = true;
+		boolean ignoreOreDict = false;
 
 		OreRegistry.createOverworldOre("iron", new Color("F2AB7C"), 5, Items.iron_ingot);
 		OreRegistry.createNetherOre("iron", new Color("F2AB7C"), 6, Items.iron_ingot);
