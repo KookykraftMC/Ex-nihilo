@@ -37,8 +37,8 @@ public class BlockOreFactory
   
   public static BlockOre MakeNetherGravel(String name, Color color)
   {
-    String texture_name = "IconGravel" + formatName(name);
-    String block_name = name.toLowerCase() + "_gravel";
+    String texture_name = "IconGravelNether" + formatName(name);
+    String block_name = "nether_" + name.toLowerCase() + "_gravel";
     
     BlockOre gravel = new BlockOre(block_name);
     
@@ -60,8 +60,8 @@ public class BlockOreFactory
   
   public static BlockOre MakeEnderGravel(String name, Color color)
   {
-    String texture_name = "IconGravel" + formatName(name);
-    String block_name = name.toLowerCase() + "_gravel";
+    String texture_name = "IconGravelEnder" + formatName(name);
+    String block_name = "ender_" + name.toLowerCase() + "_gravel";
     
     BlockOre gravel = new BlockOre(block_name);
     

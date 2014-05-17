@@ -29,8 +29,8 @@ public class ItemOreFactory
   
   public static ItemOre MakeNetherBrokenOre(String name, Color color)
   {
-    String texture_name = "ItemBroken" + formatName(name);
-    String item_name = name.toLowerCase() + "_broken";
+    String texture_name = "ItemBrokenNether" + formatName(name);
+    String item_name = "nether_ " + name.toLowerCase() + "_broken";
     
     ItemOre broken = new ItemOre(item_name);
     
@@ -46,8 +46,8 @@ public class ItemOreFactory
   
   public static ItemOre MakeEnderBrokenOre(String name, Color color)
   {
-    String texture_name = "ItemBroken" + formatName(name);
-    String item_name = name.toLowerCase() + "_broken";
+    String texture_name = "ItemBrokenEnder" + formatName(name);
+    String item_name = "ender_" + name.toLowerCase() + "_broken";
     
     ItemOre broken = new ItemOre(item_name);
     
