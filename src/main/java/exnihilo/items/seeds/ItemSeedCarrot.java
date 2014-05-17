@@ -3,7 +3,6 @@ package exnihilo.items.seeds;
 import net.minecraft.block.Block;
 import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.init.Blocks;
-import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 import net.minecraft.world.IBlockAccess;
 import net.minecraftforge.common.EnumPlantType;
@@ -13,13 +12,13 @@ import exnihilo.data.ModData;
 public class ItemSeedCarrot extends ItemSeedBase{
 
 	public ItemSeedCarrot() {
-		super(Block.getBlockFromItem(Items.carrot), Blocks.dirt);
+		super(Blocks.carrots, Blocks.dirt);
 	}
 	
     @Override
     public Block getPlant(IBlockAccess world, int x, int y, int z)
     {
-        return Block.getBlockFromItem(Items.carrot);
+        return Blocks.carrots;
     }
 
     @Override
