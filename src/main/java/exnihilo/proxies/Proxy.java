@@ -1,10 +1,12 @@
 package exnihilo.proxies;
 
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.world.World;
 
 public class Proxy {
 
-	private static Proxy proxyInstance = null;
+	protected static Proxy proxyInstance = null;
 
 	public static void setInstance(Proxy newProxy)
 	{
@@ -17,8 +19,10 @@ public class Proxy {
 		{
 			proxyInstance = new Proxy();
 		}
+		
 		return proxyInstance;
 	}
+	
 	public void initializeSounds(){}
 	public void initializeRenderers(){}
 	
@@ -26,4 +30,26 @@ public class Proxy {
 	{
 		return null;
 	}
+	
+	 public static boolean runningOnServer()
+	  {
+	    boolean server = false;
+	    
+	    try
+	    {
+	      server = serverCheck();
+	    }
+	    catch (NoSuchMethodError e)
+	    {
+	      server = false;
+	    }
+	    
+	    return server;
+	  }
+	  
+	  @SideOnly(Side.SERVER)
+	  public static boolean serverCheck()
+	  {
+	    return true;
+	  }
 }

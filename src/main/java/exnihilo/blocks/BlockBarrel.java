@@ -51,7 +51,7 @@ public class BlockBarrel extends BlockContainer
 	}
 
 	public BlockBarrel(Material material) {
-		super(material);
+		super(material);  
 	}
 
 	@Override

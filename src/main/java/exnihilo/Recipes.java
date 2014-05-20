@@ -294,86 +294,11 @@ public class Recipes {
 							'y', Items.redstone,
 							'z', new ItemStack(Items.dye, 1, 4)
 								}));
-
-		registerOreRecipes();
-	}
-
-	public static void registerOreRecipes()
-	{
-		//IRON!
-		GameRegistry.addRecipe(
-				new ShapedOreRecipe(
-						new ItemStack(ENBlocks.IronOre, 1, 0),
-						new Object[]
-								{
-							"xx",
-							"xx",
-							'x', ENItems.IronGravel
-								}));
-
-		GameRegistry.addRecipe(
-				new ShapedOreRecipe(
-						new ItemStack(ENBlocks.IronOre, 1, 1),
-						new Object[]
-								{
-							"xx",
-							"xx",
-							'x', ENItems.IronSand
-								}));
-
-		GameRegistry.addRecipe(
-				new ShapedOreRecipe(
-						new ItemStack(ENBlocks.IronOre, 1, 2),
-						new Object[]
-								{
-							"xx",
-							"xx",
-							'x', ENItems.IronDust
-								}));
-
-		//GOLD!
-		GameRegistry.addRecipe(
-				new ShapedOreRecipe(
-						new ItemStack(ENBlocks.GoldOre, 1, 0),
-						new Object[]
-								{
-							"xx",
-							"xx",
-							'x', ENItems.GoldGravel
-								}));
-
-		GameRegistry.addRecipe(
-				new ShapedOreRecipe(
-						new ItemStack(ENBlocks.GoldOre, 1, 1),
-						new Object[]
-								{
-							"xx",
-							"xx",
-							'x', ENItems.GoldSand
-								}));
-
-		GameRegistry.addRecipe(
-				new ShapedOreRecipe(
-						new ItemStack(ENBlocks.GoldOre, 1, 2),
-						new Object[]
-								{
-							"xx",
-							"xx",
-							'x', ENItems.GoldDust
-								}));
 	}
 
 	public static void registerFurnaceRecipes()
 	{
 		FurnaceRecipes.smelting().func_151396_a(ENItems.Silkworm, new ItemStack(ENItems.SilkwormCooked, 1, 0), 0.1f);
-
-		FurnaceRecipes.smelting().func_151393_a(ENBlocks.IronOre, new ItemStack(Items.iron_ingot, 1, 0), 0.1f);
-		FurnaceRecipes.smelting().func_151394_a(new ItemStack(ENBlocks.IronOre, 1, 1), new ItemStack(Items.iron_ingot, 1, 0), 0.1f);
-		FurnaceRecipes.smelting().func_151394_a(new ItemStack(ENBlocks.IronOre, 1, 2), new ItemStack(Items.iron_ingot, 1, 0), 0.1f);
-
-		FurnaceRecipes.smelting().func_151393_a(ENBlocks.GoldOre, new ItemStack(Items.gold_ingot, 1, 0), 0.1f);
-		FurnaceRecipes.smelting().func_151394_a(new ItemStack(ENBlocks.GoldOre, 1, 1), new ItemStack(Items.gold_ingot, 1, 0), 0.1f);
-		FurnaceRecipes.smelting().func_151394_a(new ItemStack(ENBlocks.GoldOre, 1, 2), new ItemStack(Items.gold_ingot, 1, 0), 0.1f);
 
 		if (ModData.ALLOW_CRUCIBLES)
 		{
