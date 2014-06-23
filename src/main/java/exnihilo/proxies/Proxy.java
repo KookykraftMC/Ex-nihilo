@@ -1,5 +1,7 @@
 package exnihilo.proxies;
 
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.world.World;
 
 public class Proxy {
@@ -28,4 +30,26 @@ public class Proxy {
 	{
 		return null;
 	}
+	
+	 public static boolean runningOnServer()
+	  {
+	    boolean server = false;
+	    
+	    try
+	    {
+	      server = serverCheck();
+	    }
+	    catch (NoSuchMethodError e)
+	    {
+	      server = false;
+	    }
+	    
+	    return server;
+	  }
+	  
+	  @SideOnly(Side.SERVER)
+	  public static boolean serverCheck()
+	  {
+	    return true;
+	  }
 }

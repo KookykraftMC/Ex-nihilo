@@ -1,31 +1,26 @@
-package exnihilo.blocks.ores;
-
-import java.util.List;
+package exnihilo.items.ores;
 
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import exnihilo.data.ModData;
-import net.minecraft.block.BlockSand;
 import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.client.renderer.texture.TextureAtlasSprite;
 import net.minecraft.client.renderer.texture.TextureMap;
 import net.minecraft.creativetab.CreativeTabs;
-import net.minecraft.init.Blocks;
+import net.minecraft.init.Items;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
-import net.minecraft.util.IIcon;
 
-public class BlockOre
-    extends BlockSand
+public class ItemOre extends Item
 {
   private String name;
-  private IIcon icon;
   private TextureAtlasSprite texture;
   
-  public BlockOre(String name)
-  {
+  public ItemOre(String name) {
     super();
     this.name = name;
+    
+    setCreativeTab(CreativeTabs.tabMaterials);
   }
   
   @SideOnly(Side.CLIENT)
@@ -33,19 +28,21 @@ public class BlockOre
   {
     this.texture = texture;
   }
-
-  @SuppressWarnings({
-      "unchecked", "rawtypes"
-  })
+  
   @Override
-  public void getSubBlocks(Item item, CreativeTabs tabs, List items)
+  public String getUnlocalizedName()
   {
-    items.add(new ItemStack(item, 1, 0));
+    return ModData.ID + "." + name;
   }
-
-  @SideOnly(Side.CLIENT)
+  
   @Override
-  public void registerBlockIcons(IIconRegister register)
+  public String getUnlocalizedName(ItemStack item)
+  {
+    return ModData.ID + "." + name;
+  }
+  
+  @Override
+  public void registerIcons(IIconRegister register)
   {
     if(this.texture != null)
     {
@@ -58,32 +55,12 @@ public class BlockOre
         if (success)
         {
           //System.out.println("Registered icon successfully: " + texture.getIconName());
-          this.icon = map.getTextureExtry(texture.getIconName());
+          this.itemIcon = map.getTextureExtry(texture.getIconName());
+        }else
+        {
+          this.itemIcon = Items.coal.getIconFromDamage(0);
         }
       }
     }
-  }
-
-  @SideOnly(Side.CLIENT)
-  @Override
-  public IIcon getIcon(int id, int meta)
-  {
-    if (this.icon != null)
-    {
-      return this.icon;
-    }
-
-    return Blocks.stone.getIcon(id, meta);
-  }
-  
-  @Override
-  public String getUnlocalizedName()
-  {
-    return ModData.ID + "." + name;
-  }
-
-  public String getName()
-  {
-    return name;
   }
 }

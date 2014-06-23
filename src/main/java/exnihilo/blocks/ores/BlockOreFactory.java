@@ -1,87 +1,143 @@
 package exnihilo.blocks.ores;
 
-
-import java.util.ArrayList;
-import java.util.List;
-
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
 import exnihilo.data.ModData;
+import exnihilo.images.Resource;
+import exnihilo.images.TextureFactory;
+import exnihilo.proxies.Proxy;
 import exnihilo.registries.helpers.Color;
 import net.minecraft.block.Block;
 import net.minecraft.util.ResourceLocation;
 
 public class BlockOreFactory
 {
-  public static BlockOre[] MakeOverworldOres(String name, Color color)
+  public static BlockOre MakeOverworldGravel(String name, Color color)
   {
-    List<BlockOre> blocks = new ArrayList<BlockOre>();
+    String texture_name = "IconGravel" + formatName(name);
+    String block_name = name.toLowerCase() + "_gravel";
     
-    //Make gravel;
-    BlockOre gravel = MakeOverworldGravel(name, color);
-    blocks.add(gravel);
+    BlockOre gravel = new BlockOre(block_name);
     
-    //Make sand;
-    BlockOre sand = MakeSand(name, color);
-    blocks.add(sand);
+    ResourceLocation baseTexture = Resource.getBlockTextureLocation("exnihilo", "IconGravelBase");
+    ResourceLocation templateTexture = Resource.getBlockTextureLocation("exnihilo", "IconGravelTemplate"); 
     
-    //Make dust;
-    BlockOre dust = MakeDust(name, color);
-    blocks.add(dust);
-    
-    BlockOre[] blockArray = new BlockOre[blocks.size()];
-    blocks.toArray(blockArray);
-    
-    return blocks.toArray(blockArray);
-  }
-  
-  private static BlockOre MakeOverworldGravel(String name, Color color)
-  {
-    String gravel_name = "ore_gravel_" + name.toLowerCase();
-    
-    ResourceLocation baseTexture = TextureOre.getTextureLocation("minecraft", "gravel");
-    ResourceLocation templateTexture = TextureOre.getTextureLocation("ExNihilo", "testtemplate");
-    
-    BlockOre gravel = new BlockOre(gravel_name, baseTexture, templateTexture, color);
+    if (!Proxy.runningOnServer())
+    {
+      attachTexture(gravel, texture_name, baseTexture, templateTexture, color);
+    }
     
     gravel
       .setHardness(0.8f)
       .setStepSound(Block.soundTypeGravel)
-      .setBlockName(ModData.ID + "." + gravel_name);
+      .setBlockName(ModData.ID + "." + block_name);
     
     return gravel;
   }
   
-  private static BlockOre MakeSand(String name, Color color)
+  public static BlockOre MakeNetherGravel(String name, Color color)
   {
-    String sand_name = "ore_sand_" + name.toLowerCase();
+    String texture_name = "IconGravelNether" + formatName(name);
+    String block_name = "nether_" + name.toLowerCase() + "_gravel";
     
-    ResourceLocation baseTexture = TextureOre.getTextureLocation("minecraft", "sand");
-    ResourceLocation templateTexture = TextureOre.getTextureLocation("ExNihilo", "testtemplate");
+    BlockOre gravel = new BlockOre(block_name);
     
-    BlockOre sand = new BlockOre(sand_name, baseTexture, templateTexture, color);
+    ResourceLocation baseTexture = Resource.getBlockTextureLocation("exnihilo", "IconGravelBaseNether");
+    ResourceLocation templateTexture = Resource.getBlockTextureLocation("exnihilo", "IconGravelTemplate"); 
     
+    if (!Proxy.runningOnServer())
+    {
+      attachTexture(gravel, texture_name, baseTexture, templateTexture, color);
+    }
+    
+    gravel
+      .setHardness(0.8f)
+      .setStepSound(Block.soundTypeGravel)
+      .setBlockName(ModData.ID + "." + block_name);
+    
+    return gravel;
+  }
+  
+  public static BlockOre MakeEnderGravel(String name, Color color)
+  {
+    String texture_name = "IconGravelEnder" + formatName(name);
+    String block_name = "ender_" + name.toLowerCase() + "_gravel";
+    
+    BlockOre gravel = new BlockOre(block_name);
+    
+    ResourceLocation baseTexture = Resource.getBlockTextureLocation("exnihilo", "IconGravelBaseEnder");
+    ResourceLocation templateTexture = Resource.getBlockTextureLocation("exnihilo", "IconGravelTemplate"); 
+    
+    if (!Proxy.runningOnServer())
+    {
+      attachTexture(gravel, texture_name, baseTexture, templateTexture, color);
+    }
+    
+    gravel
+      .setHardness(0.8f)
+      .setStepSound(Block.soundTypeGravel)
+      .setBlockName(ModData.ID + "." + block_name);
+    
+    return gravel;
+  }
+  
+  public static BlockOre MakeSand(String name, Color color)
+  {
+    String texture_name = "IconSand" + formatName(name);
+    String block_name = name.toLowerCase() + "_sand";
+
+    BlockOre sand = new BlockOre(block_name);
+    
+    ResourceLocation baseTexture = Resource.getBlockTextureLocation("exnihilo", "IconSandBase");
+    ResourceLocation templateTexture = Resource.getBlockTextureLocation("exnihilo", "IconSandTemplate");
+    
+    if (!Proxy.runningOnServer())
+    {
+      attachTexture(sand, texture_name, baseTexture, templateTexture, color);
+    }
     sand
       .setHardness(0.6f)
       .setStepSound(Block.soundTypeSand)
-      .setBlockName(ModData.ID + "." + sand_name);
+      .setBlockName(ModData.ID + "." + block_name);
     
     return sand;
   }
   
-  
-  private static BlockOre MakeDust(String name, Color color)
+  public static BlockOre MakeDust(String name, Color color)
   {
-    String dust_name = "ore_dust_" + name.toLowerCase();
+    String texture_name = "IconDust" + formatName(name);
+    String block_name = name.toLowerCase() + "_dust";
     
-    ResourceLocation baseTexture = TextureOre.getTextureLocation("ExNihilo", "IconBlockDust");
-    ResourceLocation templateTexture = TextureOre.getTextureLocation("ExNihilo", "testtemplate");
+    BlockOre dust = new BlockOre(block_name);
+
+    ResourceLocation baseTexture = Resource.getBlockTextureLocation("exnihilo", "IconDustBase");
+    ResourceLocation templateTexture = Resource.getBlockTextureLocation("exnihilo", "IconDustTemplate");
     
-    BlockOre dust = new BlockOre(dust_name, baseTexture, templateTexture, color);
+    if (!Proxy.runningOnServer())
+    {
+      attachTexture(dust, texture_name, baseTexture, templateTexture, color);
+    }
     
     dust
       .setHardness(0.4f)
       .setStepSound(Block.soundTypeSnow)
-      .setBlockName(ModData.ID + "." + dust_name);
+      .setBlockName(ModData.ID + "." + block_name);
     
     return dust;
+  }
+  
+  @SideOnly(Side.CLIENT)
+  private static void attachTexture(BlockOre block, String name, ResourceLocation base, ResourceLocation template, Color color)
+  {
+    TextureFactory.makeTexture(block, name, base, template, color);
+  }
+  
+  private static String formatName(String input)
+  {
+    String lcase = input.toLowerCase();
+    
+    String output = lcase.substring(0, 1).toUpperCase() + lcase.substring(1);
+    
+    return output;
   }
 }

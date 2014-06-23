@@ -24,7 +24,7 @@ import cpw.mods.fml.common.network.NetworkRegistry;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import exnihilo.compatibility.AE2;
-import exnihilo.compatibility.CommonOre;
+import exnihilo.compatibility.OreList;
 import exnihilo.compatibility.IC2;
 import exnihilo.compatibility.foresty.Forestry;
 import exnihilo.data.ModData;
@@ -79,6 +79,7 @@ public class ExNihilo extends ENNetwork
 		SieveRegistry.load(config);
 		CrucibleRegistry.load(config);
 		HammerRegistry.load(config);
+		OreList.load(config);
 
 		if(config.hasChanged())
 			config.save();
@@ -102,9 +103,6 @@ public class ExNihilo extends ENNetwork
 		CrucibleRegistry.registerMeltables();
 		HeatRegistry.registerVanillaHeatSources();
 
-		CommonOre.registerOres();
-		CommonOre.registerIngots();	
-
 		Recipes.registerCraftingRecipes();
 		Recipes.registerFurnaceRecipes();
 
@@ -116,7 +114,7 @@ public class ExNihilo extends ENNetwork
 	@EventHandler
 	public void PostInitialize(FMLPostInitializationEvent event)
 	{
-		CommonOre.registerRecipes();
+		OreList.registerOres();
 
 		if (Loader.isModLoaded("IC2"))
 		{
@@ -177,4 +175,6 @@ public class ExNihilo extends ENNetwork
 	public void textureHook(TextureStitchEvent.Post event) {
 		Fluids.registerIcons(event);
 	}
+	
+
 }
