@@ -9,6 +9,7 @@ public class ModData {
 	public static final String ID = "exnihilo";
 	public static final String NAME = "Ex Nihilo";
 	public static final String VERSION = "@EN_VERSION@";
+    public static final String DEPENDENCIES = "required-after:Forge@[10.12.2.1121,);after:IC2@[2.1,);after:Forestry@[2.4,);after:appliedenergistics2;";
 	
 	public static void setMetadata(ModMetadata data)
 	{

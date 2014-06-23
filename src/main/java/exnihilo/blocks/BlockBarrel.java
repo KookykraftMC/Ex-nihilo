@@ -328,7 +328,7 @@ public class BlockBarrel extends BlockContainer
 	}
 
 	@Override
-	public boolean hasTileEntity()
+	public boolean hasTileEntity(int meta)
 	{
 		return true;
 	}

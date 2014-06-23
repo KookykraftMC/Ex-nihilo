@@ -3,15 +3,6 @@ package exnihilo.data;
 public class BlockData {
 	//Barrels (Wood)!
 	public static final String BARREL_KEY = "barrel";
-	public static final String[] BARREL_NAMES = 
-		{
-		"Oak Barrel",
-		"Spruce Barrel",
-		"Birch Barrel",
-		"Jungle Barrel",
-		"Acacia Barrel",
-		"Dark Oak Barrel"
-		}; 
 	public static final String[] BARREL_UNLOCALIZED_NAMES = 
 		{
 		"barrel.oak",
@@ -26,43 +17,30 @@ public class BlockData {
 	//Barrel (Stone)!
 	public static final String BARREL_STONE_KEY = "barrel_stone";
 	public static final String BARREL_STONE_UNLOCALIZED_NAME = "barrel.stone";
-	public static final String BARREL_STONE_NAME = "Stone Barrel";
 
 	//Crucible!
 	public static final String CRUCIBLE_KEY = "crucible";
 	public static final String CRUCIBLE_UNLOCALIZED_NAME = "crucible";
-	public static final String CRUCIBLE_NAME = "Crucible";
 
 	//Unfired Crucible!
 	public static final String CRUCIBLE_UNFIRED_KEY = "crucible_unfired";
 	public static final String CRUCIBLE_UNFIRED_UNLOCALIZED_NAME = "crucible_unfired";
-	public static final String CRUCIBLE_UNFIRED_NAME = "Unfired Crucible";
 
 	//Dust!
 	public static final String DUST_KEY = "dust";
 	public static final String DUST_UNLOCALIZED_NAME = "dust";
-	public static final String DUST_NAME = "Dust";
 
 	//Bee Trap!
 	public static final String BEE_TRAP_KEY = "bee_trap";
 	public static final String BEE_TRAP_UNLOCALIZED_NAME = "bee_trap";
-	public static final String BEE_TRAP_NAME = "Artificial Hive";
 
 	//Bee Trap (Treated)!
 	public static final String BEE_TRAP_TREATED_KEY = "bee_trap_treated";
 	public static final String BEE_TRAP_TREATED_UNLOCALIZED_NAME = "bee_trap_treated";
-	public static final String BEE_TRAP_TREATED_NAME = "Scented Artificial Hive";
 
 
 	//Infested Leaves!
 	public static final String LEAVES_INFESTED_KEY = "infested_leaves";
-	public static final String[] LEAVES_INFESTED_NAMES = 
-		{
-		"Infested Leaves",
-		"Infested Spruce Leaves",
-		"Infested Birch Leaves",
-		"Infested Jungle Leaves"
-		}; 
 	public static final String[] LEAVES_INFESTED_UNLOCALIZED_NAMES = 
 		{
 		"leaves.infested.oak",
@@ -74,15 +52,6 @@ public class BlockData {
 
 	//Sift Table
 	public static final String SIEVE_KEY = "sifting_table";
-	public static final String[] SIEVE_NAMES = 
-		{
-		"Oak Sieve",
-		"Spruce Sieve",
-		"Birch Sieve",
-		"Jungle Sieve",
-		"Acacia Sieve",
-		"Dark Oak Sieve"
-		}; 
 	public static final String[] SIEVE_UNLOCALIZED_NAMES = 
 		{
 		"sieve.oak",
@@ -91,12 +60,13 @@ public class BlockData {
 		"sieve.jungle",
 		"sieve.acacia",
 		"sieve.dark_oak"
-		}; 
+		};
 
 	//*****
 	//ORES
 	//*****
 
+    //TODO All fields below are coming up as no longer used because of the new system. If that's the case, they should be removed.
 	//IRON
 	public static final String IRON_ORE_KEY = "iron_ore";
 	public static final String[] IRON_ORE_NAMES = 

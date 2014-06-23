@@ -20,7 +20,6 @@ import cpw.mods.fml.common.event.FMLInterModComms;
 import cpw.mods.fml.common.event.FMLPostInitializationEvent;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 import cpw.mods.fml.common.eventhandler.SubscribeEvent;
-import cpw.mods.fml.common.network.NetworkRegistry;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import exnihilo.compatibility.AE2;
@@ -29,8 +28,7 @@ import exnihilo.compatibility.IC2;
 import exnihilo.compatibility.foresty.Forestry;
 import exnihilo.data.ModData;
 import exnihilo.data.WorldData;
-import exnihilo.network.ChannelHandler;
-import exnihilo.network.ENNetwork;
+import exnihilo.network.ENPacketHandler;
 import exnihilo.proxies.Proxy;
 import exnihilo.registries.ColorRegistry;
 import exnihilo.registries.CompostRegistry;
@@ -39,8 +37,8 @@ import exnihilo.registries.HammerRegistry;
 import exnihilo.registries.HeatRegistry;
 import exnihilo.registries.SieveRegistry;
 
-@Mod(modid = ModData.ID, name = ModData.NAME, version = ModData.VERSION)
-public class ExNihilo extends ENNetwork 
+@Mod(modid = ModData.ID, name = ModData.NAME, version = ModData.VERSION, dependencies = ModData.DEPENDENCIES)
+public class ExNihilo
 {
 	@Instance(ModData.ID)
 	public static ExNihilo instance;
@@ -58,8 +56,10 @@ public class ExNihilo extends ENNetwork
 		//Metadata!
 		ModData.setMetadata(event.getModMetadata());
 
+        ENPacketHandler.init();
+
 		//Item and Block IDs!
-		config = new Configuration(new File(event.getModConfigurationDirectory(), "/ExNihilo.cfg"));
+		config = new Configuration(new File(event.getModConfigurationDirectory().getAbsolutePath() + File.separator + "ExNihilo.cfg"));
 		config.load();
 		
 		ModData.load(config);
@@ -93,7 +93,6 @@ public class ExNihilo extends ENNetwork
 	@EventHandler
 	public void Initialize(FMLInitializationEvent event)
 	{
-		channels = NetworkRegistry.INSTANCE.newChannel("ExNihilo", new ChannelHandler());
 		Blocks.fire.setFireInfo(ENBlocks.Barrel, 5, 150);
 		Blocks.fire.setFireInfo(ENBlocks.LeavesInfested, 5, 150);
 		Blocks.fire.setFireInfo(ENBlocks.Sieve, 5, 150);
@@ -175,6 +174,4 @@ public class ExNihilo extends ENNetwork
 	public void textureHook(TextureStitchEvent.Post event) {
 		Fluids.registerIcons(event);
 	}
-	
-
 }
