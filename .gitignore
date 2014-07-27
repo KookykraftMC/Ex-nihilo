@@ -1,8 +1,20 @@
-/bin
-.DS_Store
+# ForgeGradle
 /.gradle
 /build
-/.settings
+
+# Eclipse
 .classpath
 .project
+/.settings
+/bin
+
+# IntelliJ
+/.idea
+*.iml
+*.ipr
+*.iws
+/out
+
+# Mac Stuff
+.DS_Store
 *.command

@@ -2,15 +2,8 @@ package exnihilo.data;
 
 public class ItemData {
 	//HAMMER
+    //TODO Apparently all of the _KEY fields are unused. If that is the case, they should be removed
 	public static final String HAMMER_KEY = "hammer";
-	public static final String[] HAMMER_NAMES = 
-		{
-		"Wooden Hammer",
-		"Stone Hammer",
-		"Iron Hammer",
-		"Gold Hammer",
-		"Diamond Hammer"
-		}; 
 	public static final String[] HAMMER_UNLOCALIZED_NAMES = 
 		{
 		"hammer_wood",
@@ -22,52 +15,45 @@ public class ItemData {
 
 	//MESH
 	public static final String MESH_KEY = "mesh";
-	public static final String MESH_NAME = "Silk Mesh";
 	public static final String MESH_UNLOCALIZED_NAME = "mesh";
 
 	//SILKWORM
 	public static final String SILKWORM_KEY = "silkworm";
-	public static final String SILKWORM_NAME = "Silkworm";
 	public static final String SILKWORM_UNLOCALIZED_NAME = "silkworm";
 
 	//CROOK
 	public static final String CROOK_KEY = "crook";
-	public static final String CROOK_NAME = "Crook";
 	public static final String CROOK_UNLOCALIZED_NAME = "crook";
 
 	//SPORES
 	public static final String SPORES_KEY = "spores";
-	public static final String SPORES_NAME = "Ancient Spores";
 	public static final String SPORES_UNLOCALIZED_NAME = "spores";
 
 	//GRASS SEEDS!
 	public static final String SEED_GRASS_KEY = "seed_grass";
-	public static final String SEED_GRASS_NAME = "Grass Seeds";
 	public static final String SEED_GRASS_UNLOCALIZED_NAME = "seed_grass";
 
 	//STONES!
 	public static final String STONES_KEY = "stone";
-	public static final String STONES_NAME = "Stone";
 	public static final String STONES_UNLOCALIZED_NAME = "stone";
 
 	//PORCELAIN!
 	public static final String PORCELAIN_KEY = "porcelain";
-	public static final String PORCELAIN_NAME = "Porcelain Clay";
 	public static final String PORCELAIN_UNLOCALIZED_NAME = "porcelain";
 
 	//COOKED SILKWORMS!
 	public static final String SILKWORM_COOKED_KEY = "silkworm_cooked";
-	public static final String SILKWORM_COOKED_NAME = "Cooked Silkworm";
 	public static final String SILKWORM_COOKED_UNLOCALIZED_NAME = "silkworm_cooked";
 
 	//CROOK-BONE
 	public static final String CROOK_BONE_KEY = "crook_bone";
-	public static final String CROOK_BONE_NAME = "Bone Crook";
 	public static final String CROOK_BONE_UNLOCALIZED_NAME = "crook_bone";
 
 	// ***
 	//ORES
 	// ***
+
+    //TODO Everything in this category is coming up as unused. If that is the case, they should be removed.
 	public static final String ORE_CATEGORY = "ore items";
 
 	//IRON
@@ -122,70 +108,59 @@ public class ItemData {
 	// ***
 	// SEED CATEGORY
 	// ***
+
+    //TODO The only things that aren't unused here are the _UNLOCALIZED_NAME fields. If that's the case, the others should be removed. That includes the field directly below
 	public static final String SEED_CATEGORY = "seed items";
 
 	//OAK SEEDS!
 	public static final String SEED_OAK_KEY = "seed_oak";
-	public static final String SEED_OAK_NAME = "Acorn";
 	public static final String SEED_OAK_UNLOCALIZED_NAME = "seed_oak";
 
 	//BIRCH SEEDS!
 	public static final String SEED_BIRCH_KEY = "seed_birch";
-	public static final String SEED_BIRCH_NAME = "Birch Seed";
 	public static final String SEED_BIRCH_UNLOCALIZED_NAME = "seed_birch";
 
 	//ACACIA SEEDS!
 	public static final String SEED_ACACIA_KEY = "seed_acacia";
-	public static final String SEED_ACACIA_NAME = "Acacia Seed";
 	public static final String SEED_ACACIA_UNLOCALIZED_NAME = "seed_acacia";
 	
 	//SPRUCE SEEDS!
 	public static final String SEED_SPRUCE_KEY = "seed_spruce";
-	public static final String SEED_SPRUCE_NAME = "Spruce Seed";
 	public static final String SEED_SPRUCE_UNLOCALIZED_NAME = "seed_spruce";
 
 	//JUNGLE SEEDS!
 	public static final String SEED_JUNGLE_KEY = "seed_jungle";
-	public static final String SEED_JUNGLE_NAME = "Exotic Seed";
 	public static final String SEED_JUNGLE_UNLOCALIZED_NAME = "seed_jungle";
 
 	//CACTUS SEEDS!
 	public static final String SEED_CACTUS_KEY = "seed_cactus";
-	public static final String SEED_CACTUS_NAME = "Cactus Seeds";
 	public static final String SEED_CACTUS_UNLOCALIZED_NAME = "seed_cactus";
 
 	//SUGAR CANE SEEDS!
 	public static final String SEED_SUGAR_CANE_KEY = "seed_sugar_cane";
-	public static final String SEED_SUGAR_CANE_NAME = "Sugar Cane Seeds";
 	public static final String SEED_SUGAR_CANE_UNLOCALIZED_NAME = "seed_sugar_cane";
 
 	//CARROT SEEDS!
 	public static final String SEED_CARROT_KEY = "seed_carrot";
-	public static final String SEED_CARROT_NAME = "Carrot Seeds";
 	public static final String SEED_CARROT_UNLOCALIZED_NAME = "seed_carrot";
 
 	//POTATO SEEDS!
 	public static final String SEED_POTATO_KEY = "seed_potato";
-	public static final String SEED_POTATO_NAME = "Potato Seeds";
 	public static final String SEED_POTATO_UNLOCALIZED_NAME = "seed_potato";
 
 	//RUBBER TREE SEEDS!
 	public static final String SEED_RUBBER_KEY = "seed_rubber";
-	public static final String SEED_RUBBER_NAME = "Rubber Tree Seeds";
 	public static final String SEED_RUBBER_UNLOCALIZED_NAME = "seed_rubber";
 
 	//PORCELAIN DOLL!
 	public static final String DOLL_KEY = "doll";
-	public static final String DOLL_NAME = "Precious Doll";
 	public static final String DOLL_UNLOCALIZED_NAME = "doll";
 
 	//ANGRY DOLL!
 	public static final String ANGRY_DOLL_KEY = "doll_angry";
-	public static final String ANGRY_DOLL_NAME = "Angry Doll";
 	public static final String ANGRY_DOLL_UNLOCALIZED_NAME = "doll_angry";
 
 	//CREEPY DOLL!
 	public static final String CREEPY_DOLL_KEY = "doll_creepy";
-	public static final String CREEPY_DOLL_NAME = "Creepy Doll";
 	public static final String CREEPY_DOLL_UNLOCALIZED_NAME = "doll_creepy";
 }

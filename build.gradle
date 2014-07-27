@@ -36,15 +36,40 @@ minecraft {
     assetDir = "../run/assets"
 	
 	//replace version number in code, so that you only have to change it here
+    replaceIn "data/ModData.java"
 	replace "@EN_VERSION@", project.version
-	replaceIn "ModData.java"
+}
+
+repositories {
+    maven {
+        name = "Player"
+        url = "http://maven.ic2.player.to/"
+    }
+    maven {
+        name = "Chicken-Bones"
+        url = "http://chickenbones.net/maven"
+    }
+    maven {
+        name = "ProfMobius"
+        url = "http://mobiusstrip.eu/maven"
+    }
 }
 
 dependencies {
-	compile files (
-		"APIs/industrialcraft-2-${config.ic2_version}-experimental-dev.jar",
-		"APIs/forestry_${config.forestry_version}-dev.jar",
-		"APIs/appliedenergistics2-deobf-${config.ae2_version}.jar",
-		"APIs/Waila-${config.waila_version}.jar"
-		)
+	compile "net.industrial-craft:industrialcraft-2:${config.ic2_version}:dev"
+    compile "net.sengir.forestry:forestry_1.7.2:${config.forestry_version}:dev"
+    compile "appeng:appliedenergistics2:${config.ae2_version}:dev" //NOTE You will need to add "-Dfml.coreMods.load=appeng.transformer.AppEngCore" to your VM Arguments for AE2 to run properly.
+    compile "mcp.mobius.waila:Waila:${config.waila_version}"
 }
+
+task copyChicken(type: Copy, dependsOn: "extractUserDev") {
+    from { configurations.compile }
+    include "**/*Chicken*.jar", "**/*NotEnoughItems*.jar"
+    exclude "**/CodeChickenLib*" // because CCC downloads it anyways.. -_-
+    into file(minecraft.assetDir + "/../mods") // paralell to the assets dir
+
+    mustRunAfter "deobfBinJar"
+    mustRunAfter "repackMinecraft"
+}
+tasks.setupDevWorkspace.dependsOn copyChicken
+tasks.setupDecompWorkspace.dependsOn copyChicken
