@@ -313,7 +313,7 @@ public class TileEntityCrucible extends TileEntity implements IFluidHandler, ISi
 				mode = CrucibleMode.USED;
 				this.fluidVolume += fluid.amount;
 
-				worldObj.markBlockForUpdate(xCoord, yCoord, zCoord);
+				this.needsUpdate = true;
 				return resource.amount;
 			}
 
@@ -323,14 +323,13 @@ public class TileEntityCrucible extends TileEntity implements IFluidHandler, ISi
 				{
 					fluidVolume += resource.amount;
 					fluid.amount = (int)fluidVolume;
-					worldObj.markBlockForUpdate(xCoord, yCoord, zCoord);
+					this.needsUpdate = true;
 					return resource.amount;
 				}else
 				{
 					fluidVolume += capacity;
 					fluid.amount = (int)fluidVolume;
-					worldObj.markBlockForUpdate(xCoord, yCoord, zCoord);
-					//needsUpdate = true;
+					this.needsUpdate = true;
 					return capacity;
 				}
 			}
@@ -362,7 +361,7 @@ public class TileEntityCrucible extends TileEntity implements IFluidHandler, ISi
 				FluidStack drained = new FluidStack(FluidRegistry.getFluid(resource.fluidID),resource.amount);
 				fluidVolume -= resource.amount;
 				fluid.amount =  (int)fluidVolume;
-				worldObj.markBlockForUpdate(xCoord, yCoord, zCoord);
+				this.needsUpdate = true;
 				return drained;
 			}else
 			{
@@ -370,7 +369,7 @@ public class TileEntityCrucible extends TileEntity implements IFluidHandler, ISi
 				fluidVolume -= fluid.amount;
 				fluid.amount = 0;
 				//mode = CrucibleMode.EMPTY;
-				worldObj.markBlockForUpdate(xCoord, yCoord, zCoord);
+				this.needsUpdate = true;
 				return drained;
 			}
 		}
@@ -399,14 +398,14 @@ public class TileEntityCrucible extends TileEntity implements IFluidHandler, ISi
 				FluidStack drained = new FluidStack(FluidRegistry.getFluid(fluid.fluidID),maxDrain);
 				fluidVolume -= maxDrain;
 				fluid.amount = (int)fluidVolume;
-				worldObj.markBlockForUpdate(xCoord, yCoord, zCoord);
+				this.needsUpdate = true;
 				return drained;
 			}else
 			{
 				FluidStack drained = new FluidStack(FluidRegistry.getFluid(fluid.fluidID),fluid.amount);
 				fluidVolume -= fluid.amount;
 				fluid.amount = 0;
-				worldObj.markBlockForUpdate(xCoord, yCoord, zCoord);
+				this.needsUpdate = true;
 				return drained;
 			}
 		}
