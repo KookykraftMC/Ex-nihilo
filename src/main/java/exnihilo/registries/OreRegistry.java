@@ -244,7 +244,7 @@ public class OreRegistry {
 		}
 
 		//Register hammer recipes.
-		ArrayList<ItemStack> ores = OreDictionary.getOres("ingdot" + formatOreName(name));
+		ArrayList<ItemStack> ores = OreDictionary.getOres("ingot" + formatOreName(name));
 		if (ores.size() > 1)
 		{
 			for (ItemStack i : ores)
