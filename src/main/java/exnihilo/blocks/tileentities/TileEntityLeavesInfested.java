@@ -97,7 +97,11 @@ public class TileEntityLeavesInfested extends TileEntity
 		{
 			worldObj.setBlock(placeX, placeY, placeZ, ENBlocks.LeavesInfested, meta, 2);
 			TileEntityLeavesInfested te = (TileEntityLeavesInfested)worldObj.getTileEntity(placeX, placeY, placeZ);
-			te.setMimicBlock(block, meta);
+			
+			if (te != null)
+			{
+				te.setMimicBlock(block, meta);
+			}
 		}
 	}
 
