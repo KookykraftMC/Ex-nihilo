@@ -1,5 +1,6 @@
 package exnihilo.blocks.tileentities;
 
+import cpw.mods.fml.common.Loader;
 import net.minecraft.block.Block;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.tileentity.TileEntity;
@@ -35,7 +36,7 @@ public class TileEntityBeeTrap extends TileEntity {
 	@Override
 	public void updateEntity()
 	{
-		if (!worldObj.isRemote && Forestry.isLoaded())
+		if (!worldObj.isRemote && Loader.isModLoaded("Forestry"))
 		{
 			timer++;
 			

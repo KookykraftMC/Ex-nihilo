@@ -33,7 +33,7 @@ archivesBaseName = "Ex-Nihilo"
 
 minecraft {
     version = "${config.mc_version}-${config.forge_version}"
-    assetDir = "../run/assets"
+    runDir = "../run/assets"
 	
 	//replace version number in code, so that you only have to change it here
     replaceIn "data/ModData.java"
@@ -57,7 +57,7 @@ repositories {
 
 dependencies {
 	compile "net.industrial-craft:industrialcraft-2:${config.ic2_version}:dev"
-    compile "net.sengir.forestry:forestry_1.7.2:${config.forestry_version}:dev"
+    //compile "net.sengir.forestry:forestry_1.7.2:${config.forestry_version}:dev" //Forestry for 1.7.10 isn't available yet.
     compile "appeng:appliedenergistics2:${config.ae2_version}:dev" //NOTE You will need to add "-Dfml.coreMods.load=appeng.transformer.AppEngCore" to your VM Arguments for AE2 to run properly.
     compile "mcp.mobius.waila:Waila:${config.waila_version}"
 }
@@ -66,7 +66,7 @@ task copyChicken(type: Copy, dependsOn: "extractUserDev") {
     from { configurations.compile }
     include "**/*Chicken*.jar", "**/*NotEnoughItems*.jar"
     exclude "**/CodeChickenLib*" // because CCC downloads it anyways.. -_-
-    into file(minecraft.assetDir + "/../mods") // paralell to the assets dir
+    into file(minecraft.runDir + "/../mods") // paralell to the assets dir
 
     mustRunAfter "deobfBinJar"
     mustRunAfter "repackMinecraft"

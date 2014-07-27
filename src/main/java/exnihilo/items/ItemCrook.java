@@ -17,6 +17,7 @@ import net.minecraftforge.fluids.FluidRegistry;
 
 import com.google.common.collect.Sets;
 
+import cpw.mods.fml.common.Loader;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import exnihilo.ENBlocks;
@@ -83,7 +84,7 @@ public class ItemCrook extends ItemTool{
 		{
 			if (!world.isRemote)
 			{
-				if (Forestry.isLoaded())
+				if (Loader.isModLoaded("Forestry"))
 				{
 					//Forestry, why? Why did you make me have to do this? We could have been friends...
 					Class forestryLeafBlock = null;
