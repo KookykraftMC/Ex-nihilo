@@ -104,4 +104,20 @@ public static ArrayList<Smashable> rewards = new ArrayList<Smashable>();
 		register(ore, oreMeta, reward, rewardMeta, 0.05f, 0.1f);
 		register(ore, oreMeta, reward, rewardMeta, 0.0f, 0.05f);
 	}
+	
+	public static boolean registered(Block block)
+	{
+		Iterator<Smashable> it = rewards.iterator();
+		while(it.hasNext())
+		{
+			Smashable reward = it.next();
+
+			if (reward.source.getUnlocalizedName().equals(block.getUnlocalizedName()))
+			{
+				return true;
+			}
+		}
+		
+		return false;
+	}
 }
