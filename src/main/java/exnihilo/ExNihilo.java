@@ -23,6 +23,7 @@ import cpw.mods.fml.common.eventhandler.SubscribeEvent;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import exnihilo.compatibility.AE2;
+import exnihilo.compatibility.MineFactoryReloaded;
 import exnihilo.compatibility.OreList;
 import exnihilo.compatibility.IC2;
 import exnihilo.compatibility.foresty.Forestry;
@@ -160,13 +161,12 @@ public class ExNihilo
 //			Chococraft.loadCompatibility();
 //		}
 		
-		//No 1.7 API out yet
-//		if (MineFactoryReloaded.isLoaded())
-//		{
-//			System.out.println(ModData.NAME + ": Found MineFactory Reloaded!");
-//			
-//			MineFactoryReloaded.loadCompatibility();
-//		}		
+		if (Loader.isModLoaded("MineFactoryReloaded"))
+		{
+			log.info(ModData.NAME + ": Found MineFactory Reloaded!");
+			
+			MineFactoryReloaded.loadCompatibility();
+		}		
 	}
 
 	@SubscribeEvent

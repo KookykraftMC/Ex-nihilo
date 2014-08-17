@@ -9,15 +9,36 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import net.minecraftforge.common.EnumPlantType;
+import exnihilo.ENItems;
 import exnihilo.data.ItemData;
 import exnihilo.data.ModData;
+import exnihilo.registries.SieveRegistry;
 
 public class ItemSeedRubber extends ItemSeedBase{
-
-	public static ArrayList<Block> saplings = new ArrayList<Block>();
+	private static boolean registered = false;
+	
+	private static ArrayList<Block> saplings = new ArrayList<Block>();
+	
+	
 	
 	public ItemSeedRubber() {
 		super(Blocks.sapling, Blocks.dirt);
+	}
+	
+	public static void AddSapling(Block block)
+	{
+		if (block != null)
+		{
+			saplings.add(block);
+			
+			if (!registered)
+			{
+				SieveRegistry.register(Blocks.dirt, 0, ENItems.SeedsRubber, 0, 45);
+				
+				registered = true;
+			}
+		}
+		
 	}
 
     @Override
