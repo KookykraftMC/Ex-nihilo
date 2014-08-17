@@ -9,12 +9,9 @@ import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.init.Blocks;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.ItemTool;
 import net.minecraft.world.World;
-import net.minecraftforge.fluids.FluidRegistry;
-
 import com.google.common.collect.Sets;
 
 import cpw.mods.fml.common.Loader;
@@ -23,7 +20,6 @@ import cpw.mods.fml.relauncher.SideOnly;
 import exnihilo.ENBlocks;
 import exnihilo.ENItems;
 import exnihilo.ExNihilo;
-import exnihilo.compatibility.foresty.Forestry;
 import exnihilo.data.ItemData;
 import exnihilo.data.ModData;
 import exnihilo.proxies.Proxy;
@@ -218,47 +214,5 @@ public class ItemCrook extends ItemTool{
 	public void registerIcons(IIconRegister register)
 	{
 		this.itemIcon = register.registerIcon(ModData.TEXTURE_LOCATION + ":Crook");
-	}
-
-	/**
-     * Callback for item usage. If the item does something special on right clicking, he will have one of those. Return
-     * True if something happen and false if it don't. This is for ITEMS, not BLOCKS
-     */
-	public boolean onItemUse(ItemStack item, EntityPlayer player, World world, int x, int y, int z, int par7, float par8, float par9, float par10)
-	{
-		//TODO: Remove this during the 1.7 update?
-		// Fishing will allow the player to obtain Lilypads.
-		if (world.getBlock(x, y, z) == Blocks.dirt && world.getBlock(x, y + 1, z) == FluidRegistry.WATER.getBlock() && y + 1 >= world.getTopSolidOrLiquidBlock(x, z) - 1)
-		{
-			if (!world.isRemote)
-			{
-				if (world.rand.nextInt(120) == 0)
-				{
-					ItemStack waterlily = new ItemStack(Blocks.waterlily, 1, 0);
-					EntityItem entity = new EntityItem(world, x + 0.5D, y + 1.5D, z + 0.5D, waterlily);
-
-					double distance = Math.sqrt(Math.pow(player.posX - entity.posX, 2) + Math.pow(player.posZ - entity.posZ, 2));
-
-					double scalarX = (player.posX - entity.posX) / distance;
-					double scalarZ = (player.posZ - entity.posZ) / distance;
-
-					double velX = scalarX * pullingForce;
-					double velZ = scalarZ * pullingForce;
-					double velY = 0.1d; //- (player.posY - entity.posY);
-
-					entity.addVelocity(velX, velY, velZ);
-					world.spawnEntityInWorld(entity);
-				}
-
-//				if (world.rand.nextInt(30) == 0)
-//				{
-//					world.destroyBlock(x, y, z, false);
-//				}
-			}
-			item.damageItem(1, player);
-
-			return true;
-		}
-		return false;
 	}
 }

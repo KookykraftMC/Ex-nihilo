@@ -43,7 +43,7 @@ public class OreList{
 		Item brokenIron = OreRegistry.getBroken("iron");
 		HammerRegistry.registerOre(Blocks.iron_ore, 0, brokenIron, 0);
 		
-		OreRegistry.createOverworldOre("gold", new Color("FFD000"), 45, Items.gold_ingot);
+		OreRegistry.createOverworldOre("gold", new Color("FFD000"), 32, Items.gold_ingot);
 		OreRegistry.createNetherOre("gold",  new Color("FFD000"), 6, Items.gold_ingot);
 		Item brokenGold = OreRegistry.getBroken("gold");
 		HammerRegistry.registerOre(Blocks.gold_ore, 0, brokenGold, 0);

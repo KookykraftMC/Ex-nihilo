@@ -25,6 +25,7 @@ import cpw.mods.fml.relauncher.SideOnly;
 import exnihilo.compatibility.AE2;
 import exnihilo.compatibility.OreList;
 import exnihilo.compatibility.IC2;
+import exnihilo.compatibility.foresty.Forestry;
 import exnihilo.data.ModData;
 import exnihilo.data.WorldData;
 import exnihilo.network.ENPacketHandler;
@@ -121,12 +122,12 @@ public class ExNihilo
 			IC2.loadCompatibility();
 		}
 
-//		if (Loader.isModLoaded("Forestry"))
-//		{
-//			log.info("Found Forestry!");
-//
-//			Forestry.loadCompatibility();
-//		}
+		if (Loader.isModLoaded("Forestry"))
+		{
+			log.info("Found Forestry!");
+
+			Forestry.loadCompatibility();
+		}
 		
 		//No 1.7 API out yet
 //		if (ThermalExpansion.isLoaded())

@@ -6,7 +6,6 @@ import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.world.biome.BiomeGenBase;
 import exnihilo.ENBlocks;
-import exnihilo.compatibility.foresty.Forestry;
 import exnihilo.compatibility.foresty.Hive;
 import exnihilo.compatibility.foresty.HiveRegistry;
 import exnihilo.compatibility.foresty.Surrounding;

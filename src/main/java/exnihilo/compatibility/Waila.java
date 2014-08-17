@@ -69,9 +69,9 @@ public class Waila implements IWailaDataProvider {
 			return "Empty";
 		case FLUID:
 			if (barrel.isFull())
-				return barrel.fluid.getFluid().getLocalizedName();
+				return barrel.fluid.getFluid().getName();
 			else
-				return barrel.fluid.getFluid().getLocalizedName() + " "
+				return barrel.fluid.getFluid().getName() + " "
 						+ format.format(barrel.getVolume() * 100) + "%";
 		case COMPOST:
 			if (barrel.isFull())

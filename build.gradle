@@ -57,7 +57,7 @@ repositories {
 
 dependencies {
 	compile "net.industrial-craft:industrialcraft-2:${config.ic2_version}:dev"
-    //compile "net.sengir.forestry:forestry_1.7.2:${config.forestry_version}:dev" //Forestry for 1.7.10 isn't available yet.
+    compile "net.sengir.forestry:forestry_1.7.10:${config.forestry_version}:dev"
     compile "appeng:appliedenergistics2:${config.ae2_version}:dev" //NOTE You will need to add "-Dfml.coreMods.load=appeng.transformer.AppEngCore" to your VM Arguments for AE2 to run properly.
     compile "mcp.mobius.waila:Waila:${config.waila_version}"
 }
