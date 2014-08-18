@@ -1,11 +1,9 @@
 package exnihilo.compatibility;
 
-import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.Item;
 import net.minecraftforge.common.config.Configuration;
 import net.minecraftforge.oredict.OreDictionary;
-import exnihilo.registries.HammerRegistry;
 import exnihilo.registries.OreRegistry;
 import exnihilo.registries.helpers.Color;
 
@@ -40,13 +38,9 @@ public class OreList{
 
 		OreRegistry.createOverworldOre("iron", new Color("F2AB7C"), 5, Items.iron_ingot);
 		OreRegistry.createNetherOre("iron", new Color("F2AB7C"), 6, Items.iron_ingot);
-		Item brokenIron = OreRegistry.getBroken("iron");
-		HammerRegistry.registerOre(Blocks.iron_ore, 0, brokenIron, 0);
 		
 		OreRegistry.createOverworldOre("gold", new Color("FFD000"), 32, Items.gold_ingot);
 		OreRegistry.createNetherOre("gold",  new Color("FFD000"), 6, Items.gold_ingot);
-		Item brokenGold = OreRegistry.getBroken("gold");
-		HammerRegistry.registerOre(Blocks.gold_ore, 0, brokenGold, 0);
 		
 		if (OreDictionary.getOres("oreCopper").size() > 0 || ignoreOreDict || dropCopper)
 		{

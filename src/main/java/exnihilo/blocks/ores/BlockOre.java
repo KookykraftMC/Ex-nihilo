@@ -5,7 +5,9 @@ import java.util.List;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import exnihilo.data.ModData;
-import net.minecraft.block.BlockSand;
+import net.minecraft.block.BlockFalling;
+import net.minecraft.block.material.MapColor;
+import net.minecraft.block.material.Material;
 import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.client.renderer.texture.TextureAtlasSprite;
 import net.minecraft.client.renderer.texture.TextureMap;
@@ -15,16 +17,17 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.IIcon;
 
-public class BlockOre
-    extends BlockSand
+public class BlockOre extends BlockFalling
 {
   private String name;
   private IIcon icon;
   private TextureAtlasSprite texture;
   
+  public static final Material ExNihiloOre = (new Material(MapColor.grayColor));
+  
   public BlockOre(String name)
   {
-    super();
+    super(ExNihiloOre);
     this.name = name;
   }
   
@@ -34,9 +37,7 @@ public class BlockOre
     this.texture = texture;
   }
 
-  @SuppressWarnings({
-      "unchecked", "rawtypes"
-  })
+  @SuppressWarnings({"unchecked", "rawtypes"})
   @Override
   public void getSubBlocks(Item item, CreativeTabs tabs, List items)
   {
@@ -86,4 +87,5 @@ public class BlockOre
   {
     return name;
   }
+  
 }

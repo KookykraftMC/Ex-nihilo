@@ -72,6 +72,8 @@ public class ThermalExpansion {
 	
 	public static void TryRegisterOre(String name, Block block)
 	{
+	  
+	  
 		name = name.replace("ender_", "");
 		name = name.replace("nether_", "");
 		

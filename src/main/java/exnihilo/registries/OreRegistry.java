@@ -11,6 +11,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.FurnaceRecipes;
 import net.minecraftforge.oredict.OreDictionary;
 import net.minecraftforge.oredict.ShapedOreRecipe;
+import cpw.mods.fml.common.Loader;
 import cpw.mods.fml.common.registry.GameRegistry;
 import exnihilo.ENBlocks;
 import exnihilo.blocks.ores.BlockOre;
@@ -38,7 +39,8 @@ public class OreRegistry {
 			table.put(name.toLowerCase(), block);
 			GameRegistry.registerBlock(block, block.getName());
 			
-			ThermalExpansion.TryRegisterOre(name, block);
+			if (Loader.isModLoaded("ThermalExpansion"))
+			  ThermalExpansion.TryRegisterOre(name, block);
 		}
 	}
 
@@ -129,6 +131,8 @@ public class OreRegistry {
 
 		//Create ore blocks.
 		BlockOre gravel = null;
+		boolean gravelAlreadyExisted = false;
+		
 		switch (type)
 		{
 		//nether
@@ -138,6 +142,9 @@ public class OreRegistry {
 			{
 				gravel = BlockOreFactory.MakeNetherGravel(name, color);
 				registerOreBlock("nether_" + name, gravel, gravelTable);
+			}else
+			{
+			  gravelAlreadyExisted = true;
 			}
 			break;
 
@@ -148,7 +155,10 @@ public class OreRegistry {
 			{
 				gravel = BlockOreFactory.MakeOverworldGravel(name, color);
 				registerOreBlock(name, gravel, gravelTable);
-			}
+			}else
+      {
+        gravelAlreadyExisted = true;
+      }
 			break;
 
 			//end
@@ -158,7 +168,10 @@ public class OreRegistry {
 			{
 				gravel = BlockOreFactory.MakeEnderGravel(name, color);
 				registerOreBlock("ender_" + name, gravel, gravelTable);
-			}
+			}else
+      {
+        gravelAlreadyExisted = true;
+      }
 			break;
 		}
 
@@ -246,19 +259,23 @@ public class OreRegistry {
 			}
 		}
 
+		
 		//Register hammer recipes.
 		ArrayList<ItemStack> ores = OreDictionary.getOres("ore" + formatOreName(name));
-		if (ores.size() > 1)
+		if (type == 0 && ores.size() > 0)
 		{
 			for (ItemStack i : ores)
 			{
-				registerHammerRecipe(Block.getBlockFromItem(i.getItem()), broken);
+			  registerHammerRecipe(Block.getBlockFromItem(i.getItem()), i.getItemDamage(), broken);
 			}
 		}
 
-		registerHammerRecipe(gravel, crushed);
+		if(!gravelAlreadyExisted)
+    {
+		  registerHammerRecipe(gravel, crushed);
+		}
 		
-		if (!HammerRegistry.registered(sand))
+		if (!HammerRegistry.registered(sand, 0))
 		{
 			registerHammerRecipe(sand, powdered);
 		}
@@ -308,6 +325,11 @@ public class OreRegistry {
 	{
 		HammerRegistry.registerOre(block, 0, reward, 0);
 	}
+	
+	private static void registerHammerRecipe(Block block, int meta, ItemOre reward)
+  {
+    HammerRegistry.registerOre(block, meta, reward, 0);
+  }
 
 	private static void registerCraftingRecipe(ItemOre ingredient, BlockOre result)
 	{

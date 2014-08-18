@@ -4,7 +4,10 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.Set;
 
+import scala.Console;
 import net.minecraft.block.Block;
+import net.minecraft.block.material.MapColor;
+import net.minecraft.block.material.Material;
 import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.player.EntityPlayer;
@@ -93,7 +96,7 @@ public class ItemHammerBase extends ItemTool{
 		{
 			if (block.getMaterial().isToolNotRequired() || block.getHarvestTool(blockMeta) == null)
 			{
-				valid = false;
+				return false;
 			}
 		}
 		
