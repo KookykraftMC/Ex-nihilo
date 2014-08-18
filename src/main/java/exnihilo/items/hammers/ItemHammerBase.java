@@ -27,13 +27,13 @@ public class ItemHammerBase extends ItemTool{
 	}
 
 	@Override
-	public boolean func_150897_b(Block par1Block)
+	public boolean func_150897_b(Block block)
 	{
 		Block[] blocks = HammerRegistry.getBlocks();
 
 		for (int i = 0; i < blocks.length; ++i)
 		{
-			if (blocks[i] == par1Block)
+			if (blocks[i] == block)
 			{
 				return true;
 			}
@@ -48,13 +48,13 @@ public class ItemHammerBase extends ItemTool{
 
 		for (int i = 0; i < blocks.length; ++i)
 		{
-			if (blocks[i] == block)
+			if (blocks[i] == block && block.getHarvestLevel(meta) <= this.toolMaterial.getHarvestLevel())
 			{
 				return efficiencyOnProperMaterial * 0.75f;
 			}
 		}
 
-		return 1.0F;
+		return 0.8f;
 	}
 
 	@Override
@@ -64,11 +64,11 @@ public class ItemHammerBase extends ItemTool{
 		Block block = world.getBlock(X,Y,Z);
 		int blockMeta = world.getBlockMetadata(X,Y,Z);
 		int fortune = EnchantmentHelper.getFortuneModifier(player);
+		boolean valid = false;
 
 		ArrayList<Smashable> rewards = HammerRegistry.getRewards(block, blockMeta);
-		boolean validTarget = false;
-
-		if (rewards.size() > 0)
+		
+		if (rewards.size() > 0 && block.getHarvestLevel(blockMeta) <= this.toolMaterial.getHarvestLevel())
 		{
 			Iterator<Smashable> it = rewards.iterator();
 			while(it.hasNext())
@@ -86,31 +86,30 @@ public class ItemHammerBase extends ItemTool{
 
 					world.spawnEntityInWorld(entityitem);
 				}
-
-				validTarget = true;
-			}
-
-			if (validTarget)
-			{
-				item.damageItem(1, player);
 				
-				if (item.stackSize == 0)
-				{
-					player.destroyCurrentEquippedItem();
-				}
-				
-				if (!world.isRemote)
-				{
-					world.func_147480_a(X, Y, Z, false);
-				}
+				valid = true;
 			}
-
-			return true;
-		}
-		else
+		}else
 		{
-			return false;
+			if (block.getMaterial().isToolNotRequired() || block.getHarvestTool(blockMeta) == null)
+			{
+				valid = false;
+			}
 		}
+		
+		item.damageItem(1, player);
+
+		if (item.stackSize == 0)
+		{
+			player.destroyCurrentEquippedItem();
+		}
+
+		if (!world.isRemote)
+		{
+			world.func_147480_a(X, Y, Z, false);
+		}
+		
+		return valid;
 	}
 
 
