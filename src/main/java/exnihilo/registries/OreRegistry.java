@@ -15,6 +15,7 @@ import cpw.mods.fml.common.registry.GameRegistry;
 import exnihilo.ENBlocks;
 import exnihilo.blocks.ores.BlockOre;
 import exnihilo.blocks.ores.BlockOreFactory;
+import exnihilo.compatibility.ThermalExpansion;
 import exnihilo.items.ores.ItemOre;
 import exnihilo.items.ores.ItemOreFactory;
 import exnihilo.registries.helpers.Color;
@@ -36,6 +37,8 @@ public class OreRegistry {
 		{
 			table.put(name.toLowerCase(), block);
 			GameRegistry.registerBlock(block, block.getName());
+			
+			ThermalExpansion.TryRegisterOre(name, block);
 		}
 	}
 

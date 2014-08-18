@@ -26,6 +26,7 @@ import exnihilo.compatibility.AE2;
 import exnihilo.compatibility.MineFactoryReloaded;
 import exnihilo.compatibility.OreList;
 import exnihilo.compatibility.IC2;
+import exnihilo.compatibility.ThermalExpansion;
 import exnihilo.compatibility.foresty.Forestry;
 import exnihilo.data.ModData;
 import exnihilo.data.WorldData;
@@ -130,13 +131,12 @@ public class ExNihilo
 			Forestry.loadCompatibility();
 		}
 		
-		//No 1.7 API out yet
-//		if (ThermalExpansion.isLoaded())
-//		{
-//			System.out.println(ModData.NAME + ": Found ThermalExpansion!");
-//
-//			ThermalExpansion.loadCompatibility();
-//		}
+		if (Loader.isModLoaded("ThermalExpansion"))
+		{
+			log.info(ModData.NAME + ": Found ThermalExpansion!");
+
+			ThermalExpansion.loadCompatibility();
+		}
 
 		if (Loader.isModLoaded("appliedenergistics2"))
 		{
@@ -153,14 +153,6 @@ public class ExNihilo
 //			Mekanism.loadCompatibility();
 //		}
 
-		//No 1.7 API out yet
-//		if (Chococraft.isLoaded())
-//		{
-//			System.out.println(ModData.NAME + ": Found Chococraft!");
-//
-//			Chococraft.loadCompatibility();
-//		}
-		
 		if (Loader.isModLoaded("MineFactoryReloaded"))
 		{
 			log.info(ModData.NAME + ": Found MineFactory Reloaded!");
