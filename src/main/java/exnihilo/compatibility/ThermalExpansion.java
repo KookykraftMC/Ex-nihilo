@@ -2,12 +2,12 @@ package exnihilo.compatibility;
 
 import java.lang.reflect.Method;
 
-import scala.Console;
 import cpw.mods.fml.common.registry.GameRegistry;
 import net.minecraft.block.Block;
 import net.minecraft.init.Blocks;
 import net.minecraft.item.ItemStack;
 import exnihilo.ENBlocks;
+import exnihilo.ExNihilo;
 import exnihilo.data.ModData;
 
 public class ThermalExpansion {
@@ -17,9 +17,14 @@ public class ThermalExpansion {
 		{
 			overwritePulverizerRecipe(3200, new ItemStack(Blocks.cobblestone), new ItemStack(Blocks.gravel), new ItemStack(Blocks.sand), 10, true);
 			overwritePulverizerRecipe(3200, new ItemStack(Blocks.gravel), new ItemStack(Blocks.sand), new ItemStack(ENBlocks.Dust), 10, true);
+			ExNihilo.log.info("Pulverizer: overwrote the cobble->sand recipe with cobble->gravel");
+			ExNihilo.log.info("Pulverizer: added recipe for gravel->sand");
 		}
 		
 		addPulverizerRecipe(3200, new ItemStack(Blocks.sand), new ItemStack(ENBlocks.Dust), null, 0, true);
+		ExNihilo.log.info("Pulverizer: added recipe for sand->dust");
+		
+		ExNihilo.log.info("--- Thermal Expansion Integration Complete!");
 	}
 	
 	@SuppressWarnings({ "unchecked", "rawtypes" })

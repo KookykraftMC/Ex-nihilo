@@ -32,7 +32,6 @@ public class IC2 {
 
 	public static void loadCompatibility()
 	{
-		ExNihilo.log.info("Beginning IC2 Integration...");
 		ArrayList<ItemStack> ores;
 
 		ores = OreDictionary.getOres("dustSulfur");
@@ -99,26 +98,29 @@ public class IC2 {
 
 			if (cobbleRecipe != null) {
 				recipes.remove(cobbleRecipe);
-				ExNihilo.log.info("Successfully removed default Cobble to Sand Macerator recipe");
+				ExNihilo.log.info("Macerator: removed default cobble->sand Macerator recipe");
 			}else{
 				ExNihilo.log.error("DEFAULT COBBLE TO SAND MACERATOR RECIPE WASN'T REMOVED");
 			}
 
 			if (gravelRecipe != null) {
 				recipes.remove(gravelRecipe);
-				ExNihilo.log.info("Successfully removed default Gravel to Flint Macerator recipe");
+				ExNihilo.log.info("Macerator: removed default gravel->flint Macerator recipe");
 			}else{
 				ExNihilo.log.error("DEFAULT GRAVEL TO FLINT MACERATOR RECIPE WASN'T REMOVED");
 			}
 
 			//Add the hammer recipe sequence.
 			Recipes.macerator.addRecipe(new RecipeInputItemStack(new ItemStack(Blocks.cobblestone)), null, new ItemStack(Blocks.gravel));
+			ExNihilo.log.info("Macerator: added recipe for cobble->gravel");
 			Recipes.macerator.addRecipe(new RecipeInputItemStack(new ItemStack(Blocks.gravel)), null, new ItemStack(Blocks.sand));
-			ExNihilo.log.info("Successfully added Hammer sequence to Macerator");
+			ExNihilo.log.info("Macerator: added recipe for gravel->sand");
 		}
 
 		Recipes.macerator.addRecipe(new RecipeInputItemStack(new ItemStack(Blocks.sand)), null, new ItemStack(ENBlocks.Dust));
-		ExNihilo.log.info("IC2 Integration Complete!");
+		ExNihilo.log.info("Macerator: added recipe sand->dust");
+		
+		ExNihilo.log.info("--- IC2 Integration Complete!");
 	}
 
 }

@@ -16,7 +16,6 @@ import forestry.core.config.ForestryItem;
 public class Forestry {
 	public static void loadCompatibility()
 	{
-		ExNihilo.log.info("Beginning Forestry Integration...");
 		ItemStack apatite = ForestryItem.apatite.getItemStack();
 
 		if (apatite != null) {
@@ -29,7 +28,7 @@ public class Forestry {
 		HiveRegistry.registerHives();
 		registerRecipes();
 		
-		ExNihilo.log.info("Forestry Integration Complete!");
+		ExNihilo.log.info("--- Forestry Integration Complete!");
 	}
 
 	@SuppressWarnings({ "rawtypes", "unused" })

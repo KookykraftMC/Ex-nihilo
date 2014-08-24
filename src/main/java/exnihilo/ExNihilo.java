@@ -119,28 +119,28 @@ public class ExNihilo
 
 		if (Loader.isModLoaded("IC2"))
 		{
-			log.info("*** - Loading compatibility for  IC2!");
+			log.info("+++ - Found IC2!");
 
 			IC2.loadCompatibility();
 		}
 
 		if (Loader.isModLoaded("Forestry"))
 		{
-			log.info("*** - Found Forestry!");
+			log.info("+++ - Found Forestry!");
 
 			Forestry.loadCompatibility();
 		}
 		
 		if (Loader.isModLoaded("ThermalExpansion"))
 		{
-			log.info("*** - Found ThermalExpansion!");
+			log.info("+++ - Found ThermalExpansion!");
 
 			ThermalExpansion.loadCompatibility();
 		}
 
 		if (Loader.isModLoaded("appliedenergistics2"))
 		{
-			log.info("*** - Found AE2!");
+			log.info("+++ - Found AE2!");
 
 			AE2.loadCompatibility();
 		}
@@ -155,7 +155,7 @@ public class ExNihilo
 
 		if (Loader.isModLoaded("MineFactoryReloaded"))
 		{
-			log.info("*** - Found MineFactory Reloaded!");
+			log.info("+++ - Found MineFactory Reloaded!");
 			
 			MineFactoryReloaded.loadCompatibility();
 		}		
