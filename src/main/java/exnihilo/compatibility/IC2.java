@@ -16,7 +16,6 @@ import net.minecraftforge.oredict.OreDictionary;
 import cpw.mods.fml.common.Loader;
 import cpw.mods.fml.common.registry.GameRegistry;
 import exnihilo.ENBlocks;
-import exnihilo.ENItems;
 import exnihilo.ExNihilo;
 import exnihilo.data.ModData;
 import exnihilo.items.seeds.ItemSeedRubber;
