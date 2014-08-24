@@ -9,11 +9,27 @@ import java.util.Random;
 
 import net.minecraft.world.biome.BiomeGenBase;
 import exnihilo.ExNihilo;
+import forestry.api.genetics.IFlowerProvider;
+import forestry.apiculture.FlowerProviderCacti;
+import forestry.apiculture.FlowerProviderEnd;
+import forestry.apiculture.FlowerProviderGourd;
+import forestry.apiculture.FlowerProviderJungle;
+import forestry.apiculture.FlowerProviderMushroom;
+import forestry.apiculture.FlowerProviderNetherwart;
+import forestry.apiculture.FlowerProviderVanilla;
 
 public class HiveRegistry {
 	public static Map<String, Hive> hives = new HashMap<String, Hive>();
 	public static Random rand = new Random();
-
+	
+	public static IFlowerProvider Flowers = new FlowerProviderVanilla();
+	public static IFlowerProvider FlowersNether = new FlowerProviderNetherwart();
+	public static IFlowerProvider FlowersEnd = new FlowerProviderEnd();
+	public static IFlowerProvider FlowersJungle= new FlowerProviderJungle();
+	public static IFlowerProvider FlowersDesert = new FlowerProviderCacti();
+	public static IFlowerProvider FlowersMushroom = new FlowerProviderMushroom();
+	public static IFlowerProvider FlowersGourd = new FlowerProviderGourd();
+	
 	public static void registerHive(Hive hive)
 	{
 		hives.put(hive.block + ":" + hive.meta, hive);

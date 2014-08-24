@@ -27,6 +27,7 @@ import exnihilo.compatibility.MineFactoryReloaded;
 import exnihilo.compatibility.OreList;
 import exnihilo.compatibility.IC2;
 import exnihilo.compatibility.ThermalExpansion;
+import exnihilo.compatibility.TinkersConstruct;
 import exnihilo.compatibility.foresty.Forestry;
 import exnihilo.data.ModData;
 import exnihilo.data.WorldData;
@@ -159,6 +160,13 @@ public class ExNihilo
 			
 			MineFactoryReloaded.loadCompatibility();
 		}		
+		
+		if (Loader.isModLoaded("TConstruct"))
+		{
+			log.info("+++ - Found Tinkers Construct!");
+
+			TinkersConstruct.loadCompatibility();
+		}
 	}
 
 	@SubscribeEvent

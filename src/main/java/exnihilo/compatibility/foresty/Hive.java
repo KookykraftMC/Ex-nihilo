@@ -18,6 +18,7 @@ public class Hive {
 	public Float minYLevel = null;
 	public Float maxYLevel = null;
 	public int defaultSpawnBonus = 0;
+	public FlowerType flowers = FlowerType.None;
 
 	public String requiredSubstrate = null;
 	private static int REQUIRED_SUBSTRATE_COUNT = 15;
@@ -26,7 +27,6 @@ public class Hive {
 	public Boolean requiresTree = null;
 	public String requiresBlockAbove = null;
 
-	public List<String> flowers = new ArrayList<String>(); 
 	public List<Type> biomeTypes = new ArrayList<Type>();
 	public Block block;
 	public int meta;
@@ -107,20 +107,11 @@ public class Hive {
 			}
 		}
 		
-		if (!flowers.isEmpty())
+		if (flowers != FlowerType.None)
 		{
-			Iterator<String> it = flowers.iterator();
-			boolean found = false;
-			
-			while (it.hasNext()) {
-				if (local.blocks.containsKey(it.next()))
-				{
-					found = true;
-					break;
-				}
-			}
-			
-			if (!found)
+			int flowerCount = local.getFlowerCount(flowers);
+
+			if (flowerCount == 0)
 			{
 				//System.out.println("HIVE: Missing flowers");
 				return false;
@@ -132,23 +123,7 @@ public class Hive {
 
 	public int getSpawnChanceModifier(Surrounding local)
 	{
-		int flowerCount = 0;
-		
-		if (!flowers.isEmpty())
-		{
-			Iterator<String> it = flowers.iterator();
-			@SuppressWarnings("unused")
-			boolean found = false;
-			
-			while (it.hasNext()) {
-				String key = it.next();
-				
-				if (local.blocks.containsKey(key))
-				{
-					flowerCount += local.blocks.get(key);
-				}
-			}
-		}
+		int flowerCount = local.getFlowerCount(flowers);
 		
 		return defaultSpawnBonus + flowerCount;
 	}

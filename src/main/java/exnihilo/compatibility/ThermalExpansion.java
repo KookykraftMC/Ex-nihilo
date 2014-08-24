@@ -6,9 +6,11 @@ import cpw.mods.fml.common.registry.GameRegistry;
 import net.minecraft.block.Block;
 import net.minecraft.init.Blocks;
 import net.minecraft.item.ItemStack;
+import net.minecraftforge.fluids.FluidRegistry;
 import exnihilo.ENBlocks;
 import exnihilo.ExNihilo;
 import exnihilo.data.ModData;
+import exnihilo.registries.HeatRegistry;
 
 public class ThermalExpansion {
 	public static void loadCompatibility()
@@ -23,6 +25,15 @@ public class ThermalExpansion {
 		
 		addPulverizerRecipe(3200, new ItemStack(Blocks.sand), new ItemStack(ENBlocks.Dust), null, 0, true);
 		ExNihilo.log.info("Pulverizer: added recipe for sand->dust");
+		
+		Block pyrotheum = FluidRegistry.getFluid("pyrotheum").getBlock();
+
+		if (pyrotheum != null)
+		{
+			HeatRegistry.register(pyrotheum, 0.5f);
+			HeatRegistry.register(pyrotheum, 0, 0.7f);
+			ExNihilo.log.info("Added blazing pyrotheum as a crucible heat source");
+		}
 		
 		ExNihilo.log.info("--- Thermal Expansion Integration Complete!");
 	}
@@ -80,33 +91,33 @@ public class ThermalExpansion {
 	{
 		name = name.replace("ender_", "");
 		name = name.replace("nether_", "");
-		
-		if (name.toLowerCase() == "iron")
-			RegisterOre(Ore.Iron, block);
-		
-		if (name.toLowerCase() == "gold")
-			RegisterOre(Ore.Gold, block);
-		
-		if (name.toLowerCase() == "copper")
-			RegisterOre(Ore.Copper, block);
-			
-		if (name.toLowerCase() == "tin")
-			RegisterOre(Ore.Tin, block);
-			
-		if (name.toLowerCase() == "nickel")
-			RegisterOre(Ore.Nickel, block);
 
-		if (name.toLowerCase() == "platinum")
-			RegisterOre(Ore.Platinum, block);
-			
-		if (name.toLowerCase() == "silver")
-			RegisterOre(Ore.Silver, block);
-			
-		if (name.toLowerCase() == "lead")
-			RegisterOre(Ore.Lead, block);
+		if (name.toLowerCase().equals("iron"))
+			RegisterOre(OreList.Type.Iron, block);
+
+		if (name.toLowerCase().equals("gold"))
+			RegisterOre(OreList.Type.Gold, block);
+
+		if (name.toLowerCase().equals("copper"))
+			RegisterOre(OreList.Type.Copper, block);
+
+		if (name.toLowerCase().equals("tin"))
+			RegisterOre(OreList.Type.Tin, block);
+
+		if (name.toLowerCase().equals("nickel"))
+			RegisterOre(OreList.Type.Nickel, block);
+
+		if (name.toLowerCase().equals("platinum"))
+			RegisterOre(OreList.Type.Platinum, block);
+
+		if (name.toLowerCase().equals("silver"))
+			RegisterOre(OreList.Type.Silver, block);
+
+		if (name.toLowerCase().equals("lead"))
+			RegisterOre(OreList.Type.Lead, block);
 	}
 	
-	public static void RegisterOre(Ore ore, Block block)
+	public static void RegisterOre(OreList.Type ore, Block block)
 	{
 		ItemStack iblock = new ItemStack(block);
 		ItemStack primary;
@@ -173,17 +184,5 @@ public class ThermalExpansion {
 		default:
 			break;
 		}
-	}
-	
-	public enum Ore
-	{
-		Iron,
-		Gold,
-		Tin,
-		Copper,
-		Nickel,
-		Platinum,
-		Silver,
-		Lead,
 	}
 }

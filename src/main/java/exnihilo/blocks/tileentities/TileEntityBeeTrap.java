@@ -28,7 +28,7 @@ public class TileEntityBeeTrap extends TileEntity {
 	private int z = MIN_Z;
 	
 	//Spawn chance, higher = more rare.
-	private static final int HIVE_SPAWN_CHANCE = 60;
+	private static final int HIVE_SPAWN_CHANCE = 50;
 	
 	private boolean complete = false;
 
@@ -85,7 +85,7 @@ public class TileEntityBeeTrap extends TileEntity {
 				Block block = worldObj.getBlock(xCoord + x, yCoord + y,zCoord + z);
 				int meta = worldObj.getBlockMetadata(xCoord + x, yCoord + y,zCoord + z);
 				
-				blocks.addBlock(block, meta);
+				blocks.addBlock(worldObj, xCoord + x, yCoord + y,zCoord + z);
 				if (x == 0 && y == 1 && z == 0)
 				{
 					blocks.setBlockAbove(block, meta);

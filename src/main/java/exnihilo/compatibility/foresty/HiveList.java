@@ -1,7 +1,5 @@
 package exnihilo.compatibility.foresty;
 
-import java.util.Iterator;
-
 import cpw.mods.fml.common.registry.GameRegistry;
 import net.minecraft.block.Block;
 import net.minecraft.init.Blocks;
@@ -9,7 +7,6 @@ import net.minecraft.item.ItemStack;
 import net.minecraftforge.common.BiomeDictionary.Type;
 import net.minecraftforge.fluids.FluidRegistry;
 import exnihilo.ExNihilo;
-import forestry.api.apiculture.FlowerManager;
 
 public class HiveList {
 	public static ItemStack beehives;
@@ -135,13 +132,8 @@ public class HiveList {
 		meadow.requiredCanSeeSky = true;
 
 		meadow.biomeTypes.add(Type.PLAINS);
-
-		Iterator<ItemStack> it = FlowerManager.plainFlowers.iterator();
-		while(it.hasNext())
-		{
-			ItemStack item = it.next();
-			meadow.flowers.add(item + ":" + item.getItemDamage());
-		}
+		meadow.flowers = FlowerType.Normal;
+		forest.defaultSpawnBonus = 20;
 	}
 
 	private static void generateDesertHive()
@@ -152,8 +144,7 @@ public class HiveList {
 
 		desert.biomeTypes.add(Type.SANDY);
 
-		desert.flowers.add(Blocks.cactus + ":0");
-		desert.defaultSpawnBonus = 20;
+		desert.flowers = FlowerType.Cactus;
 	}
 
 	public static void generateJungleHive()
@@ -164,23 +155,7 @@ public class HiveList {
 		jungle.requiresTree = true;
 
 		jungle.biomeTypes.add(Type.JUNGLE);
-
-		jungle.flowers.add(Blocks.vine + ":0");
-		jungle.flowers.add(Blocks.vine + ":1");
-		jungle.flowers.add(Blocks.vine + ":2");
-		jungle.flowers.add(Blocks.vine + ":3");
-		jungle.flowers.add(Blocks.vine + ":4");
-		jungle.flowers.add(Blocks.vine + ":5");
-		jungle.flowers.add(Blocks.vine + ":6");
-		jungle.flowers.add(Blocks.vine + ":7");
-		jungle.flowers.add(Blocks.vine + ":8");
-		jungle.flowers.add(Blocks.vine + ":9");
-		jungle.flowers.add(Blocks.vine + ":10");
-		jungle.flowers.add(Blocks.vine + ":11");
-		jungle.flowers.add(Blocks.vine + ":12");
-		jungle.flowers.add(Blocks.vine + ":13");
-		jungle.flowers.add(Blocks.vine + ":14");
-		jungle.flowers.add(Blocks.vine + ":15");
+		jungle.flowers = FlowerType.Jungle;
 	}
 
 	public static void generateEndHive()
@@ -200,13 +175,6 @@ public class HiveList {
 		snow.requiredSubstrate = Blocks.snow + ":0";
 
 		snow.biomeTypes.add(Type.COLD);
-
-		Iterator<ItemStack> it = FlowerManager.plainFlowers.iterator();
-		while(it.hasNext())
-		{
-			ItemStack item = it.next();
-			snow.flowers.add(item + ":" + item.getItemDamage());
-		}
 	}
 
 	public static void generateSwampHive()
@@ -216,9 +184,7 @@ public class HiveList {
 		swamp.requiredCanSeeSky = true;
 
 		swamp.biomeTypes.add(Type.SWAMP);
-
-		swamp.flowers.add(Blocks.brown_mushroom + ":0");
-		swamp.flowers.add(Blocks.red_mushroom + ":0");
+		swamp.flowers = FlowerType.Mushroom;
 	}
 
 	//EXTRA BEES!
@@ -229,7 +195,7 @@ public class HiveList {
 		water.biomeTypes.add(Type.WATER);
 		water.requiredSubstrate = FluidRegistry.WATER.getBlock() + ":0";
 		water.requiresBlockAbove = FluidRegistry.WATER.getBlock() + ":0";
-		water.flowers.add(Blocks.waterlily + ":0");
+		water.flowers = FlowerType.Water;
 	}
 
 	public static void generateRockHive()
@@ -250,10 +216,7 @@ public class HiveList {
 
 		nether.biomeTypes.add(Type.NETHER);
 		nether.requiredSubstrate = Blocks.netherrack + ":0";
-		nether.flowers.add(Blocks.nether_wart + ":0");
-		nether.flowers.add(Blocks.nether_wart + ":1");
-		nether.flowers.add(Blocks.nether_wart + ":2");
-		nether.flowers.add(Blocks.nether_wart + ":4");
+		nether.flowers = FlowerType.Nether;
 	}
 
 	//MAGIC BEES!
@@ -265,13 +228,7 @@ public class HiveList {
 		curious.biomeTypes.add(Type.FOREST);
 		
 		curious.requiresTree = true;
-		
-		Iterator<ItemStack> it = FlowerManager.plainFlowers.iterator();
-		while(it.hasNext())
-		{
-			ItemStack item = it.next();
-			curious.flowers.add(item + ":" + item.getItemDamage());
-		}
+		curious.flowers = FlowerType.Gourd;
 	}
 
 	public static void generateResonatingHive()
@@ -281,12 +238,7 @@ public class HiveList {
 		resonating.requiredCanSeeSky = true;
 		resonating.biomeTypes.add(Type.SANDY);
 		
-		Iterator<ItemStack> it = FlowerManager.plainFlowers.iterator();
-		while(it.hasNext())
-		{
-			ItemStack item = it.next();
-			resonating.flowers.add(item + ":" + item.getItemDamage());
-		}
+		resonating.flowers = FlowerType.Gourd;
 	}
 
 	public static void generateUnusualHive()
@@ -296,12 +248,7 @@ public class HiveList {
 		unusual.requiredCanSeeSky = true;
 		unusual.biomeTypes.add(Type.JUNGLE);
 		
-		Iterator<ItemStack> it = FlowerManager.plainFlowers.iterator();
-		while(it.hasNext())
-		{
-			ItemStack item = it.next();
-			unusual.flowers.add(item + ":" + item.getItemDamage());
-		}
+		unusual.flowers = FlowerType.Gourd;
 	}
 
 	public static void generateDeepHive()
@@ -311,13 +258,7 @@ public class HiveList {
 		deep.requiredCanSeeSky = false;
 		deep.biomeTypes.add(Type.MOUNTAIN);
 		deep.maxYLevel = 15.0f;
-		
-		Iterator<ItemStack> it = FlowerManager.plainFlowers.iterator();
-		while(it.hasNext())
-		{
-			ItemStack item = it.next();
-			deep.flowers.add(item + ":" + item.getItemDamage());
-		}
+		desert.defaultSpawnBonus = -40;
 	}
 
 	public static void generateOblivionHive()

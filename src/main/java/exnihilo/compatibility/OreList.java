@@ -95,4 +95,17 @@ public class OreList{
 			OreRegistry.createOverworldOre("osmium", new Color("608FC4"), 10);
 		}
 	}
+	
+	public enum Type
+	{
+		Iron,
+		Gold,
+		Tin,
+		Copper,
+		Nickel,
+		Platinum,
+		Silver,
+		Lead,
+		Aluminum,
+	}
 }

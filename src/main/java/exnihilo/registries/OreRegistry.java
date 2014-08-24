@@ -17,6 +17,7 @@ import exnihilo.ENBlocks;
 import exnihilo.blocks.ores.BlockOre;
 import exnihilo.blocks.ores.BlockOreFactory;
 import exnihilo.compatibility.ThermalExpansion;
+import exnihilo.compatibility.TinkersConstruct;
 import exnihilo.items.ores.ItemOre;
 import exnihilo.items.ores.ItemOreFactory;
 import exnihilo.registries.helpers.Color;
@@ -40,7 +41,10 @@ public class OreRegistry {
 			GameRegistry.registerBlock(block, block.getName());
 			
 			if (Loader.isModLoaded("ThermalExpansion"))
-			  ThermalExpansion.TryRegisterOre(name, block);
+				ThermalExpansion.TryRegisterOre(name, block);
+			
+			if (Loader.isModLoaded("TConstruct"))
+				TinkersConstruct.TryRegisterOre(name, block);
 		}
 	}
 
