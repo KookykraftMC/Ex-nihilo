@@ -64,30 +64,25 @@ public class HiveRegistry {
 			registerHive(HiveList.end);
 			registerHive(HiveList.snow);
 			registerHive(HiveList.swamp);
-			ExNihilo.log.info("Sucessfully added Forestry Hives");
 		}
 		
-//		if(HiveList.generateExtreBeesHives())
-//		{
-//			registerHive(HiveList.water);
-//			registerHive(HiveList.rock);
-//			registerHive(HiveList.nether);
-//			
-//			System.out.println("Ex Nihilo: Found Extra Bees!");
-//		}
-//		
-//		if(HiveList.generateMagicBeesHives())
-//		{
-//			registerHive(HiveList.curious);
-//			registerHive(HiveList.resonating);
-//			registerHive(HiveList.unusual);
-//			registerHive(HiveList.deep);
-//			registerHive(HiveList.infernal);
-//			registerHive(HiveList.oblivion);
-//			
-//			System.out.println("Ex Nihilo: Found Magic Bees!");
-//		}
-		//CommonOre.dumpUnlocalizedNames("hive");
+		if(HiveList.generateExtraBeesHives())
+		{
+			registerHive(HiveList.water);
+			registerHive(HiveList.rock);
+			registerHive(HiveList.nether);
+		}
+		
+		if(HiveList.generateMagicBeesHives())
+		{
+			registerHive(HiveList.curious);
+			registerHive(HiveList.resonating);
+			registerHive(HiveList.unusual);
+			registerHive(HiveList.deep);
+			registerHive(HiveList.infernal);
+			registerHive(HiveList.oblivion);
+		}
+		
 		ExNihilo.log.info("Hive Registry Completed!");
 	}
 }
