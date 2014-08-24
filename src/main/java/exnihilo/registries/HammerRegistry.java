@@ -3,7 +3,6 @@ package exnihilo.registries;
 import java.util.ArrayList;
 import java.util.Iterator;
 
-import scala.Console;
 import net.minecraft.block.Block;
 import net.minecraft.init.Blocks;
 import net.minecraft.item.Item;
@@ -97,8 +96,6 @@ public static ArrayList<Smashable> rewards = new ArrayList<Smashable>();
 	
 	public static void registerOre(Block ore, int oreMeta, Item reward, int rewardMeta)
 	{
-	  Console.out().println("Registering hammer recipe for " + ore.getUnlocalizedName());
-	  
 		register(ore, oreMeta, reward, rewardMeta, 1.0f, 0.0f);
 		register(ore, oreMeta, reward, rewardMeta, 1.0f, 0.0f);
 		register(ore, oreMeta, reward, rewardMeta, 1.0f, 0.0f);

@@ -43,7 +43,8 @@ public class ThermalExpansion {
 				addRecipe.invoke(null, parameters);
 			}
 		}
-		catch (Exception ex){System.out.println("Ex Nihilo: Failed to add pulverizer recipes, " + ex.getMessage());}
+		
+		catch (Exception ex){System.out.println("Unable to add pulverizer recipes, (" + ex.getMessage() + ")");}
 	}
 	
 	@SuppressWarnings({ "unchecked", "rawtypes" })
@@ -67,13 +68,11 @@ public class ThermalExpansion {
 				addRecipe.invoke(null, parameters);
 			}
 		}
-		catch (Exception ex){System.out.println("Ex Nihilo: Failed to add pulverizer recipes, " + ex.getMessage());}
+		catch (Exception ex){System.out.println("Unable to add pulverizer recipes, (" + ex.getMessage() + ")");}
 	}
 	
 	public static void TryRegisterOre(String name, Block block)
 	{
-	  
-	  
 		name = name.replace("ender_", "");
 		name = name.replace("nether_", "");
 		
@@ -107,8 +106,6 @@ public class ThermalExpansion {
 		ItemStack iblock = new ItemStack(block);
 		ItemStack primary;
 		ItemStack secondary;
-		
-		Console.out().println("Registering ore " + block.getUnlocalizedName() + " with the ore type " + ore.toString());
 		
 		switch (ore)
 		{

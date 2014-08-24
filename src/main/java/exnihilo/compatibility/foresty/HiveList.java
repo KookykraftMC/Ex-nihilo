@@ -56,18 +56,18 @@ public class HiveList {
 			generateSnowHive();
 			generateSwampHive();
 
-			ExNihilo.log.info("Compatibility loaded!: Forestry Bees");
+			ExNihilo.log.info("Compatibility OK!: Forestry Bees");
 			
 			return true;
 		}else{
-			ExNihilo.log.info("Compatibility failed!: Forestry Bees");
+			ExNihilo.log.info("Compatibility FAIL!: Forestry Bees");
 			return false;
 		}
 	}
 
 	public static boolean generateExtraBeesHives()
 	{
-		Block ebHives = GameRegistry.findBlock("BinnieCore", "hive");;
+		Block ebHives = GameRegistry.findBlock("ExtraBees", "hive");;
 
 		if (ebHives != null)
 		{
@@ -77,13 +77,13 @@ public class HiveList {
 			generateRockHive();
 			generateNetherHive();
 			
-			ExNihilo.log.info("Compatibility loaded!: Extra Bees");
+			ExNihilo.log.info("Compatibility OK!: Extra Bees");
 			
 			return true;
 		}
 		else
 		{
-			ExNihilo.log.info("Compatibility failed!: Extra Bees");
+			ExNihilo.log.info("Compatibility FAIL!: Extra Bees");
 		}
 		
 		return false;
@@ -105,13 +105,13 @@ public class HiveList {
 			generateOblivionHive();
 			generateInfernalHive();
 			
-			ExNihilo.log.info("Compatibility loaded!: Magic Bees");
+			ExNihilo.log.info("Compatibility OK!: Magic Bees");
 			
 			return true;
 		}
 		else
 		{
-			ExNihilo.log.info("Compatibility failed!: Magic Bees");
+			ExNihilo.log.info("Compatibility FAIL!: Magic Bees");
 		}
 		
 		return false;
