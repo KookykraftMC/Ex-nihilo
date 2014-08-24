@@ -113,6 +113,8 @@ public class Waila implements IWailaDataProvider {
 			return "Obsidian";
 		case SOULSAND:
 			return "Soul Sand";
+		case BLOCK:
+			return barrel.block.getLocalizedName();
 		default:
 			return "";
 		}

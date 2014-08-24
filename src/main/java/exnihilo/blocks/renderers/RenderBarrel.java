@@ -153,6 +153,9 @@ public class RenderBarrel extends TileEntitySpecialRenderer{
 				transparency = false;
 				break;
 				
+			case BLOCK:
+				icon = barrel.block.getIcon(0, barrel.blockMeta);
+				
 			default:
 				break;
 			}

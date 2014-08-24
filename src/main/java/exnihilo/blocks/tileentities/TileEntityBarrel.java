@@ -67,7 +67,8 @@ public class TileEntityBarrel extends TileEntity implements IFluidHandler, ISide
 		BLAZE(15, ExtractMode.PeacefulOnly),
 		ENDER_COOKING(16, ExtractMode.None),
 		ENDER(17, ExtractMode.PeacefulOnly),
-		DARKOAK(18, ExtractMode.Always);
+		DARKOAK(18, ExtractMode.Always),
+		BLOCK(19, ExtractMode.Always);
 
 		private BarrelMode(int v, ExtractMode extract){this.value = v; this.canExtract = extract;}
 		public int value;
@@ -85,6 +86,8 @@ public class TileEntityBarrel extends TileEntity implements IFluidHandler, ISide
 	private float volume;
 	private int timer;
 	private BarrelMode mode;
+	public Block block;
+	public int blockMeta;
 	public Color color;
 	private Color colorBase;
 	public IIcon icon;
@@ -617,6 +620,9 @@ public class TileEntityBarrel extends TileEntity implements IFluidHandler, ISide
 		case DARKOAK:
 			return new ItemStack(Blocks.sapling, 1, 5);
 
+		case BLOCK:
+			return new ItemStack(block);
+			
 		default:
 			return null;
 		}
@@ -730,6 +736,10 @@ public class TileEntityBarrel extends TileEntity implements IFluidHandler, ISide
 		case 18:
 			setMode(BarrelMode.DARKOAK);
 			break;
+			
+		case 19:
+			setMode(BarrelMode.BLOCK);
+			break;
 		}
 
 		volume = compound.getFloat("volume");
@@ -739,6 +749,13 @@ public class TileEntityBarrel extends TileEntity implements IFluidHandler, ISide
 		colorBase = new Color (compound.getInteger("colorBase"));
 		fluid = new FluidStack(FluidRegistry.getFluid(compound.getShort("fluid")), (int)(volume * MAX_FLUID));
 		needsUpdate = true;
+		
+		if(!compound.getString("block").equals("")) {
+			block = (Block)Block.blockRegistry.getObject(compound.getString("block"));
+		}else{
+			block = null;
+		}
+		blockMeta = compound.getInteger("blockMeta");
 	}
 
 	@Override
@@ -751,6 +768,13 @@ public class TileEntityBarrel extends TileEntity implements IFluidHandler, ISide
 		compound.setInteger("color", color.toInt());
 		compound.setInteger("colorBase", colorBase.toInt());
 		compound.setShort("fluid", (short)fluid.fluidID);
+		
+		if(block == null) {
+			compound.setString("block", "");
+		}else{
+			compound.setString("block", Block.blockRegistry.getNameForObject(block));
+		}
+		compound.setInteger("blockMeta", blockMeta);
 	}
 
 	@Override

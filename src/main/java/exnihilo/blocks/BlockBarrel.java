@@ -21,6 +21,7 @@ import net.minecraftforge.fluids.Fluid;
 import net.minecraftforge.fluids.FluidContainerRegistry;
 import net.minecraftforge.fluids.FluidRegistry;
 import net.minecraftforge.fluids.FluidStack;
+import cpw.mods.fml.common.Loader;
 import cpw.mods.fml.common.registry.GameRegistry;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
@@ -30,6 +31,7 @@ import exnihilo.Fluids;
 import exnihilo.blocks.tileentities.TileEntityBarrel;
 import exnihilo.blocks.tileentities.TileEntityBarrel.BarrelMode;
 import exnihilo.blocks.tileentities.TileEntityBarrel.ExtractMode;
+import exnihilo.compatibility.AE2;
 import exnihilo.data.BlockData;
 import exnihilo.data.ModData;
 import exnihilo.registries.CompostRegistry;
@@ -232,6 +234,13 @@ public class BlockBarrel extends BlockContainer
 							if(ModData.ALLOW_BARREL_RECIPE_BLAZE_RODS && item.getItem() == ENItems.DollAngry)
 							{
 								barrel.setMode(BarrelMode.BLAZE_COOKING);
+								useItem(player);
+							}
+							
+							if(Loader.isModLoaded("appliedenergistics2") && item.getItem() == AE2.certusDust)
+							{
+								barrel.block = AE2.skyStone;
+								barrel.setMode(BarrelMode.BLOCK);
 								useItem(player);
 							}
 						}
