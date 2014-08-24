@@ -46,7 +46,7 @@ public class IC2 {
 		Block rubberSapling = GameRegistry.findBlock("IC2", "blockRubSapling");
 		if(rubberSapling != null) {
 			ItemSeedRubber.AddSapling(rubberSapling);
-			SieveRegistry.register(Blocks.dirt, 0, ENItems.SeedsRubber, 0, 45);
+			
 			ExNihilo.log.info("Rubber was successfully integrated");
 		}else{
 			ExNihilo.log.error("RUBBER WAS NOT INTEGRATED");
