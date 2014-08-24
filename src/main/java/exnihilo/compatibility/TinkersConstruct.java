@@ -1,6 +1,5 @@
 package exnihilo.compatibility;
 
-import scala.Console;
 import tconstruct.library.crafting.Smeltery;
 import net.minecraft.block.Block;
 import net.minecraftforge.fluids.Fluid;
