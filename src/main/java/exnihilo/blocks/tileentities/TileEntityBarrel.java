@@ -1037,78 +1037,81 @@ public class TileEntityBarrel extends TileEntity implements IFluidHandler, ISide
 	@Override
 	public void setInventorySlotContents(int slot, ItemStack stack) {
 		//XXX addItemFromPipe
-		Item item = stack.getItem();
-		int meta = stack.getItemDamage();
 		
-		if (slot == 0)
+		if (stack == null || stack.getItem() == null)
 		{
-			if (item == null)
+			if (slot == 0)
 			{
 				resetBarrel();
 			}
 		}
-
-		if (slot == 1)
+		else
 		{
-			if (getMode() == BarrelMode.COMPOST || getMode() == BarrelMode.EMPTY)
+			Item item = stack.getItem();
+			int meta = stack.getItemDamage();
+
+			if (slot == 1)
 			{
-				if(CompostRegistry.containsItem(item, meta))
+				if (getMode() == BarrelMode.COMPOST || getMode() == BarrelMode.EMPTY)
 				{
-					this.addCompostItem(CompostRegistry.getItem(item, meta));
-				}
-			}
-
-			if(getMode() == BarrelMode.FLUID && this.isFull())
-			{
-				if(fluid.fluidID == FluidRegistry.WATER.getID())
-				{
-					if (ModData.ALLOW_BARREL_RECIPE_CLAY && Block.getBlockFromItem(item) == ENBlocks.Dust)
+					if(CompostRegistry.containsItem(item, meta))
 					{
-						setMode(BarrelMode.CLAY);
+						this.addCompostItem(CompostRegistry.getItem(item, meta));
 					}
 				}
 
-				if(fluid.fluidID == FluidRegistry.LAVA.getID())
+				if(getMode() == BarrelMode.FLUID && this.isFull())
 				{
-					if (ModData.ALLOW_BARREL_RECIPE_NETHERRACK && item == Items.redstone)
+					if(fluid.fluidID == FluidRegistry.WATER.getID())
 					{
-						setMode(BarrelMode.NETHERRACK);
+						if (ModData.ALLOW_BARREL_RECIPE_CLAY && Block.getBlockFromItem(item) == ENBlocks.Dust)
+						{
+							setMode(BarrelMode.CLAY);
+						}
 					}
 
-					if (ModData.ALLOW_BARREL_RECIPE_ENDSTONE && item == Items.glowstone_dust)
+					if(fluid.fluidID == FluidRegistry.LAVA.getID())
 					{
-						setMode(BarrelMode.ENDSTONE);
+						if (ModData.ALLOW_BARREL_RECIPE_NETHERRACK && item == Items.redstone)
+						{
+							setMode(BarrelMode.NETHERRACK);
+						}
+
+						if (ModData.ALLOW_BARREL_RECIPE_ENDSTONE && item == Items.glowstone_dust)
+						{
+							setMode(BarrelMode.ENDSTONE);
+						}
+
+						if(ModData.ALLOW_BARREL_RECIPE_BLAZE_RODS && item == ENItems.DollAngry)
+						{
+							setMode(BarrelMode.BLAZE_COOKING);
+						}
 					}
 
-					if(ModData.ALLOW_BARREL_RECIPE_BLAZE_RODS && item == ENItems.DollAngry)
+					if (fluid.fluidID == Fluids.fluidWitchWater.getID())
 					{
-						setMode(BarrelMode.BLAZE_COOKING);
-					}
-				}
+						if(ModData.ALLOW_BARREL_RECIPE_SOULSAND && Block.getBlockFromItem(item) == Blocks.sand)
+						{
+							resetColor();
+							setMode(BarrelMode.SOULSAND);
+						}
 
-				if (fluid.fluidID == Fluids.fluidWitchWater.getID())
-				{
-					if(ModData.ALLOW_BARREL_RECIPE_SOULSAND && Block.getBlockFromItem(item) == Blocks.sand)
-					{
-						resetColor();
-						setMode(BarrelMode.SOULSAND);
-					}
-
-					if(ModData.ALLOW_BARREL_RECIPE_ENDER_PEARLS && item == ENItems.DollCreepy)
-					{
-						setMode(BarrelMode.ENDER_COOKING);
+						if(ModData.ALLOW_BARREL_RECIPE_ENDER_PEARLS && item == ENItems.DollCreepy)
+						{
+							setMode(BarrelMode.ENDER_COOKING);
+						}
+						
+						if(ModData.ALLOW_BARREL_RECIPE_DARK_OAK && Block.getBlockFromItem(item) == Blocks.sapling && meta == 0)
+						{
+							setMode(BarrelMode.DARKOAK);
+						}
 					}
 					
-					if(ModData.ALLOW_BARREL_RECIPE_DARK_OAK && Block.getBlockFromItem(item) == Blocks.sapling && meta == 0)
+					Fluid seedOil = FluidRegistry.getFluid("seedoil");
+					if (seedOil != null && fluid.fluidID == seedOil.getID())
 					{
-						setMode(BarrelMode.DARKOAK);
+						setMode(BarrelMode.BEETRAP);
 					}
-				}
-				
-				Fluid seedOil = FluidRegistry.getFluid("seedoil");
-				if (seedOil != null && fluid.fluidID == seedOil.getID())
-				{
-					setMode(BarrelMode.BEETRAP);
 				}
 			}
 		}
