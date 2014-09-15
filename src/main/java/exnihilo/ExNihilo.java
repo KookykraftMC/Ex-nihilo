@@ -117,7 +117,7 @@ public class ExNihilo
 	public void PostInitialize(FMLPostInitializationEvent event)
 	{
 		OreList.registerOres();
-
+		
 		if (Loader.isModLoaded("IC2"))
 		{
 			log.info("+++ - Found IC2!");

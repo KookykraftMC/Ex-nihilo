@@ -45,6 +45,9 @@ public class OreRegistry {
 			
 			if (Loader.isModLoaded("TConstruct"))
 				TinkersConstruct.TryRegisterOre(name, block);
+			
+			//if (Loader.isModLoaded("EnderIO"))
+				//EnderIO.TryRegisterOre(name, block);
 		}
 	}
 
