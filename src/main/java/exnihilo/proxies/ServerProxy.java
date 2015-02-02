@@ -21,7 +21,7 @@ public class ServerProxy extends Proxy {
 		{
 		  ExNihilo.log.error("Error while getting server side world reference");
 		}
-		ExNihilo.log.info("Searching for server side world reference: Success!");
+		//ExNihilo.log.info("Searching for server side world reference: Success!");
 		return world;
 	}
 }

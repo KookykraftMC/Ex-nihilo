@@ -7,7 +7,12 @@ import mcp.mobius.waila.api.IWailaConfigHandler;
 import mcp.mobius.waila.api.IWailaDataAccessor;
 import mcp.mobius.waila.api.IWailaDataProvider;
 import mcp.mobius.waila.api.IWailaRegistrar;
+import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.item.ItemStack;
+import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.tileentity.TileEntity;
+import net.minecraft.world.World;
+import exnihilo.ExNihilo;
 import exnihilo.blocks.BlockBarrel;
 import exnihilo.blocks.BlockCrucible;
 import exnihilo.blocks.BlockLeavesInfested;
@@ -157,5 +162,12 @@ public class Waila implements IWailaDataProvider {
 		registrar.registerBodyProvider(instance, BlockLeavesInfested.class);
 		registrar.registerBodyProvider(instance, BlockSieve.class);
 		registrar.registerBodyProvider(instance, BlockCrucible.class);
+	}
+
+	@Override
+	public NBTTagCompound getNBTData(EntityPlayerMP player, TileEntity te,
+			NBTTagCompound tag, World world, int x, int y, int z) {
+		ExNihilo.log.info("Waila getNBTData called");
+		return tag;
 	}
 }
