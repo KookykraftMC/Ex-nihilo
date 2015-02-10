@@ -1,6 +1,7 @@
 package exnihilo.items;
 
 import java.lang.reflect.Method;
+import java.util.ArrayList;
 import java.util.Set;
 
 import net.minecraft.block.Block;
@@ -12,6 +13,7 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.ItemTool;
 import net.minecraft.world.World;
+
 import com.google.common.collect.Sets;
 
 import cpw.mods.fml.common.Loader;
@@ -85,28 +87,34 @@ public class ItemCrook extends ItemTool{
 					//Forestry, why? Why did you make me have to do this? We could have been friends...
 					Class forestryLeafBlock = null;
 					try {
-						forestryLeafBlock = Class.forName("forestry.arboriculture.gadgets.BlockLeaves");
+						forestryLeafBlock = Class.forName("forestry.arboriculture.gadgets.ForestryBlockLeaves");
 
 						Method dropStuff = null;
 						if (forestryLeafBlock != null)
 						{
-							dropStuff = forestryLeafBlock.getDeclaredMethod("spawnLeafDrops", World.class, int.class, int.class, int.class, int.class, float.class, boolean.class);
+							// private ArrayList<ItemStack> getLeafDrop(World world, int x, int y, int z, float saplingModifier, int fortune)
+							dropStuff = forestryLeafBlock.getDeclaredMethod("getLeafDrop", World.class, int.class, int.class, int.class, float.class, int.class);
 							dropStuff.setAccessible(true);
-						}else{
-							ExNihilo.log.error("forestryLeafBlock == null");
+						} else {
+							ExNihilo.log.error("getLeafDrop == null");
 						}
 
 						if (dropStuff != null)
 						{
 							//This gets called once here, and then it drops stuff again when it breaks.
-							dropStuff.invoke(forestryLeafBlock.newInstance(), world, X, Y, Z, meta, 1.0F, true);
+							ArrayList<ItemStack> drops = (ArrayList<ItemStack>) dropStuff.invoke(forestryLeafBlock.newInstance(), world, X, Y, Z, 1.0f, 1);
+							if (drops != null) {
+								for (ItemStack drop : drops) {
+									world.spawnEntityInWorld(new EntityItem(world, X + 0.5D, Y + 0.5D, Z + 0.5D, drop));
+								}
+							}
 							extraDropped = true;
 						}else{
 							ExNihilo.log.error("dropStuff == null");
 						}
 					}
 					catch (Exception ex){
-						ExNihilo.log.error("Failed to get spawnLeafDrops from Forestry BlockLeaves class");
+						ExNihilo.log.error("Failed to get getLeafDrop from Forestry ForestryBlockLeaves class");
 						ex.printStackTrace();
 					}
 				}
